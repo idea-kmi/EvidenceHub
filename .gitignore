@@ -5,6 +5,7 @@
 # Files
 config.php
 config-live.php
+!core/lib/htmlpurifier/library/HTMLPurifier/Config.php
 setup.php
 *.DS_Store
 ._*
