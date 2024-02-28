@@ -154,7 +154,7 @@ function init() {
 function typeChanged() {
 	var type = $('nodetypename').value;
 	if (type == "Publication") {
-		$('identifierdiv').style.display = "block";
+		$('identifierdiv').style.display = "";
 	} else {
 		$('identifierdiv').style.display = "none";
 	}
@@ -196,61 +196,69 @@ function checkForm() {
 window.onload = init;
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="addurl" name="addurl" action="" method="post" onsubmit="return checkForm();">
+			<form id="addurl" name="addurl" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+   				<input type="hidden" id="clippath" name="clippath" value="<?php echo $clippath; ?>" />
 
-   	<input type="hidden" id="clippath" name="clippath" value="<?php echo $clippath; ?>" />
+				<div class="mb-3 row">
+					<label for="nodetypename" class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_LABEL_TYPE; ?> 
+						<a class="active" onMouseOver="showFormHint('ResourceType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">
+						<select class="form-select" aria-label="Select type" id="nodetypename" name="nodetypename" onchange="typeChanged()" >
+							<?php
+								$count = 0;
+								if (is_countable($CFG->RESOURCE_TYPES)) {
+									$count = count($CFG->RESOURCE_TYPES);
+								}
+								for($i=0; $i<$count; $i++){
+									$item = $CFG->RESOURCE_TYPES[$i];
+									$name = $LNG->RESOURCE_TYPES[$i];
+								?>
+									<option value='<?php echo $item; ?>' <?php if ( $nodetypename == $item || ($nodetypename == "" && $item == $CFG->RESOURCE_TYPES_DEFAULT) ) { echo 'selected=\"true\"'; } ?> ><?php echo $name ?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
 
-   	<div class="formrow">
-		<label  class="formlabelbig" for="nodetypename"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_TYPE; ?></span>
-			<span class="active" onMouseOver="showFormHint('ResourceType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<select class="forminput hgrselect forminputmust" onchange="typeChanged()" id="nodetypename" name="nodetypename">
-			<?php
-				$count = 0;
-				if (is_countable($CFG->RESOURCE_TYPES)) {
-					$count = count($CFG->RESOURCE_TYPES);
-				}
-				for($i=0; $i<$count; $i++){
-					$item = $CFG->RESOURCE_TYPES[$i];
-					$name = $LNG->RESOURCE_TYPES[$i];
-				?>
-    	        	<option value='<?php echo $item; ?>' <?php if ( $nodetypename == $item || ($nodetypename == "" && $item == $CFG->RESOURCE_TYPES_DEFAULT) ) { echo 'selected=\"true\"'; } ?> ><?php echo $name ?></option>
-			<?php } ?>
-		</select>
-   	</div>
+				<?php insertUrl('ResourceURL'); ?>
+				<?php insertTitle('ResourceTitle'); ?>
+				<?php insertDOI('ResourceDOI'); ?>
 
-    <?php insertUrl('ResourceURL'); ?>
+				<?php if ($clip != "") { ?>	
+					<div class="mb-3 row">
+						<label for="clip" class="col-sm-3 col-form-label">
+							<?php echo $LNG->FORM_LABEL_CLIP; ?> 
+							<a href="javascript:void(0)" onMouseOver="showFormHint('ResourceClip', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
+						</label>
+						<div class="col-sm-9">
+							<textarea type="text" class="form-control" id="clip" name="clip" rows="3" readonly><?php echo($clip); ?></textarea>
+						</div>
+					</div>
+				<?php } ?>
 
-    <?php insertTitle('ResourceTitle'); ?>
+				<?php insertThemes('ResourceTheme'); ?>
+				<?php insertAddTags('ResourceTag'); ?>
 
-    <?php insertDOI('ResourceDOI'); ?>
-
-	<?php if ($clip != "") { ?>
-		<div class="formrow">
-			<label  class="formlabelbig" for="clip"><?php echo $LNG->FORM_LABEL_CLIP; ?>
-				<a href="javascript:void(0)" onMouseOver="showFormHint('ResourceClip', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
-			</label>
-			<textarea class="forminput hgrinput" readonly style="border: none" id="clip" name="clip" rows="3"><?php echo($clip); ?></textarea>
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addurl" name="addurl" />
+					</div>
+				</div>
+			</form>
 		</div>
-	<?php } ?>
-
-	<?php insertThemes('ResourceTheme'); ?>
-
-	<?php insertAddTags('ResourceTag'); ?>
-
-  </div>
-
- <div class="formrow">
-	<span class="formsubmit"></span>
 	</div>
-   <div class="formrow">
-        <input class="formsubmit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addurl" name="addurl">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-</form>
+</div>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

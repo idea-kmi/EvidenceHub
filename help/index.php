@@ -37,11 +37,9 @@
 		include_once($HUB_FLM->getCodeDirPath("ui/headerlogin.php"));
 	}
 ?>
-<div style="float:left;margin:10px;">
-<h1><?php echo $LNG->PAGE_HELP_TITLE; ?></h1>
-<?php
-	echo $LNG->PAGE_HELP_BODY;
-?>
+<div class="mt-4 px-4">
+	<h1><?php echo $LNG->PAGE_HELP_TITLE; ?></h1>
+	<?php echo $LNG->PAGE_HELP_BODY; ?>
 </div>
 <?php
   	include_once($HUB_FLM->getCodeDirPath("ui/footer.php"));

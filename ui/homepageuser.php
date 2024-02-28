@@ -67,90 +67,102 @@ function checkDeleteAccountForm() {
 }
 </script>
 
-<div id='tab-content-home-overview' style='background: white; clear:both; float:left; padding-left:5px;width:100%;'>
-<?php
-	$user = $CONTEXTUSER; //$args['user'];
-	$userid = $args['userid'];
-	// Toolbar area.
-	if(isset($USER->userid) && $USER->userid == $userid){
-		echo '<div style="padding:5px;padding-bottom:0px;">';
+<div id='tab-content-home-overview' class="user-tabs2 border border-top-0 p-3 pt-1">
+	<div class="row">
+		<?php
+			$user = $CONTEXTUSER; //$args['user'];
+			$userid = $args['userid'];
+			// Toolbar area.
+			if(isset($USER->userid) && $USER->userid == $userid) { ?>
+				<ul class="nav nav-pills mt-1 justify-content-end">
+					<li class="nav-item ">
+						<a class="nav-link" title="<?php echo $LNG->HEADER_EDIT_PROFILE_LINK_HINT; ?>" href="<?php echo $CFG->homeAddress; ?>ui/pages/profile.php">
+							<?php echo $LNG->HEADER_EDIT_PROFILE_LINK_TEXT; ?>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" title="<?php echo $LNG->USER_HOME_MANAGE_TAGS_HINT; ?>" href="javascript:loadDialog('managetags','<?php echo $CFG->homeAddress; ?>ui/popups/tagmanager.php');">
+							<?php echo $LNG->USER_HOME_MANAGE_TAGS_LINK; ?>
+						</a>
+					</li>
+					
+					<?php if ($CFG->hasCompendiumImport) { ?>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo $CFG->homeAddress; ?>io/compendium/importcompendiumpure.php"><?php echo $LNG->USER_HOME_IMPORT_COMPENDIUM_LINK; ?></a>
+						</li>
+					<?php } ?>
 
-		echo '<a title="'.$LNG->HEADER_EDIT_PROFILE_LINK_HINT.'" href="'.$CFG->homeAddress.'ui/pages/profile.php">'.$LNG->HEADER_EDIT_PROFILE_LINK_TEXT.'</a>';
+					<?php if ($CFG->hasBibTexImport) { ?>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo $CFG->homeAddress; ?>io/bibtex/importbibtex.php"><?php echo $LNG->USER_HOME_IMPORT_BIBTEX_LINK; ?></a>
+						</li>
+					<?php } ?>
+					<li class="nav-item pt-1">
+						<form id="removeaccountform" action="" method="post" onsubmit="return checkDeleteAccountForm();">
+							<input id="removeaccountsubmit" name="removeaccountsubmit" type="submit" value="<?php echo $LNG->USER_HOME_REMOVE_ACCOUNT_LINK; ?>" class="btn btn-danger btn-sm" title="<?php echo $LNG->USER_HOME_REMOVE_ACCOUNT_LINK_HINT; ?>"></input>
+						</form>
+					</li>
+				</ul>
+			<?php } ?>
+	</div>
 
-		echo '<a title="'.$LNG->USER_HOME_MANAGE_TAGS_HINT.'" style="margin-left:30px;" href="javascript:loadDialog(\'managetags\',\''.$CFG->homeAddress.'ui/popups/tagmanager.php\');">'.$LNG->USER_HOME_MANAGE_TAGS_LINK.'</a>';
+	<h2><?php echo $LNG->USER_HOME_PROFILE_HEADING; ?></h2>
 
-		if ($CFG->hasCompendiumImport) {
-			echo '<a style="margin-left: 30px;" href="'.$CFG->homeAddress.'io/compendium/importcompendiumpure.php">'.$LNG->USER_HOME_IMPORT_COMPENDIUM_LINK.'</a>';
-		}
+	<dl class="row">
+		<?php 
+			if($user->location != ""){			
+				if (isset($user->country) && $user->country != "") { ?>
+					<dt class="col-sm-3"><?php echo $LNG->USER_HOME_LOCATION_LABEL; ?></dt>
+					<dd class="col-sm-9"><?php echo $user->location; ?>, <?php echo $user->country; ?></dd>
+				<?php } else { ?>
+					<dt class="col-sm-3"><?php echo $LNG->USER_HOME_LOCATION_LABEL; ?></dt>
+					<dd class="col-sm-9"><?php echo $user->location; ?></dd>
+				<?php }
+			}
 
-		if ($CFG->hasBibTexImport) {
-			echo '<a style="margin-left: 30px;" href="'.$CFG->homeAddress.'io/bibtex/importbibtex.php">'.$LNG->USER_HOME_IMPORT_BIBTEX_LINK.'</a>';
-		}
+			if (sizeof($tags) > 0) { ?>
+				<dt class="col-sm-3"><?php echo $LNG->NODE_TAGS_HEADING; ?></dt>
+				<dd class="col-sm-9">
+					<?php echo $LNG->NODE_TAGS_HEADING; ?>
+					<?php
+						$i=0;
+						foreach($tags as $tag){
+							if ($i > 0) {
+								echo ', ';
+							}
+							echo $tag->name;
+							$i++;
+						}
+					?>
+				</dd>
+			<?php }
 
-		echo '<form style="float:right; margin-left: 30px;" id="removeaccountform" action="" method="post" onsubmit="return checkDeleteAccountForm();">
-			<input id="removeaccountsubmit" name="removeaccountsubmit" type="submit" value="'.$LNG->USER_HOME_REMOVE_ACCOUNT_LINK.'" class="active" title="'.$LNG->USER_HOME_REMOVE_ACCOUNT_LINK_HINT.'"></input>
-			</form>';
-
-		echo '</div>';
-
-		echo '<hr class="hrline" style="float:left;clear:both;width: 100%;margin-left:-5px;" />';
-	}
-
-	echo '<h3 style="margin-top:5px;padding-top:0px;">'.$LNG->USER_HOME_PROFILE_HEADING.'</h3>';
-
-	if($user->location != ""){
-		echo "<p>".$LNG->USER_HOME_LOCATION_LABEL." ".$user->location;
-		if (isset($user->country) && $user->country != "") {
-			echo ", ".$user->country."</p>";
-		} else {
-			echo "</p>";
-		}
-	}
-
-	if (sizeof($tags) > 0) { ?>
-		<p><?php echo $LNG->NODE_TAGS_HEADING; ?>
-			<?php
-				$i=0;
-				foreach($tags as $tag){
-					if ($i > 0) {
-						echo ',';
-					}
-					echo $tag->name;
-					$i++;
-				}
-			  ?>
-	   </p>
-	<?php }
-
-	if($user->website != ""){
-		echo "<p>".$LNG->PROFILE_HOMEPAGE." <a href='".$user->website."'>".$user->website."</a></p>";
-	}
-	if($user->description != ""){
-		echo "<p>".$LNG->PROFILE_DESC_LABEL." ".$user->description."</p>";
-	}
-	?>
+			if($user->website != ""){ ?>
+				<dt class="col-sm-3"><?php echo $LNG->PROFILE_HOMEPAGE; ?></dt>
+				<dd class="col-sm-9"><a href='<?php echo $user->website; ?>'><?php echo $user->website; ?></a></dd>
+			<?php }
+			if($user->description != ""){ ?>
+				<dt class="col-sm-3"><?php echo $LNG->PROFILE_DESC_LABEL; ?></dt>
+				<dd class="col-sm-9"><?php echo $user->description; ?></dd>
+			<?php }
+		?>
+	</dl>
 
 	<?php if ($CFG->areStatsPublic || (isset($USER->userid) && $USER->getIsAdmin() == "Y") || (isset($USER->userid) && $USER->userid == $userid)) { ?>
-		<h3 style="font-size:14px"><a class="active" title="<?php echo $LNG->USER_HOME_ANALYTICS_LINK_HINT; ?>" href="javascript:loadDialog('viewuseranalytics','<?php echo $CFG->homeAddress; ?>ui/stats/userContextStats.php?userid=<?php echo $user->userid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_ANALYTICS_LINK_TEXT; ?></a></h3>
+		<p class="text-end"><a class="active" title="<?php echo $LNG->USER_HOME_ANALYTICS_LINK_HINT; ?>" href="javascript:loadDialog('viewuseranalytics','<?php echo $CFG->homeAddress; ?>ui/stats/userContextStats.php?userid=<?php echo $user->userid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_ANALYTICS_LINK_TEXT; ?></a></p>
 	<?php } ?>
 
-	<hr class="hrline" style="height:1px; width: 100%;margin-left:-5px;" />
+	<hr class="hrline" />
 
-	<?php
-	$nodeArray = getUserNodeTypeCreationCounts($user->userid);
-	?>
+	<?php $nodeArray = getUserNodeTypeCreationCounts($user->userid); ?>
 
-	<h3><?php echo $LNG->USER_HOME_VIEW_CONTENT_HEADING; ?></h3>
-	<table cellspacing="2" cellpadding="3" style="border-collapse:collapse;" width="300">
+	<h2><?php echo $LNG->USER_HOME_VIEW_CONTENT_HEADING; ?></h2>
+	<table class="table table-sm">
 		<tr class="challengeback" style="color: white">
-			<td width="40%"><b><?php echo $LNG->USER_HOME_TABLE_ITEM_TYPE; ?></b></td>
-			<td align="right" width="30%"><b><?php echo $LNG->USER_HOME_TABLE_CREATION_COUNT; ?></b></td>
-			<td align="right" width="10%"><b><?php echo $LNG->USER_HOME_TABLE_VIEW; ?></b></td>
+			<td><strong><?php echo $LNG->USER_HOME_TABLE_ITEM_TYPE; ?></strong></td>
+			<td class="text-end"><strong><?php echo $LNG->USER_HOME_TABLE_CREATION_COUNT; ?></strong></td>
+			<td class="text-end"><strong><?php echo $LNG->USER_HOME_TABLE_VIEW; ?></strong></td>
 		</tr>
-		<tr>
-			<td colspan="3" valign="top" style="border-top: 1px solid #666666 "></td>
-		</tr>
-
 		<?php $i=0; foreach($nodeArray as $n=>$c) {
 			if ( $n == 'Issue' && ( $CFG->issuesManaged == false || ($CFG->issuesManaged == true && $USER->getIsAdmin() == "Y"))
 				|| $n == 'Evidence'
@@ -162,7 +174,6 @@ function checkDeleteAccountForm() {
 				|| $n == 'Project'
 				|| $n == 'Comment'
 				|| $n == 'Idea') {
-
 				$i++;
 		?>
 			<tr>
@@ -190,8 +201,8 @@ function checkDeleteAccountForm() {
 					}
 					?>
 				</td>
-				<td align="right"><?php echo $c ?></td>
-				<td align="right"><?php
+				<td class="text-end"><?php echo $c ?></td>
+				<td class="text-end"><?php
 					if ($n == 'Resource') {
 						echo '<a href="#data-resource" class="active" onclick="setTabPushed($(\'tab-web-list-obj\'),\'data-resource\');">'.$LNG->USER_HOME_TABLE_VIEW.'</a>';
 					} else if ($n == 'Evidence') {
@@ -228,340 +239,336 @@ function checkDeleteAccountForm() {
 	</table>
 
 	<?php if ((isset($USER->userid) && $USER->getIsAdmin() == "Y") || (isset($USER->userid) && $USER->userid == $userid)) { ?>
-		<h3 style="font-size:14px"><a class="active" title="<?php echo $LNG->USER_REPORT_MY_DATA_LINK_HINT; ?>" href="javascript:loadDialog('viewuseranalytics','<?php echo $CFG->homeAddress; ?>ui/popups/printusernodes.php?userid=<?php echo $user->userid; ?>', 800, 600);"><img style="padding-right:5px;" alt="<?php echo $LNG->EXPLORE_PRINT_BUTTON_ALT;?>" src="<?php echo $HUB_FLM->getImagePath("printer.png"); ?>" border="0" /><?php echo $LNG->USER_REPORT_MY_DATA_LINK; ?></a></h3>
+		<p class="text-end">
+			<a class="active" title="<?php echo $LNG->USER_REPORT_MY_DATA_LINK_HINT; ?>" href="javascript:loadDialog('viewuseranalytics','<?php echo $CFG->homeAddress; ?>ui/popups/printusernodes.php?userid=<?php echo $user->userid; ?>', 800, 600);">
+				<img style="padding-right:5px;" alt="<?php echo $LNG->EXPLORE_PRINT_BUTTON_ALT;?>" src="<?php echo $HUB_FLM->getImagePath("printer.png"); ?>" /><?php echo $LNG->USER_REPORT_MY_DATA_LINK; ?>
+			</a>
+		</p>
 	<?php } ?>
 
+	<p class="text-end"><a class="active" title="<?php echo $LNG->USER_HOME_VIEW_ACTIVITIES_HINT; ?>" href="javascript:loadDialog('viewuseractivity','<?php echo $CFG->homeAddress; ?>ui/popups/activityviewerusers.php?fromtime=0&userid=<?php echo $userid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_VIEW_ACTIVITIES_LINK; ?></a></p>
 
-	<h3 style="font-size:14px"><a class="active" title="<?php echo $LNG->USER_HOME_VIEW_ACTIVITIES_HINT; ?>" href="javascript:loadDialog('viewuseractivity','<?php echo $CFG->homeAddress; ?>ui/popups/activityviewerusers.php?fromtime=0&userid=<?php echo $userid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_VIEW_ACTIVITIES_LINK; ?></a></h3>
+	<hr class="hrline" />
 
-	<hr class="hrline" style="margin-top:15px; height:1px; width: 100%;margin-left:-5px;" />
-
-	<div style="clear:both;float:left; width: 100%; height:100%;margin-top:0px;padding-top:0px;">
-		<div style="clear:both; float:left; margin-right: 15px;padding-bottom:20px;">
-		<h3 style="margin-top:5px;padding-top:0px;"><?php echo $LNG->USER_HOME_FOLLOWING_HEADING; ?></h3>
-
-		<form id="followupdate" action="" enctype="multipart/form-data" method="post">
-		<?php if(isset($USER->userid) && $USER->userid == $userid && $CFG->send_mail){
-
-			if ($USER->followsendemail == 'Y') {
-				echo '<p><input id="followsendemail" name="followsendemail" type="checkbox" checked="checked value="Y" onclick="updateUserFollow()">'.$LNG->USER_HOME_ACTIVITY_ALERT.'</input>';
-			} else {
-				echo '<p><input id="followsendemail" name="followsendemail" type="checkbox" value="Y" onclick="updateUserFollow()">'.$LNG->USER_HOME_ACTIVITY_ALERT.'</input>';
-			}
-
-			echo '&nbsp;&nbsp;<input type="radio" onclick="updateUserFollow()" id="followruninterval" name="followruninterval" value="daily" ';
-			if ($USER->followruninterval == 'daily'){
-				echo 'checked="checked"';
-			}
-			echo '/> '.$LNG->USER_HOME_EMAIL_DAILY.'&nbsp;';
-			echo '&nbsp;&nbsp;<input type="radio" onclick="updateUserFollow()" id="followruninterval" name="followruninterval" value="weekly" ';
-			if ($USER->followruninterval == 'weekly'){
-				echo 'checked="checked"';
-			}
-			echo '/> '.$LNG->USER_HOME_EMAIL_WEEKLY.'&nbsp;';
-			echo '<input type="radio" onclick="updateUserFollow()" id="followruninterval" name="followruninterval" value="monthly" ';
-			if ($USER->followruninterval == 'monthly'){
-				echo 'checked="checked"';
-			}
-			echo '/> '.$LNG->USER_HOME_EMAIL_MONTHLY.'&nbsp;';
-		}
-		?>
-
-		</form>
-
-		<table cellspacing="2" cellpadding="3" style="border-collapse:collapse;" width="600">
-			<tr class="challengeback" style="color: white">
-				<td width="20%"><b><?php echo $LNG->USER_HOME_TABLE_TYPE; ?></b></td>
-				<td align="left" width="50%"><b><?php echo $LNG->USER_HOME_TABLE_NAME; ?></b></td>
-				<?php if ($USER->userid == $userid) {?>
-					<td align="right" width="10%"><b><?php echo $LNG->USER_HOME_TABLE_ACTION; ?></b></td>
-				<?php } ?>
-				<td align="right" width="10%"><b><?php echo $LNG->USER_HOME_TABLE_ACTION; ?></b></td>
-				<td align="right" width="10%"><b><?php echo $LNG->USER_HOME_TABLE_VIEW; ?></b></td>
-			</tr>
-			<tr>
-				<td colspan="5" valign="top" style="border-top: 1px solid #666666"></td>
-			</tr>
-
-		<?php
-
-		$followingCount = 0;
-
-		$userArray = getUsersBeingFollowedByMe($user->userid);
-
-		$i=0;
-		$count = count($userArray);
-		for ($j=0; $j<$count; $j++) {
-			$next = $userArray[$j];
-			$i++;
-
-			$name = $next['Name'];
-			$nextuserid = $next['UserID'];
-			?>
-			<tr>
-				<td style="color: #666666 "><?php echo $LNG->USER_HOME_PERSON_LABEL; ?></td>
-				<td align="left"><?php echo $name ?></td>
-
-				<?php if ($USER->userid == $userid) {?>
-				<td align="right">
-					<a class="active" href="javascript:unfollowMyUser('<?php echo $nextuserid; ?>');"><?php echo $LNG->USER_HOME_UNFOLLOW_LINK; ?></a>
-				</td>
-				<?php } ?>
-				<td align="right">
-					<a class="active" href="<?php echo $CFG->homeAddress; ?>user.php?userid=<?php echo $nextuserid; ?>"><?php echo $LNG->USER_HOME_EXPLORE_LINK; ?></a>
-				</td>
-				<td align="right">
-					<a class="active" href="javascript:loadDialog('viewuseractivity','<?php echo $CFG->homeAddress; ?>ui/popups/activityviewerusers.php?userid=<?php echo $nextuserid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_ACTIVITY_LINK; ?></a>
-				</td>
-			</tr>
-		<?php
-		}
-
-		if ($i > 0) {
-			$followingCount = $i;
-		}
-
-		$itemArray = getItemsBeingFollowedByMe($userid);
-		$nodeType = "";
-		$i=0;
-		if ($count > 0) {
-			echo '<tr><td colspan="5"><hr class="hrline" style="height:1px; width: 100%" /></td></td>';
-		}
-
-		// Split into mine and other people items
-		$myItemsArray = array();
-		$othersItemsArray = array();
-		$count2 = count($itemArray);
-		for ($j = 0; $j<$count2; $j++) {
-			$nextitem = $itemArray[$j];
-			if ($nextitem['UserID'] == $args['userid']) {
-				array_push($myItemsArray, $nextitem);
-			} else {
-				array_push($othersItemsArray, $nextitem);
-			}
-		}
-
-		$countj = count($othersItemsArray);
-		for ($j = 0; $j<$countj; $j++) {
-			$nextitem = $othersItemsArray[$j];
-			$n = $nextitem['NodeType'];
-
-			if ( ($nodeType != "" && $n != $nodeType && $i > 0) ) {
-				echo '<tr><td colspan="5"><hr class="hrline" style="height:1px; width: 100%" /></td></td>';
-			}
-
-			$nodeType = $n;
-
-			$name = $nextitem['Name'];
-			$nodeid = $nextitem['NodeID'];
-
-			if (in_array($n, $CFG->EVIDENCE_TYPES)
-			|| in_array($n, $CFG->BASE_TYPES)
-			|| in_array($n, $CFG->RESOURCE_TYPES)
-			|| $n == 'Comment') {
-				$i++;
-				?>
-				<tr>
-					<td style="color: #666666 "><?php
-						if (in_array($n, $CFG->RESOURCE_TYPES)) {
-							echo $LNG->RESOURCE_NAME." (".$n.")";
-						} else if (in_array($n, $CFG->EVIDENCE_TYPES)) {
-							echo $LNG->EVIDENCE_NAME." (".$n.")";
-						} else if ($n == 'Issue') {
-							echo $LNG->ISSUE_NAME;
-						} else if ($n == 'Solution' && $CFG->HAS_SOLUTION) {
-							echo $LNG->SOLUTION_NAME;
-						} else if ($n == 'Claim' && $CFG->HAS_CLAIM) {
-							echo $LNG->CLAIM_NAME;
-						} else if ($n == 'Organization') {
-							echo $LNG->ORG_NAME;
-						} else if ($n == 'Project') {
-							echo $LNG->PROJECT_NAME;
-						} else if ($n == 'Idea') {
-							echo $LNG->COMMENT_NAME;
-						} else if ($n == 'Challenge' && $CFG->HAS_CHALLENGE) {
-							echo $LNG->CHALLENGE_NAME;
-						} else if ($n == 'Theme') {
-							echo $LNG->THEME_NAME;
-						} else if ($n == 'Comment') {
-							echo $LNG->CHAT_NAME;
-						}
-						?>
-					</td>
-					<td align="left"><?php echo $name ?></td>
-
+	<div class="row">
+		<div class="col">
+			<h2><?php echo $LNG->USER_HOME_FOLLOWING_HEADING; ?></h2>
+			<div class="mb-2">
+				<form id="followupdate" action="" enctype="multipart/form-data" method="post">
+					<?php if(isset($USER->userid) && $USER->userid == $userid && $CFG->send_mail){
+						if ($USER->followsendemail == 'Y') { ?>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" value="Y" id="followsendemail" name="followsendemail" onclick="updateUserFollow()" checked />
+								<label class="form-check-label" for="followsendemail">
+									<?php echo $LNG->USER_HOME_ACTIVITY_ALERT; ?>
+								</label>
+							</div>
+						<?php } else { ?>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" value="Y" id="followsendemail" name="followsendemail" onclick="updateUserFollow()" />
+								<label class="form-check-label" for="followsendemail">
+									<?php echo $LNG->USER_HOME_ACTIVITY_ALERT; ?>
+								</label>
+							</div>
+						<?php } ?>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="followruninterval" id="followruninterval-daily" value="daily" onclick="updateUserFollow()" <?php if ($USER->followruninterval == 'daily'){ ?> checked <?php } ?> />
+							<label class="form-check-label" for="followruninterval-daily">
+								<?php echo $LNG->USER_HOME_EMAIL_DAILY; ?>
+							</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="followruninterval" id="followruninterval-weekly" value="weekly" onclick="updateUserFollow()" <?php if ($USER->followruninterval == 'weekly'){ ?> checked <?php } ?> />
+							<label class="form-check-label" for="followruninterval-weekly">
+								<?php echo $LNG->USER_HOME_EMAIL_WEEKLY; ?>
+							</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="followruninterval" id="followruninterval-monthly" value="monthly" onclick="updateUserFollow()" <?php if ($USER->followruninterval == 'monthly'){ ?> checked <?php } ?> />
+							<label class="form-check-label" for="followruninterval-monthly">
+								<?php echo $LNG->USER_HOME_EMAIL_MONTHLY; ?>
+							</label>
+						</div>
+					<?php }	?>
+				</form>
+			</div>
+			<table class="table table-sm">
+				<tr class="challengeback" style="color: white">
+					<td><strong><?php echo $LNG->USER_HOME_TABLE_TYPE; ?></strong></td>
+					<td><strong><?php echo $LNG->USER_HOME_TABLE_NAME; ?></strong></td>
 					<?php if ($USER->userid == $userid) {?>
-					<td align="right">
-						<a class="active" href="javascript:unfollowMyNode('<?php echo $nodeid; ?>');"><?php echo $LNG->USER_HOME_UNFOLLOW_LINK; ?></a>
-					</td>
+						<td class="text-end"><strong><?php echo $LNG->USER_HOME_TABLE_ACTION; ?></strong></td>
 					<?php } ?>
-
-					<td align="right"><?php
-						echo '<a class="active" href="'.$CFG->homeAddress.'explore.php?id='.$nodeid.'">'.$LNG->USER_HOME_EXPLORE_LINK.'</a>';
-					?>
-					</td>
-					<td align="right">
-						<a class="active" href="javascript:loadDialog('viewactivity','<?php echo $CFG->homeAddress; ?>ui/popups/activityviewer.php?nodeid=<?php echo $nodeid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_ACTIVITY_LINK; ?></a>
-					</td>
+					<td class="text-end"><strong><?php echo $LNG->USER_HOME_TABLE_ACTION; ?></strong></td>
+					<td class="text-end"><strong><?php echo $LNG->USER_HOME_TABLE_VIEW; ?></strong></td>
 				</tr>
-		<?php }
-		} ?>
-		</table>
+				<?php
+					$followingCount = 0;
+					$userArray = getUsersBeingFollowedByMe($user->userid);
+					$i=0;
+					$count = count($userArray);
+					for ($j=0; $j<$count; $j++) {
+						$next = $userArray[$j];
+						$i++;
 
-		<h3 style="margin-top:5px;padding-top:30px;"><?php echo $LNG->TAB_USER_DATA; ?></h4>
-
-		<table cellspacing="2" cellpadding="3" style="border-collapse:collapse;" width="600">
-			<tr class="challengeback" style="color: white">
-				<td width="20%"><b><?php echo $LNG->USER_HOME_TABLE_TYPE; ?></b></td>
-				<td align="left" width="50%"><b><?php echo $LNG->USER_HOME_TABLE_NAME; ?></b></td>
-				<?php if ($USER->userid == $userid) {?>
-					<td align="right" width="10%"><b><?php echo $LNG->USER_HOME_TABLE_ACTION; ?></b></td>
-				<?php } ?>
-				<td align="right" width="10%"><b><?php echo $LNG->USER_HOME_TABLE_ACTION; ?></b></td>
-				<td align="right" width="10%"><b><?php echo $LNG->USER_HOME_TABLE_VIEW; ?></b></td>
-			</tr>
-			<tr>
-				<td colspan="5" valign="top" style="border-top: 1px solid #666666"></td>
-			</tr>
-
-		<?php
-
-		$countk = count($myItemsArray);
-		for ($k = 0; $k<$countk; $k++) {
-			$nextitem = $myItemsArray[$k];
-			$n = $nextitem['NodeType'];
-
-			if ( ($nodeType != "" && $n != $nodeType && $k > 0) ) {
-				echo '<tr><td colspan="5"><hr class="hrline" style="height:1px; width: 100%" /></td></td>';
-			}
-
-			$nodeType = $n;
-
-			$name = $nextitem['Name'];
-			$nodeid = $nextitem['NodeID'];
-
-			if (in_array($n, $CFG->EVIDENCE_TYPES)
-				|| in_array($n, $CFG->BASE_TYPES)
-				|| in_array($n, $CFG->RESOURCE_TYPES)
-				|| $n == 'Comment') {
-				$i++;
-				?>
-				<tr>
-					<td style="color: #666666 "><?php
-						if (in_array($n, $CFG->RESOURCE_TYPES)) {
-							echo $LNG->RESOURCE_NAME." (".$n.")";
-						} else if (in_array($n, $CFG->EVIDENCE_TYPES)) {
-							echo $LNG->EVIDENCE_NAME." (".$n.")";
-						} else if ($n == 'Issue' && ( $CFG->issuesManaged == false || ($CFG->issuesManaged == true && $USER->getIsAdmin() == "Y"))) {
-							echo $LNG->ISSUE_NAME;
-						} else if ($n == 'Solution' && $CFG->HAS_SOLUTION) {
-							echo $LNG->SOLUTION_NAME;
-						} else if ($n == 'Claim' && $CFG->HAS_CLAIM) {
-							echo $LNG->CLAIM_NAME;
-						} else if ($n == 'Organization') {
-							echo $LNG->ORG_NAME;
-						} else if ($n == 'Project') {
-							echo $LNG->PROJECT_NAME;
-						} else if ($n == 'Idea') {
-							echo $LNG->COMMENT_NAME;
-						} else if ($n == 'Challenge' && $CFG->HAS_CHALLENGE) {
-							echo $LNG->CHALLENGE_NAME;
-						} else if ($n == 'Theme') {
-							echo $LNG->THEME_NAME;
-						} else if ($n == 'Comment') {
-							echo $LNG->CHAT_NAME;
-						}
-						?>
-					</td>
-					<td align="left"><?php echo $name ?></td>
-
-					<?php if ($USER->userid == $userid) {?>
-					<td align="right">
-						<a class="active" href="javascript:unfollowMyNode('<?php echo $nodeid; ?>');"><?php echo $LNG->USER_HOME_UNFOLLOW_LINK; ?></a>
-					</td>
-					<?php } ?>
-
-					<td align="right">
-					<?php if ($n != 'Comment') {
-						echo '<a class="active" href="'.$CFG->homeAddress.'explore.php?id='.$nodeid.'">'.$LNG->USER_HOME_EXPLORE_LINK.'</a>';
-					} else {
-						$connset = getConnectionsByNode($nodeid);
-						$cons = $connset->connections;
-						$parentnode = "";
-						if (count($cons) > 0) {
-							$connection = $cons[0];
-							$parentnode = $connection->to;
-							if (isset($connection->parentnode)) {
-								$parentnode = $connection->parentnode;
-							}
-						}
-						if ($parentnode != "") {
-							echo '<a class="active" href="'.$CFG->homeAddress.'chats.php?chatnodeid='.$nodeid.'&id='.$parentnode->nodeid.'">'.$LNG->USER_HOME_EXPLORE_LINK.'</a>';
-						}
-					}?>
-					</td>
-					<td align="right">
-						<a class="active" href="javascript:loadDialog('viewactivity','<?php echo $CFG->homeAddress; ?>ui/popups/activityviewer.php?nodeid=<?php echo $nodeid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_ACTIVITY_LINK; ?></a>
-					</td>
-				</tr>
-		<?php }
-		}
-
-		if ($i > 0) {
-			$followingCount .= $i;
-		}
-
-		if ($followingCount == 0) {
-			echo "<tr>";
-			echo "<td colspan='5'><?php echo $LNG->USER_HOME_NOT_FOLLOWING_MESSAGE; ?></td>";
-			echo "</tr>";
-		}
-		?>
-
-		</table>
-		</div>
-
-		<div style="float:left;">
-			<h3 style="margin-top:5px;padding-top:0px;"><?php echo $LNG->USER_HOME_FOLLOWERS_HEADING; ?></h3>
-			<table cellspacing="2" cellpadding="3" style="border-collapse:collapse;" width="300">
-				<tr class="challengeback" style="color: white;">
-					<td align="left" width="20%"><b><?php echo $LNG->USER_HOME_TABLE_PICTURE; ?></b></td>
-					<td align="left" width="60%"><b><?php echo $LNG->USER_HOME_TABLE_NAME; ?></b></td>
-					<td align="right" width="20%"><b><?php echo $LNG->USER_HOME_TABLE_VIEW; ?></b></td>
-				</tr>
-				<tr>
-					<td colspan="3" valign="top" style="border-top: 1px solid #666666 "></td>
-				</tr>
-
-			<?php
-			$i=0;
-			$userSet = getUsersByFollowing($userid, 0, -1,'date','DESC');
-			if ($userSet->count > 0) {
-				for ($j=0; $j < $userSet->count; $j++) {
-					$nextuser = $userSet->users[$j];
-					$i++;
+						$name = $next['Name'];
+						$nextuserid = $next['UserID'];
 					?>
 					<tr>
-						<td style="color: #666666 ">
-							<a class="active" href="<?php echo $CFG->homeAddress; ?>user.php?userid=<?php echo $nextuser->userid; ?>">
-								<img src="<?php echo $nextuser->thumb;?>" border='0' />
-							</a>
+						<td style="color: #666666;"><?php echo $LNG->USER_HOME_PERSON_LABEL; ?></td>
+						<td><?php echo $name ?></td>
+						<?php if ($USER->userid == $userid) {?>
+							<td class="text-end">
+								<a class="active" href="javascript:unfollowMyUser('<?php echo $nextuserid; ?>');"><?php echo $LNG->USER_HOME_UNFOLLOW_LINK; ?></a>
+							</td>
+						<?php } ?>
+						<td class="text-end">
+							<a class="active" href="<?php echo $CFG->homeAddress; ?>user.php?userid=<?php echo $nextuserid; ?>"><?php echo $LNG->USER_HOME_EXPLORE_LINK; ?></a>
 						</td>
-						<td align="left"><?php echo $nextuser->name ?></td>
-						<td align="right">
-							<a class="active" href="<?php echo $CFG->homeAddress; ?>user.php?userid=<?php echo $nextuser->userid; ?>">Explore</a>
+						<td class="text-end">
+							<a class="active" href="javascript:loadDialog('viewuseractivity','<?php echo $CFG->homeAddress; ?>ui/popups/activityviewerusers.php?userid=<?php echo $nextuserid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_ACTIVITY_LINK; ?></a>
 						</td>
 					</tr>
-				<?php
-				}
-			}
+					<?php }
+						if ($i > 0) {
+							$followingCount = $i;
+						}
 
-			if ($i == 0) {
-				echo "<tr><td colspan='3'>".$LNG->USER_HOME_NO_FOLLOWERS_MESSAGE."</td></tr>";
-			}
+						$itemArray = getItemsBeingFollowedByMe($userid);
+						$nodeType = "";
+						$i=0;
 
-			?>
+						// Split into mine and other people items
+						$myItemsArray = array();
+						$othersItemsArray = array();
+						$count2 = count($itemArray);
+						for ($j = 0; $j<$count2; $j++) {
+							$nextitem = $itemArray[$j];
+							if ($nextitem['UserID'] == $args['userid']) {
+								array_push($myItemsArray, $nextitem);
+							} else {
+								array_push($othersItemsArray, $nextitem);
+							}
+						}
+
+						$countj = count($othersItemsArray);
+						for ($j = 0; $j<$countj; $j++) {
+							$nextitem = $othersItemsArray[$j];
+							$n = $nextitem['NodeType'];
+
+							if ( ($nodeType != "" && $n != $nodeType && $i > 0) ) {
+								echo '<tr><td colspan="5"><hr class="hrline" style="height:1px; width: 100%" /></td></td>';
+							}
+
+							$nodeType = $n;
+
+							$name = $nextitem['Name'];
+							$nodeid = $nextitem['NodeID'];
+
+							if (in_array($n, $CFG->EVIDENCE_TYPES)
+							|| in_array($n, $CFG->BASE_TYPES)
+							|| in_array($n, $CFG->RESOURCE_TYPES)
+							|| $n == 'Comment') {
+								$i++;
+								?>
+								<tr>
+									<td style="color: #666666 "><?php
+										if (in_array($n, $CFG->RESOURCE_TYPES)) {
+											echo $LNG->RESOURCE_NAME." (".$n.")";
+										} else if (in_array($n, $CFG->EVIDENCE_TYPES)) {
+											echo $LNG->EVIDENCE_NAME." (".$n.")";
+										} else if ($n == 'Issue') {
+											echo $LNG->ISSUE_NAME;
+										} else if ($n == 'Solution' && $CFG->HAS_SOLUTION) {
+											echo $LNG->SOLUTION_NAME;
+										} else if ($n == 'Claim' && $CFG->HAS_CLAIM) {
+											echo $LNG->CLAIM_NAME;
+										} else if ($n == 'Organization') {
+											echo $LNG->ORG_NAME;
+										} else if ($n == 'Project') {
+											echo $LNG->PROJECT_NAME;
+										} else if ($n == 'Idea') {
+											echo $LNG->COMMENT_NAME;
+										} else if ($n == 'Challenge' && $CFG->HAS_CHALLENGE) {
+											echo $LNG->CHALLENGE_NAME;
+										} else if ($n == 'Theme') {
+											echo $LNG->THEME_NAME;
+										} else if ($n == 'Comment') {
+											echo $LNG->CHAT_NAME;
+										}
+										?>
+									</td>
+									<td><?php echo $name ?></td>
+									<?php if ($USER->userid == $userid) {?>
+										<td class="text-end">
+											<a class="active" href="javascript:unfollowMyNode('<?php echo $nodeid; ?>');"><?php echo $LNG->USER_HOME_UNFOLLOW_LINK; ?></a>
+										</td>
+									<?php } ?>
+									<td class="text-end">
+										<?php
+											echo '<a class="active" href="'.$CFG->homeAddress.'explore.php?id='.$nodeid.'">'.$LNG->USER_HOME_EXPLORE_LINK.'</a>';
+										?>
+									</td>
+									<td class="text-end">
+										<a class="active" href="javascript:loadDialog('viewactivity','<?php echo $CFG->homeAddress; ?>ui/popups/activityviewer.php?nodeid=<?php echo $nodeid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_ACTIVITY_LINK; ?></a>
+									</td>
+								</tr>
+							<?php }
+						} ?>
 			</table>
+		</div>
+		<div class="col">
+			<h2><?php echo $LNG->USER_HOME_FOLLOWERS_HEADING; ?></h2>
+			<p class="mb-2">&nbsp;</p>
+			<table class="table table-sm">
+				<tr class="challengeback" style="color: white;">
+					<td><strong><?php echo $LNG->USER_HOME_TABLE_PICTURE; ?></strong></td>
+					<td><strong><?php echo $LNG->USER_HOME_TABLE_NAME; ?></strong></td>
+					<td class="text-end"><strong><?php echo $LNG->USER_HOME_TABLE_VIEW; ?></strong></td>
+				</tr>
+				<?php
+					$i=0;
+					$userSet = getUsersByFollowing($userid, 0, -1,'date','DESC');
+					if ($userSet->count > 0) {
+						for ($j=0; $j < $userSet->count; $j++) {
+							$nextuser = $userSet->users[$j];
+							$i++;
+							?>
+							<tr>
+								<td style="color: #666666 ">
+									<a class="active" href="<?php echo $CFG->homeAddress; ?>user.php?userid=<?php echo $nextuser->userid; ?>">
+										<img src="<?php echo $nextuser->thumb;?>" />
+									</a>
+								</td>
+								<td><?php echo $nextuser->name ?></td>
+								<td class="text-end">
+									<a class="active" href="<?php echo $CFG->homeAddress; ?>user.php?userid=<?php echo $nextuser->userid; ?>">Explore</a>
+								</td>
+							</tr>
+						<?php
+						}
+					}
+					if ($i == 0) {
+						echo "<tr><td colspan='3'>".$LNG->USER_HOME_NO_FOLLOWERS_MESSAGE."</td></tr>";
+					}
+				?>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<h2><?php echo $LNG->TAB_USER_DATA; ?></h2>
+
+			<table class="table table-sm">
+				<tr class="challengeback" style="color: white">
+					<td width="20%"><strong><?php echo $LNG->USER_HOME_TABLE_TYPE; ?></strong></td>
+					<td width="50%"><strong><?php echo $LNG->USER_HOME_TABLE_NAME; ?></strong></td>
+					<?php if ($USER->userid == $userid) {?>
+						<td width="10%"><strong><?php echo $LNG->USER_HOME_TABLE_ACTION; ?></strong></td>
+					<?php } ?>
+					<td width="10%"><strong><?php echo $LNG->USER_HOME_TABLE_ACTION; ?></strong></td>
+					<td width="10%"><strong><?php echo $LNG->USER_HOME_TABLE_VIEW; ?></strong></td>
+				</tr>
+				<tr>
+					<td colspan="5" valign="top" style="border-top: 1px solid #666666"></td>
+				</tr>
+
+				<?php
+
+				$countk = count($myItemsArray);
+				for ($k = 0; $k<$countk; $k++) {
+					$nextitem = $myItemsArray[$k];
+					$n = $nextitem['NodeType'];
+
+					if ( ($nodeType != "" && $n != $nodeType && $k > 0) ) {
+						echo '<tr><td colspan="5"><hr class="hrline" style="height:1px; width: 100%" /></td></td>';
+					}
+
+					$nodeType = $n;
+
+					$name = $nextitem['Name'];
+					$nodeid = $nextitem['NodeID'];
+
+					if (in_array($n, $CFG->EVIDENCE_TYPES)
+						|| in_array($n, $CFG->BASE_TYPES)
+						|| in_array($n, $CFG->RESOURCE_TYPES)
+						|| $n == 'Comment') {
+						$i++;
+						?>
+						<tr>
+							<td style="color: #666666 "><?php
+								if (in_array($n, $CFG->RESOURCE_TYPES)) {
+									echo $LNG->RESOURCE_NAME." (".$n.")";
+								} else if (in_array($n, $CFG->EVIDENCE_TYPES)) {
+									echo $LNG->EVIDENCE_NAME." (".$n.")";
+								} else if ($n == 'Issue' && ( $CFG->issuesManaged == false || ($CFG->issuesManaged == true && $USER->getIsAdmin() == "Y"))) {
+									echo $LNG->ISSUE_NAME;
+								} else if ($n == 'Solution' && $CFG->HAS_SOLUTION) {
+									echo $LNG->SOLUTION_NAME;
+								} else if ($n == 'Claim' && $CFG->HAS_CLAIM) {
+									echo $LNG->CLAIM_NAME;
+								} else if ($n == 'Organization') {
+									echo $LNG->ORG_NAME;
+								} else if ($n == 'Project') {
+									echo $LNG->PROJECT_NAME;
+								} else if ($n == 'Idea') {
+									echo $LNG->COMMENT_NAME;
+								} else if ($n == 'Challenge' && $CFG->HAS_CHALLENGE) {
+									echo $LNG->CHALLENGE_NAME;
+								} else if ($n == 'Theme') {
+									echo $LNG->THEME_NAME;
+								} else if ($n == 'Comment') {
+									echo $LNG->CHAT_NAME;
+								}
+								?>
+							</td>
+							<td><?php echo $name ?></td>
+
+							<?php if ($USER->userid == $userid) {?>
+							<td>
+								<a class="active" href="javascript:unfollowMyNode('<?php echo $nodeid; ?>');"><?php echo $LNG->USER_HOME_UNFOLLOW_LINK; ?></a>
+							</td>
+							<?php } ?>
+
+							<td>
+							<?php if ($n != 'Comment') {
+								echo '<a class="active" href="'.$CFG->homeAddress.'explore.php?id='.$nodeid.'">'.$LNG->USER_HOME_EXPLORE_LINK.'</a>';
+							} else {
+								$connset = getConnectionsByNode($nodeid);
+								$cons = $connset->connections;
+								$parentnode = "";
+								if (count($cons) > 0) {
+									$connection = $cons[0];
+									$parentnode = $connection->to;
+									if (isset($connection->parentnode)) {
+										$parentnode = $connection->parentnode;
+									}
+								}
+								if ($parentnode != "") {
+									echo '<a class="active" href="'.$CFG->homeAddress.'chats.php?chatnodeid='.$nodeid.'&id='.$parentnode->nodeid.'">'.$LNG->USER_HOME_EXPLORE_LINK.'</a>';
+								}
+							}?>
+							</td>
+							<td>
+								<a class="active" href="javascript:loadDialog('viewactivity','<?php echo $CFG->homeAddress; ?>ui/popups/activityviewer.php?nodeid=<?php echo $nodeid; ?>', 800, 600);"><?php echo $LNG->USER_HOME_ACTIVITY_LINK; ?></a>
+							</td>
+						</tr>
+				<?php }
+				}
+
+				if ($i > 0) {
+					$followingCount .= $i;
+				}
+
+				if ($followingCount == 0) {
+					echo "<tr>";
+					echo "<td colspan='5'><?php echo $LNG->USER_HOME_NOT_FOLLOWING_MESSAGE; ?></td>";
+					echo "</tr>";
+				}
+				?>
+
+			</table>						
 		</div>
 	</div>
 </div>

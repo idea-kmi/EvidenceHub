@@ -96,57 +96,57 @@
 ?>
 
 <?php
-if(!empty($errors)){
-    echo "<div class='errors'>".$LNG->FORM_ERROR_MESSAGE.":<ul>";
-    foreach ($errors as $error){
-        echo "<li>".$error."</li>";
-    }
-    echo "</ul></div>";
-}
+	if(!empty($errors)){
+		echo "<div class='errors'>".$LNG->FORM_ERROR_MESSAGE.":<ul>";
+		foreach ($errors as $error){
+			echo "<li>".$error."</li>";
+		}
+		echo "</ul></div>";
+	}
 ?>
 
 <script type="text/javascript">
-
-function init() {
-    $('dialogheader').insert('<?php echo $LNG->FORM_COMMENT_TITLE; ?>');
-}
-
-function checkForm() {
-	var checkname = "";
-	if (CKEDITOR.instances.desc) {
-		checkname = CKEDITOR.instances.desc.getData();
-	} else {
-		checkname = ($('desc').value).trim();
+	function init() {
+		$('dialogheader').insert('<?php echo $LNG->FORM_COMMENT_TITLE; ?>');
 	}
-
-	checkname = removeHTMLTags(checkname);
-	if (checkname == ""){
-		alert("<?php echo $LNG->FORM_COMMENT_ENTER_SUMMARY_ERROR; ?>");
-		return false;
+	function checkForm() {
+		var checkname = "";
+		if (CKEDITOR.instances.desc) {
+			checkname = CKEDITOR.instances.desc.getData();
+		} else {
+			checkname = ($('desc').value).trim();
+		}
+		checkname = removeHTMLTags(checkname);
+		if (checkname == ""){
+			alert("<?php echo $LNG->FORM_COMMENT_ENTER_SUMMARY_ERROR; ?>");
+			return false;
+		}
+		$('commentform').style.cursor = 'wait';
+		return true;
 	}
-
-    $('commentform').style.cursor = 'wait';
-	return true;
-}
-
-window.onload = init;
-
+	window.onload = init;
 </script>
 
-<span style="padding:0px; Margin:0px;margin-left:10px;"><?php echo $LNG->FORM_COMMENT_MESSAGE; ?></span>
-<?php insertFormHeaderMessageShort(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<p><?php echo $LNG->FORM_COMMENT_MESSAGE; ?></p>
+			<?php insertFormHeaderMessageShort(); ?>
 
-<form id="commentform" name="commentform" commentform="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+			<form id="commentform" name="commentform" commentform="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<?php insertComment('CommentDesc'); ?>
+				<?php insertAddTags('CommentTag'); ?>
 
-	<?php insertComment('CommentDesc'); ?>
-	<?php insertAddTags('CommentTag'); ?>
-
-    <br>
-    <div class="hgrformrow">
-        <input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addcomment" name="addcomment">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-</form>
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addcomment" name="addcomment" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

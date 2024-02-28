@@ -136,9 +136,9 @@ function getConnections(nodetofocusid) {
 				processConnections(allConnections, nodetofocusid);
 			} else {
 				if (DEBATE_TREE_SMALL) {
-					$('content-list').update('<span style="margin-left:5px;"><?php echo $LNG->DEBATE_NO_DEBATES_CHALLENGE; ?></span>');
+					$('content-list').update('<p><?php echo $LNG->DEBATE_NO_DEBATES_CHALLENGE; ?></p>');
 				} else {
-					$('content-list-expanded').update('<span style="margin-left:5px;"><?php echo $LNG->DEBATE_NO_DEBATES_CHALLENGE; ?></span>');
+					$('content-list-expanded').update('<p><?php echo $LNG->DEBATE_NO_DEBATES_CHALLENGE; ?></p>');
 				}
 
 				CURRENT_ADD_AREA_NODEID = CHALLENGE_ARGS['nodeid'];
@@ -472,7 +472,7 @@ function processConnections(allConnections, nodetofocusid) {
 
 function drawDebates(reload, nodetofocusid) {
 	if (challenges.length > 0) {
-		$('toggleDebateButton').style.display = 'block';
+		$('toggleDebateButton').style.display = 'inline';
 	}
 
 	// Count the number of debates and display

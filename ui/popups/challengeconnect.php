@@ -141,48 +141,56 @@ window.onload = init;
 
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="challengeform" name="challengeform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
-	<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
-	<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
-	<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
-	<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
+			<form id="challengeform" name="challengeform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
+				<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
+				<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
+				<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
+				<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
 
-    <div class="formrow" style="font-weight:bold; margin-left: 10px; margin-bottom: 10px">
-		<label><?php echo $LNG->CHALLENGES_NAME; ?>:
-			<span class="active" onMouseOver="showFormHint('Challenges', event, 'hgrhint', '<?php echo addslashes($focalnode->name); ?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
+				<div class="mb-3 row">
+					<label for="challenge" class="col-sm-3 col-form-label">
+						<?php echo $LNG->CHALLENGES_NAME; ?>
+						<a class="active" onMouseOver="showFormHint('Challenges', event, 'hgrhint', '<?php echo addslashes($focalnode->name); ?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">
+						<div id="groupsdiv">
+							<?php
+								$i = 0;
+								foreach($challanges as $challenge){ ?>
+								
+									<div class="form-check">
+										<label class="form-check-label" >
+											<input type="checkbox" class="form-check-input" id="challenges" name="challenges[]" value="<?php echo $challenge->nodeid; ?>" aria-label="<?php echo $challenge->name; ?>" />
+											<?php echo $challenge->name; ?>
+										</label>
+									</div>
+									<?php $i++;
+								}
+							?>
+						</div>
+					</div>
+				</div>
+
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addchallenge" name="addchallenge" />
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
-    <div class="formrow" style="width: 600px; margin-left: 10px">
-		<div id="groupsdiv" style="display: block">
-			<div class="subform hgrwide" style="width: 600px;">
-			<?php
-                $i = 0;
-                foreach($challanges as $challenge){
-                    $class = "subforminput";
-                    echo '<div class="subformrow">';
-                    echo "<input type='checkbox' class='".$class."' id='challenges' name='challenges[]' value='".$challenge->nodeid."' ";
-                    echo "/><b>".$challenge->name."</b><br/>";
-					?>
-					<?php
-                    echo '</div>';
-                    $i++;
-                }
-	         ?>
-	         </div>
-         </div>
-    </div>
-
-    <br>
-    <div class="hgrformrow">
-        <input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addchallenge" name="addchallenge">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();" />
-    </div>
-</form>
+</div>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

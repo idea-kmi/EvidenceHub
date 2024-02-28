@@ -36,20 +36,5 @@ Event.observe(window, 'load', function() {
 //]]>
 </script>
 
-<?php if ($CFG->GOOGLE_ANALYTICS_ON) { ?>
-<!-- Google analytics -->
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-if (typeof(_gat)=="object") {
-    var pageTracker = _gat._getTracker("<?php print($CFG->GOOGLE_ANALYTICS_KEY);?>");
-    pageTracker._initData();
-    pageTracker._trackPageview();
-}
-</script>
-<?php } ?>
-
 </body>
 </html>

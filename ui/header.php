@@ -23,206 +23,218 @@
  *                                                                              *
  ********************************************************************************/
 
-if ($CFG->privateSite) {
-	checklogin();
-}
+	if ($CFG->privateSite) {
+		checklogin();
+	}
 
-$query = stripslashes(parseToJSON(optional_param("q","",PARAM_TEXT)));
-// need to do parseToJSON to convert any '+' symbols as they are now used in searches.
+	$query = stripslashes(parseToJSON(optional_param("q","",PARAM_TEXT)));
+	// need to do parseToJSON to convert any '+' symbols as they are now used in searches.
+	$scope = optional_param("scope","all",PARAM_ALPHA);
+	$tagsonly = optional_param("tagsonly",false,PARAM_BOOL);
 
-$scope = optional_param("scope","all",PARAM_ALPHA);
-$tagsonly = optional_param("tagsonly",false,PARAM_BOOL);
+	if( isset($_POST["loginsubmit"]) ) {
+		$url = "http" . ((!empty($_SERVER["HTTPS"])) ? "s" : "") . "://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		header('Location: '.$CFG->homeAddress.'ui/pages/login.php?ref='.urlencode($url));
+	}
 
-if( isset($_POST["loginsubmit"]) ) {
-    $url = "http" . ((!empty($_SERVER["HTTPS"])) ? "s" : "") . "://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-    header('Location: '.$CFG->homeAddress.'ui/pages/login.php?ref='.urlencode($url));
-}
-
-global $HUB_FLM;
-
+	global $HUB_FLM;
 ?>
+
 <!DOCTYPE html>
-<html>
-<!-- !DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" -->
-<!-- html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title><?php echo $CFG->SITE_TITLE; ?></title>
+<html lang="en">
+	<head>
 
-<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("style.css"); ?>" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("stylecustom.css"); ?>" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("node.css"); ?>" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("tabber.css"); ?>" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("networknav.css"); ?>" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("widget.css"); ?>" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $HUB_FLM->getCodeWebPath("ui/lib/jit-2.0.2/Jit/css/base.css"); ?>" type="text/css" />
-<link rel="stylesheet" href="<?php echo $HUB_FLM->getCodeWebPath("ui/lib/jit-2.0.2/Jit/css/ForceDirected.css"); ?>" type="text/css" />
+		<?php if ($CFG->GOOGLE_ANALYTICS4_ON) { ?>
 
-<link rel="icon" href="<?php echo $HUB_FLM->getImagePath("favicon.ico"); ?>" type="images/x-icon" />
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=<?php print($CFG->GOOGLE_ANALYTICS4_KEY);?>"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
 
-<script src="<?php echo $HUB_FLM->getCodeWebPath('ui/util.js.php'); ?>" type="text/javascript"></script>
-<script src="<?php echo $HUB_FLM->getCodeWebPath('ui/node.js.php'); ?>" type="text/javascript"></script>
-<script src="<?php echo $HUB_FLM->getCodeWebPath('ui/users.js.php'); ?>" type="text/javascript"></script>
-<script src="<?php echo $HUB_FLM->getCodeWebPath('ui/widget.js.php'); ?>" type="text/javascript"></script>
+		  gtag('config', '<?php print($CFG->GOOGLE_ANALYTICS4_KEY);?>');
+		</script>
 
-<script src="<?php echo $CFG->homeAddress; ?>ui/lib/prototype.js" type="text/javascript"></script>
-<script src="<?php echo $CFG->homeAddress; ?>ui/lib/dateformat.js" type="text/javascript"></script>
+		<?php } ?>
 
-<script src="<?php echo $CFG->homeAddress; ?>ui/lib/jit-2.0.2/Jit/jit.js" type="text/javascript"></script>
-<script src="<?php echo $CFG->homeAddress; ?>ui/networkmaps/forcedirectedlib.js.php" type="text/javascript"></script>
-<script src="<?php echo $CFG->homeAddress; ?>ui/networkmaps/socialforcedirectedlib.js.php" type="text/javascript"></script>
-<script src="<?php echo $CFG->homeAddress; ?>ui/networkmaps/networklib.js.php" type="text/javascript"></script>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
+		<?php if ($CFG->GOOGLE_ANALYTICS_ON) { ?>
 
- <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
+		<!-- Google analytics -->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-<?php
-$custom = $HUB_FLM->getCodeDirPath("ui/headerCustom.php");
-if (file_exists($custom)) {
-    include_once($custom);
-}
-?>
+		  ga('create', '<?php print($CFG->GOOGLE_ANALYTICS_KEY);?>', '<?php print($CFG->GOOGLE_ANALYTICS_DOMAIN);?>');
+		  ga('require', 'linkid', 'linkid.js');
+		  ga('send', 'pageview');
+		</script>
 
-<script type="text/javascript">
+		<?php } ?>
 
-window.name="coheremain";
+		<meta http-equiv="Content-Type" content="text/html" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><?php echo $CFG->SITE_TITLE; ?></title>
 
-function updateuserstatus() {
-	new Ajax.Request(URL_ROOT+'updateuserstatus.php', { method:'get' });
-}
+		<link rel="icon" href="<?php echo $HUB_FLM->getImagePath("favicon.ico"); ?>" type="images/x-icon" />
 
-function init(){
-	updateuserstatus();
-	setInterval("updateuserstatus()", 600000); // Update every 10 minute
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("bootstrap.css"); ?>" type="text/css" />
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("all.css"); ?>" type="text/css" />
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("style.css"); ?>" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("stylecustom.css"); ?>" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("node.css"); ?>" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("tabber.css"); ?>" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("networknav.css"); ?>" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getStylePath("widget.css"); ?>" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getCodeWebPath("ui/lib/jit-2.0.2/Jit/css/base.css"); ?>" type="text/css" />
+		<link rel="stylesheet" href="<?php echo $HUB_FLM->getCodeWebPath("ui/lib/jit-2.0.2/Jit/css/ForceDirected.css"); ?>" type="text/css" />
 
-    var args = new Object();
-    args['filternodetypes'] = "Project,Organization,Issue,Solution,Claim,"+EVIDENCE_TYPES;
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
 
-	<?php if ($CFG->hasRss) { ?>
-	var feed = new Element("img",
-		{'src': '<?php echo $HUB_FLM->getImagePath("feed-icon-20x20.png"); ?>',
-		'title': '<?php echo $LNG->HEADER_RSS_FEED_ICON_HINT; ?>',
-		'alt': '<?php echo $LNG->HEADER_RSS_FEED_ICON_ALT; ?>',
-		'class': 'active',
-		'style': 'padding-top:0px;'});
-	Event.observe(feed,'click',function(){
-		 getNodesFeed(args);
-	});
+		<script src="<?php echo $HUB_FLM->getCodeWebPath('ui/util.js.php'); ?>" type="text/javascript"></script>
+		<script src="<?php echo $HUB_FLM->getCodeWebPath('ui/node.js.php'); ?>" type="text/javascript"></script>
+		<script src="<?php echo $HUB_FLM->getCodeWebPath('ui/users.js.php'); ?>" type="text/javascript"></script>
+		<script src="<?php echo $HUB_FLM->getCodeWebPath('ui/widget.js.php'); ?>" type="text/javascript"></script>
 
-	$('rssbuttonfred').insert(feed);
-	<?php } ?>
+		<script src="<?php echo $CFG->homeAddress; ?>ui/lib/prototype.js" type="text/javascript"></script>
+		<script src="<?php echo $CFG->homeAddress; ?>ui/lib/dateformat.js" type="text/javascript"></script>
+		<script src="<?php echo $CFG->homeAddress; ?>ui/lib/jit-2.0.2/Jit/jit.js" type="text/javascript"></script>
+		<script src="<?php echo $CFG->homeAddress; ?>ui/networkmaps/forcedirectedlib.js.php" type="text/javascript"></script>
+		<script src="<?php echo $CFG->homeAddress; ?>ui/networkmaps/socialforcedirectedlib.js.php" type="text/javascript"></script>
+		<script src="<?php echo $CFG->homeAddress; ?>ui/networkmaps/networklib.js.php" type="text/javascript"></script>
 
-	resizeHistoryBar();
-}
+		<script src="<?php echo $HUB_FLM->getCodeWebPath('ui/lib/bootstrap/bootstrap.bundle.min.js'); ?>" type="text/javascript"></script>
 
-window.onload = init;
+		<!-- Make sure you put this AFTER Leaflet's CSS -->
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
-</script>
+		<script type="text/javascript">
+			window.name="coheremain";
 
-<?php
-    global $HEADER,$BODY_ATT;
-    if(is_array($HEADER)){
-        foreach($HEADER as $header){
-            echo $header;
-        }
-    }
-?>
+			function updateuserstatus() {
+				new Ajax.Request(URL_ROOT+'updateuserstatus.php', { method:'get' });
+			}
 
-</head>
-<body <?php echo $BODY_ATT; ?> id="cohere-body">
+			function init(){
+				updateuserstatus();
+				setInterval("updateuserstatus()", 600000); // Update every 10 minute
 
-<div id="header" class="headerback">
-    <div id="logo">
-    	<a title="<?php echo $LNG->HEADER_LOGO_HINT; ?>" href="<?php print($CFG->homeAddress);?>" style="font-size: 10pt; margin-bottom:3px;">
-        <img border="0" alt="<?php echo $LNG->HEADER_LOGO_ALT; ?>" src="<?php echo $HUB_FLM->getImagePath('evidence-hub-logo-header.png'); ?>" />
-        </a>
-    </div>
-    <!-- div style="float: left; padding-top:16px;margin-left:5px;">
-		<div style="padding-bottom:12px;">
-			<span style="color:gray;font-size: 12pt;font-weight: bold"><?php echo $LNG->HEADER_VERSION_TEXT; ?></span>
-		</div>
-		<div style="padding-left:23px;">
-			<a href="<?php print($CFG->homeAddress);?>" title="<?php echo $LNG->HEADER_HOME_ICON_HINT; ?>" style="font-size: 10pt; margin-bottom:3px;">
-			<img border="0" width="20" height="20" alt="<?php echo $LNG->HEADER_HOME_ICON_ALT; ?>" src="<?php echo $HUB_FLM->getImagePath('home.png'); ?>" />
-			</a>
-		</div>
-	</div -->
-    <div style="float: right;">
-		<div style="float:right;">
-			<div id="menu">
-				<div style="float:left;">
-				<?php
-					global $USER;
-					if(isset($USER->userid)){
-						/*if($USER->name == ""){
-							$name = $USER->getEmail();
-						} else {
-							$name = $USER->name;
-						}*/
-						$name = $LNG->HEADER_MY_HUB_LINK;
-						echo "<a title='".$LNG->HEADER_USER_HOME_LINK_HINT."' href='".$CFG->homeAddress."user.php?userid=".$USER->userid."#home-list'>". $name ."</a> | <a title='".$LNG->HEADER_EDIT_PROFILE_LINK_HINT."' href='".$CFG->homeAddress."ui/pages/profile.php'>".$LNG->HEADER_EDIT_PROFILE_LINK_TEXT."</a> | <a title='".$LNG->HEADER_SIGN_OUT_LINK_HINT."' href='".$CFG->homeAddress."ui/pages/logout.php'>".$LNG->HEADER_SIGN_OUT_LINK_TEXT."</a> ";
-					} else {
-						echo "<form style='margin:0px; padding:0px;padding-right:3px; float:left;' id='loginform' action='' method='post'><input style='margin:0px; padding:0px;margin-bottom:3px; border:0px solid transparent; background:transparent;font-family: Arial, Helvetica, sans-serif; font-size: 10pt;' id='loginsubmit' name='loginsubmit' type='submit' value='".$LNG->HEADER_SIGN_IN_LINK_TEXT."' class='active' title='".$LNG->HEADER_SIGN_IN_LINK_HINT."'></input></form>";
-						if ($CFG->signupstatus == $CFG->SIGNUP_OPEN) {
-							echo " | <a title='".$LNG->HEADER_SIGNUP_OPEN_LINK_HINT."' href='".$CFG->homeAddress."ui/pages/registeropen.php'>".$LNG->HEADER_SIGNUP_OPEN_LINK_TEXT."</a> ";
-						} else if ($CFG->signupstatus == $CFG->SIGNUP_REQUEST) {
-							echo " | <a title='".$LNG->HEADER_SIGNUP_REQUEST_LINK_HINT."' href='".$CFG->homeAddress."ui/pages/registerrequest.php'>".$LNG->HEADER_SIGNUP_REQUEST_LINK_TEXT."</a> ";
-						}
-					}
-				?>
-				| <a title="<?php echo $LNG->HEADER_ABOUT_PAGE_LINK_HINT; ?>" href='<?php echo $CFG->homeAddress; ?>ui/pages/about.php'><?php echo $LNG->HEADER_ABOUT_PAGE_LINK_TEXT; ?></a>
-				| <a title="<?php echo $LNG->HEADER_HELP_PAGE_LINK_HINT; ?>" href='<?php echo $CFG->homeAddress; ?>help/'><?php echo $LNG->HEADER_HELP_PAGE_LINK_TEXT; ?></a>
+				var args = new Object();
+				args['filternodetypes'] = "Project,Organization,Issue,Solution,Claim,"+EVIDENCE_TYPES;
 
-				<?php
-				if($USER->getIsAdmin() == "Y"){
-					echo "| <a title='".$LNG->HEADER_ADMIN_PAGE_LINK_HINT."' href='".$CFG->homeAddress."admin/index.php'>".$LNG->HEADER_ADMIN_PAGE_LINK_TEXT." </a>";
-				}
-				?>
-
-				</div>
 				<?php if ($CFG->hasRss) { ?>
-					<div style="float:right;padding-left:10px;padding-top:0px;" id="rssbuttonfred"></div>
+					var feed = new Element("img",
+						{'src': '<?php echo $HUB_FLM->getImagePath("feed-icon-20x20.png"); ?>',
+						'title': '<?php echo $LNG->HEADER_RSS_FEED_ICON_HINT; ?>',
+						'alt': '<?php echo $LNG->HEADER_RSS_FEED_ICON_ALT; ?>',
+						'class': 'active',
+						'style': 'padding-top:0px;'});
+					Event.observe(feed,'click',function(){
+						getNodesFeed(args);
+					});
+
+					$('rssbuttonfred').insert(feed);
 				<?php } ?>
+
+				resizeHistoryBar();
+			}
+
+			window.onload = init;
+		</script>
+
+		<?php
+			$custom = $HUB_FLM->getCodeDirPath("ui/headerCustom.php");
+			if (file_exists($custom)) {
+				include_once($custom);
+			}
+		?>
+
+		<?php
+			global $HEADER,$BODY_ATT;
+			if(is_array($HEADER)){
+				foreach($HEADER as $header){
+					echo $header;
+				}
+			}
+		?>
+	</head>
+	<body <?php echo $BODY_ATT; ?> id="cohere-body">
+
+		<nav class="py-2 bg-light border-bottom">
+			<div class="container-fluid d-flex flex-wrap justify-content-end">
+				<ul class="nav" id="menu">
+					<?php
+						global $USER;
+						if(isset($USER->userid)){
+							$name = $LNG->HEADER_MY_HUB_LINK; ?>
+
+							<li class="nav-item"><a title='<?php echo $LNG->HEADER_USER_HOME_LINK_HINT; ?>' href='<?php echo $CFG->homeAddress; ?>user.php?userid=<?php echo $USER->userid; ?>#home-list' class="nav-link link-dark px-2"><?php echo $name ?></a>
+							</li><li class="nav-item"><a title='<?php echo $LNG->HEADER_EDIT_PROFILE_LINK_HINT; ?>' href='<?php echo $CFG->homeAddress; ?>ui/pages/profile.php' class="nav-link link-dark px-2"><?php echo $LNG->HEADER_EDIT_PROFILE_LINK_TEXT; ?></a>
+							</li><li class="nav-item"><a title='<?php echo $LNG->HEADER_SIGN_OUT_LINK_HINT; ?>' href='<?php echo $CFG->homeAddress; ?>ui/pages/logout.php' class="nav-link link-dark px-2"><?php echo $LNG->HEADER_SIGN_OUT_LINK_TEXT; ?></a></li>
+						<?php } else { ?>
+							<li class="nav-item">
+								<form id='loginform' action='' method='post'>
+									<input class="nav-link link-dark px-2" id='loginsubmit' name='loginsubmit' type='submit' value='<?php echo $LNG->HEADER_SIGN_IN_LINK_TEXT; ?>' class='active' title='<?php echo $LNG->HEADER_SIGN_IN_LINK_HINT; ?>'></input>
+								</form>
+							</li>
+							<?php if ($CFG->signupstatus == $CFG->SIGNUP_OPEN) { ?>
+								<li class="nav-item"><a title='<?php echo $LNG->HEADER_SIGNUP_OPEN_LINK_HINT; ?>' href='<?php echo $CFG->homeAddress; ?>ui/pages/registeropen.php' class="nav-link link-dark px-2"><?php echo $LNG->HEADER_SIGNUP_OPEN_LINK_TEXT; ?></a></li>
+							<?php } else if ($CFG->signupstatus == $CFG->SIGNUP_REQUEST) { ?>
+								<li class="nav-item"><a title='<?php echo $LNG->HEADER_SIGNUP_REQUEST_LINK_HINT; ?>' href='<?php echo $CFG->homeAddress; ?>ui/pages/registerrequest.php' class="nav-link link-dark px-2"><?php echo $LNG->HEADER_SIGNUP_REQUEST_LINK_TEXT; ?></a></li>
+							<?php }
+						}
+					?>
+					<li class="nav-item"><a title="<?php echo $LNG->HEADER_ABOUT_PAGE_LINK_HINT; ?>" href='<?php echo $CFG->homeAddress; ?>ui/pages/about.php' class="nav-link link-dark px-2"><?php echo $LNG->HEADER_ABOUT_PAGE_LINK_TEXT; ?></a></li>
+					<li class="nav-item"><a title="<?php echo $LNG->HEADER_HELP_PAGE_LINK_HINT; ?>" href='<?php echo $CFG->homeAddress; ?>help/' class="nav-link link-dark px-2"><?php echo $LNG->HEADER_HELP_PAGE_LINK_TEXT; ?></a></li>
+					<?php
+						if($USER->getIsAdmin() == "Y"){ ?>
+							<li class="nav-item"><a title='<?php echo $LNG->HEADER_ADMIN_PAGE_LINK_HINT; ?>' href='<?php echo $CFG->homeAddress; ?>admin/index.php' class="nav-link link-dark px-2"><?php echo $LNG->HEADER_ADMIN_PAGE_LINK_TEXT; ?> </a></li>
+						<?php }
+					?>
+					<?php if ($CFG->hasRss) { ?>
+						<div style="float:right;padding-left:10px;padding-top:0px;" id="rssbuttonfred"></div>
+					<?php } ?>
+				</ul>
 			</div>
+		</nav>
 
-			<div id="search" style="width:380px;">
-				<form name="search" action="<?php print($CFG->homeAddress);?>search.php" method="get" id="searchform">
-					<label for="q" style="float: left; margin-right: 3px; margin-top: 3px;font-weight:bold"><a href="javascript:void(0)" onMouseOver="showGlobalHint('MainSearch', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin:0px;margin-left: 5px;padding:0px" /></a>
-					<?php echo $LNG->HEADER_SEARCH_BOX_LABEL; ?></label>
-					<div style="float: left;">
-						<input type="text" style=" margin-right:3px; width:250px" placeholder="<?php echo htmlspecialchars($LNG->DEFAULT_SEARCH_TEXT); ?>" id="q" name="q" value="<?php print( htmlspecialchars($query) ); ?>"/>
-						<div style="clear: both;">
-							<input type="checkbox" name="tagsonly" value="true" <?php if ($tagsonly){ echo "checked='checked'";}?>/> <?php echo $LNG->HEADER_SEARCH_TAGS_ONLY_LABEL; ?> &nbsp;
+		<header class="py-3 mb-0 border-bottom" id="header">
+			<div class="container-fluid d-flex flex-wrap justify-content-center">
+				<div id="logo" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+					<a href="<?php print($CFG->homeAddress);?>" title="<?php echo $LNG->HEADER_LOGO_HINT; ?>" class="text-decoration-none">
+						<img alt="<?php echo $LNG->HEADER_LOGO_ALT; ?>" src="<?php echo $HUB_FLM->getImagePath('evidence-hub-logo-header.png'); ?>" />
+					</a>
+				</div>
+				<div class="col-12 col-lg-auto mb-3 mb-lg-0" id="search">
+					<form name="search" action="<?php print($CFG->homeAddress);?>search.php" method="get" id="searchform" class="col-12 col-lg-auto mb-3 mb-lg-0">
+						<div class="input-group mb-3">
+							<a href="javascript:void(0)" onMouseOver="showGlobalHint('MainSearch', event, 'hgrhint'); return false;" onfocus="showGlobalHint('MainSearch', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)" class="m-2 help-hint" aria-label="<?php echo $LNG->HEADER_SEARCH_RUN_ICON_HINT; ?>">
+								<i class="fas fa-info-circle fa-lg" title="Search Info"></i>
+							</a>
+							<label class="d-none" for="q"><?php echo $LNG->HEADER_SEARCH_BOX_LABEL; ?></label>
+							<input type="text" class="form-control" aria-label="Search" placeholder="<?php echo htmlspecialchars($LNG->DEFAULT_SEARCH_TEXT); ?>" id="q" name="q" value="<?php print( htmlspecialchars($query) ); ?>" />
+  							<button class="btn btn-outline-secondary" type="button" onclick="javascript: document.forms['search'].submit();" >Search</button>
 						</div>
-
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="tagsonly" value="true" id="tagsonly" <?php if ($tagsonly){ echo "checked='checked'";}?> />
+							<label class="form-check-label" for="tagsonly"><?php echo $LNG->HEADER_SEARCH_TAGS_ONLY_LABEL; ?></label>
+						</div>
 						<div id="q_choices" class="autocomplete" style="display:none"></div>
-					</div>
-					<div style="float:left;"><img src="<?php echo $HUB_FLM->getImagePath('search.png'); ?>" class="active" width="20" height="20" onclick="javascript: document.forms['search'].submit();" title="<?php echo $LNG->HEADER_SEARCH_RUN_ICON_HINT; ?>" alt="<?php echo $LNG->HEADER_SEARCH_RUN_ICON_ALT; ?>" /></div>
-				 </form>
-			 </div>
+					</form>
+				</div>
+			</div>
+		</header>
+		<div id="message" class="messagediv"></div>
+		<div id="prompttext" class="prompttext"></div>
+		<div id="hgrhint" class="hintRollover">
+			<span id="globalMessage"></span>
 		</div>
-     </div>
-</div>
-
-<div id="message" class="messagediv"></div>
-<div id="prompttext" style="background: #C0C0C0; border: 1px solid gray;padding:5px; width: 400px; height: 200px; position: absolute; left:0px; top:0px; overflow: auto; display: none; font-face: Arial;"></div>
-<div id="hgrhint" class="hintRollover" style="position: absolute; visibility:hidden; border: 1px solid gray;overflow:hidden">
-	<table width="400" border="0" cellpadding="2" cellspacing="0" bgcolor="#FFFED9">
-		<tr width="350">
-			<td width="350" align="left">
-				<span id="globalMessage"></span>
-			</td>
-		</tr>
-	</table>
-</div>
-<div id="main">
-<div id="contentwrapper">
-<div id="content">
-<div class="c_innertube">
+		<div id="main" class="main">
+			<div id="contentwrapper" class="contentwrapper">
+				<div id="content" class="content">
+					<div class="c_innertube">

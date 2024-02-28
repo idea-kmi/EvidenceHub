@@ -62,7 +62,7 @@ $LNG->PAGE_HELP_BODY .= 'Click on the "Stories" box for further information and 
 
 $LNG->PAGE_HELP_BODY .= '</p>';
 
-$LNG->PAGE_HELP_BODY .= '<div style="float:left;width:99%;padding-top:10px;margin-bottom:20px;">';
+$LNG->PAGE_HELP_BODY .= '<div class="col">';
 
 if ($CFG->HAS_CHALLENGE) {
 	$LNG->PAGE_HELP_BODY .= '<table cellspacing="10" style="margin: 0 auto;border-spacing:10px 0px;width: 100%;">';
@@ -220,9 +220,10 @@ $LNG->PAGE_HELP_BODY .= '</tr>';
 $LNG->PAGE_HELP_BODY .= '</table>';
 $LNG->PAGE_HELP_BODY .= '</div>';
 
-$LNG->PAGE_HELP_BODY .= '<h2>How the Categories Connect <span style="padding-left:20px;font-weight:normal;font-size:9pt;color:dimgray">(rollover icons to view more information)</span></h2>';
-$LNG->PAGE_HELP_BODY .= '<div style="clear:both;float:left;width:100%;padding:0px;margin-bottom:15px;margin-top:5px;" >
-		<div style="float:left;">
+
+$LNG->PAGE_HELP_BODY .= '<h2 class="mt-4 pt-3">How the Categories Connect <span class="fs-6 text-dark">(rollover icons to view more information)</span></h2>';
+$LNG->PAGE_HELP_BODY .= '<div class="row">
+		<div class="col-auto">
 		<fieldset class="curvedBorder" style="background:white;">';
 
 if ($CFG->HAS_CHALLENGE ) {
@@ -304,13 +305,13 @@ $LNG->PAGE_HELP_BODY .= '<div class="navnetworkarrow">
 		</fieldset>
 		</div>
 
-		<div style="float:left;margin-top:27px;">
+		<div class="col-auto pt-2">
 			<img src="'.$HUB_FLM->getImagePath('arrow-orange-right-selected.png').'" border="0" />
 		</div>
 
-		<div style="float:left;">
+		<div class="col-auto">
  		<fieldset class="curvedBorder" style="background:white;">
-		<div style="float:left;padding:0px;margin-bottom:0px;background:white;" class="curvedBorder">
+		<div style="float:left;padding:0px;margin-bottom:0px;background:white;">
 			<div class="navnetworkicon">
 				<span class="navnetworklink" onMouseOut="hideHints(); return false;" onMouseOver="showHomeNavText(event, \'OrganisationsHome\'); return false;" onClick="hideHints();" onkeypress="enterKeyPressed(event)">
 					<center>
@@ -335,7 +336,7 @@ $LNG->PAGE_HELP_BODY .= '<div class="navnetworkarrow">
 		</div>
 	</div>';
 
-$LNG->PAGE_HELP_BODY .= '<h2>Explore '.$LNG->THEMES_NAME.'</h2>';
+$LNG->PAGE_HELP_BODY .= '<h2 class="mt-4 pt-3">Explore '.$LNG->THEMES_NAME.'</h2>';
 $LNG->PAGE_HELP_BODY .= '<ul style="padding-left:20px;margin-left:0px">';
 
 
@@ -360,7 +361,7 @@ $LNG->PAGE_HELP_BODY .= '<li>'.$LNG->THEMES_NAME.' aim to represent the higher l
 
 $LNG->PAGE_HELP_BODY .= '</ul>';
 
-$LNG->PAGE_HELP_BODY .= '<h2>Follow Your Interests</h2>';
+$LNG->PAGE_HELP_BODY .= '<h2 class="mt-4 pt-3">Follow Your Interests</h2>';
 $LNG->PAGE_HELP_BODY .= '<ul style="padding-left:20px;margin-left:0px">';
 $LNG->PAGE_HELP_BODY .= '<li>Interested in something specific? You can follow any people, '.$LNG->ORGS_NAME.', '.$LNG->PROJECTS_NAME.', '.$LNG->THEMES_NAME.', ';
 if ($CFG->HAS_CHALLENGE) {
@@ -382,7 +383,7 @@ $LNG->PAGE_HELP_BODY .= '<li>You can also choose to receive a daily/weekly/month
 $LNG->PAGE_HELP_BODY .= '<li>By following an item in the evidence hub you will also be added to the list of followers shown in the explore page of that item.</li>';
 $LNG->PAGE_HELP_BODY .= '</ul>';
 
-$LNG->PAGE_HELP_BODY .= '<h2>Tools</h2>';
+$LNG->PAGE_HELP_BODY .= '<h2 class="mt-4 pt-3">Tools</h2>';
 $LNG->PAGE_HELP_BODY .= 'Why not try our <a href="'.$CFG->homeAddress.'help/builderhelp.php" target="_blank">Evidence Hub Online Builder Tool</a> to help you gather evidence as you browse!';
 $LNG->PAGE_HELP_BODY .= '<br>';
 $LNG->PAGE_HELP_BODY .= '<br>';

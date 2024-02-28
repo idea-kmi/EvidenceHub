@@ -1,26 +1,26 @@
 <?php
 /********************************************************************************
- *                                                                              *
- *  (c) Copyright 2013 The Open University UK                                   *
- *                                                                              *
- *  This software is freely distributed in accordance with                      *
- *  the GNU Lesser General Public (LGPL) license, version 3 or later            *
- *  as published by the Free Software Foundation.                               *
- *  For details see LGPL: http://www.fsf.org/licensing/licenses/lgpl.html       *
- *               and GPL: http://www.fsf.org/licensing/licenses/gpl-3.0.html    *
- *                                                                              *
- *  This software is provided by the copyright holders and contributors "as is" *
- *  and any express or implied warranties, including, but not limited to, the   *
- *  implied warranties of merchantability and fitness for a particular purpose  *
- *  are disclaimed. In no event shall the copyright owner or contributors be    *
- *  liable for any direct, indirect, incidental, special, exemplary, or         *
- *  consequential damages (including, but not limited to, procurement of        *
- *  substitute goods or services; loss of use, data, or profits; or business    *
- *  interruption) however caused and on any theory of liability, whether in     *
- *  contract, strict liability, or tort (including negligence or otherwise)     *
- *  arising in any way out of the use of this software, even if advised of the  *
- *  possibility of such damage.                                                 *
- *                                                                              *
+ *                                       *
+ * (c) Copyright 2013 The Open University UK                  *
+ *                                       *
+ * This software is freely distributed in accordance with           *
+ * the GNU Lesser General Public (LGPL) license, version 3 or later      *
+ * as published by the Free Software Foundation.                *
+ * For details see LGPL: http://www.fsf.org/licensing/licenses/lgpl.html    *
+ *        and GPL: http://www.fsf.org/licensing/licenses/gpl-3.0.html  *
+ *                                       *
+ * This software is provided by the copyright holders and contributors "as is" *
+ * and any express or implied warranties, including, but not limited to, the  *
+ * implied warranties of merchantability and fitness for a particular purpose *
+ * are disclaimed. In no event shall the copyright owner or contributors be  *
+ * liable for any direct, indirect, incidental, special, exemplary, or     *
+ * consequential damages (including, but not limited to, procurement of    *
+ * substitute goods or services; loss of use, data, or profits; or business  *
+ * interruption) however caused and on any theory of liability, whether in   *
+ * contract, strict liability, or tort (including negligence or otherwise)   *
+ * arising in any way out of the use of this software, even if advised of the *
+ * possibility of such damage.                         *
+ *                                       *
  ********************************************************************************/
 
 
@@ -313,23 +313,20 @@ function addResourcesToNode($node,$errors,$resourcenodeidsarray, $resourcetypesa
 
 function insertFormHeaderMessage() {
 	global $LNG; ?>
-	<p style="clear:both;margin-left: 10px;"><?php echo $LNG->FORM_HEADER_MESSAGE; ?>
-	<br><?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART1; ?> <span style="font-size:14pt;margin-top:3px;vertical-align:top; font-weight:bold;color:red;">*</span> <?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART2; ?><?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART3; ?>
-	</p>
+	<p><?php echo $LNG->FORM_HEADER_MESSAGE; ?></p>
+	<p><?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART1; ?> <span class="required">*</span> <?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART2; ?><?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART3; ?></p>
 <?php }
 
 function insertFormHeaderMessageShort() {
 	global $LNG; ?>
-	<p style="clear:both;margin-left: 10px;"><?php echo $LNG->FORM_HEADER_MESSAGE; ?>
-	<br><?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART1; ?> <span style="font-size:14pt;margin-top:3px;vertical-align:top; font-weight:bold;color:red;">*</span> <?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART2; ?><?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART4; ?>
-	</p>
+	<p><?php echo $LNG->FORM_HEADER_MESSAGE; ?></p>
+	<p><?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART1; ?> <span class="required">*</span> <?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART2; ?><?php echo $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART4; ?></p>
 <?php }
 
 function insertFormQuickHeaderMessage() {
 	global $LNG; ?>
-	<p style="clear:both;margin-left: 10px;"><?php echo $LNG->FORM_QUICK_HEADER_MESSAGE; ?>
-	<br><?php echo $LNG->FORM_QUICK_REQUIRED_FIELDS_MESSAGE_PART1; ?> <span style="font-size:14pt;margin-top:3px;vertical-align:top; font-weight:bold;color:red;">*</span> <?php echo $LNG->FORM_QUICK_REQUIRED_FIELDS_MESSAGE_PART2; ?>
-	</p>
+	<p><?php echo $LNG->FORM_QUICK_HEADER_MESSAGE; ?></p>
+	<p><?php echo $LNG->FORM_QUICK_REQUIRED_FIELDS_MESSAGE_PART1; ?> <span class="required">*</span> <?php echo $LNG->FORM_QUICK_REQUIRED_FIELDS_MESSAGE_PART2; ?></p>
 <?php }
 
 function insertSummary($hintname, $title = "") {
@@ -338,76 +335,81 @@ function insertSummary($hintname, $title = "") {
 		$title = $LNG->FORM_LABEL_SUMMARY;
 	}
 	?>
-   <div class="hgrformrow" id="summarydiv">
-		<label  class="formlabelbig" for="summary"><span style="vertical-align:top"><?php echo $title; ?></span>
-			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
+  <div class="mb-3 row" id="summarydiv">
+		<label for="summary" class="col-sm-3 col-form-label">
+			<?php echo $title; ?>
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a><span class="required">*</span>
 		</label>
-		<input class="forminputmust hgrinput hgrwide" id="summary" name="summary" value="<?php echo( $summary ); ?>" />
+		<div class="col-sm-9" >
+			<input class="form-control" id="summary" name="summary" value="<?php echo( $summary ); ?>" />
+		</div>
 	</div>
 <?php }
 
 function insertComment($hintname) {
 	global $desc, $CFG, $LNG, $HUB_FLM; ?>
-    <div class="hgrformrow" id="descdiv">
-		<label  class="formlabelbig" for="desc">
-			<span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_COMMENT; ?>
-			<a id="editortogglebutton" href="javascript:void(0)" style="vertical-align:top" onclick="switchCKEditorMode(this, 'textareadiv', 'desc')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
-			</span>
-            <span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
+	<div class="mb-3 row" id="descdiv">
+		<label for="desc" class="col-sm-3 col-form-label">
+			<?php echo $LNG->FORM_LABEL_COMMENT; ?>
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a><span class="required">*</span>
+			<br />
+			<a id="editortogglebutton" href="javascript:void(0)" onclick="switchCKEditorMode(this, 'textareadiv', 'desc')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
 		</label>
-		<?php if (isProbablyHTML($desc)) { ?>
-			<div id="textareadiv" style="clear:both;float:left;">
-				<textarea rows="4" class="ckeditor forminput hgrinput hgrwide" id="desc" name="desc"><?php echo( $desc ); ?></textarea>
-			</div>
-		<?php } else { ?>
-			<div id="textareadiv" style="clear:none;float:left;">
-				<textarea rows="12" class="forminput hgrinput hgrwide" id="desc" name="desc"><?php echo( $desc ); ?></textarea>
-			</div>
-		<?php } ?>
+		<div class="col-sm-9" id="textareadiv">
+			<?php if (isProbablyHTML($desc)) { ?>
+				<textarea type="text" class="ckeditor form-control" id="desc" name="desc" rows="3"><?php print $desc; ?></textarea>
+			<?php } else { ?>
+				<textarea type="text" class="form-control" id="desc" name="desc" rows="3"><?php print $desc; ?></textarea>
+			<?php } ?>
+		</div>
 	</div>
 <?php }
 
 function insertDescription($hintname) {
 	global $desc, $CFG, $LNG, $HUB_FLM; ?>
-    <div class="hgrformrow" id="descdiv">
-		<label  class="formlabelbig" for="desc">
-			<span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_DESC; ?>
-			<a id="editortogglebutton" href="javascript:void(0)" style="vertical-align:top" onclick="switchCKEditorMode(this, 'textareadiv', 'desc')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
-			</span>
-			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:white;">*</span>
+  <div class="mb-3 row" id="descdiv">
+		<label for="desc" class="col-sm-3 col-form-label">
+			<?php echo $LNG->FORM_LABEL_DESC; ?>
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a><span class="required">*</span>
+			<br />
+			<a id="editortogglebutton" href="javascript:void(0)" onclick="switchCKEditorMode(this, 'textareadiv', 'desc')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
 		</label>
-		<?php if (isProbablyHTML($desc)) { ?>
-			<div id="textareadiv" style="clear:both;float:left;">
-				<textarea rows="4" class="ckeditor forminput hgrinput hgrwide" id="desc" name="desc"><?php echo( $desc ); ?></textarea>
-			</div>
-		<?php } else { ?>
-			<div id="textareadiv" style="clear:none;float:left;">
-				<textarea rows="4" class="forminput hgrinput hgrwide" id="desc" name="desc"><?php echo( $desc ); ?></textarea>
-			</div>
-		<?php } ?>
+		<div class="col-sm-9" id="textareadiv">
+			<?php if (isProbablyHTML($desc)) { ?>
+				<textarea type="text" class="ckeditor form-control" id="desc" name="desc" rows="3"><?php print $desc; ?></textarea>
+			<?php } else { ?>
+				<textarea type="text" class="form-control" id="desc" name="desc" rows="3"><?php print $desc; ?></textarea>
+			<?php } ?>
+		</div>
 	</div>
 <?php }
 
 function insertDescriptionMulti($idtext, $idname, $hintname) {
 	global $CFG, $LNG, $HUB_FLM; ?>
-    <div class="hgrformrow">
-		<label  class="formlabelbig" for="desc">
-			<span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_DESC; ?>
+  <div class="mb-3 row">
+		<label for="desc" class="col-sm-3 col-form-label">
+			<?php echo $LNG->FORM_LABEL_DESC; ?>
 			<a id="editortogglebutton<?php echo $idname;?>" href="javascript:void(0)" style="vertical-align:top" onclick="switchCKEditorMode(this, 'textareadiv<?php echo $idname; ?>', '<?php echo $idname; ?>')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
 			</span>
-			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
+			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" alt="" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
 			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:white;">*</span>
 		</label>
 		<?php if (isProbablyHTML($idtext)) { ?>
 			<div id="textareadiv<?php echo $idname; ?>" style="clear:both;float:left;">
-				<textarea rows="4" class="ckeditor forminput hgrinput hgrwide" id="<?php echo $idname; ?>" name="<?php echo $idname; ?>"><?php echo( $idtext ); ?></textarea>
+				<textarea rows="4" class="ckeditor form-control hgrinput hgrwide" id="<?php echo $idname; ?>" name="<?php echo $idname; ?>"><?php echo( $idtext ); ?></textarea>
 			</div>
 		<?php } else { ?>
 			<div id="textareadiv<?php echo $idname; ?>" style="clear:none;float:left;">
-				<textarea rows="4" class="forminput hgrinput hgrwide" id="<?php echo $idname; ?>" name="<?php echo $idname; ?>"><?php echo( $idtext ); ?></textarea>
+				<textarea rows="4" class="form-control hgrinput hgrwide" id="<?php echo $idname; ?>" name="<?php echo $idname; ?>"><?php echo( $idtext ); ?></textarea>
 			</div>
 		<?php } ?>
 	</div>
@@ -415,143 +417,172 @@ function insertDescriptionMulti($idtext, $idname, $hintname) {
 
 function insertReason($hintname) {
 	global $focalnode, $conndesc, $CFG, $LNG, $HUB_FLM; ?>
-    <div class="hgrformrow" id="reasondiv">
-		<label  class="formlabelbig" for="desc"><span style="vertical-align:top"><?php echo $LNG->FORM_RELEVANCE_LABEL; ?><br>"<?php if (strlen($focalnode->name) > 50) { echo addslashes(substr($focalnode->name, 0, 50))."..."; } else { echo addslashes($focalnode->name); } ?>" ?:</span>
-			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint', '<?php echo addslashes($focalnode->name);?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
+  	<div class="mb-3 row" id="reasondiv">
+		<label class="col-sm-3 col-form-label" for="conndesc">
+			<?php echo $LNG->FORM_RELEVANCE_LABEL; ?><br />"<?php if (strlen($focalnode->name) > 50) { echo addslashes(substr($focalnode->name, 0, 50))."..."; } else { echo addslashes($focalnode->name); } ?>" ?:
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint', '<?php echo addslashes($focalnode->name);?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a><span class="required">*</span>
 		</label>
-		<textarea rows="4" class="forminput hgrinput hgrwide" id="conndesc" name="conndesc"><?php echo( $conndesc ); ?></textarea>
-	</div>
-<?php }
-
-
-function insertUrl($hintname) {
-	global $url, $CFG, $LNG, $HUB_FLM; ?>
-
-	<div class="formrow" id="urldiv">
-		<label  class="formlabelbig" for="url"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_URL; ?></span>
-			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-     	<input class="forminputmust inputshort" id="url" name="url" value="<?php echo( htmlspecialchars($url) ); ?>">
-		<img class="active" style="vertical-align: middle; padding-bottom: 2px;" title="<?php echo $LNG->FORM_AUTOCOMPLETE_TITLE_HINT; ?>" src="<?php echo $HUB_FLM->getImagePath('autofill.png'); ?>" onClick="autoCompleteWebsiteDetails()" onkeypress="enterKeyPressed(event)" />
-    </div>
-<?php }
-
-
-function insertTitle($hintname) {
-	global $title, $CFG, $LNG, $HUB_FLM; ?>
-
-    <div class="formrow" id="titlediv">
-		<label  class="formlabelbig" for="title"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_TITLE; ?></span>
-			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-        <input class="forminputmust input" id="title" name="title" value="<?php echo( $title ); ?>">
-    </div>
-<?php }
-
-
-function insertDOI($hintname) {
-	global $identifier, $nodetypename, $CFG, $LNG, $HUB_FLM; ?>
-
-    <div id='identifierdiv' class="formrow" style="display: <?php if (isset($nodetypename) && $nodetypename == 'Publication') { echo 'block'; }  else { echo 'none'; } ?>">
-		<label  class="formlabelbig" for="identifier"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_DOI; ?>
-			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-		</label>
-        <input class="forminput input" id="identifier" name="identifier" value="<?php echo( $identifier ); ?>">
-    </div>
-<?php }
-
-
-function insertThemes($hintname, $theme="") {
-	global $themesarray, $CFG, $LNG, $HUB_FLM;
-?>
-   <div class="hgrformrow" id="themediv">
-		<div style="display: block; float:left">
-			<label  class="formlabelbig" for="url"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_THEME; ?></span>
-			    <span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-				<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-			</label>
-	        <div class="hgrsubform" id="themeform" style="background: lightyellow">
-	  			<?php
-	  				$count = 1; // needs to add at least one on new add form
-	  				if (is_countable($themesarray)) {
-	  					$count = count($themesarray);
-	  				}
-	                for($i=0; $i<$count; $i++){
-	                    if($i != 0){
-	                        echo '<hr id="themehr<?php echo $i; ?>" class="urldivider"/>';
-	                    }
-	            ?>
-
-	            <div id="themefield<?php echo $i; ?>" class="subformrow">
-					<select class="subforminput hgrselect" <?php if (isset($theme) && $theme !="") { echo "disabled"; } ?> onchange="checkThemeChange('<?php echo $i; ?>')" id="theme<?php echo $i; ?>menu" name="themesarray[]">
-				        <option value="" ><?php echo $LNG->THEME_NAME; ?>...</option>
-				    	<?php
-				    		foreach($CFG->THEMES as $item){?>
-				    	        <option value='<?php echo addslashes($item); ?>' <?php if (isset($themesarray[$i]) && $themesarray[$i] == $item) { echo 'selected=\"true\"'; } ?> ><?php echo $item ?></option>
-					    <?php } ?>
-				    </select>
-				    <?php if ($theme == "") { ?>
-		    			<a href="javascript:removeMultiple('theme', <?php echo $i; ?>)" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a>
-		    		<?php } else { ?>
-		    			<div class="form" style="clear:both"></div>
-		    		<?php }  ?>
-				</div>
-	            <?php
-		           }
-		        ?>
-			</div>
-	        <div class="formrow">
-	    		<span class="formsubmit form active" style="margin-left: 190px;" onclick="noThemes = addTheme(noThemes);"><?php echo $LNG->FORM_BUTTON_ADD_ANOTHER." ".$LNG->THEME_NAME; ?></span>
-	    	</div>
+		<div class="col-sm-9">
+			<textarea rows="4" class="form-control" id="conndesc" name="conndesc"><?php echo( $conndesc ); ?></textarea>
 		</div>
 	</div>
 <?php }
 
+function insertUrl($hintname) {
+	global $url, $CFG, $LNG, $HUB_FLM; ?>
+
+	<div class="mb-3 row" id="urldiv">
+		<label class="col-sm-3 col-form-label" for="url">
+			<?php echo $LNG->FORM_LABEL_URL; ?>
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a><span class="required">*</span>
+		</label>
+		<div class="col-sm-8">
+   			<input class="form-control" id="url" name="url" value="<?php echo( htmlspecialchars($url) ); ?>" />
+  		</div>
+		<div class="col-auto pt-2">
+			<img class="active" alt="<?php echo $LNG->FORM_AUTOCOMPLETE_TITLE_HINT; ?>" src="<?php echo $HUB_FLM->getImagePath('autofill.png'); ?>" onClick="autoCompleteWebsiteDetails()" onkeypress="enterKeyPressed(event)" />
+		</div>
+  	</div>
+<?php }
+
+function insertTitle($hintname) {
+	global $title, $CFG, $LNG, $HUB_FLM; ?>
+
+  	<div class="mb-3 row" id="titlediv">
+		<label class="col-sm-3 col-form-label" for="title">
+			<?php echo $LNG->FORM_LABEL_TITLE; ?>
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a><span class="required">*</span>
+		</label>
+		<div class="col-sm-9">
+			<input class="form-control" id="title" name="title" value="<?php echo( $title ); ?>" />
+		</div>
+	</div>
+<?php }
+
+function insertDOI($hintname) {
+	global $identifier, $nodetypename, $CFG, $LNG, $HUB_FLM; ?>
+
+	<div id='identifierdiv' class="mb-3 row" <?php if (isset($nodetypename) && $nodetypename != 'Publication') { echo ' style="display: none;"'; } ?>>
+		<label class="col-sm-3 col-form-label" for="identifier">
+			<?php echo $LNG->FORM_LABEL_DOI; ?>
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a><span class="required">*</span>
+		</label>
+		<div class="col-sm-9">
+			<input class="form-control" id="identifier" name="identifier" value="<?php echo( $identifier ); ?>" />
+		</div>
+	</div>
+<?php }
+
+function insertThemes($hintname, $theme="") {
+	global $themesarray, $CFG, $LNG, $HUB_FLM; ?>
+  <div class="mb-3 row" id="themediv">
+		<label class="col-sm-3 col-form-label">
+			<?php echo $LNG->FORM_LABEL_THEME; ?>
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a><span class="required">*</span>
+		</label>
+		<div class="col-sm-9" id="themeform">
+			<div class="border border-warning bg-warning bg-opacity-10 p-3">
+				<?php
+					$count = 1; // needs to add at least one on new add form
+					if (is_countable($themesarray)) {
+						$count = count($themesarray);
+					}
+					for($i=0; $i<$count; $i++){
+						if($i != 0){
+							echo '<hr id="themehr<?php echo $i; ?>" class="urldivider"/>';
+						}
+				?>
+
+				<div id="themefield<?php echo $i; ?>" class="row">
+					<div class="col">
+						<select class="form-select" <?php if (isset($theme) && $theme !="") { echo "disabled"; } ?> onchange="checkThemeChange('<?php echo $i; ?>')" id="theme<?php echo $i; ?>menu" name="themesarray[]" aria-label="themeSelect">
+							<option value="" ><?php echo $LNG->THEME_NAME; ?>...</option>
+							<?php
+								foreach($CFG->THEMES as $item){?>
+									<option value='<?php echo addslashes($item); ?>' <?php if (isset($themesarray[$i]) && $themesarray[$i] == $item) { echo 'selected=\"true\"'; } ?> ><?php echo $item ?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<div class="col-auto text-end pt-2">
+						<?php if ($theme == "") { ?>
+							<a href="javascript:removeMultiple('theme', <?php echo $i; ?>)" class="form"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a>
+						<?php } else { ?>
+							<div class="form" style="clear:both"></div>
+						<?php } ?>
+					</div>
+				</div>
+				<?php
+					}
+				?>
+			</div>
+			<div class="text-end pt-3">
+				<span class="formsubmit form active" style="margin-left: 190px;" onclick="noThemes = addTheme(noThemes);"><?php echo $LNG->FORM_BUTTON_ADD_ANOTHER_THEME; ?></span>
+			</div>
+		</div>
+	</div>
+<?php }
 
 function insertAddTags($hintname) {
 	global $CFG, $newtags, $LNG, $HUB_FLM; ?>
-
-    <div class="hgrformrow" style="margin-bottom: 10px;" id="tagsdiv">
-        <label class="formlabelbig" for="newtags"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_TAGS; ?></span>
-            <span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-        </label>
-   		<input class="forminput" style="width:290px; font-size: 10pt;" id="newtags" name="newtags" value="<?php echo $newtags; ?>" /> <?php echo $LNG->FORM_LABEL_TAGS_HINT; ?>
-    </div>
+	<div class="mb-3 row" id="tagsdiv">
+		<label for="newtags" class="col-sm-3 col-form-label"><?php echo $LNG->FORM_LABEL_TAGS; ?>
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a>
+		</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" id="newtags" name="newtags" value="<?php print $newtags; ?>" />
+			<span class="tagHints"><?php echo $LNG->FORM_LABEL_TAGS_HINT; ?></span>
+		</div>
+	</div>
 <?php }
-
 
 function insertTagsAdded($hintname) {
 
 	global $CFG, $LNG, $tags, $removetagsarray, $HUB_FLM;
 
 	if (is_countable($tags) && count($tags) > 0) { ?>
-		<div class="hgrformrow" id="tagaddeddiv">
-			<label class="formlabelbig" for="newtags"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_ADDED_TAGS; ?></span>
-				<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
+		<div class="mb-3 row" id="tagaddeddiv">
+			<label class="col-sm-3 col-form-label"><?php echo $LNG->FORM_LABEL_ADDED_TAGS; ?></span>
+				<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" alt="" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
 			</label>
-			<div class="subform" id="tagform">
+			<div class="col-sm-9" id="tagform">
 			<?php
 					$i = 0;
 					foreach($tags as $tag){
-					  $class = "subforminput";
-					  echo '<div id="tagfield'.$i.'" class="subformrow">';
-					  echo '<input type="checkbox" class="'.$class.'" id="removetags" name="removetags[]" value="'.$tag->tagid.'"';
-					  if(is_countable($removetagsarray) && count($removetagsarray) > 0){
-						  for($j=0; $j<count($removetagsarray); $j++){
-							  if (isset($removetagsarray[$j]) && $removetagsarray[$j] != ""
-								  && $removetagsarray[$j] == $tag->tagid) {
-								  echo ' checked="true"';
-								  break;
-							  }
-						  }
-					  }
-					  echo '>&nbsp;&nbsp;'.$tag->name.'<br/>';
-					  echo '</div>';
-					  $i++;
-				  }
-			  ?>
+					 $class = "form-check-input";
+					 echo '<div id="tagfield'.$i.'" class="form-check">';
+					 echo '<label class="form-check-label"><input type="checkbox" class="'.$class.'" id="removetags" name="removetags[]" value="'.$tag->tagid.'"';
+					 if(is_countable($removetagsarray) && count($removetagsarray) > 0){
+						 for($j=0; $j<count($removetagsarray); $j++){
+							 if (isset($removetagsarray[$j]) && $removetagsarray[$j] != ""
+								 && $removetagsarray[$j] == $tag->tagid) {
+								 echo ' checked="true"';
+								 break;
+							 }
+						 }
+					 }
+					 echo 'aria-label="'.$tag->name.'">'.$tag->name.'</label>';
+					 echo '</div>';
+					 $i++;
+				 }
+			 ?>
 				 <label><?php echo $LNG->FORM_LABEL_ADDED_TAGS_HINT; ?></label>
 			</div>
 		</div>
@@ -565,17 +596,40 @@ function insertTagsAdded($hintname) {
 function insertProjectDates($hintname) {
 	global $CFG,$LNG, $sdt,$edt, $HUB_FLM; ?>
 
-    <div id="datediv" class="hgrformrow" style="display: block;">
-		<label  class="formlabelbig" for="startdate"><?php echo $LNG->FORM_LABEL_PROJECT_STARTED_DATE; ?>
-			<a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
-		</label>
-		<input class="forminput dateinput" id="startdate" name="startdate" value="<?php if($sdt){echo date('d M Y G:i',$sdt);} ?>">
-        <img src="<?php echo $CFG->homeAddress; ?>ui/lib/datetimepicker/images2/cal.gif" onclick="javascript:NewCssCal('<?php echo $CFG->homeAddress; ?>ui/lib/datetimepicker/images2/','startdate','DDMMMYYYY')" style="cursor:pointer"/>
+	<div id="datediv" style="display: none;">
+		<div class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="startdate">
+				<?php echo $LNG->FORM_LABEL_PROJECT_STARTED_DATE; ?>
+				<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+					<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+					<span class="sr-only">More info</span>
+				</a>
+			</label>
+			<div class="col-sm-5">
+				<input class="form-control dateinput" id="startdate" readonly name="startdate" value="<?php if($sdt){echo date('d M Y G:i',$sdt);} ?>" />
+			</div>
+			<div class="col-sm-1 pt-2">
+				<img src="<?php echo $CFG->homeAddress; ?>ui/lib/datetimepicker/images2/cal.gif" onclick="javascript:NewCssCal('<?php echo $CFG->homeAddress; ?>ui/lib/datetimepicker/images2/','startdate','DDMMMYYYY')" alt="calendar" />
+			</div>
+		</div>
 
-		<label style="padding-left:10px;" for="enddate"><b> <?php echo $LNG->FORM_LABEL_PROJECT_ENDED_DATE; ?> </b></label>
-		<input class="dateinput" id="enddate" name="enddate" value="<?php if($edt){echo date('d M Y G:i',$edt);} ?>">
-        <img src="<?php echo $CFG->homeAddress; ?>ui/lib/datetimepicker/images2/cal.gif" onclick="javascript:NewCssCal('<?php echo $CFG->homeAddress; ?>ui/lib/datetimepicker/images2/','enddate','DDMMMYYYY')" style="cursor:pointer"/>
+		<div class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="enddate">
+				<?php echo $LNG->FORM_LABEL_PROJECT_ENDED_DATE; ?>
+				<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+					<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+					<span class="sr-only">More info</span>
+				</a>
+			</label>
+			<div class="col-sm-5">
+				<input class="form-control dateinput" id="enddate" readonly name="enddate" value="<?php if($edt){echo date('d M Y G:i',$edt);} ?>" />
+			</div>
+			<div class="col-sm-1 pt-2">
+				<img src="<?php echo $CFG->homeAddress; ?>ui/lib/datetimepicker/images2/cal.gif" onclick="javascript:NewCssCal('<?php echo $CFG->homeAddress; ?>ui/lib/datetimepicker/images2/','enddate','DDMMMYYYY')" alt="calendar" style="cursor:pointer"/>
+			</div>
+		</div>
 	</div>
+
 <?php }
 
 /**
@@ -586,39 +640,47 @@ function insertLocation($hintstem) {
 	global $CFG, $LNG, $address1, $address2, $city, $postcode, $orgcountry, $countries, $HUB_FLM;?>
 
 	<div id="locationdiv">
-		<label class="formlabelbig"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_LOCATION; ?></span></label>
-		<div id="address1div" class="hgrformrow">
-			<div style="display: block; clear:both;float:left">
-				<label class="formlabelbig" for="address1"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_ADDRESS1; ?></span></label>
-				<input class="forminput" id="address1" name="address1" style="width:250px;" value="<?php echo $address1; ?>">
+		<label class="col-sm-3 col-form-label"><?php echo $LNG->FORM_LABEL_LOCATION; ?></label>
+		<div id="address1div" class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="address1"><?php echo $LNG->FORM_LABEL_ADDRESS1; ?></label>
+			<div class="col-sm-9">
+				<input class="form-control" id="address1" name="address1" value="<?php echo $address1; ?>" />
 			</div>
 		</div>
-		<div id="address2div" class="hgrformrow">
-			<div style="display: block; float:left">
-				<label class="formlabelbig" for="address2"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_ADDRESS2; ?></span></label>
-				<input class="forminput" id="address2" name="address2" style="width:250px;" value="<?php echo $address2; ?>">
+		<div id="address2div" class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="address2"><?php echo $LNG->FORM_LABEL_ADDRESS2; ?></label>
+			<div class="col-sm-9">
+				<input class="form-control" id="address2" name="address2" value="<?php echo $address2; ?>" />
 			</div>
 		</div>
-		<div id="citydiv" class="hgrformrow">
-			<div style="display: block; float:left">
-				<label class="formlabelbig" for="city"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_TOWN; ?></span>
-					<span class="active" onMouseOver="showFormHint('<?php echo $hintstem; ?>Town', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-				</label>
-				<input class="forminput" id="city" name="city" style="width:250px;" value="<?php echo $city; ?>">
+		<div id="citydiv" class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="city">
+				<?php echo $LNG->FORM_LABEL_TOWN; ?>
+				<a class="active" onMouseOver="showFormHint('<?php echo $hintstem; ?>Town', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+					<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+					<span class="sr-only">More info</span>
+				</a>
+			</label>
+			<div class="col-sm-9">
+				<input class="form-control" id="city" name="city" value="<?php echo $city; ?>" />
 			</div>
 		</div>
-		<div id="postcodediv" class="hgrformrow">
-			<div style="display: block; float:left">
-				<label class="formlabelbig" for="postcode"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_POSTAL_CODE; ?></span></label>
-				<input class="forminput" id="postcode" name="postcode" style="width:250px;" value="<?php echo $postcode; ?>">
+		<div id="postcodediv" class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="postcode"><?php echo $LNG->FORM_LABEL_POSTAL_CODE; ?></label>
+			<div class="col-sm-9">
+				<input class="form-control" id="postcode" name="postcode" value="<?php echo $postcode; ?>" />
 			</div>
 		</div>
-		<div id="countrydiv" class="hgrformrow">
-			<div style="display: block; float:left">
-				<label class="formlabelbig" for="orgcountry"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_COUNTRY; ?></span>
-					<span class="active" onMouseOver="showFormHint('<?php echo $hintstem; ?>Country', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-				</label>
-				<select class="forminput" id="orgcountry" name="orgcountry" style="margin-left: 5px;width:160px;">
+		<div id="countrydiv" class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="orgcountry">
+				<?php echo $LNG->FORM_LABEL_COUNTRY; ?>
+				<a class="active" onMouseOver="showFormHint('<?php echo $hintstem; ?>Town', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+					<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+					<span class="sr-only">More info</span>
+				</a>
+			</label>
+			<div class="col-sm-9">
+				<select class="form-select" id="orgcountry" name="orgcountry">
 					<option value="" ><?php echo $LNG->FORM_LABEL_COUNTRY_CHOICE; ?></option>
 					<?php
 						foreach($countries as $code=>$c){
@@ -637,51 +699,61 @@ function insertLocation($hintstem) {
 
 function insertChallenges($hintname, $withLabel) {
 	global $CFG,$LNG, $focalnodeid, $LNG, $HUB_FLM;
-
-    $challengeset = getNodesByGlobal(0, -1 ,'name', 'ASC', "Challenge", "", 'short',"",'all');
+  	$challengeset = getNodesByGlobal(0, -1 ,'name', 'ASC', "Challenge", "", 'short',"",'all');
 	$challanges = $challengeset->nodes;
 
 	if ($withLabel) { ?>
-		<label id="challengelabel" style="float:left; margin-top:10px;"><span style="vertical-align:top;"><?php echo $LNG->FORM_LABEL_CHALLENGES_TOGGLE; ?></span>
-			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<img style="vertical-align: bottom" id="groupsimg" src="<?php echo $HUB_FLM->getImagePath('arrow-down-blue.png'); ?>" onclick="javascript: toggleChallenges()" border="0" alt="<?php echo $LNG->CHALLENGES_NAME; ?>" />
-		</label>
+		<div class="mb-3 row">
+			<label id="challengelabel" class="col-sm-3 col-form-label">
+				<?php echo $LNG->FORM_LABEL_CHALLENGES_TOGGLE; ?>
+
+				<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+					<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+					<span class="sr-only">More info</span>
+				</a>
+			</label>
+			<div class="col-sm-9">
+				<span onclick="toggleChallenges()"><span class="active" id="groupsimg">Show <i class="fas fa-chevron-circle-down" aria-hidden="true"></i></span></span>
+			</div>
+		</div>
 	<?php } ?>
 
 	<?php if (!$withLabel) { ?>
-		<div style="float:left;height:10px;"></div>
+		<div></div>
 	<?php } ?>
 
 
- 	<div class="formrow" id="challengediv">
-		<div id="groupsdiv" style="display: <?php if ($withLabel) { echo 'none'; } else { echo 'block'; }?>">
-
+ 	<div class="mb-3 row" id="challengediv">
+		<div id="groupsdiv" class="row" <?php if ($withLabel) { echo 'style="display: none"'; } ?> >
 			<?php if ($withLabel) { ?>
-				<label  class="formlabelbig" for="challengeschoices"><?php echo $LNG->FORM_LABEL_CHALLENGES; ?></label>
+				<label class="col-sm-3 col-form-label"><?php echo $LNG->FORM_LABEL_CHALLENGES; ?></label>
 			<?php } ?>
 
 			<?php if (!$withLabel) { ?>
-				<label class="formlabelbig" for="challengeschoices"><span style="vertical-align:top"><?php echo $LNG->CHALLENGES_NAME; ?>:</span>
-					<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
+				<label class="col-sm-3 col-form-label"><?php echo $LNG->CHALLENGES_NAME; ?>:</span>
+					<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+						<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+						<span class="sr-only">More info</span>
+					</a>
 				</label>
 			<?php } ?>
 
-			<div class="subform hgrwide" id="challengeschoices">
+			<div class="col-sm-9" id="challengeschoices">
 			<?php
-                $i = 0;
-                foreach($challanges as $challenge){
-                	if ($focalnodeid != $challenge->nodeid) {
-						echo '<div class="subformrow">';
-						echo "<input type='checkbox' class='subforminput' id='challenges' name='challenges[]' value='".$challenge->nodeid."'";
-						echo ">".$challenge->name."<br/>";
+        $i = 0;
+        foreach($challanges as $challenge){
+        	if ($focalnodeid != $challenge->nodeid) {
+						echo '<div class="form-check">';
+						echo "<input type='checkbox' class='form-check-input' id='challenges-".$challenge->nodeid."' name='challenges[]' value='".$challenge->nodeid."'>";
+						echo "<label class=\"form-check-label\" for=\"challenges-".$challenge->nodeid."\">".$challenge->name."</label>";
 						echo '</div>';
 						$i++;
 					}
-                }
-	         ?>
-	         </div>
-         </div>
-    </div>
+        }
+	     ?>
+	     </div>
+     </div>
+  </div>
 <?php }
 
 function insertResourceForm($hintname, $title = "") {
@@ -692,41 +764,69 @@ function insertResourceForm($hintname, $title = "") {
 	}
 	?>
 
-    <div class="hgrformrow" id="resourceformrow">
-		<div id="resourcediv" style="display: block; float:left;margin-bottom:10px;">
+	<div id="resourcediv" class="mb-3 row">
+		<label class="col-sm-3 col-form-label">
+			<?php echo $title; ?>
+			<a class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+				<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+				<span class="sr-only">More info</span>
+			</a>
+		</label>
+		<div class="col-sm-9" id="resourceform">
+			<div class="border border-info p-3">
 
-			<label  class="formlabelbig" for="resourceform"><?php echo $title; ?>
-			    <a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
-			</label>
+	      <?php
+	      	// if no resources, popuplate the first empty one ready to be filled in
+	      	if ($resourceurlarray == "") {
+	      		$resourceurlarray = array();
+	      		$resourceurlarray[0] = "https://";
+	      	}
 
-	        <div class="hgrsubform" id="resourceform">
-	            <?php
-	            	// if no resources, popuplate the first empty one ready to be filled in
-	            	if ($resourceurlarray == "") {
-	            		$resourceurlarray = array();
-	            		$resourceurlarray[0] = "https://";
-	            	}
+	      	$count = 0;
+	      	if (is_countable($resourceurlarray)) {
+	      		$count = count($resourceurlarray);
+	      	}
 
-	            	$count = 0;
-	            	if (is_countable($resourceurlarray)) {
-	            		$count = count($resourceurlarray);
-	            	}
+	        for($i=0; $i<$count; $i++){
+	          if($i != 0){
+	            echo '<hr id="resourcehr<?php echo $i; ?>" class="urldivider"/>';
+	          }
+	      ?>
+				<div id="resourcefield<?php echo $i; ?>" class="row">
 
-	                for($i=0; $i<$count; $i++){
-	                    if($i != 0){
-	                        echo '<hr id="resourcehr<?php echo $i; ?>" class="urldivider"/>';
-	                    }
-	            ?>
-	                <div id="resourcefield<?php echo $i; ?>" class="subformrow">
+					<input type="hidden" id="resourcenodeidsarray-<?php echo $i; ?>" name="resourcenodeidsarray[]" value="<?php if (isset($resourcecliparray[$i])) { echo $resourcenodeidsarray[$i]; } ?>" />
+					<input type="hidden" id="resourcecliparray-<?php echo $i; ?>" name="resourcecliparray[]" value="<?php if (isset($resourcecliparray[$i])) { echo $resourcecliparray[$i]; } ?>" />
+					<input type="hidden" id="resourceclippatharray-<?php echo $i; ?>" name="resourceclippatharray[]" value="<?php if (isset($resourcecliparray[$i])) { echo $resourceclippatharray[$i]; } ?>" />
 
-					   <input type="hidden" id="resourcenodeidsarray-<?php echo $i; ?>" name="resourcenodeidsarray[]" value="<?php if (isset($resourcecliparray[$i])) { echo $resourcenodeidsarray[$i]; } ?>" />
-					   <input type="hidden" id="resourcecliparray-<?php echo $i; ?>" name="resourcecliparray[]" value="<?php if (isset($resourcecliparray[$i])) { echo $resourcecliparray[$i]; } ?>" />
-					   <input type="hidden" id="resourceclippatharray-<?php echo $i; ?>" name="resourceclippatharray[]" value="<?php if (isset($resourcecliparray[$i])) { echo $resourceclippatharray[$i]; } ?>" />
+					<div class="mb-3 row" id="typehiddendiv-<?php echo $i; ?>" style="display:none">
+						<label class="col-sm-3 col-form-label" for="resource<?php echo $i; ?>label"><?php echo $LNG->FORM_LABEL_TYPE; ?></label>
+						<select disabled onchange="typeChangedResource('<?php echo $i; ?>')" class="form-select" style="width: 172px" id="resource<?php echo $i; ?>label" name="resourcetypeslabelarray[]">
+							<?php
+								$countj = 0;
+								if (is_countable($CFG->RESOURCE_TYPES)) {
+									$countj = count($CFG->RESOURCE_TYPES);
+								}
+								for($j=0; $j<$countj; $j++){
+									$item = $CFG->RESOURCE_TYPES[$j];
+									$name = $LNG->RESOURCE_TYPES[$j]; ?>
+									<option value='<?php echo $item; ?>' <?php if ( (isset($resourcetypesarray[$i]) && $resourcetypesarray[$i] == $item) || (isset($resourcetypesarray[$i]) && $resourcetypesarray[$i] == "" && $item == $CFG->RESOURCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; } ?> ><?php echo $name ?></option>
+							<?php } ?>
+						</select>
+						<span class="active" onClick="javascript: removeSelectedResource(<?php echo $i; ?>)" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>
+						<span class="active" onClick="javascript: openResourceSelector(<?php echo $i; ?>)" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_CHANGE; ?></span>
+					</div>
 
-					   <div class="hgrformrow" id="typehiddendiv-<?php echo $i; ?>" style="display:none">
-							<label  class="hgrsubformlabel" for="connection-<?php echo $i; ?>"><?php echo $LNG->FORM_LABEL_TYPE; ?></label>
-							<select disabled onchange="typeChangedResource('<?php echo $i; ?>')" class="subforminput hgrselect" style="width: 172px" id="resource<?php echo $i; ?>label" name="resourcetypeslabelarray[]">
-						    	<?php
+					<div class="mb-3 row" id="typediv-<?php echo $i; ?>">
+						<label class="col-sm-3 col-form-label" for="resource<?php echo $i; ?>menu">
+							<?php echo $LNG->FORM_LABEL_TYPE; ?>
+							<a class="active" onMouseOver="showFormHint('ResourceType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+								<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+								<span class="sr-only">More info</span>
+							</a><span class="required">*</span>
+						</label>
+						<div class="col-sm-9">
+							<select onchange="typeChangedResource('<?php echo $i; ?>')" class="form-select" id="resource<?php echo $i; ?>menu" name="resourcetypesarray[]">
+								<?php
 									$countj = 0;
 									if (is_countable($CFG->RESOURCE_TYPES)) {
 										$countj = count($CFG->RESOURCE_TYPES);
@@ -734,80 +834,84 @@ function insertResourceForm($hintname, $title = "") {
 									for($j=0; $j<$countj; $j++){
 										$item = $CFG->RESOURCE_TYPES[$j];
 										$name = $LNG->RESOURCE_TYPES[$j]; ?>
-						    	        <option value='<?php echo $item; ?>' <?php if ( (isset($resourcetypesarray[$i]) && $resourcetypesarray[$i] == $item) || (isset($resourcetypesarray[$i]) && $resourcetypesarray[$i] == "" && $item == $CFG->RESOURCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; } ?> ><?php echo $name ?></option>
-						    	<?php } ?>
-						    </select>
-							<span class="active" onClick="javascript: removeSelectedResource(<?php echo $i; ?>)" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>
-							<span class="active" onClick="javascript: openResourceSelector(<?php echo $i; ?>)" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_CHANGE; ?></span>
-					   </div>
-
-					   <div class="hgrformrow" id="typediv-<?php echo $i; ?>">
-							<label  class="hgrsubformlabel" for="connection-<?php echo $i; ?>"><?php echo $LNG->FORM_LABEL_TYPE; ?>
-								<a href="javascript:void(0)" onMouseOver="showFormHint('ResourceType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
-								<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-								</label>
-							<select onchange="typeChangedResource('<?php echo $i; ?>')" class="subforminput hgrselect forminputmust" style="width: 172px" id="resource<?php echo $i; ?>menu" name="resourcetypesarray[]">
-						    	<?php
-									$countj = 0;
-									if (is_countable($CFG->RESOURCE_TYPES)) {
-										$countj = count($CFG->RESOURCE_TYPES);
-									}
-									for($j=0; $j<$countj; $j++){
-										$item = $CFG->RESOURCE_TYPES[$j];
-										$name = $LNG->RESOURCE_TYPES[$j]; ?>
-						    	        <option value='<?php echo $item; ?>' <?php if ( (isset($resourcetypesarray[$i]) && $resourcetypesarray[$i] == $item) || (isset($resourcetypesarray[$i]) && $resourcetypesarray[$i] == "" && $item == $CFG->RESOURCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; } ?> ><?php echo $name ?></option>
-						    	<?php } ?>
-						    </select>
-							<span class="active" onClick="javascript: openResourceSelector('<?php echo $i; ?>')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_RESOURCE_SELECT_EXISTING; ?></span>
-					   </div>
-
-						<div class="hgrsubformrow" id="resourceurldiv-<?php echo $i; ?>">
-							<label  class="hgrsubformlabel" for="resourceurl-<?php echo $i; ?>"><?php echo $LNG->FORM_LABEL_URL; ?>
-								<a href="javascript:void(0)" onMouseOver="showFormHint('ResourceURL', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
-								<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-							</label>
-							<input class="subforminput forminputmust" style="width: 320px;" id="resourceurl-<?php echo $i; ?>" name="resourceurlarray[]" value="<?php echo( htmlspecialchars($resourceurlarray[$i]) ); ?>">
-							<img class="active" style="vertical-align: middle; padding-bottom: 2px;" title="<?php echo $LNG->FORM_AUTOCOMPLETE_TITLE_HINT; ?>" src="<?php echo $HUB_FLM->getImagePath('autofill.png'); ?>" onClick="autoCompleteWebsiteDetailsMulti(<?php echo $i; ?>)" onkeypress="enterKeyPressed(event)" />
+										<option value='<?php echo $item; ?>' <?php if ( (isset($resourcetypesarray[$i]) && $resourcetypesarray[$i] == $item) || (isset($resourcetypesarray[$i]) && $resourcetypesarray[$i] == "" && $item == $CFG->RESOURCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; } ?> ><?php echo $name ?></option>
+								<?php } ?>
+							</select>
 						</div>
-
-						<div class="hgrsubformrow">
-							<label  class="hgrsubformlabel" for="resourcetitle-<?php echo $i; ?>"><?php echo $LNG->FORM_LABEL_TITLE; ?>
-								<a href="javascript:void(0)" onMouseOver="showFormHint('ResourceTitle', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
-								<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-							</label>
-							<input class="subforminput forminputmust" style="width: 350px;" id="resourcetitle-<?php echo $i; ?>" name="resourcetitlearray[]" value="<?php if (isset($resourcetitlearray[$i])) { echo( $resourcetitlearray[$i] ); } ?>">
+						<div class="col-12 text-end my-1">
+							<span class="active" onClick="javascript: openResourceSelector('<?php echo $i; ?>')" class="form"><?php echo $LNG->FORM_RESOURCE_SELECT_EXISTING; ?></span>
 						</div>
-						<div id='identifierdiv-<?php echo $i; ?>' class="hgrsubformrow" style="display:<?php if (isset($resourcetypesarray[$i])  && $resourcetypesarray[$i] == "Publication" ) { echo 'block';} else { echo 'none'; } ?>">
-							<label  class="hgrsubformlabel" for="identifier-<?php echo $i; ?>"><?php echo $LNG->FORM_LABEL_DOI; ?>
-								<a href="javascript:void(0)" onMouseOver="showFormHint('ResourceDOI', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
-							</label>
-							<input class="subforminput" style="width: 350px;" id="identifier-<?php echo $i; ?>" name="identifierarray[]" value="<?php if (isset($identifierarray[$i])) { echo( $identifierarray[$i] ); } ?>">
+					</div>
+
+					<div class="mb-3 row" id="resourceurldiv-<?php echo $i; ?>">
+						<label class="col-sm-3 col-form-label" for="resourceurl-<?php echo $i; ?>">
+							<?php echo $LNG->FORM_LABEL_URL; ?>
+							<a class="active" onMouseOver="showFormHint('ResourceURL', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+								<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+								<span class="sr-only">More info</span>
+							</a><span class="required">*</span>
+						</label>
+						<div class="col-sm-8">
+							<input class="form-control" id="resourceurl-<?php echo $i; ?>" name="resourceurlarray[]" value="<?php echo( htmlspecialchars($resourceurlarray[$i]) ); ?>">
 						</div>
+						<div class="col-sm-1 pt-2">
+							<img class="active" alt="<?php echo $LNG->FORM_AUTOCOMPLETE_TITLE_HINT; ?>" src="<?php echo $HUB_FLM->getImagePath('autofill.png'); ?>" onClick="autoCompleteWebsiteDetailsMulti(<?php echo $i; ?>)" onkeypress="enterKeyPressed(event)" />
+						</div>
+					</div>
 
-						<?php if (isset($resourcecliparray[$i]) && $resourcecliparray[$i] != "") { ?>
-							<div class="hgrsubformrow"  id="resourcedescdiv-<?php echo $i; ?>">
-								<label  class="hgrsubformlabel" for="resourcecliparray-<?php echo $i; ?>"><?php echo $LNG->FORM_LABEL_CLIP; ?>
-									<a href="javascript:void(0)" onMouseOver="showFormHint('ResourceClip', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
-								</label>
-								<textarea class="forminput hgrinput" readonly style="border: none" id="resourcecliparray-<?php echo $i; ?>" name="resourcecliparray[]" rows="3"><?php echo( $resourcecliparray[$i] ); ?></textarea>
-								<a href="javascript:removeMultiple('resource', <?php echo $i; ?>)" class="form"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a>
-							</div>
-						<?php } else { ?>
-							<div class="hgrsubformrow"  id="resourcedescdiv-<?php echo $i; ?>">
-								<input type="hidden" id="resourcecliparray-<?php echo $i; ?>" name="resourcecliparray[]" value="<?php if (isset($resourcecliparray[$i])) { echo $resourcecliparray[$i]; } ?>" />
-								<a id="resourceremovebutton-<?php echo $i; ?>" href="javascript:void(0)" onclick="javascript:removeMultiple('resource', <?php echo $i; ?>)" class="form" style="clear:both;float:right"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a><br>
-							</div>
-						<?php } ?>
-	                </div>
-	            <?php
-	                }
-	            ?>
+					<div class="mb-3 row">
+						<label class="col-sm-3 col-form-label" for="resourcetitle-<?php echo $i; ?>">
+							<?php echo $LNG->FORM_LABEL_TITLE; ?>
+							<a class="active" onMouseOver="showFormHint('ResourceTitle', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+								<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+								<span class="sr-only">More info</span>
+							</a><span class="required">*</span>
+						</label>
+						<div class="col-sm-9">
+							<input class="form-control" id="resourcetitle-<?php echo $i; ?>" name="resourcetitlearray[]" value="<?php if (isset($resourcetitlearray[$i])) { echo( $resourcetitlearray[$i] ); } ?>">
+						</div>
+					</div>
+					<div id='identifierdiv-<?php echo $i; ?>' class="mb-3 row" <?php if (isset($resourcetypesarray[$i]) && $resourcetypesarray[$i] != "Publication" ) { echo 'style="display:none;"';} ?> >
+						<label class="col-sm-3 col-form-label" for="identifier-<?php echo $i; ?>">
+							<?php echo $LNG->FORM_LABEL_DOI; ?>
+							<a class="active" onMouseOver="showFormHint('ResourceDOI', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+								<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+								<span class="sr-only">More info</span>
+							</a>
+						</label>
+						<div class="col-sm-9">
+							<input class="form-control" id="identifier-<?php echo $i; ?>" name="identifierarray[]" value="<?php if (isset($identifierarray[$i])) { echo( $identifierarray[$i] ); } ?>">
+						</div>
+					</div>
 
-	        </div>
-	        <div class="formrow">
-	        	<span id="resourceaddbutton" class="formsubmit form active" style="margin-left: 190px;" onclick="javascript:noResources = addResource(noResources);"><?php echo $LNG->FORM_BUTTON_ADD_ANOTHER." ".$LNG->RESOURCE_NAME; ?></span>
-	        </div>
+					<?php if (isset($resourcecliparray[$i]) && $resourcecliparray[$i] != "") { ?>
+						<div class="mb-3 row" id="resourcedescdiv-<?php echo $i; ?>">
+							<label class="col-sm-3 col-form-label" for="resourcecliparray-<?php echo $i; ?>">
+								<?php echo $LNG->FORM_LABEL_CLIP; ?>
+								<a class="active" onMouseOver="showFormHint('ResourceClip', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+									<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i>
+									<span class="sr-only">More info</span>
+								</a>
+							</label>
+							<textarea class="form-control" readonly style="border: none" id="resourcecliparray-<?php echo $i; ?>" name="resourcecliparray[]" rows="3"><?php echo( $resourcecliparray[$i] ); ?></textarea>
+							<a href="javascript:removeMultiple('resource', <?php echo $i; ?>)" class="form"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a>
+						</div>
+					<?php } else { ?>
+						<div class="mb-3 row" id="resourcedescdiv-<?php echo $i; ?>">
+							<input type="hidden" id="resourcecliparray-<?php echo $i; ?>" name="resourcecliparray[]" value="<?php if (isset($resourcecliparray[$i])) { echo $resourcecliparray[$i]; } ?>" />
+							<a id="resourceremovebutton-<?php echo $i; ?>" href="javascript:void(0)" onclick="javascript:removeMultiple('resource', <?php echo $i; ?>)" class="text-end"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a><br />
+						</div>
+					<?php } ?>
+				</div>
+	      <?php
+	        }
+	      ?>
+
 	    </div>
+	    <div class="col-12 text-end my-2">
+	    	<span id="resourceaddbutton" class="formsubmit form active" style="margin-left: 190px;" onclick="javascript:noResources = addResource(noResources);"><?php echo $LNG->FORM_BUTTON_ADD_ANOTHER_RESOURCE; ?></span>
+	    </div>
+	  </div>
 	</div>
 <?php }
 
@@ -816,43 +920,43 @@ function insertProjectForm($hintname, $title = "") {
 
 	?>
 
-    <div class="hgrformrow" id="projectsformrow">
-		<div id="projectsdiv" style="display: block; float:left;margin-bottom:10px;">
+  <div class="mb-3 row" id="projectsmb-3 row">
+		<div id="projectsdiv" style="display: flex; float:left;margin-bottom:10px;">
 
-			<label  class="formlabelbig" for="projectform"><span id="projectformlabel"><?php echo $title; ?></span>
-			    <a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
+			<label class="col-sm-3 col-form-label" for="projectform"><span id="projectformlabel"><?php echo $title; ?></span>
+			  <a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" alt="" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
 			</label>
 
-	        <div class="hgrsubform" id="projectform">
-	            <?php
-	            	$count = 0;
-	            	if (is_countable($projectnodeidsarray)) {
-	            		$count = count($projectnodeidsarray);
-	            	}
+	    <div class="hgrsubform" id="projectform">
+	      <?php
+	      	$count = 0;
+	      	if (is_countable($projectnodeidsarray)) {
+	      		$count = count($projectnodeidsarray);
+	      	}
 
-                    if ($count == 0) {
-	            ?>
-	                <div id="projectfield0" class="subformrow" style="padding-bottom:5px;padding-top:5px;">
+          if ($count == 0) {
+	      ?>
+	        <div id="projectfield0" class="submb-3 row" style="padding-bottom:5px;padding-top:5px;">
 						<span id="projectaddbutton" class="formsubmit form active" onclick="javascript:openProjectSelector(0);"><?php echo $LNG->FORM_PROJECT_SELECT_EXISTING; ?></span>
 					</div>
-	            <?php
-	                } else {
+	      <?php
+	        } else {
 
 						for($i=0; $i<$count; $i++){
 					?>
-						<div id="projectfield<?php echo $i; ?>" class="subformrow" style="padding-bottom:5px;padding-top:5px;">
+						<div id="projectfield<?php echo $i; ?>" class="submb-3 row" style="padding-bottom:5px;padding-top:5px;">
 							<input type="hidden" id="projectnodeidsarray-<?php echo $i; ?>" name="projectnodeidsarray[]" value="<?php if (isset($projectnodeidsarray[$i])) { echo $projectnodeidsarray[$i]; } ?>" />
 							<input readonly style="width: 360px;" id="projectnamesarray-<?php echo $i; ?>" name="projectnamesarray[]" value="<?php if (isset($projectnamesarray[$i])) { echo( $projectnamesarray[$i] ); } ?>">
 							<span class="active" onClick="javascript: removeSelectedNode('Project',<?php echo $i; ?>)" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>
 						</div>
 
-	            	<?php	} ?>
-						<div id="projectfield<?php echo $count; ?>" class="subformrow" style="padding-bottom:5px;padding-top:5px;">
+	      	<?php	} ?>
+						<div id="projectfield<?php echo $count; ?>" class="submb-3 row" style="padding-bottom:5px;padding-top:5px;">
 							<div id="projectaddbutton" class="formsubmit form active" onclick="javascript:openProjectSelector(0);"><?php echo $LNG->FORM_PROJECT_SELECT_EXISTING; ?></div>
 						</div>
-	            <?php } ?>
-	        </div>
+	      <?php } ?>
 	    </div>
+	  </div>
 	</div>
 <?php }
 
@@ -861,43 +965,43 @@ function insertOrganizationForm($hintname, $title = "") {
 
 	?>
 
-    <div class="hgrformrow" id="orgsformrow">
-		<div id="orgsdiv" style="display: block; float:left;margin-bottom:10px;">
+  <div class="mb-3 row" id="orgsmb-3 row">
+		<div id="orgsdiv" style="display: flex; float:left;margin-bottom:10px;">
 
-			<label  class="formlabelbig" for="orgform"><span id="orgformlabel"><?php echo $title; ?></span>
-			    <a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
+			<label class="col-sm-3 col-form-label" for="orgform"><span id="orgformlabel"><?php echo $title; ?></span>
+			  <a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" alt="" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
 			</label>
 
-	        <div class="hgrsubform" id="orgform">
-	            <?php
-	            	$count = 0;
-	            	if (is_countable($orgnodeidsarray)) {
-	            		$count = count($orgnodeidsarray);
-	            	}
+	    <div class="hgrsubform" id="orgform">
+	      <?php
+	      	$count = 0;
+	      	if (is_countable($orgnodeidsarray)) {
+	      		$count = count($orgnodeidsarray);
+	      	}
 
-                    if ($count == 0) {
-	            ?>
-	                <div id="orgfield0" class="subformrow" style="padding-bottom:5px;padding-top:5px;">
+          if ($count == 0) {
+	      ?>
+	        <div id="orgfield0" class="submb-3 row" style="padding-bottom:5px;padding-top:5px;">
 						<span id="orgaddbutton" class="formsubmit form active" onclick="javascript:openOrganizationSelector(0);"><?php echo $LNG->FORM_ORG_SELECT_EXISTING; ?></span>
 					</div>
-	            <?php
-	                } else {
+	      <?php
+	        } else {
 
 						for($i=0; $i<$count; $i++){
 					?>
-						<div id="orgfield<?php echo $i; ?>" class="subformrow" style="padding-bottom:5px;padding-top:5px;">
+						<div id="orgfield<?php echo $i; ?>" class="submb-3 row" style="padding-bottom:5px;padding-top:5px;">
 							<input type="hidden" id="orgnodeidsarray-<?php echo $i; ?>" name="orgnodeidsarray[]" value="<?php if (isset($orgnodeidsarray[$i])) { echo $orgnodeidsarray[$i]; } ?>" />
 							<input readonly style="width: 360px;" id="orgnamesarray-<?php echo $i; ?>" name="orgnamesarray[]" value="<?php if (isset($orgnamesarray[$i])) { echo( $orgnamesarray[$i] ); } ?>">
 							<span class="active" onClick="javascript: removeSelectedNode('Organization',<?php echo $i; ?>)" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>
 						</div>
 
-	            	<?php	} ?>
-						<div id="orgfield<?php echo $count; ?>" class="subformrow" style="padding-bottom:5px;padding-top:5px;">
+	      	<?php	} ?>
+						<div id="orgfield<?php echo $count; ?>" class="submb-3 row" style="padding-bottom:5px;padding-top:5px;">
 							<div id="orgaddbutton" class="formsubmit form active" onclick="javascript:openOrganizationSelector(0);"><?php echo $LNG->FORM_ORG_SELECT_EXISTING; ?></div>
 						</div>
-	            <?php } ?>
-	        </div>
+	      <?php } ?>
 	    </div>
+	  </div>
 	</div>
 <?php }
 
@@ -906,46 +1010,45 @@ function insertEvidenceForm($hintname, $title = "") {
 
 	?>
 
-    <div class="hgrformrow" id="evidenceformrow">
-		<div id="evidencediv" style="display: block; float:left;margin-bottom:10px;">
+  <div class="mb-3 row" id="evidencemb-3 row">
+		<div id="evidencediv" style="display: flex; float:left;margin-bottom:10px;">
 
-			<label  class="formlabelbig" for="evidenceform"><?php echo $title; ?>
-			    <a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
+			<label class="col-sm-3 col-form-label" for="evidenceform"><?php echo $title; ?>
+			  <a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" alt="" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
 			</label>
 
-	        <div class="hgrsubform" id="evidenceform">
-	            <?php
-	            	$count = 0;
-	            	if (is_countable($evidencenodeidsarray)) {
-	            		$count = count($evidencenodeidsarray);
-	            	}
+	    <div class="hgrsubform" id="evidenceform">
+	      <?php
+	      	$count = 0;
+	      	if (is_countable($evidencenodeidsarray)) {
+	      		$count = count($evidencenodeidsarray);
+	      	}
 
-                    if ($count == 0) {
-	            ?>
-	                <div id="evidencefield0" class="subformrow" style="padding-bottom:5px;padding-top:5px;">
+          if ($count == 0) {
+	      ?>
+	        <div id="evidencefield0" class="submb-3 row" style="padding-bottom:5px;padding-top:5px;">
 						<span id="evidenceaddbutton" class="formsubmit form active" onclick="javascript:openEvidenceSelector(0);"><?php echo $LNG->FORM_EVIDENCE_SELECT_EXISTING; ?></span>
 					</div>
-	            <?php
-	                } else {
+	      <?php
+	        } else {
 
 						for($i=0; $i<$count; $i++){
 					?>
-						<div id="evidencefield<?php echo $i; ?>" class="subformrow" style="padding-bottom:5px;padding-top:5px;">
+						<div id="evidencefield<?php echo $i; ?>" class="submb-3 row" style="padding-bottom:5px;padding-top:5px;">
 							<input type="hidden" id="evidencenodeidsarray-<?php echo $i; ?>" name="evidencenodeidsarray[]" value="<?php if (isset($evidencenodeidsarray[$i])) { echo $evidencenodeidsarray[$i]; } ?>" />
 							<input readonly style="width: 360px;" id="evidencenamesarray-<?php echo $i; ?>" name="evidencenamesarray[]" value="<?php if (isset($evidencenamesarray[$i])) { echo( $evidencenamesarray[$i] ); } ?>">
 							<span class="active" onClick="javascript: removeSelectedNode('Evidence',<?php echo $i; ?>)" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>
 						</div>
 
-	            	<?php	} ?>
-						<div id="evidencefield<?php echo $count; ?>" class="subformrow" style="padding-bottom:5px;padding-top:5px;">
+	      	<?php	} ?>
+						<div id="evidencefield<?php echo $count; ?>" class="submb-3 row" style="padding-bottom:5px;padding-top:5px;">
 							<div id="evidenceaddbutton" class="formsubmit form active" onclick="javascript:openEvidenceSelector(0);"><?php echo $LNG->FORM_EVIDENCE_SELECT_EXISTING; ?></div>
 						</div>
-	            <?php } ?>
-	        </div>
+	      <?php } ?>
 	    </div>
+	  </div>
 	</div>
 <?php }
-
 
 function insertSeeAlso($hintname, $title = "") {
 	global $CFG, $LNG, $HUB_FLM, $relatedurlarray, $relatedtitlearray, $relatednodeidsarray;
@@ -955,127 +1058,127 @@ function insertSeeAlso($hintname, $title = "") {
 	}
 	?>
 
-    <div class="hgrformrow">
-		<div id="relateddiv" style="display: block; float:left;margin-bottom:10px;">
+  <div class="mb-3 row">
+		<div id="relateddiv" style="display: flex; float:left;margin-bottom:10px;">
 
-			<label  class="formlabelbig" for="relatedform"><?php echo $title; ?>
-			    <a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
+			<label class="col-sm-3 col-form-label" for="relatedform"><?php echo $title; ?>
+			  <a href="javascript:void(0)" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" alt="" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
 			</label>
 
-	        <div class="hgrsubform" id="relatedform">
-	            <?php
-	            	$count = 0;
-	            	if (is_countable($relatedtitlearray)) {
-	            		$count = count($relatedtitlearray);
-	            	}
-	                for($i=0; $i<$count; $i++){
-	                    if($i != 0){
-	                        echo '<hr id="relatedhr<?php echo $i; ?>" class="urldivider"/>';
-	                    }
-	            ?>
-	                <div id="relatedfield<?php echo $i; ?>" class="subformrow">
+	    <div class="hgrsubform" id="relatedform">
+	      <?php
+	      	$count = 0;
+	      	if (is_countable($relatedtitlearray)) {
+	      		$count = count($relatedtitlearray);
+	      	}
+	        for($i=0; $i<$count; $i++){
+	          if($i != 0){
+	            echo '<hr id="relatedhr<?php echo $i; ?>" class="urldivider"/>';
+	          }
+	      ?>
+	        <div id="relatedfield<?php echo $i; ?>" class="submb-3 row">
 
-					   <input type="hidden" id="relatednodeidsarray-<?php echo $i; ?>" name="relatednodeidsarray[]" value="<?php echo $relatednodeidsarray[$i]; ?>" />
-					   <div class="hgrformrow" id="relatedhiddendiv-<?php echo $i; ?>" style="display:none">
-							<input class="subforminput forminputmust" style="width: 320px;" id="$relatedtitle-<?php echo $i; ?>" name="$relatedtitlearray[]" value="<?php echo( htmlspecialchars($relatedtitlearray[$i]) ); ?>">
+					  <input type="hidden" id="relatednodeidsarray-<?php echo $i; ?>" name="relatednodeidsarray[]" value="<?php echo $relatednodeidsarray[$i]; ?>" />
+					  <div class="mb-3 row" id="relatedhiddendiv-<?php echo $i; ?>" style="display:none">
+							<input class="subform-control form-controlmust" style="width: 320px;" id="$relatedtitle-<?php echo $i; ?>" name="$relatedtitlearray[]" value="<?php echo( htmlspecialchars($relatedtitlearray[$i]) ); ?>">
 							<span class="active" onClick="javascript: removeSelectedRelatedItem(<?php echo $i; ?>)" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>
 							<span class="active" onClick="javascript: openRelatedItemSelector(<?php echo $i; ?>)" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_CHANGE; ?></span>
-					   </div>
+					  </div>
 
-					   <div class="hgrformrow" id="relateddiv-<?php echo $i; ?>">
-							<input class="subforminput forminputmust" style="width: 320px;" id="$relatedtitle-<?php echo $i; ?>" name="$relatedtitlearray[]" value="<?php echo( htmlspecialchars($relatedtitlearray[$i]) ); ?>">
+					  <div class="mb-3 row" id="relateddiv-<?php echo $i; ?>">
+							<input class="subform-control form-controlmust" style="width: 320px;" id="$relatedtitle-<?php echo $i; ?>" name="$relatedtitlearray[]" value="<?php echo( htmlspecialchars($relatedtitlearray[$i]) ); ?>">
 							<span class="active" onClick="javascript: openRelatedItemSelector('<?php echo $i; ?>')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_SELECT_EXISTING_ITEM; ?></span>
-					   </div>
-	                </div>
-	            <?php
-	                }
-	            ?>
+					  </div>
+	        </div>
+	      <?php
+	        }
+	      ?>
 
-	        </div>
-	        <div class="formrow">
-	        	<span class="formsubmit form active" style="margin-left: 170px;" onclick="javascript:noRelated = addRelated(noRelated);"><?php echo $LNG->FORM_BUTTON_ADD_ANOTHER; ?></span>
-	        </div>
 	    </div>
+	    <div class="mb-3 row">
+	    	<span class="formsubmit form active" style="margin-left: 170px;" onclick="javascript:noRelated = addRelated(noRelated);"><?php echo $LNG->FORM_BUTTON_ADD_ANOTHER_SEE_ALSO; ?></span>
+	    </div>
+	  </div>
 	</div>
 <?php }
 
 function insertProjectsManaged($hintname) {
 	global $CFG, $LNG, $projectids, $projectdescs, $projectnames, $HUB_FLM; ?>
 
-    <div class="hgrformrow" id="projectdiv">
-		<div id="projectsdiv" style="display: block; float:left">
+  <div class="mb-3 row" id="projectdiv">
+		<div id="projectsdiv" style="display: flex; float:left">
 			<span class="active" onClick="javascript: openProjectSelector(0)" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_CHANGE; ?></span>
-			<label  class="formlabelbig" for="url"><span style="vertical-align:top"><?php echo $LNG->PROJECTS_NAME; ?></span>
-			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
+			<label class="col-sm-3 col-form-label" for="url"><?php echo $LNG->PROJECTS_NAME; ?></span>
+			<span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" alt="" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
 			</label>
-	        <div class="hgrsubform" id="projectform">
+	    <div class="hgrsubform" id="projectform">
 
-	            <?php
-	                // output rows for each project
+	      <?php
+	        // output rows for each project
 					if (is_countable($projectids)) {
 						$count = count($projectids);
 						for($i=0; $i<$count; $i++){
 							if($i != 0){
 								echo '<hr id="projecthr<?php echo $i; ?>" class="urldivider"/>';
 							}
-	            ?>
-	                <div id="projectfield<?php echo $i; ?>" class="subformrow">
+	      ?>
+	        <div id="projectfield<?php echo $i; ?>" class="submb-3 row">
 						<input type="hidden" id="projectids-<?php echo $i; ?>" name="projectids[]" value="<?php echo $projectids[$i]; ?>" />
 						<input type="hidden" id="projectdescs-<?php echo $i; ?>" name="projectdescs[]" value="<?php echo $projectdescs[$i]; ?>" />
 
-	              		<input type="button" id="projectadd-<?php echo $i; ?>" title="<?php echo $LNG->FORM_BUTTON_SELECT_MANAGED_PROJECT_HINT; ?>" onclick="javascript: openProjectPicker('<?php echo $i; ?>');" value="<?php echo $LNG->FORM_BUTTON_SELECT_MANAGED_PROJECT_TEXT; ?>" />
-	                    <input readonly class="subforminput hgrinput" style="background: white;border: none;width:325px" id="projectnames-<?php echo $i; ?>" name="$projectnames[]" value="<?php echo $projectnames[$i]; ?>" />
-	                    <input type="button" id="projectremove-<?php echo $i; ?>" style="visibility:hidden;margin-left:3px;" onclick="javascript:removeMultiple('project', <?php echo $i; ?>)" class="form" value="<?php echo $LNG->FORM_BUTTON_REMOVE;?>" />
-	                </div>
-	            <?php
-	                	}
-	                }
-	            ?>
+	       		<input type="button" id="projectadd-<?php echo $i; ?>" title="<?php echo $LNG->FORM_BUTTON_SELECT_MANAGED_PROJECT_HINT; ?>" onclick="javascript: openProjectPicker('<?php echo $i; ?>');" value="<?php echo $LNG->FORM_BUTTON_SELECT_MANAGED_PROJECT_TEXT; ?>" />
+	          <input readonly class="subform-control hgrinput" style="background: white;border: none;width:325px" id="projectnames-<?php echo $i; ?>" name="$projectnames[]" value="<?php echo $projectnames[$i]; ?>" />
+	          <input type="button" id="projectremove-<?php echo $i; ?>" style="visibility:hidden;margin-left:3px;" onclick="javascript:removeMultiple('project', <?php echo $i; ?>)" class="form" value="<?php echo $LNG->FORM_BUTTON_REMOVE;?>" />
+	        </div>
+	      <?php
+	        	}
+	        }
+	      ?>
 
-	        </div>
-	        <div class="formrow">
-	        	<span class="formsubmit form" style="margin-left: 170px;"><?php echo $LNG->FORM_MANAGED_PROJECTS_HINT; ?></span>
-	        </div>
 	    </div>
+	    <div class="mb-3 row">
+	    	<span class="formsubmit form" style="margin-left: 170px;"><?php echo $LNG->FORM_MANAGED_PROJECTS_HINT; ?></span>
+	    </div>
+	  </div>
 	</div>
 <?php }
 
 function insertPartners($hintname) {
 	global $CFG, $LNG, $partnersarray, $orgs, $LNG, $HUB_FLM; ?>
 
-    <div class="hgrformrow" id="partnerdiv">
-		<div style="display: block; float:left">
-			<label  class="formlabelbig" for="connectionform"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_PARTNERS; ?></span>
-			    <span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
+  <div class="mb-3 row" id="partnerdiv">
+		<div style="display: flex; float:left">
+			<label class="col-sm-3 col-form-label" for="connectionform"><?php echo $LNG->FORM_LABEL_PARTNERS; ?></span>
+			  <span class="active" onMouseOver="showFormHint('<?php echo $hintname; ?>', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" alt="" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
 			</label>
-	        <div class="hgrsubform" id="partnerform">
-	            <?php
-	                for($i=0; $i<count($partnersarray); $i++){
-	                    if($i != 0){
-	                        echo '<hr id="partnerhr<?php echo $i; ?>" class="urldivider"/>';
-	                    }
-	            ?>
-	                <div id="partnerfield<?php echo $i; ?>" class="subformrow">
-	    	            <div class="subformrow">
-							<select onchange="this.style.width='172px'; checkPartnerChange('<?php echo $i; ?>')" class="subforminput hgrselect" style="width: 172px;z-index:+1" id="partner<?php echo $i; ?>menu" name="partnersarray[]" onactivate="this.style.width='auto';">
-						        <option value="" ><?php echo $LNG->FORM_LABEL_PARTNERS_CHOICE; ?></option>
-						    	<?php
-						    	    foreach($orgs as $org){?>
-						    	        <option value='<?php echo $org['NodeID']; ?>' <?php if ($partnersarray[$i] == $org['NodeID']) { echo 'selected=\"true\"'; } ?> ><?php echo $org['Name']; ?></option>
-						    	<?php } ?>
-						    </select>
-		    				<a href="javascript:removeMultiple('partner', <?php echo $i; ?>)" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a>
+	    <div class="hgrsubform" id="partnerform">
+	      <?php
+	        for($i=0; $i<count($partnersarray); $i++){
+	          if($i != 0){
+	            echo '<hr id="partnerhr<?php echo $i; ?>" class="urldivider"/>';
+	          }
+	      ?>
+	        <div id="partnerfield<?php echo $i; ?>" class="submb-3 row">
+	  	      <div class="submb-3 row">
+							<select onchange="this.style.width='172px'; checkPartnerChange('<?php echo $i; ?>')" class="subform-control hgrselect" style="width: 172px;z-index:+1" id="partner<?php echo $i; ?>menu" name="partnersarray[]" onactivate="this.style.width='auto';">
+						    <option value="" ><?php echo $LNG->FORM_LABEL_PARTNERS_CHOICE; ?></option>
+						  	<?php
+						  	  foreach($orgs as $org){?>
+						  	    <option value='<?php echo $org['NodeID']; ?>' <?php if ($partnersarray[$i] == $org['NodeID']) { echo 'selected=\"true\"'; } ?> ><?php echo $org['Name']; ?></option>
+						  	<?php } ?>
+						  </select>
+		  				<a href="javascript:removeMultiple('partner', <?php echo $i; ?>)" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a>
 						</div>
-	                </div>
-	            <?php
-	                }
-	            ?>
+	        </div>
+	      <?php
+	        }
+	      ?>
 
-	        </div>
-	        <div class="formrow">
-	        	<span id="addpartner" class="formsubmit form active" style="margin-left: 170px;" onclick="noPartners = addPartner(noPartners);"><?php echo $LNG->FORM_BUTTON_ADD_ANOTHER; ?></span>
-	        </div>
 	    </div>
+	    <div class="mb-3 row">
+	    	<span id="addpartner" class="formsubmit form active" style="margin-left: 170px;" onclick="noPartners = addPartner(noPartners);"><?php echo $LNG->FORM_BUTTON_ADD_ANOTHER_PARTNER; ?></span>
+	    </div>
+	  </div>
 	</div>
 <?php }
 

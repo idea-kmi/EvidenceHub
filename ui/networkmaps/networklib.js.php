@@ -29,21 +29,21 @@
 var SELECTED_GRAPH_NODE = "";
 
 function createSocialNetworkGraphKey() {
-	var tb1 = new Element("div", {'id':'graphkeydivtoolbar','class':'toolbarrow', 'style':'width:100%;margin-top:5px;'});
+	var tb1 = new Element("div", {'id':'graphkeydivtoolbar','class':'toolbarrow col-12'});
 
-	var key = new Element("div", {'id':'key','style':'float:left;'});
+	var key = new Element("div", {'id':'key','class':'row mb-3'});
 	var text = "";
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: #E9157F; color: black; font-weight:bold;"><?php echo $LNG->NETWORKMAPS_KEY_SOCIAL_MOST; ?></span></div>';
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background:#F8C7D9; color: black; font-weight:bold;"><?php echo $LNG->NETWORKMAPS_KEY_SOCIAL_HIGHLY; ?></span></div>';
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: #C6ECFE; color: black; font-weight:bold;"><?php echo $LNG->NETWORKMAPS_KEY_SOCIAL_MODERATELY; ?></span></div>';
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: #E4E2E2; color: black; font-weight:bold;"><?php echo $LNG->NETWORKMAPS_KEY_SOCIAL_SLIGHTLY; ?></span></div>';
-	text += '<div style="float:left;"><span style="border: 3px solid yellow; color: black; font-weight:bold"><?php echo $LNG->NETWORKMAPS_KEY_SELECTED_ITEM; ?></span></div>';
+	text += '<div class="col-auto"><span class="networkmaps-key key-social-most"><?php echo $LNG->NETWORKMAPS_KEY_SOCIAL_MOST; ?></span></div>';
+	text += '<div class="col-auto"><span class="networkmaps-key key-social-high"><?php echo $LNG->NETWORKMAPS_KEY_SOCIAL_HIGHLY; ?></span></div>';
+	text += '<div class="col-auto"><span class="networkmaps-key key-social-moderate"><?php echo $LNG->NETWORKMAPS_KEY_SOCIAL_MODERATELY; ?></span></div>';
+	text += '<div class="col-auto"><span class="networkmaps-key key-social-slight"><?php echo $LNG->NETWORKMAPS_KEY_SOCIAL_SLIGHTLY; ?></span></div>';
+	text += '<div class="col-auto"><span class="networkmaps-key key-social-selected"><?php echo $LNG->NETWORKMAPS_KEY_SELECTED_ITEM; ?></span></div>';
 
 	key.insert(text);
-	tb1.insert(key);
 
-	var count = new Element("div", {'id':'graphConnectionCount','style':'float:left;margin-left-25px;'});
-	tb1.insert(count);
+	var count = new Element("div", {'id':'graphConnectionCount','class':'col-auto'});
+	key.insert(count);
+	tb1.insert(key);
 
 	return tb1;
 }
@@ -53,32 +53,31 @@ function createSocialNetworkGraphKey() {
  * @return a div holding the graph key.
  */
 function createNetworkGraphKey() {
-	var tb1 = new Element("div", {'id':'graphkeydivtoolbar','class':'toolbarrow', 'style':'float:left;margin-top:10px;'});
+	var tb1 = new Element("div", {'id':'graphkeydivtoolbar','class':'toolbarrow col-12'});
 
-	var key = new Element("div", {'id':'key', 'style':'float:left;'});
+	var key = new Element("div", {'id':'key','class':'row mb-3'});
 	var text = "";
 	if (hasChallenge) {
-		text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: '+challengebackpale+'; color: black; font-weight:bold"><?php echo $LNG->CHALLENGE_NAME_SHORT; ?></span></div>';
+		text += '<div class="col-auto"><span class="networkmaps-key" style="background: '+challengebackpale+';"><?php echo $LNG->CHALLENGE_NAME_SHORT; ?></span></div>';
 	}
-	text+= '<div style="float:left;margin-right:5px;"><span style="padding:3px;background:'+issuebackpale+'; color: black; font-weight:bold"><?php echo $LNG->ISSUE_NAME_SHORT; ?></span></div>';
+	text+= '<div class="col-auto"><span class="networkmaps-key" style="background:'+issuebackpale+';"><?php echo $LNG->ISSUE_NAME_SHORT; ?></span></div>';
 	if (hasClaim){
-		text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: '+claimbackpale+'; color: black; font-weight:bold"><?php echo $LNG->CLAIM_NAME_SHORT; ?></span></div>';
+		text += '<div class="col-auto"><span class="networkmaps-key" style="background: '+claimbackpale+';"><?php echo $LNG->CLAIM_NAME_SHORT; ?></span></div>';
 	}
 	if (hasSolution) {
-		text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: '+solutionbackpale+'; color: black; font-weight:bold"><?php echo $LNG->SOLUTION_NAME_SHORT; ?></span></div>';
+		text += '<div class="col-auto"><span class="networkmaps-key" style="background: '+solutionbackpale+';"><?php echo $LNG->SOLUTION_NAME_SHORT; ?></span></div>';
 	}
 
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: '+evidencebackpale+'; color: black; font-weight:bold"><?php echo $LNG->EVIDENCE_NAME_SHORT; ?></span></div>';
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background:'+resourcebackpale+'; color: black; font-weight:bold"><?php echo $LNG->RESOURCE_NAME_SHORT; ?></span></div>';
-	text += '<div style="float:left;margin-right:5px;"><span style="border: 3px solid yellow; color: black; font-weight:bold"><?php echo $LNG->NETWORKMAPS_KEY_SELECTED_ITEM; ?></span></div>';
-	text += '<div style="float:left;"><span style="border: 3px solid #606060; color: black; font-weight:bold"><?php echo $LNG->NETWORKMAPS_KEY_FOCAL_ITEM; ?></span></div>';
-	//text += '<div style="float:left;margin-right:5px;"><span style="border: 3px solid #80FF80 ; color: black; font-weight:bold"><?php echo $LNG->NETWORKMAPS_KEY_NEIGHBOUR_ITEM; ?></span></div>';
+	text += '<div class="col-auto"><span class="networkmaps-key" style="background: '+evidencebackpale+';"><?php echo $LNG->EVIDENCE_NAME_SHORT; ?></span></div>';
+	text += '<div class="col-auto"><span class="networkmaps-key" style="background:'+resourcebackpale+';"><?php echo $LNG->RESOURCE_NAME_SHORT; ?></span></div>';
+	text += '<div class="col-auto"><span class="networkmaps-key" style="border: 3px solid yellow;"><?php echo $LNG->NETWORKMAPS_KEY_SELECTED_ITEM; ?></span></div>';
+	text += '<div class="col-auto"><span class="networkmaps-key" style="border: 3px solid #606060;"><?php echo $LNG->NETWORKMAPS_KEY_FOCAL_ITEM; ?></span></div>';
 
 	key.insert(text);
-	tb1.insert(key);
 
-	var count = new Element("div", {'id':'graphConnectionCount','style':'float:left;margin-left-25px;'});
-	tb1.insert(count);
+	var count = new Element("div", {'id':'graphConnectionCount','class':'col-auto'});
+	key.insert(count);
+	tb1.insert(key);
 
 	return tb1;
 }
@@ -88,33 +87,32 @@ function createNetworkGraphKey() {
  * @return a div holding the graph key.
  */
 function createNetworkOrgGraphKey() {
-	var tb1 = new Element("div", {'id':'graphkeydivtoolbar','class':'toolbarrow', 'style':'float:left;margin-top:10px;'});
+	var tb1 = new Element("div", {'id':'graphkeydivtoolbar','class':'toolbarrow'});
 
-	var key = new Element("div", {'id':'key', 'style':'float:left;'});
+	var key = new Element("div", {'id':'key','class':'row mb-3'});
 	var text = "";
 	if (hasChallenge) {
-		text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: '+challengebackpale+'; color: black; font-weight:bold"><?php echo $LNG->CHALLENGE_NAME_SHORT; ?></span></div>';
+		text += '<div class="col-auto"><span style="background: '+challengebackpale+';"><?php echo $LNG->CHALLENGE_NAME_SHORT; ?></span></div>';
 	}
-	text+= '<div style="float:left;margin-right:5px;"><span style="padding:3px;background:'+issuebackpale+'; color: black; font-weight:bold"><?php echo $LNG->ISSUE_NAME_SHORT; ?></span></div>';
+	text+= '<div class="col-auto"><span style="background:'+issuebackpale+';"><?php echo $LNG->ISSUE_NAME_SHORT; ?></span></div>';
 	if (hasClaim){
-		text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: '+claimbackpale+'; color: black; font-weight:bold"><?php echo $LNG->CLAIM_NAME_SHORT; ?></span></div>';
+		text += '<div class="col-auto"><span style="background: '+claimbackpale+';"><?php echo $LNG->CLAIM_NAME_SHORT; ?></span></div>';
 	}
 	if (hasSolution) {
-		text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: '+solutionbackpale+'; color: black; font-weight:bold"><?php echo $LNG->SOLUTION_NAME_SHORT; ?></span></div>';
+		text += '<div class="col-auto"><span style="background: '+solutionbackpale+';"><?php echo $LNG->SOLUTION_NAME_SHORT; ?></span></div>';
 	}
 
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background: '+evidencebackpale+'; color: black; font-weight:bold"><?php echo $LNG->EVIDENCE_NAME_SHORT; ?></span></div>';
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background:'+resourcebackpale+'; color: black; font-weight:bold"><?php echo $LNG->RESOURCE_NAME_SHORT; ?></span></div>';
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background:'+orgbackpale+'; color: black; font-weight:bold"><?php echo $LNG->ORG_NAME; ?></span></div>';
-	text += '<div style="float:left;margin-right:5px;"><span style="padding:3px;background:'+projectbackpale+'; color: black; font-weight:bold"><?php echo $LNG->PROJECT_NAME; ?></span></div>';
-	text += '<div style="float:left;margin-right:5px;"><span style="border: 3px solid yellow; color: black; font-weight:bold"><?php echo $LNG->NETWORKMAPS_KEY_SELECTED_ITEM; ?></span></div>';
-	text += '<div style="float:left;"><span style="border: 3px solid #606060; color: black; font-weight:bold"><?php echo $LNG->NETWORKMAPS_KEY_FOCAL_ITEM; ?></span></div>';
-	//text += '<div style="float:left;margin-right:5px;"><span style="border: 3px solid #80FF80 ; color: black; font-weight:bold"><?php echo $LNG->NETWORKMAPS_KEY_NEIGHBOUR_ITEM; ?></span></div>';
+	text += '<div class="col-auto"><span style="background: '+evidencebackpale+';"><?php echo $LNG->EVIDENCE_NAME_SHORT; ?></span></div>';
+	text += '<div class="col-auto"><span style="background:'+resourcebackpale+';"><?php echo $LNG->RESOURCE_NAME_SHORT; ?></span></div>';
+	text += '<div class="col-auto"><span style="background:'+orgbackpale+';"><?php echo $LNG->ORG_NAME; ?></span></div>';
+	text += '<div class="col-auto"><span style="background:'+projectbackpale+';"><?php echo $LNG->PROJECT_NAME; ?></span></div>';
+	text += '<div class="col-auto"><span style="border: 3px solid yellow;"><?php echo $LNG->NETWORKMAPS_KEY_SELECTED_ITEM; ?></span></div>';
+	text += '<div style="float:left;"><span style="border: 3px solid #606060;"><?php echo $LNG->NETWORKMAPS_KEY_FOCAL_ITEM; ?></span></div>';
 
 	key.insert(text);
 	tb1.insert(key);
 
-	var count = new Element("div", {'id':'graphConnectionCount','style':'float:left;margin-left-25px;'});
+	var count = new Element("div", {'id':'graphConnectionCount','class':'col-auto'});
 	tb1.insert(count);
 
 	return tb1;
@@ -125,24 +123,22 @@ function createNetworkOrgGraphKey() {
  */
 function createBasicGraphToolbar(forcedirectedGraph, contentarea) {
 
-	var tb2 = new Element("div", {'id':'graphmaintoolbar','class':'toolbarrow', 'style':'padding-top:5px;display:block;'});
+	var tb2 = new Element("div", {'id':'graphmaintoolbar','class':'graphmaintoolbar toolbarrow col-12'});
 
-	var button = new Element("button", {'id':'expandbutton','style':'margin-left:8px;padding:3px;','title':'<?php echo $LNG->NETWORKMAPS_RESIZE_MAP_HINT; ?>'});
-	var icon = new Element("img", {'id':'expandicon', 'src':"<?php echo $HUB_FLM->getImagePath('enlarge2.gif'); ?>", 'border':'0', 'title':'<?php echo $LNG->NETWORKMAPS_RESIZE_MAP_HINT; ?>'});
+	var button = new Element("button", {'id':'expandbutton','title':'<?php echo $LNG->NETWORKMAPS_RESIZE_MAP_HINT; ?>', "class":"d-none"});
+	var icon = new Element("img", {'id':'expandicon', 'src':"<?php echo $HUB_FLM->getImagePath('enlarge2.gif'); ?>", 'title':'<?php echo $LNG->NETWORKMAPS_RESIZE_MAP_HINT; ?>'});
 	button.insert(icon);
 	tb2.insert(button);
 
-	var link = new Element("a", {'id':'expandlink', 'title':'<?php echo $LNG->NETWORKMAPS_RESIZE_MAP_HINT; ?>', 'style':'cursor:pointer;margin-left:5px;'});
-	link.insert('<span id="linkbuttonsvn"><?php echo $LNG->NETWORKMAPS_ENLARGE_MAP_LINK; ?></span>');
+	var link = new Element("a", {'id':'expandlink', 'title':'<?php echo $LNG->NETWORKMAPS_RESIZE_MAP_HINT; ?>', "class":"col-auto map-btn"});
+	link.insert('<span id="linkbuttonsvn"><i class="fas fa-expand-alt fa-lg" aria-hidden="true"></i> <?php echo $LNG->NETWORKMAPS_ENLARGE_MAP_LINK; ?></span>');
 
 	var handler = function() {
 		if ($('header').style.display == "none") {
-			$('linkbuttonsvn').update('<?php echo $LNG->NETWORKMAPS_ENLARGE_MAP_LINK; ?>');
-			$('expandicon').src="<?php echo $HUB_FLM->getImagePath('enlarge2.gif'); ?>";
+			$('linkbuttonsvn').update('<i class="fas fa-expand-alt fa-lg" aria-hidden="true"></i> <?php echo $LNG->NETWORKMAPS_ENLARGE_MAP_LINK; ?>');
 			reduceMap(contentarea, forcedirectedGraph);
 		} else {
-			$('linkbuttonsvn').update('<?php echo $LNG->NETWORKMAPS_REDUCE_MAP_LINK; ?>');
-			$('expandicon').src="<?php echo $HUB_FLM->getImagePath('reduce.gif'); ?>";
+			$('linkbuttonsvn').update('<i class="fas fa-compress-alt fa-lg" aria-hidden="true"></i> <?php echo $LNG->NETWORKMAPS_REDUCE_MAP_LINK; ?>');
 			enlargeMap(contentarea, forcedirectedGraph);
 		}
 	};
@@ -150,45 +146,44 @@ function createBasicGraphToolbar(forcedirectedGraph, contentarea) {
 	Event.observe(button,"click", handler);
 	tb2.insert(link);
 
-	var zoomOut = new Element("button", {'style':'margin-left: 30px;padding:3px;', 'title':'<?php echo $LNG->GRAPH_ZOOM_IN_HINT;?>'});
-	var zoomOuticon = new Element("img", {'src':"<?php echo $HUB_FLM->getImagePath('magminus.png'); ?>", 'border':'0'});
-	zoomOut.insert(zoomOuticon);
+	var zoomOut = new Element("button", {'class':'btn btn-link', 'title':'<?php echo $LNG->GRAPH_ZOOM_OUT_HINT;?>'});
+	zoomOut.insert('<span><i class="fas fa-search-minus fa-lg" aria-hidden="true"></i> <?php echo $LNG->GRAPH_ZOOM_OUT_HINT; ?></span>');
+
+
 	var zoomOuthandler = function() {
 		zoomFD(forcedirectedGraph, 5.0);
 	};
 	Event.observe(zoomOut,"click", zoomOuthandler);
 	tb2.insert(zoomOut);
 
-	var zoomIn = new Element("button", {'style':'margin-left: 10px;padding:3px;', 'title':'<?php echo $LNG->GRAPH_ZOOM_OUT_HINT;?>'});
-	var zoomInicon = new Element("img", {'src':"<?php echo $HUB_FLM->getImagePath('magplus.png'); ?>", 'border':'0'});
-	zoomIn.insert(zoomInicon);
+	var zoomIn = new Element("button", {'class':'btn btn-link', 'title':'<?php echo $LNG->GRAPH_ZOOM_IN_HINT;?>'});
+	zoomIn.insert('<span><i class="fas fa-search-plus fa-lg" aria-hidden="true"></i> <?php echo $LNG->GRAPH_ZOOM_IN_HINT; ?></span>');
 	var zoomInhandler = function() {
 		zoomFD(forcedirectedGraph, -5.0);
 	};
 	Event.observe(zoomIn,"click", zoomInhandler);
 	tb2.insert(zoomIn);
 
-	var zoom1to1 = new Element("button", {'style':'margin-left: 10px;padding:3px;', 'title':'<?php echo $LNG->GRAPH_ZOOM_ONE_TO_ONE_HINT;?>'});
-	var zoom1to1icon = new Element("img", {'src':"<?php echo $HUB_FLM->getImagePath('zoomfull.png'); ?>", 'border':'0'});
-	zoom1to1.insert(zoom1to1icon);
+	var zoom1to1 = new Element("button", {'class':'btn btn-link', 'title':'<?php echo $LNG->GRAPH_ZOOM_ONE_TO_ONE_HINT;?>'});
+	zoom1to1.insert('<span><i class="fas fa-search fa-lg" aria-hidden="true"></i> 1:1 focus</span>');
+
 	var zoom1to1handler = function() {
 		zoomFDFull(forcedirectedGraph);
 	};
 	Event.observe(zoom1to1,"click", zoom1to1handler);
 	tb2.insert(zoom1to1);
 
-	var zoomFit = new Element("button", {'style':'margin-left: 10px;padding:3px;', 'title':'<?php echo $LNG->GRAPH_ZOOM_FIT_HINT;?>'});
-	var zoomFiticon = new Element("img", {'src':"<?php echo $HUB_FLM->getImagePath('zoomfit.png'); ?>", 'border':'0'});
-	zoomFit.insert(zoomFiticon);
+	var zoomFit = new Element("button", {'class':'btn btn-link', 'title':'<?php echo $LNG->GRAPH_ZOOM_FIT_HINT;?>'});
+	zoomFit.insert('<span><i class="fas fa-expand fa-lg" aria-hidden="true"></i> Fit all</span>');
+
 	var zoomFithandler = function() {
 		zoomFDFit(forcedirectedGraph);
 	};
 	Event.observe(zoomFit,"click", zoomFithandler);
 	tb2.insert(zoomFit);
 
-	var printButton = new Element("button", {'style':'margin-left: 10px;padding:3px;', 'title':'<?php echo $LNG->GRAPH_PRINT_HINT;?>'});
-	var printButtonicon = new Element("img", {'src':"<?php echo $HUB_FLM->getImagePath('printer.png'); ?>", 'border':'0'});
-	printButton.insert(printButtonicon);
+	var printButton = new Element("button", {'class':'btn btn-link', 'title':'<?php echo $LNG->GRAPH_PRINT_HINT;?>'});
+	printButton.insert('<span><i class="fas fa-print fa-lg" aria-hidden="true"></i> <?php echo $LNG->GRAPH_PRINT_HINT; ?></span>');
 	var printButtonhandler = function() {
 		printCanvas(forcedirectedGraph);
 	};
@@ -205,12 +200,11 @@ function createSocialGraphToolbar(forcedirectedGraph,contentarea) {
 
 	var tb2 = createBasicGraphToolbar(forcedirectedGraph,contentarea);
 
-	var button3 = new Element("button", {'id':'viewdetailbutton','style':'margin-left: 30px;padding:3px;margin-bottom:5px;','title':'<?php echo $LNG->NETWORKMAPS_SOCIAL_ITEM_HINT; ?>'});
-	var icon3 = new Element("img", {'id':'viewdetailicon', 'src':"<?php echo $HUB_FLM->getImagePath('profile_sm.png'); ?>", 'border':'0'});
-	button3.insert(icon3);
+	var button3 = new Element("button", {'id':'viewdetailbutton','class':'d-none','title':'<?php echo $LNG->NETWORKMAPS_SOCIAL_ITEM_HINT; ?>'});
 	tb2.insert(button3);
-	var view3 = new Element("a", {'id':'viewdetaillink', 'title':"<?php echo $LNG->NETWORKMAPS_SOCIAL_ITEM_HINT; ?>", 'style':'margin-left:5px;cursor:pointer;'});
-	view3.insert('<span id="viewbuttons"><?php echo $LNG->NETWORKMAPS_SOCIAL_ITEM_LINK; ?></span>');
+
+	var view3 = new Element("a", {'id':'viewdetaillink', "class":"map-btn", 'title':"<?php echo $LNG->NETWORKMAPS_SOCIAL_ITEM_HINT; ?>"});
+	view3.insert('<span id="viewbuttons"><i class="fas fa-user fa-lg" aria-hidden="true"></i> <?php echo $LNG->NETWORKMAPS_SOCIAL_ITEM_LINK; ?></span>');
 	var handler3 = function() {
 		var node = getSelectFDNode(forcedirectedGraph);
 		if (node != null && node != "") {
@@ -226,15 +220,17 @@ function createSocialGraphToolbar(forcedirectedGraph,contentarea) {
 	Event.observe(view3,"click", handler3);
 	tb2.insert(view3);
 
-	var button2 = new Element("button", {'id':'viewdetailbutton','style':'margin-left: 30px;padding:3px;','title':'<?php echo $LNG->NETWORKMAPS_SOCIAL_CONNECTION_HINT; ?>'});
-	var icon2 = new Element("img", {'id':'viewdetailicon', 'src':"<?php echo $HUB_FLM->getImagePath('connection.png'); ?>", 'border':'0'});
-	button2.insert(icon2);
+	var hint2 = "<?php echo $LNG->NETWORKMAPS_SOCIAL_CONNECTION_HINT; ?>";
+	var link2 = "<?php echo $LNG->NETWORKMAPS_SOCIAL_CONNECTION_LINK; ?>";
+
+	var button2 = new Element("button", {'id':'viewdetailbutton',"class":"d-none",'title':hint2});
 	tb2.insert(button2);
 
-	var view = new Element("a", {'id':'viewdetaillink', 'title':"<?php echo $LNG->NETWORKMAPS_SOCIAL_CONNECTION_HINT; ?>", 'style':'margin-left:5px;cursor:pointer;'});
-	let spancontent = '<span id="viewbuttons">';
-	spancontent += "<?php echo $LNG->NETWORKMAPS_SOCIAL_CONNECTION_LINK; ?></span>";
-	view.insert(spancontent);
+	// console.log(hint);
+	var view = new Element("a", {'id':'viewdetaillink', "class":"map-btn", 'title': hint2});
+
+	var spancontent = "";
+	view.insert("<span id=\"viewbuttons\"><i class=\"fas fa-link fa-lg\" aria-hidden=\"true\"></i> "+link2+"</span>");
 	var handler2 = function() {
 		var adj = getSelectFDLink(forcedirectedGraph);
 		var connectionids = adj.getData('connections');
@@ -258,15 +254,13 @@ function createGraphToolbar(forcedirectedGraph,contentarea) {
 
 	var tb2 = createBasicGraphToolbar(forcedirectedGraph,contentarea);
 
-	var button2 = new Element("button", {'id':'viewdetailbutton','style':'margin-left: 30px;padding:3px;','title':"<?php echo $LNG->NETWORKMAPS_EXPLORE_ITEM_HINT; ?>"});
-	var icon2 = new Element("img", {'id':'viewdetailicon', 'src':"<?php echo $HUB_FLM->getImagePath('lightbulb-16.png'); ?>", 'border':'0'});
-	button2.insert(icon2);
+	var hint2 = "<?php echo $LNG->NETWORKMAPS_EXPLORE_ITEM_HINT; ?>";
+	var link2 = "<?php echo $LNG->NETWORKMAPS_EXPLORE_ITEM_LINK; ?>";
+
+	var button2 = new Element("button", {'id':'viewdetailbutton','class':'btn btn-link','title':hint2});
+	button2.insert("<span id=\"viewdetailicon\"><i class=\"far fa-lightbulb fa-lg\" aria-hidden=\"true\"></i> <span id=\"viewdetaillink\">"+link2+"</span></span>");
 	tb2.insert(button2);
 
-	var view = new Element("a", {'id':'viewdetaillink', 'title':"<?php echo $LNG->NETWORKMAPS_EXPLORE_ITEM_HINT; ?>", 'style':'margin-left:5px;cursor:pointer;'});
-	let spancontent = '<span id="viewbuttons">';
-	spancontent += "<?php echo $LNG->NETWORKMAPS_EXPLORE_ITEM_LINK; ?></span>";
-	view.insert(spancontent);
 	var handler2 = function() {
 		var node = getSelectFDNode(forcedirectedGraph);
 		if (node != null && node != "") {
@@ -280,17 +274,14 @@ function createGraphToolbar(forcedirectedGraph,contentarea) {
 		}
 	};
 	Event.observe(button2,"click", handler2);
-	Event.observe(view,"click", handler2);
-	tb2.insert(view);
 
-	var button3 = new Element("button", {'id':'viewdetailbutton','style':'margin-left: 30px;padding:3px;margin-bottom:5px;','title':"<?php echo $LNG->NETWORKMAPS_EXPLORE_AUTHOR_HINT; ?>"});
-	var icon3 = new Element("img", {'id':'viewdetailicon', 'src':"<?php echo $HUB_FLM->getImagePath('profile_sm.png'); ?>", 'border':'0'});
-	button3.insert(icon3);
+	var hint3 = "<?php echo $LNG->NETWORKMAPS_EXPLORE_AUTHOR_HINT; ?>";
+	var link3 = "<?php echo $LNG->NETWORKMAPS_EXPLORE_AUTHOR_LINK; ?>";
+
+	var button3 = new Element("button", {'id':'viewdetailbutton','class':'btn btn-link','title':hint3});
+	button3.insert("<span id=\"viewdetailicon\"><i class=\"fas fa-user fa-lg\" aria-hidden=\"true\"></i> <span id=\"viewdetaillink\">"+link3+"</span></span>");
 	tb2.insert(button3);
-	var view3 = new Element("a", {'id':'viewdetaillink', 'title':"<?php echo $LNG->NETWORKMAPS_EXPLORE_AUTHOR_HINT; ?>", 'style':'margin-left:5px;cursor:pointer;'});
-	let spancontent2 = '<span id="viewbuttons">';
-	spancontent2 += "<?php echo $LNG->NETWORKMAPS_EXPLORE_AUTHOR_LINK; ?></span>";
-	view3.insert(spancontent2);
+
 	var handler3 = function() {
 		var node = getSelectFDNode(forcedirectedGraph);
 		if (node != null && node != "") {
@@ -303,8 +294,6 @@ function createGraphToolbar(forcedirectedGraph,contentarea) {
 		}
 	};
 	Event.observe(button3,"click", handler3);
-	Event.observe(view3,"click", handler3);
-	tb2.insert(view3);
 
 	return tb2;
 }
@@ -412,37 +401,37 @@ function calulateInitialGraphViewport(areaname) {
 function reduceMap(contentarea, forcedirectedGraph) {
 
 	if ($('header')) {
-		$('header').style.display="block";
+		$('header').style.display="flex";
 	}
 
 	// The explore views toolbar
 	if ($('headertoolbar')) {
-		$('headertoolbar').style.display="block";
+		$('headertoolbar').style.display="flex";
 	}
 	if ($('nodearealineartitle')) {
-		$('nodearealineartitle').style.display="block";
+		$('nodearealineartitle').style.display="flex";
 	}
 
 	// Main social Network
 	if ($('tabs')) { // +user social uses this
-		$('tabs').style.display="block";
+		$('tabs').style.display="flex";
 	}
 	if ($('tab-content-user-title')) {
-		$('tab-content-user-title').style.display="block";
+		$('tab-content-user-title').style.display="flex";
 	}
 	if ($('tab-content-user-search')) {
-		$('tab-content-user-search').style.display="block";
+		$('tab-content-user-search').style.display="flex";
 	}
 	if ($('usertabs')) {
-		$('usertabs').style.display="block";
+		$('usertabs').style.display="flex";
 	}
 
 	// User social network
 	if ($('context')) {
-		$('context').style.display="block";
+		$('context').style.display="flex";
 	}
 	if ($('tab-content-user-bar')) {
-		$('tab-content-user-bar').style.display="block";
+		$('tab-content-user-bar').style.display="flex";
 	}
 
 	resizeFDGraph(forcedirectedGraph, contentarea, true);

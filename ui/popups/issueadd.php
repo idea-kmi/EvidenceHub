@@ -184,37 +184,46 @@ window.onload = init;
 
 </script>
 
-<div class="toolbarrow" style="color:#27318B; font-size: 10pt; font-weight:bold; margin-bottom: 10px;"><?php echo $LNG->FORM_ISSUE_HEADING_MESSAGE; ?></div>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<div class="alert alert-info"><?php echo $LNG->FORM_ISSUE_HEADING_MESSAGE; ?></div>
+			<?php insertFormHeaderMessage(); ?>
 
-<?php insertFormHeaderMessage(); ?>
+			<form id="issueform" name="issueform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="chatnodeid" name="chatnodeid" value="<?php echo $chatnodeid; ?>" />
+				<input type="hidden" id="chatparentid" name="chatparentid" value="<?php echo $chatparentid; ?>" />
+				<input type="hidden" id="from" name="from" value="<?php echo $from; ?>" />
 
-<form id="issueform" name="issueform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="chatnodeid" name="chatnodeid" value="<?php echo $chatnodeid; ?>" />
-	<input type="hidden" id="chatparentid" name="chatparentid" value="<?php echo $chatparentid; ?>" />
-	<input type="hidden" id="from" name="from" value="<?php echo $from; ?>" />
+				<div class="mb-3 row">
+					<label for="issue" class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_ISSUE_LABEL_SUMMARY; ?> 
+						<a class="active" onMouseOver="showFormHint('IssueSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="issue" name="issue" value="<?php print $issue; ?>" />
+					</div>
+				</div>
 
-    <div class="hgrformrow">
-		<label  class="formlabelbig" for="url"><span style="vertical-align:top"><?php echo $LNG->FORM_ISSUE_LABEL_SUMMARY; ?></span>
-			<span class="active" onMouseOver="showFormHint('IssueSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" id="issue" name="issue" value="<?php echo( $issue ); ?>" />
+				<?php insertDescription('IssueDesc'); ?>
+				<?php insertThemes('IssueTheme'); ?>
+				<?php insertAddTags('IssueTag'); ?>
+				<?php if ($CFG->HAS_CHALLENGE) { insertChallenges('IssueChallenges', false); } ?>
+
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addissue" name="addissue" />
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
-	<?php insertDescription('IssueDesc'); ?>
-
-	<?php insertThemes('IssueTheme'); ?>
-
-	<?php insertAddTags('IssueTag'); ?>
-
-	<?php if ($CFG->HAS_CHALLENGE) { insertChallenges('IssueChallenges', false); } ?>
-
-    <br>
-    <div class="hgrformrow">
-        <input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addissue" name="addissue">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-</form>
+</div>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

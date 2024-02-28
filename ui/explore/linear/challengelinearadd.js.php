@@ -47,7 +47,7 @@ function loadAddAreaData() {
 	var linktypename = model.linktypes;
 	var focalnodeend = model.direction;
 	var hint = model.hint;
-	$('treeaddarea').insert('<a style="margin-bottom:3px;clear:both;float:left;" title="'+hint+'" href="javascript: loadDialog(\'issueconnect\', \''+URL_ROOT+'ui/popups/issueconnect.php?linktypename='+linktypename+'&focalnodeid='+debatenodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 770,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_ISSUE_MENU_TEXT; ?></a>');
+	$('treeaddarea').insert('<a title="'+hint+'" href="javascript: loadDialog(\'issueconnect\', \''+URL_ROOT+'ui/popups/issueconnect.php?linktypename='+linktypename+'&focalnodeid='+debatenodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 770,600);"><img src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" width="16" height="16" alt="<?php echo $LNG->NODE_DEBATE_ADD_TO_ISSUE_MENU_TEXT; ?>" style="margin-top: -4px;" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_ISSUE_MENU_TEXT; ?></a>');
 };
 
 loadAddAreaData();

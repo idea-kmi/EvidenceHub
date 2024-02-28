@@ -25,7 +25,10 @@
 
 $LNG->PAGE_HELP_TITLE = "Aiuto";
 
-$LNG->PAGE_HELP_BODY = '<p>L\'Evidence Hub è costituito da una serie di elementi costitutivi che rappresentano le principali tipologie di informazioni che possono essere aggiunte al Sito. ';
+$LNG->PAGE_HELP_BODY = '<p>
+L\'Evidence Hub è costituito da una serie di elementi che rappresentano le principali tipologie di informazioni che possono essere aggiunte al Sito.
+';
+
 $LNG->PAGE_HELP_BODY .= '<br />Queste sono: ';
 if ($CFG->HAS_CHALLENGE) {
 	$LNG->PAGE_HELP_BODY .= $LNG->CHALLENGES_NAME.', ';
@@ -39,9 +42,14 @@ if ($CFG->HAS_CLAIM) {
 }
 $LNG->PAGE_HELP_BODY .=  $LNG->RESOURCES_NAME.', '.$LNG->PROJECTS_NAME.', '.$LNG->ORGS_NAME.'.</p>';
 
-$LNG->PAGE_HELP_BODY .= '<p>Di seguito vedrai un elenco di riquadri colorati che descrivono ciascuna di queste categorie di informazioni. Se fai clic su una casella, verrà visualizzato un pannello a discesa con le informazioni di aiuto su una categoria.</p>';
+$LNG->PAGE_HELP_BODY .= '<p>
+Di seguito vedrai un elenco di riquadri colorati che descrivono ciascuna di queste categorie.
+Se fai clic su una casella, verrà visualizzato un pannello a discesa con le informazioni di aiuto su una categoria.
+</p>';
 
-$LNG->PAGE_HELP_BODY .= '<p>La casella in basso a destra rappresenta un diverso tipo di informazioni chiamate "Storie". Una storia è una catena di connessioni';
+$LNG->PAGE_HELP_BODY .= '<p>
+La casella in basso a destra rappresenta un diverso tipo di informazioni chiamate "Storie". Una storia è una catena di connessioni
+';
 if ($CFG->HAS_CHALLENGE) {
 	$LNG->PAGE_HELP_BODY .= $LNG->CHALLENGES_NAME.'&gt;';
 }
@@ -69,11 +77,11 @@ if ($CFG->HAS_CHALLENGE) {
 	$LNG->PAGE_HELP_BODY .= '<tr>';
 	$LNG->PAGE_HELP_BODY .= '<td width="33%">&nbsp;</td>';
 	$LNG->PAGE_HELP_BODY .= '<td width="33%">';
-	$LNG->PAGE_HELP_BODY .= '<div id="challengehomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'challengebackgradient challengeborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv3\').style.display == \'none\' || $(\'homebuttonmessagelasttype3\').value != \'challenge\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\';}" title="Click to view/hide additional information" onclick="showHomeButtonText3(event, \'challenge\');">';
+	$LNG->PAGE_HELP_BODY .= '<div id="challengehomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'challengebackgradient challengeborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv3\').style.display == \'none\' || $(\'homebuttonmessagelasttype3\').value != \'challenge\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\';}" title="Clicca qui per visualizzare/nascondere ulteriori informazioni" onclick="showHomeButtonText3(event, \'challenge\');">';
 	$LNG->PAGE_HELP_BODY .= '<div style="margin: 0 auto; width:64px;margin-bottom:5px;">';
 	$LNG->PAGE_HELP_BODY .= '<img src="'.$HUB_FLM->getImagePath('nodetypes/Default/challenge64px.png').'" border="0" />';
 	$LNG->PAGE_HELP_BODY .= '</div>';
-	$LNG->PAGE_HELP_BODY .= '<div style="margin: 0 auto;padding:0px;"><center><h2>'.$LNG->CHALLENGES_NAME.'</h2></center><center>Click in this box to read more.</center></div>';
+	$LNG->PAGE_HELP_BODY .= '<div style="margin: 0 auto;padding:0px;"><center><h2>'.$LNG->CHALLENGES_NAME.'</h2></center><center>Clicca qui per saperne di più.</center></div>';
 	$LNG->PAGE_HELP_BODY .= '</div>';
 	$LNG->PAGE_HELP_BODY .= '</td>';
 	$LNG->PAGE_HELP_BODY .= '<td width="33%">&nbsp;</td>';
@@ -95,19 +103,19 @@ if ($CFG->HAS_CHALLENGE) {
 $LNG->PAGE_HELP_BODY .= '<table cellspacing="10" style="margin: 0 auto;border-spacing:10px 0px;width: 100%;">';
 $LNG->PAGE_HELP_BODY .= '<tr>';
 $LNG->PAGE_HELP_BODY .= '<td width="33%">';
-$LNG->PAGE_HELP_BODY .= '<div id="issuehomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'issuebackgradient issueborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv\').style.display == \'none\' || $(\'homebuttonmessagelasttype\').value != \'issue\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\';}" title="Click to view/hide additional information" onclick="showHomeButtonText(event, \'issue\');">';
+$LNG->PAGE_HELP_BODY .= '<div id="issuehomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'issuebackgradient issueborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv\').style.display == \'none\' || $(\'homebuttonmessagelasttype\').value != \'issue\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\';}" title="Clicca qui per visualizzare/nascondere ulteriori informazioni" onclick="showHomeButtonText(event, \'issue\');">';
 $LNG->PAGE_HELP_BODY .= '<div style="margin: 0 auto; width:64px;margin-bottom:5px;">';
 $LNG->PAGE_HELP_BODY .= '<img src="'.$HUB_FLM->getImagePath('nodetypes/Default/issue64px.png').'" border="0" />';
 $LNG->PAGE_HELP_BODY .= '</div>';
 
 $LNG->PAGE_HELP_BODY .= '<div style="padding:0px;"><center><h2>'.$LNG->ISSUES_NAME.'</h2></center>';
-$LNG->PAGE_HELP_BODY .= '<center>Click in this box to read more.</center>';
+$LNG->PAGE_HELP_BODY .= '<center>Clicca qui per saperne di più.</center>';
 $LNG->PAGE_HELP_BODY .= '</div>';
 $LNG->PAGE_HELP_BODY .= '</div>';
 $LNG->PAGE_HELP_BODY .= '</td>';
 
 $LNG->PAGE_HELP_BODY .= '<td width="33%">';
-$LNG->PAGE_HELP_BODY .= '<div id="solutionhomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'solutionbackgradient solutionborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv\').style.display == \'none\' || $(\'homebuttonmessagelasttype\').value != \'solutin\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\';}" title="Click to view/hide additional information" onclick="showHomeButtonText(event, \'solution\');">';
+$LNG->PAGE_HELP_BODY .= '<div id="solutionhomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'solutionbackgradient solutionborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv\').style.display == \'none\' || $(\'homebuttonmessagelasttype\').value != \'solutin\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\';}" title="Clicca qui per visualizzare/nascondere ulteriori informazioni" onclick="showHomeButtonText(event, \'solution\');">';
 if ($CFG->HAS_SOLUTION && $CFG->HAS_CLAIM) {
 	$LNG->PAGE_HELP_BODY .= '<div style="margin: 0 auto; width:140px;margin-bottom:5px;">';
 } else {
@@ -141,7 +149,7 @@ $LNG->PAGE_HELP_BODY .= '</td>';
 
 
 $LNG->PAGE_HELP_BODY .= '<td width="33%">';
-$LNG->PAGE_HELP_BODY .= '<div id="evidencehomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'evidencebackgradient evidenceborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv\').style.display == \'none\' || $(\'homebuttonmessagelasttype\').value != \'evidence\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\'}" title="Click to view/hide additional information" onclick="showHomeButtonText(event, \'evidence\');">';
+$LNG->PAGE_HELP_BODY .= '<div id="evidencehomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'evidencebackgradient evidenceborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv\').style.display == \'none\' || $(\'homebuttonmessagelasttype\').value != \'evidence\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\'}" title="Clicca qui per visualizzare/nascondere ulteriori informazioni" onclick="showHomeButtonText(event, \'evidence\');">';
 $LNG->PAGE_HELP_BODY .= '<div style="margin: 0 auto; width:64px;margin-bottom:5px;">';
 $LNG->PAGE_HELP_BODY .= '<img src="'.$HUB_FLM->getImagePath('nodetypes/Default/literature-analysis64px.png').'" border="0" />';
 $LNG->PAGE_HELP_BODY .= '</div>';
@@ -171,7 +179,7 @@ $LNG->PAGE_HELP_BODY .= '<table cellspacing="10" style="margin: 0 auto;border-sp
 $LNG->PAGE_HELP_BODY .= '<tr>';
 
 $LNG->PAGE_HELP_BODY .= '<td width="33%">';
-$LNG->PAGE_HELP_BODY .= '<div id="resourcehomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'resourcebackgradient resourceborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv2\').style.display == \'none\' || $(\'homebuttonmessagelasttype2\').value != \'resource\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\';}" title="Click to view/hide additional information" onclick="showHomeButtonText2(event, \'resource\');">';
+$LNG->PAGE_HELP_BODY .= '<div id="resourcehomebutton" style="cursor:pointer;height:174px; padding:5px; font-weight:bold;" class="plainbackgradient plainborder curvedBorder homebutton1" onmouseover="this.className=\'resourcebackgradient resourceborder curvedBorder homebutton1\';" onmouseout="if ($(\'homebuttonmessagediv2\').style.display == \'none\' || $(\'homebuttonmessagelasttype2\').value != \'resource\') {this.className=\'plainbackgradient plainborder curvedBorder homebutton1\';}" title="Clicca qui per visualizzare/nascondere ulteriori informazioni" onclick="showHomeButtonText2(event, \'resource\');">';
 $LNG->PAGE_HELP_BODY .= '<div style="margin: 0 auto; width:64px;margin-bottom:5px;">';
 $LNG->PAGE_HELP_BODY .= '<img src="'.$HUB_FLM->getImagePath('nodetypes/Default/reference64px.png').'" border="0" />';
 $LNG->PAGE_HELP_BODY .= '</div>';
@@ -335,13 +343,13 @@ $LNG->PAGE_HELP_BODY .= '<div class="navnetworkarrow">
 		</div>
 	</div>';
 
-$LNG->PAGE_HELP_BODY .= '<h2>Esplora'.$LNG->THEMES_NAME.'</h2>';
-$LNG->PAGE_HELP_BODY .= '<ul style="padding-left:20px;margin-left:0px">';
+$LNG->PAGE_HELP_BODY .= '<h2>Esplora i '.$LNG->THEMES_NAME.': gli SDGs e la School of Sustainability</h2>';
 
-
-
-$LNG->PAGE_HELP_BODY .= '<li>L\'Evidence Hub dispone di un sistema di raggruppamento che consente agli utenti di raggruppare le informazioni sotto lo stesso '.$LNG->THEME_NAME.'.</li>';
-$LNG->PAGE_HELP_BODY .= '<li>'.$LNG->THEMES_NAME.' sono mostrati nella homepage come un elenco di riquadri colorati. Se clicchi su un tema vedrai tutte le informazioni (';
+$LNG->PAGE_HELP_BODY .= '<p>
+L\'Evidence Hub dispone di un sistema di raggruppamento che consente agli utenti di raggruppare le informazioni attorno ad un '.$LNG->THEME_NAME.'.
+</p>';
+$LNG->PAGE_HELP_BODY .= '<p>
+I '.$LNG->THEMES_NAME.' sono mostrati nella homepage come un elenco di riquadri colorati. Se clicchi su un tema vedrai tutte le informazioni attorno ad un(';
 if ($CFG->HAS_CHALLENGE) {
 	$LNG->PAGE_HELP_BODY .= $LNG->CHALLENGES_NAME.', ';
 }
@@ -353,38 +361,37 @@ if ($CFG->HAS_SOLUTION) {
 if ($CFG->HAS_CLAIM) {
 	$LNG->PAGE_HELP_BODY .= $LNG->CLAIMS_NAME.', ';
 }
-$LNG->PAGE_HELP_BODY .=  $LNG->RESOURCES_NAME.', '.$LNG->PROJECTS_NAME.', '.$LNG->ORGS_NAME.' ) ecc. hanno lo stesso che è stato dato a quel tema.</li>';
+$LNG->PAGE_HELP_BODY .=  $LNG->RESOURCES_NAME.', '.$LNG->PROJECTS_NAME.', '.$LNG->ORGS_NAME.' ecc.) relative a quel tema.</p>';
 
-$LNG->PAGE_HELP_BODY .= '<li>La lista di '.$LNG->THEMES_NAME.' è decisa dall\'amministratore dell\'Evidence Hub.</li>';
-$LNG->PAGE_HELP_BODY .= '<li>'.$LNG->THEMES_NAME.' mirano a rappresentare gli argomenti di livello superiore di interesse per la comunità, mentre per la categorizzazione di livello inferiore gli utenti possono aggiungere tag, che vengono visualizzati anche nella home page di Evidence Hub come tag cloud.</li>';
-
-$LNG->PAGE_HELP_BODY .= '</ul>';
+$LNG->PAGE_HELP_BODY .= '<p>
+La lista di '.$LNG->THEMES_NAME.' è decisa dall\'amministratore dell\'Evidence Hub.
+</p>';
+$LNG->PAGE_HELP_BODY .= '<p>
+I '.$LNG->THEMES_NAME.' mirano a rappresentare gli argomenti di livello superiore di interesse per la
+comunità, mentre per la categorizzazione di livello inferiore gli utenti possono aggiungere tag,
+che vengono visualizzati anche nella homepage di Evidence Hub come tag cloud.
+</p>';
 
 $LNG->PAGE_HELP_BODY .= '<h2>Segui quello che ti interessa</h2>';
-$LNG->PAGE_HELP_BODY .= '<ul style="padding-left:20px;margin-left:0px">';
-$LNG->PAGE_HELP_BODY .= '<li>Interessato a qualcosa di specifico? Puoi seguire qualsiasi persona, '.$LNG->ORGS_NAME.', '.$LNG->PROJECTS_NAME.', '.$LNG->THEMES_NAME.', ';
+
+$LNG->PAGE_HELP_BODY .= '<p>Interessato a qualcosa di specifico? Puoi seguire qualsiasi persona, '.$LNG->ORG_NAME_SHORT.', '.$LNG->PROJECT_NAME_SHORT.', '.$LNG->THEME_NAME.', ';
 if ($CFG->HAS_CHALLENGE) {
-	$LNG->PAGE_HELP_BODY .= $LNG->CHALLENGES_NAME.', ';
+	$LNG->PAGE_HELP_BODY .= $LNG->CHALLENGE_NAME.', ';
 }
 
-$LNG->PAGE_HELP_BODY .= $LNG->ISSUES_NAME.', ';
+$LNG->PAGE_HELP_BODY .= $LNG->ISSUE_NAME.', ';
 if ($CFG->HAS_SOLUTION) {
-	$LNG->PAGE_HELP_BODY .= $LNG->SOLUTIONS_NAME.', ';
+	$LNG->PAGE_HELP_BODY .= $LNG->SOLUTION_NAME.', ';
 }
 if ($CFG->HAS_CLAIM) {
-	$LNG->PAGE_HELP_BODY .= $LNG->CLAIMS_NAME.', ';
+	$LNG->PAGE_HELP_BODY .= $LNG->CLAIM_NAME.', ';
 }
-$LNG->PAGE_HELP_BODY .=  $LNG->EVIDENCES_NAME.' ecc. nell\'Evidence Hub.</li>';
+$LNG->PAGE_HELP_BODY .=  $LNG->EVIDENCE_NAME.' nell\'Evidence Hub</p>';
 
-$LNG->PAGE_HELP_BODY .= '<li>Puoi seguire qualsiasi nodo nell\'hub facendo clic sull\'icona Segui <img border="0" src="'.$HUB_FLM->getImagePath('follow.png').'"/>.</li>';
-$LNG->PAGE_HELP_BODY .= '<li>Quando inizi a seguire un nodo, le attività relative a quel nodo verranno elencate nella tua home page.</li>';
-$LNG->PAGE_HELP_BODY .= '<li>Puoi anche scegliere di ricevere un riepilogo e-mail giornaliero/settimanale/mensile di tutte le attività relative agli elementi e alle persone che segui.</li>';
-$LNG->PAGE_HELP_BODY .= '<li>Seguendo un elemento nell\'hub delle prove verrai aggiunto anche all\'elenco dei follower mostrato nella pagina di esplorazione di quell\'elemento.</li>';
-$LNG->PAGE_HELP_BODY .= '</ul>';
+$LNG->PAGE_HELP_BODY .= '<p>Puoi seguire qualsiasi nodo nell\'hub facendo clic sull\'icona Segui <img border="0" src="'.$HUB_FLM->getImagePath('follow.png').'"/></p>';
+$LNG->PAGE_HELP_BODY .= '<p>Quando inizi a seguire un nodo, le attività relative a quel nodo verranno elencate nella tua home page.</p>';
+$LNG->PAGE_HELP_BODY .= '<p>Puoi anche scegliere di ricevere un riepilogo e-mail giornaliero/settimanale/mensile di tutte le attività relative agli elementi e alle persone che segui.</p>';
+$LNG->PAGE_HELP_BODY .= '<p>Seguendo un elemento nell\'hub delle prove verrai aggiunto anche all\'elenco dei follower mostrato nella pagina di esplorazione di quell\'elemento.</p>';
 
-$LNG->PAGE_HELP_BODY .= '<h2>Tools</h2>';
-$LNG->PAGE_HELP_BODY .= 'Perché non provare il nostro <a href="'.$CFG->homeAddress.'help/builderhelp.php" target="_blank">Evidence Hub Online Builder Tool</a> per aiutarti a raccogliere materiali mentre navighi!';
-$LNG->PAGE_HELP_BODY .= '<br>';
-$LNG->PAGE_HELP_BODY .= '<br>';
 $LNG->PAGE_HELP_BODY .= '<p>Se desideri segnalare un bug o  hai suggerimenti per migliorare all\'Evidence Hub, o altre domande sul sito, per favore <a href="mailto:'.$CFG->EMAIL_REPLY_TO.'">contattaci</a>.</p>';
 ?>

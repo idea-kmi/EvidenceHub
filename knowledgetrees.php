@@ -103,150 +103,158 @@
 	echo "</script>";
 ?>
 
-<script type='text/javascript'>
 
-Event.observe(window, 'load', function() {
+<div class="container-fluid">
+	<div class="row p-3">		
+		<div class="col">
+			<script type='text/javascript'>
+				Event.observe(window, 'load', function() {
 
-	buildNodeTitle('trees');
+					buildNodeTitle('trees');
 
-	if (NODE_ARGS['nodetype'] == 'Challenge') {
-		addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/challengelineartree.js.php"); ?>', 'explore-challengelineartree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Issue') {
-		addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/issuelineartree.js.php"); ?>', 'explore-issuelineartree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Claim') {
-		addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/claimlineartree.js.php"); ?>', 'explore-claimlineartree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Solution') {
-		addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/solutionlineartree.js.php"); ?>', 'explore-solutionlineartree-script');
-	} else if (EVIDENCE_TYPES_STR.indexOf(EVIDENCE_ARGS['nodetype']) != -1) {
-		addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/evidencelineartree.js.php"); ?>', 'explore-evidencelineartree-script');
-	} else if (RESOURCE_TYPES_STR.indexOf(URL_ARGS['nodetype']) != -1) {
-		addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/resourcelineartree.js.php"); ?>', 'explore-resourcelineartree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Theme') {
-		addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/themelineartree.js.php"); ?>', 'explore-themelineartree-script');
-	}
-});
+					if (NODE_ARGS['nodetype'] == 'Challenge') {
+						addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/challengelineartree.js.php"); ?>', 'explore-challengelineartree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Issue') {
+						addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/issuelineartree.js.php"); ?>', 'explore-issuelineartree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Claim') {
+						addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/claimlineartree.js.php"); ?>', 'explore-claimlineartree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Solution') {
+						addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/solutionlineartree.js.php"); ?>', 'explore-solutionlineartree-script');
+					} else if (EVIDENCE_TYPES_STR.indexOf(EVIDENCE_ARGS['nodetype']) != -1) {
+						addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/evidencelineartree.js.php"); ?>', 'explore-evidencelineartree-script');
+					} else if (RESOURCE_TYPES_STR.indexOf(URL_ARGS['nodetype']) != -1) {
+						addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/resourcelineartree.js.php"); ?>', 'explore-resourcelineartree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Theme') {
+						addScriptDynamically('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/themelineartree.js.php"); ?>', 'explore-themelineartree-script');
+					}
+				});
 
-function loadSelecteditemNew(nodetofocusid) {
-	getConnections(nodetofocusid);
-}
+				function loadSelecteditemNew(nodetofocusid) {
+					getConnections(nodetofocusid);
+				}
+			</script>
 
-</script>
+			<?php if ($nodetype == 'Challenge') { ?>
+				<div id="nodearealineartitle" class="challengeback challengeborder nodearealineartitle">
+					<div class="challengeback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel"></label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Issue') { ?>
+				<div id="nodearealineartitle" class="issueback issueborder nodearealineartitle">
+					<div class="issueback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Claim') { ?>
+				<div id="nodearealineartitle" class="claimback claimborder nodearealineartitle">
+					<div class="claimback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Solution') { ?>
+				<div id="nodearealineartitle" class="solutionback solutionborder nodearealineartitle">
+					<div class="solutionback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Organization') { ?>
+				<div id="nodearealineartitle" class="orgback orgborder nodearealineartitle">
+					<div class="orgback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Project') { ?>
+				<div id="nodearealineartitle" class="projectback projectborder nodearealineartitle">
+					<div class="projectback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if (in_array($nodetype, $CFG->EVIDENCE_TYPES)) { //EVIDENCE ?>
+				<div id="nodearealineartitle" class="evidenceback evidenceborder nodearealineartitle">
+					<div class="evidenceback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if (in_array($nodetype, $CFG->RESOURCE_TYPES)) { //RESOURCES ?>
+				<div id="nodearealineartitle" class="resourceback resourceborder nodearealineartitle">
+					<div class="resourceback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Theme') { ?>
+				<div id="nodearealineartitle" class="themeback themeborder nodearealineartitle">
+					<div class="themeback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } ?>
 
+			<div class="p-1 border-bottom d-block">
+				<div id="headertoolbar" class="d-block"></div>
+			</div>
 
-<?php if ($nodetype == 'Challenge') { ?>
-	<div id="nodearealineartitle" class="challengeback challengeborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="challengeback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Issue') { ?>
-	<div id="nodearealineartitle" class="issueback issueborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="issueback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Claim') { ?>
-	<div id="nodearealineartitle" class="claimback claimborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="claimback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Solution') { ?>
-	<div id="nodearealineartitle" class="solutionback solutionborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="solutionback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Organization') { ?>
-	<div id="nodearealineartitle" class="orgback orgborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="orgback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Project') { ?>
-	<div id="nodearealineartitle" class="projectback projectborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="projectback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if (in_array($nodetype, $CFG->EVIDENCE_TYPES)) { //EVIDENCE ?>
-	<div id="nodearealineartitle" class="evidenceback evidenceborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="evidenceback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if (in_array($nodetype, $CFG->RESOURCE_TYPES)) { //RESOURCES ?>
-	<div id="nodearealineartitle" class="resourceback resourceborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="resourceback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Theme') { ?>
-	<div id="nodearealineartitle" class="themeback themeborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="themeback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } ?>
+			<div id="tabber">
+				<?php if ($nodetype == 'Challenge') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Issue') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Claim') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Solution') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Organization') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Project') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if (in_array($nodetype, $CFG->EVIDENCE_TYPES)) { //EVIDENCE ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if (in_array($nodetype, $CFG->RESOURCE_TYPES)) { //RESOURCES ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Theme') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } ?>
 
-<div style="border-bottom:1px solid #E8E8E8; width:100%;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-	<div id="headertoolbar" style="clear:both;float:left;margin-top:10px;margin-left:5px;"></div>
-</div>
+				<!-- LINEAR/DEABATE PAGES -->
+					<div id='tab-content-explore-linear' class='explorepagesection'>
+						<div class="linearpagediv" id="linearpagediv">
+							<div>
+								<div>
+									<h2>
+										<?php echo $LNG->VIEWS_LINEAR_TITLE; ?>
+										<div id="toggleDebateButton" class="active" style="display:none" onClick="toggleDebateMode();" title="<?php echo $LNG->DEBATE_SWITCH_WIDER_HINT; ?>">
+											<small>
+												<?php echo $LNG->DEBATE_SWITCH_WIDER_BUTTON; ?>
+											</small>
+										</div>
+									</h2>
 
-<div id="tabber" style="clear:both;float:left;width:100%;">
-	<?php if ($nodetype == 'Challenge') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Issue') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Claim') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Solution') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Organization') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Project') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if (in_array($nodetype, $CFG->EVIDENCE_TYPES)) { //EVIDENCE ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if (in_array($nodetype, $CFG->RESOURCE_TYPES)) { //RESOURCES ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Theme') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } ?>
-
-	<!-- LINEAR/DEABATE PAGES -->
-       	<div id='tab-content-explore-linear' class='explorepagesection'>
-			<div class="linearpagediv" id="linearpagediv">
-				<div style="clear:both;float:left; width 100%;margin-left:5px;">
-					<div style="clear:both;float:left;margin-top:5px;margin-right:5px;">
-						<h2 style="margin-bottom:5px;"><div style="font-size:13pt;font-style: italic;float:left; "><?php echo $LNG->VIEWS_LINEAR_TITLE; ?></div>
-						<div id="toggleDebateButton" class="active" style="margin-left:30px;margin-top:2px;font-size:10pt;float:left;display:none" onClick="javascript: toggleDebateMode();" title="<?php echo $LNG->DEBATE_SWITCH_WIDER_HINT; ?>"><?php echo $LNG->DEBATE_SWITCH_WIDER_BUTTON; ?></div>
-						</h2>
-
-						<div style="clear:both;float:left;margin-bottom:5px;margin-top:5px;">
-							<?php if ($nodetype == 'Theme') { ?>
-								<span style="color: dimgray; font-size:10pt; font-weight:normal"><?php echo $LNG->DEABTES_COUNT_THEME_MESSAGE_PART1; ?> <span id="debatecount" style="font-size:12pt; font-weight:bold">0</span> <?php echo $LNG->DEABTES_COUNT_THEME_MESSAGE_PART2; ?></span>
-							<?php } else { ?>
-								<span style="color: dimgray; font-size:10pt; font-weight:normal"><?php echo $LNG->DEABTES_COUNT_MESSAGE_PART1; ?> <span id="debatecount" style="font-size:12pt; font-weight:bold">0</span> <?php echo $LNG->DEABTES_COUNT_MESSAGE_PART2; ?></span>
-							<?php } ?>
-						</div>
-						<div style="clear:both;float:left;margin-bottom:5px;">
-							<span id="lineardebateheading" style="margin-top:3px;"></span>
+									<div>
+										<?php if ($nodetype == 'Theme') { ?>
+											<div class="alert alert-info"><?php echo $LNG->DEABTES_COUNT_THEME_MESSAGE_PART1; ?> <span id="debatecount">0</span> <?php echo $LNG->DEABTES_COUNT_THEME_MESSAGE_PART2; ?></div>
+										<?php } else { ?>
+											<div class="alert alert-info"><?php echo $LNG->DEABTES_COUNT_MESSAGE_PART1; ?> <span id="debatecount">0</span> <?php echo $LNG->DEABTES_COUNT_MESSAGE_PART2; ?></div>
+										<?php } ?>
+									</div>
+									<div>
+										<span id="lineardebateheading"></span>
+									</div>
+								</div>
+								<div class="linearcontent" id="content-list"></div>
+								<div class="linearcontent" id="content-list-expanded" style="display:none;"></div>
+							</div>
+							<div id="treeaddarea" style="display:none;"></div>
 						</div>
 					</div>
-					<div class="linearcontent" id="content-list"></div>
-					<div class="linearcontent" id="content-list-expanded" style="display:none;"></div>
 				</div>
-				<div id="treeaddarea" style="display:none;clear:both;float:left;margin:0px;padding: 0px;margin-top:10px;margin-left:10px;background:white;"></div>
 			</div>
 		</div>
 	</div>

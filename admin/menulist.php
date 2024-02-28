@@ -24,7 +24,8 @@
  ********************************************************************************/
  ?>
 
-<div id="tagcloud" style="clear:both; float:left; width: 100%;">
+
+<div id="tagcloud" class="tagcloud">
 	<ul>
 	<?php
 		$items = array();
@@ -102,7 +103,15 @@
 			$classes = $colour." ".$colourBorder." ".$backcolor." adminlist";
 			$classes2 = $colour." adminlistinner";
 
-			echo '<div class="'.$classes.'" style="margin-right:10px;" onclick=".$item[1]." onmouseover="this.className=\'adminlist plainbackgradient plainborder plainback \';" onmouseout="this.className=\''.$classes.'\';" title="'.$item[2].'"><div class="'.$classes2.'" onclick="'.$item[1].'" onmouseover="this.className=\'adminlistinner plainbackgradient\';" onmouseout="this.className=\''.$classes2.'\';"><table style="text-align:center;font-weight:bold;width:100%;height:100%" class="themebutton"><tr><td valign="middle">'.$item[0].'</td></tr></table></div></div>';
+			echo '
+				<li>
+					<div class="'.$classes.'" onclick=".$item[1]." onmouseover="this.className=\'adminlist plainbackgradient plainborder plainback \';" onmouseout="this.className=\''.$classes.'\';" title="'.$item[2].'">
+						<div class="'.$classes2.'" onclick="'.$item[1].'" onmouseover="this.className=\'adminlistinner plainbackgradient\';" onmouseout="this.className=\''.$classes2.'\';">
+							<span class="themebutton">'.$item[0].'</span>
+						</div>
+					</div>
+				</li>
+			';
 		}
 	?>
 	</ul>

@@ -207,10 +207,9 @@ Event.observe(window, 'load', function() {
 </script>
 
 
-<div style="display: block;font-size:11pt;">
-
-	<div id="nodearealineartitle" class="issueback issueborder" style="color:white;clear:both;display:block;width:100%;margin:0px;padding:0px;">
-		<div class="issueback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
+<div style="display: block;">
+	<div id="nodearealineartitle" class="nodearealineartitle issueback issueborder" >
+		<div class="issueback tabtitlebar">
 			<label class="linearnodeheaderlabel" id="exploreheaderlabel"></label>
 		</div>
 	</div>
@@ -229,17 +228,24 @@ Event.observe(window, 'load', function() {
 					<h2><img src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="Add" /><span><?php echo $LNG->FORM_IDEA_NEW_TITLE; ?></span></h2>
 					<div id="addformdividea" class="addformdividea">
 						<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
-						<div class="formrowsm">
-							<input <?php if (!$hasAddPermissions){ echo 'disabled'; } ?> class="forminput hgrwide" placeholder="<?php echo $LNG->FORM_IDEA_LABEL_TITLE; ?>" id="addideaname" name="idea" value="" />
+						<div class="mb-3 row">
+							<label class="col-sm-3 col-form-label hidden" for="addideaname"><?php echo $LNG->FORM_IDEA_LABEL_TITLE; ?></label>
+							<div class="col-sm-9">
+								<input <?php if (!$hasAddPermissions){ echo 'disabled'; } ?> class="form-control" placeholder="<?php echo $LNG->FORM_IDEA_LABEL_TITLE; ?>" id="addideaname" name="idea" value="" />
+							</div>
 						</div>
-						<div class="formrowsm">
-							<textarea <?php if (!$hasAddPermissions){ echo 'disabled'; } ?> class="forminput hgrwide" placeholder="<?php echo $LNG->FORM_IDEA_LABEL_DESC; ?>" id="addideadesc" name="ideadesc" value=""></textarea>
+						<div class="mb-3 row">
+							<label class="col-sm-3 col-form-label hidden" for="addideadesc"><?php echo $LNG->FORM_IDEA_LABEL_DESC; ?></label>
+							<div class="col-sm-9">
+								<textarea <?php if (!$hasAddPermissions){ echo 'disabled'; } ?> class="form-control" placeholder="<?php echo $LNG->FORM_IDEA_LABEL_DESC; ?>" id="addideadesc" name="ideadesc" value=""></textarea>
+							</div>
 						</div>
-						<div class="formrowsm">
-							<button <?php if (!$hasAddPermissions){ echo 'disabled'; } ?> class="submitleft" id="addidea" name="addidea" onclick="addIdeaNode(nodeObj, '', 'idea', 'active', true, <?php echo $CFG->STATUS_ACTIVE; ?>)"><?php echo $LNG->FORM_BUTTON_SUBMIT; ?></button>
+						<div class="mb-3 row">
+							<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+								<button <?php if (!$hasAddPermissions){ echo 'disabled'; } ?> class="btn btn-primary" id="addidea" name="addidea" onclick="addIdeaNode(nodeObj, '', 'idea', 'active', true, <?php echo $CFG->STATUS_ACTIVE; ?>)"><?php echo $LNG->FORM_BUTTON_SUBMIT; ?></button>
+							</div>
 						</div>
 					</div>
-					<div style="clear:both;"></div>
 				</div>
 			<?php } else { ?>
 			<div class="idea-login">
@@ -254,25 +260,20 @@ Event.observe(window, 'load', function() {
 				}
 				?>
 			</div>
-			<div style="clear:both;"></div>
 		</div>
-
-		<div id="tabber" style="clear:both;float:left; width:760px;display:none;">
+		<div id="tabber">
 			<ul id="tabs" class="tab">
 				<li class="tab"><a class="tab" id="tab-remaining" href="#remaining"><span class="tab tabsolution">Remaining <span id="remaining-count"></span></a></li>
 				<li class="tab"><a class="tab" id="tab-removed" href="#removed"><span class="tab tabsolution">Removed <span id="removed-count"></span></a></li>
 			</ul>
-			<div id="tabs-content" style="clear:both; float:left; width:100%">
-				<div id='tab-content-remaining-div' class='tabcontentinner' style="display:none;padding:0px;"></div>
-				<div id='tab-content-removed-div' class='tabcontentinner' style="display:none;padding:0px;"></div>
+			<div id="tabs-content">
+				<div id='tab-content-remaining-div' class='tabcontentinner' style="display:none;"></div>
+				<div id='tab-content-removed-div' class='tabcontentinner' style="display:none;"></div>
 			</div>
 		</div>
-
 		<div id='content-ideas-div' class='content-ideas-div'>
 			<div id='tab-content-idea-list' class='tabcontentinner tab-content-idea-list'></div>
 		</div>
-
-	<div style="clear:both;"></div>
 </div>
 
 <?php

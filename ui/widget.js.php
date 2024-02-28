@@ -36,7 +36,7 @@ function getIsOpen(div, isopen, nodetofocusid) {
 			isopen = false;
 		}
 	} else {
-		if (div && div.style.display == "block"
+		if (div && div.style.display == "flex"
 				|| nodetofocusid !="") {
 			isopen = true;
 		}
@@ -46,19 +46,19 @@ function getIsOpen(div, isopen, nodetofocusid) {
 
 function buildWidgetExploreNodeHeader(container, label, color, type, icon, height, key) {
 
-	var widgetHeader = new Element("div", { 'class':'widgetheadernode '+color, 'id':'widgetnodeheader'});
+	var widgetHeader = new Element("div", { 'class':'widgetheadernode row px-3 py-1 mx-0 '+color, 'id':'widgetnodeheader'});
 
-	var widgetHeaderControlButton = new Element('img',{ 'style':'cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
+	var widgetHeaderControlButton = new Element('img',{ 'style':'cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
 	Event.observe(widgetHeaderControlButton,'click',function (){toggleExpandWidget(this, key, height)});
 
-	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinnernode', 'id':key+'headerinner', 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>', 'Style':'width:90%'});
-	var widgetHeaderLabel = new Element("label", {'class':'widgetnodeheaderlabel', 'id':'widgetheaderlabel'});
+	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinnernode col', 'id':key+'headerinner', 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>'});
+	var widgetHeaderLabel = new Element("label", {'class':'widgetnodeheaderlabel col-auto', 'id':'widgetheaderlabel'});
 	widgetInnerHeader.insert(widgetHeaderLabel);
 
 	Event.observe(widgetInnerHeader,'click',function (){ toggleExpandWidget(widgetHeaderControlButton, key, height)});
 
 	if (icon) {
-		var iconObj = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'alt':type+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'border':'0','src':icon});
+		var iconObj = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'alt':type+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'src':icon});
 		iconObj.align='left';
 		widgetHeaderLabel.appendChild(iconObj);
 	}
@@ -66,7 +66,7 @@ function buildWidgetExploreNodeHeader(container, label, color, type, icon, heigh
 	widgetHeaderLabel.insert(label);
 	widgetHeader.insert(widgetInnerHeader);
 
-	var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol '+color});
+	var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol col-auto '+color});
 	widgetInnerHeaderControl.insert(widgetHeaderControlButton);
 
 	widgetHeader.insert(widgetInnerHeaderControl);
@@ -89,13 +89,13 @@ function buildWidgetHeader(title, height, isOpen, color, key, icon, withAdjust) 
 		withAdjust = true;
 	}
 
-	var widgetHeader = new Element("div", {'class':'widgetheader '+color, 'id':key+"header"});
+	var widgetHeader = new Element("div", {'class':'row m-0 p-0 widgetheader '+color, 'id':key+"header"});
 
-	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner ', 'id':key+"headerinner", 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>'});
+	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner col', 'id':key+"headerinner", 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>'});
 	var widgetHeaderLabel = new Element("label", {'class':'widgetheaderlabel widgettextcolor ', 'id':key+"headerlabel"});
 
 	if (icon) {
-		var icon = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'alt':title+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'border':'0','src':icon});
+		var icon = new Element('img',{'class':'widgetTitleIcon', 'alt':title+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'src':icon});
 		icon.align='left';
 		widgetInnerHeader.appendChild(icon);
 	}
@@ -106,7 +106,7 @@ function buildWidgetHeader(title, height, isOpen, color, key, icon, withAdjust) 
 	widgetHeader.insert(widgetInnerHeader);
 
 	if (withAdjust) {
-		var widgetHeaderControlButton = new Element('img',{ 'style':'cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
+		var widgetHeaderControlButton = new Element('img',{ 'style':'cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
 
 		Event.observe(widgetHeaderLabel,'mouseover',function (){widgetHeaderLabel.style.cursor = 'pointer'});
 		Event.observe(widgetHeaderLabel,'mouseout',function (){widgetHeaderLabel.style.cursor = 'normal'});
@@ -115,10 +115,10 @@ function buildWidgetHeader(title, height, isOpen, color, key, icon, withAdjust) 
 		Event.observe(widgetInnerHeader,'mouseout',function (){widgetInnerHeader.style.cursor = 'normal'});
 		Event.observe(widgetInnerHeader,'click',function (){toggleExpandWidget(widgetHeaderControlButton, key, height)});
 		Event.observe(widgetHeaderControlButton,'click',function (){toggleExpandWidget(this, key, height)});
-		var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol '});
+		var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol col-auto'});
 		widgetInnerHeaderControl.insert(widgetHeaderControlButton);
 
-		var widgetHeaderControlButton2 = new Element('img',{ 'style':'cursor: pointer;visibility:visible', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
+		var widgetHeaderControlButton2 = new Element('img',{ 'style':'cursor: pointer;display: inline', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
 		Event.observe(widgetHeaderControlButton2,'click',function (){toggleWidget(this, key, height)});
 		widgetInnerHeaderControl.insert(widgetHeaderControlButton2);
 
@@ -151,7 +151,7 @@ function adjustForExpand(button, key, mainheight) {
 		} else {
 			$(key+"buttonarrow").isClosed = 'false';
 		}
-		$(key+"buttonarrow").style.visibility = 'hidden';
+		$(key+"buttonarrow").style.display = 'none';
 	}
 
 	var height = mainheight;
@@ -191,7 +191,7 @@ function adjustForContract(button, key, mainheight) {
 	}
 
 	if ($(key+"buttonarrow")) {
-		$(key+"buttonarrow").style.visibility = 'visible';
+		$(key+"buttonarrow").style.display = 'inline';
 	}
 
 	$(key+"body").style.height = (mainheight-$(key+"header").offsetHeight-10)+"px";
@@ -239,7 +239,7 @@ function adjustForContractNode(button, key, mainheight) {
 function toggleExpandWidget(button, key, mainheight) {
 
 	if (key == nodekey) {
-		if ($('widgettable').style.display == 'block') {
+		if (($('widgettable').style.display == 'flex') || ($('widgettable').style.display == '')) {
 			$('widgetareadiv').insert($('nodearea'));
 			adjustForExpand(button, key, mainheight);
 			$('widgettable').style.display='none';
@@ -247,9 +247,9 @@ function toggleExpandWidget(button, key, mainheight) {
 				$('widgetextrastable').style.display='none';
 			}
 		} else {
-			$('widgettable').style.display='block';
+			$('widgettable').style.display='flex';
 			if ($('widgetextrastable')) {
-				$('widgetextrastable').style.display='block';
+				$('widgetextrastable').style.display='flex';
 			}
 			$('widgetcolnode').insert({'top':$('nodearea')});
 			adjustForContractNode(button, key, mainheight);
@@ -270,10 +270,10 @@ function toggleExpandWidget(button, key, mainheight) {
 		}
 
 		if (currentArray != "") {
-			if ($(key+"buttonarrow").style.visibility == 'visible') {
+			if ($(key+"buttonarrow").style.display == 'inline') {
 				for (var nextkey in currentArray) {
 					if (nextkey == key) {
-						$(currentArray[nextkey]).style.display = 'block';
+						$(currentArray[nextkey]).style.display = 'flex';
 					} else {
 						$(currentArray[nextkey]).style.display = 'none';
 					}
@@ -282,7 +282,7 @@ function toggleExpandWidget(button, key, mainheight) {
 			} else {
 				var i = 0;
 				for (var nextkey in currentArray) {
-					$(currentArray[nextkey]).style.display = 'block';
+					$(currentArray[nextkey]).style.display = 'flex';
 					i++;
 				}
 				adjustForContract(button, key, mainheight);
@@ -359,7 +359,7 @@ function resizeKeyWidget(key) {
 }
 
 function toggleWidget(button, key, mainheight) {
-	if ( $(key+"body").style.display == "block") {
+	if ( $(key+"body").style.display == "flex") {
 		$(key+"body").style.display = "none";
 		button.isClosed = 'true';
 		button.src='<?php echo $HUB_FLM->getImagePath("arrow-down2.png"); ?>';
@@ -371,7 +371,7 @@ function toggleWidget(button, key, mainheight) {
 			$(key+"div").style.height = headerinner+"px";
 		}
 	} else {
-		$(key+"body").style.display = "block";
+		$(key+"body").style.display = "flex";
 		button.src='<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>';
 		button.isClosed = 'false';
 		$(key+"div").style.height = mainheight+"px";
@@ -391,12 +391,12 @@ function buildThemeRelatedWidget(nodeid, theme, title, height, nodetype, color, 
 	var widgetDiv = new Element("div", {'class':'widgetdiv', 'id':key+"div"});
 	widgetDiv.style.height = height+"px";
 
-	var widgetHeader = new Element("div", {'class':'widgetheader '+color, 'id':key+"header"});
+	var widgetHeader = new Element("div", {'class':'widgetheader row m-0 p-0 '+color, 'id':key+"header"});
 
-	var widgetHeaderControlButton = new Element('img',{ 'style':'cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
+	var widgetHeaderControlButton = new Element('img',{ 'style':'cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
 	Event.observe(widgetHeaderControlButton,'click',function (){toggleExpandWidget(this, key, height)});
 
-	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner', 'id':key+"headerinner"});
+	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner col', 'id':key+"headerinner"});
 	Event.observe(widgetInnerHeader,'mouseover',function (){widgetInnerHeader.style.cursor = 'pointer'});
 	Event.observe(widgetInnerHeader,'mouseout',function (){widgetInnerHeader.style.cursor = 'normal'});
 	Event.observe(widgetInnerHeader,'click',function (){toggleExpandWidget(widgetHeaderControlButton, key, height)});
@@ -409,11 +409,11 @@ function buildThemeRelatedWidget(nodeid, theme, title, height, nodetype, color, 
 	widgetInnerHeader.insert(widgetHeaderLabel);
 	widgetHeader.insert(widgetInnerHeader);
 
-	var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol'});
+	var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol col-auto'});
 
 	widgetInnerHeaderControl.insert(widgetHeaderControlButton);
 
-	var widgetHeaderControlButton2 = new Element('img',{ 'style':'visibility:visible; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
+	var widgetHeaderControlButton2 = new Element('img',{ 'style':'display: inline; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
 	Event.observe(widgetHeaderControlButton2,'click',function (){toggleWidget(this, key, height)});
 	widgetInnerHeaderControl.insert(widgetHeaderControlButton2);
 
@@ -441,36 +441,36 @@ function buildThemeRelatedWidget(nodeid, theme, title, height, nodetype, color, 
 
 		if (nodetype == 'Claim') {
 			var hint = '<?php echo $LNG->EXPLORE_THEME_HINT_CLAIM; ?>';
-			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'claimconnect\', \''+URL_ROOT+'ui/popups/claimconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'claimconnect\', \''+URL_ROOT+'ui/popups/claimconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (nodetype == 'Solution') {
 			var hint = '<?php echo $LNG->EXPLORE_THEME_HINT_SOLUTION; ?>';
-			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'solutionconnect\', \''+URL_ROOT+'ui/popups/solutionconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'solutionconnect\', \''+URL_ROOT+'ui/popups/solutionconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 
 		<?php if ( $CFG->issuesManaged == false || ($CFG->issuesManaged == true && $USER->getIsAdmin() == "Y") ) { ?>
 		} else if (nodetype == 'Issue') {
 			var hint = '<?php echo $LNG->EXPLORE_THEME_HINT_ISSUE; ?>';
 			var link = URL_ROOT+'ui/popups/issueconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme;
-			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'issueconnect\', \''+link+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'issueconnect\', \''+link+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		<?php } ?>
 
 		} else if (nodetype == 'Challenge') {
 			var hint = '<?php echo $LNG->EXPLORE_THEME_HINT_CHALLENGE; ?>';
-			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'challengeconnect\', \''+URL_ROOT+'ui/popups/challengeconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'challengeconnect\', \''+URL_ROOT+'ui/popups/challengeconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (nodetype == 'Project') {
 			var hint = '<?php echo $LNG->EXPLORE_THEME_HINT_PROJECT; ?>';
-			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'projectconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'projectconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (nodetype == 'Organization') {
 			var hint = '<?php echo $LNG->EXPLORE_THEME_HINT_ORG; ?>';
-			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (nodetype == 'Organization,Project') {
 			var hint = '<?php echo $LNG->EXPLORE_THEME_HINT_ORGPROJECT; ?>';
-			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (nodetype == RESOURCE_TYPES_STR) {
 			var hint = '<?php echo $LNG->EXPLORE_THEME_HINT_RESOURCE; ?>';
-			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'resourceconnect\', \''+URL_ROOT+'ui/popups/resourceconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'resourceconnect\', \''+URL_ROOT+'ui/popups/resourceconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (nodetype == EVIDENCE_TYPES_STR) {
 			var hint = '<?php echo $LNG->EXPLORE_THEME_HINT_EVIDENCE; ?>';
-			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a title="'+hint+'" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'&theme='+encodedTheme+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		}
 
 		widgetHeader.insert(toolbar);
@@ -478,13 +478,13 @@ function buildThemeRelatedWidget(nodeid, theme, title, height, nodetype, color, 
 		var toolbar = new Element("div", {'class':'widgetheaderinner', 'style':'padding-top:0px;'});
 		let alink = '<span style="cursor:pointer" onclick="$(\'loginsubmit\').click(); return true;" title="';
 		alink += "<?php echo $LNG->WIDGET_SIGNIN_HINT; ?>";
-		alink += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
+		alink += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
 		toolbar.insert(alink);
 		widgetHeader.insert(toolbar);
 	}
 
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 		widgetHeaderControlButton2.src='<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>';
 	} else {
 		widgetBody.style.display = 'none';
@@ -506,7 +506,7 @@ function buildThemeRelatedWidget(nodeid, theme, title, height, nodetype, color, 
 			widgetBody.update("");
 
 			if (conns.length == 0) {
-				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 			} else {
 				var nodes = new Array();
 				var check = new Array();
@@ -535,7 +535,7 @@ function buildThemeRelatedWidget(nodeid, theme, title, height, nodetype, color, 
 					displayWidgetNodes(widgetBody,nodes,parseInt(0), true, key);
 					widgetHeaderLabel.update("<span class='widgetcountlabel'>("+nodes.length+")</span>"+title);
 				} else {
-					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 				}
 			}
 		}
@@ -559,15 +559,15 @@ function buildThemeWidget(nodeid,height,isOpen,key, title){
 	widgetDiv.insert(widgetBody);
 
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 	} else {
 		widgetBody.style.display = 'none';
 		widgetDiv.style.height =  widgetHeader.style.height;
 	}
 
 	// If logged in, add theme adding facility
-	var toolbar = new Element("div", {'class':'widgetheaderinner', 'style':'padding-top:0px;'});
-	var themeAdd = new Element("select", {'class':'subforminput hgrselecthgrselect', 'id':'thememenu'+nodeid, 'style':'width:200px;'});
+	var toolbar = new Element("div", {'class':'widgetheaderinner row'});
+	var themeAdd = new Element("select", {'class':'form-select col ms-3', 'aria-label':'select a theme', 'id':'thememenu'+nodeid });
 	if (USER == "") {
 		themeAdd.disabled='true';
 	}
@@ -582,7 +582,7 @@ function buildThemeWidget(nodeid,height,isOpen,key, title){
 		themeAdd.insert(option);
 	}
 
-	var button = new Element("input", {'value':'<?php echo $LNG->WIDGET_ADD_BUTTON; ?>', 'type':'button'});
+	var button = new Element("input", {'value':'<?php echo $LNG->WIDGET_ADD_BUTTON; ?>', 'type':'button', 'class':'btn btn-secondary col-auto'});
 	if (USER != "") {
 		Event.observe(button,"click", function(){
 			var themename = $('thememenu'+nodeid).value;
@@ -712,7 +712,7 @@ function buildNodeWidgetNew(node, height, type, key, color) {
 
 	buildWidgetExploreNodeHeader(widgetHeader, title+name, color, type, icon, height, key);
 
-	var toolbar = new Element("div", {'class':'nodewidgettoolbar', 'style':'margin-bottom:5px;'});
+	var toolbar = new Element("div", {'class':'nodewidgettoolbar'});
 
 	if (type != "news") {
 		buildExploreToolbar(toolbar, title+name, type, node, 'explore');
@@ -727,7 +727,7 @@ function buildNodeWidgetNew(node, height, type, key, color) {
 
 	var userbar = new Element("div", {'style':'float:left;clear:both;margin-bottom:5px;'} );
 	var iuDiv = new Element("div", {'class':'idea-user2', 'style':'clear:both;float:left;'});
-	var userimageThumb = new Element('img',{'alt':username, 'title': username, 'style':'padding-right:5px;', 'border':'0','src': userimage});
+	var userimageThumb = new Element('img',{'alt':username, 'title': username, 'style':'padding-right:5px;', 'src': userimage});
 
 	var imagelink = new Element('a', {'href':URL_ROOT+"user.php?userid="+userid, 'title':username});
 
@@ -936,7 +936,7 @@ function buildNodeWidgetNewShort(node, type, key, color, border) {
 
 	if (icon) {
 		icon = URL_ROOT+icon
-		var iconObj = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'title':title, 'alt':type+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'border':'0','src':icon});
+		var iconObj = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'title':title, 'alt':type+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'src':icon});
 		iconObj.align='left';
 		widgetHeaderLabel.appendChild(iconObj);
 	}
@@ -972,12 +972,12 @@ function buildThemeSuggestionByType(nodeid, type, title, height, isOpen, color, 
 
 	/*****************/
 
-	var widgetHeader = new Element("div", {'class':'widgetheader '+color, 'id':key+"header"});
+	var widgetHeader = new Element("div", {'class':'widgetheader row m-0 p-0 '+color, 'id':key+"header"});
 
-	var widgetHeaderControlButton = new Element('img',{ 'style':'visibility:hidden; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
+	var widgetHeaderControlButton = new Element('img',{ 'style':'display: none; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
 	Event.observe(widgetHeaderControlButton,'click',function (){toggleExpandWidget(this, key, height)});
 
-	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner', 'id':key+"headerinner", 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>'});
+	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner col', 'id':key+"headerinner", 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>'});
 
 	var widgetHeaderLabel = new Element("label", {'class':'widgetheaderlabel widgettextcolor ', 'id':key+"headerlabel"});
 	widgetHeaderLabel.insert(title);
@@ -985,11 +985,11 @@ function buildThemeSuggestionByType(nodeid, type, title, height, isOpen, color, 
 	widgetInnerHeader.insert(widgetHeaderLabel);
 	widgetHeader.insert(widgetInnerHeader);
 
-	var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol '});
+	var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol col-auto '});
 
 	widgetInnerHeaderControl.insert(widgetHeaderControlButton);
 
-	var widgetHeaderControlButton2 = new Element('img',{ 'style':'visibility:hidden; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
+	var widgetHeaderControlButton2 = new Element('img',{ 'style':'display: none; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
 	Event.observe(widgetHeaderControlButton2,'click',function (){toggleWidget(this, key, height)});
 	widgetInnerHeaderControl.insert(widgetHeaderControlButton2);
 
@@ -1025,7 +1025,7 @@ function buildThemeSuggestionByType(nodeid, type, title, height, isOpen, color, 
 	widgetHeader.insert(toolbar);
 
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 	} else {
 		widgetBody.style.display = 'none';
 		widgetDiv.style.height =  widgetHeader.style.height;
@@ -1039,8 +1039,8 @@ function loadThemeSuggestionByType(nodeid, type, title, height, key) {
 	$(key+"body").update(getLoading("(<?php echo $LNG->WIDGET_LOADING; ?> "+title+"...)"));
 	$(key+"headerlabel").update(title+"<span class='margin-left:5px'>( <?php $LNG->WIDGET_LOADING; ?>.. )</span>");
 
-	$(key+'buttonarrow').style.visibility = 'visible';
-	$(key+'buttonresize').style.visibility = 'visible';
+	$(key+'buttonarrow').style.display = 'inline';
+	$(key+'buttonresize').style.display = 'inline';
 
 	Event.observe($(key+"headerinner"),'mouseover',function (){$(key+"headerinner").style.cursor = 'pointer'});
 	Event.observe($(key+"headerinner"),'mouseout',function (){$(key+"headerinner").style.cursor = 'normal'});
@@ -1074,7 +1074,7 @@ function loadThemeSuggestionByType(nodeid, type, title, height, key) {
 
 			if (conns.length == 0) {
 				$(key+"headerlabel").update("<span class='widgetcountlabel'>(0)</span>"+title);
-				$(key+"body").update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+				$(key+"body").update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 			} else {
 				var nodes = new Array();
 				var check = new Array();
@@ -1129,7 +1129,7 @@ function loadThemeSuggestionByType(nodeid, type, title, height, key) {
 					$(key+"headerlabel").update("<span class='widgetcountlabel'>("+nodes.length+")</span>"+title);
 				} else {
 					$(key+"headerlabel").update("<span class='widgetcountlabel'>(0)</span>"+title);
-					$(key+"body").update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+					$(key+"body").update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 				}
 			}
 		}
@@ -1161,7 +1161,7 @@ function buildEvidenceWidget(nodeid, title, nodetype, linktype, height, isOpen, 
 	widgetDiv.insert(widgetBody);
 
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 	} else {
 		widgetBody.style.display = 'none';
 		widgetDiv.style.height =  widgetHeader.style.height;
@@ -1170,13 +1170,13 @@ function buildEvidenceWidget(nodeid, title, nodetype, linktype, height, isOpen, 
 	/* IF LOGGED IN, ADD EDITING ELEMENTS */
 	if (USER != "") {
 		var toolbar = new Element("div", {'class':'widgetheaderinner', 'style':'padding-top:0px;'});
-		toolbar.insert('<a title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename='+nodetype+'&linktypename='+linktype+'&focalnodeid='+nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=refreshWidgetEvidence&type='+nodetype+'\', 840,600);" ><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+		toolbar.insert('<a title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename='+nodetype+'&linktypename='+linktype+'&focalnodeid='+nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=refreshWidgetEvidence&type='+nodetype+'\', 840,600);" ><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		widgetHeader.insert(toolbar);
 	} else {
 		var toolbar = new Element("div", {'class':'widgetheaderinner', 'style':'padding-top:0px;'});
 		let spancontent = '<span style="cursor:pointer" onclick="$(\'loginsubmit\').click(); return true;" title="';
 		spancontent += "<?php echo $LNG->WIDGET_SIGNIN_HINT; ?>";
-		spancontent += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
+		spancontent += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
 		toolbar.insert(spancontent);
 		widgetHeader.insert(toolbar);
 	}
@@ -1198,7 +1198,7 @@ function buildEvidenceWidget(nodeid, title, nodetype, linktype, height, isOpen, 
 			widgetBody.update("");
 
 			if (conns.length == 0) {
-				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 			} else {
 				var nodes = new Array();
 				for(var i=0; i< conns.length; i++){
@@ -1225,7 +1225,7 @@ function buildEvidenceWidget(nodeid, title, nodetype, linktype, height, isOpen, 
 					displayWidgetNodes(widgetBody,nodes,parseInt(0), true, key);
 					$(key+"headerlabel").update("<span class='widgetcountlabel'>("+nodes.length+")</span>"+title);
 				} else {
-					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 				}
 			}
 		}
@@ -1253,7 +1253,7 @@ function buildRelatedResourcesWidget(nodeid, title, url, height, isOpen, key) {
 	widgetDiv.insert(widgetBody);
 
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 	} else {
 		widgetBody.style.display = 'none';
 		widgetDiv.style.height =  widgetHeader.style.height;
@@ -1297,10 +1297,10 @@ function buildRelatedResourcesWidget(nodeid, title, url, height, isOpen, key) {
 					displayWidgetNodes(widgetBody,nodesfiltered,parseInt(0), true, key);
 					$(key+"headerlabel").update("<span class='widgetcountlabel'>("+nodesfiltered.length+")</span>"+title);
 				} else  {
-					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 				}
 			} else {
-				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 			}
 		}
 	});
@@ -1329,7 +1329,7 @@ function buildSeeAlsoWidget(nodeid, title, height, isOpen, color, key, nodetofoc
 	widgetDiv.insert(widgetBody);
 
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 	} else {
 		widgetBody.style.display = 'none';
 		widgetDiv.style.height =  widgetHeader.style.height;
@@ -1338,7 +1338,7 @@ function buildSeeAlsoWidget(nodeid, title, height, isOpen, color, key, nodetofoc
 	if (USER != "") {
 		var toolbar = new Element("div", {'class':'widgetheaderinner', 'style':'padding-top:0px;'});
 		var addButton = new Element("a", {'title':hint, 'href':'#'} );
-		addButton.insert('<img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?>');
+		addButton.insert('<img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?>');
 		Event.observe(addButton,'click',function () {
 			loadDialog('selector', URL_ROOT+"ui/popups/selector.php?handler=addSeeAlso&filternodetypes="+filternodetypes, 420, 730);
 		});
@@ -1348,7 +1348,7 @@ function buildSeeAlsoWidget(nodeid, title, height, isOpen, color, key, nodetofoc
 		var toolbar = new Element("div", {'class':'widgetheaderinner', 'style':'padding-top:0px;'});
 		let spancontent = '<span style="cursor:pointer" onclick="$(\'loginsubmit\').click(); return true;" title="';
 		spancontent += "<?php echo $LNG->WIDGET_SIGNIN_HINT; ?>";
-		spancontent += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
+		spancontent += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
 		toolbar.insert(spancontent);
 		widgetHeader.insert(toolbar);
 	}
@@ -1371,7 +1371,7 @@ function buildSeeAlsoWidget(nodeid, title, height, isOpen, color, key, nodetofoc
 			widgetBody.update("");
 
 			if (conns.length == 0) {
-				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 			} else {
 				var nodes = new Array();
 				for(var i=0; i< conns.length; i++){
@@ -1407,7 +1407,7 @@ function buildSeeAlsoWidget(nodeid, title, height, isOpen, color, key, nodetofoc
 					displayWidgetNodes(widgetBody,nodes,parseInt(0), true, key);
 					$(key+"headerlabel").update("<span class='widgetcountlabel'>("+nodes.length+")</span>"+title);
 				} else {
-					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 				}
 			}
 		}
@@ -1998,13 +1998,13 @@ function buildActiveConnectionWidget(focalnodeid, model, title, height, handler,
 				var selectedOption = "supports";
 				var refresher = "openClaimFromEvidencePopupWidget";
 				var addButton = new Element("a", {'id':'addknowledge'+key+'button', 'title':hint, 'href':'#'} );
-				addButton.insert('<img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?>');
+				addButton.insert('<img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?>');
 				Event.observe(addButton,'click',function () {
 					radioEvidencePrompt(focalnodeid, filternodetypes, focalnodeend, handler, key, nodetofocusid, promptlabel, selectedOption, refresher);
 				});
 				toolbar.insert(addButton);
 			} else {
-				toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'claimconnect\', \''+URL_ROOT+'ui/popups/claimconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+				toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'claimconnect\', \''+URL_ROOT+'ui/popups/claimconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 			}
 		} else if (filternodetypes == 'Solution') {
 			if (linktypename == 'challenges,supports') {
@@ -2012,36 +2012,36 @@ function buildActiveConnectionWidget(focalnodeid, model, title, height, handler,
 				var selectedOption = "supports";
 				var refresher = "openSolutionFromEvidencePopupWidget";
 				var addButton = new Element("a", {'id':'addknowledge'+key+'button', 'title':hint, 'href':'#'} );
-				addButton.insert('<img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?>');
+				addButton.insert('<img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?>');
 				Event.observe(addButton,'click',function () {
 					radioEvidencePrompt(focalnodeid, filternodetypes, focalnodeend, handler, key, nodetofocusid, promptlabel, selectedOption, refresher);
 				});
 				toolbar.insert(addButton);
 			} else {
-				toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'solutionconnect\', \''+URL_ROOT+'ui/popups/solutionconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+				toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'solutionconnect\', \''+URL_ROOT+'ui/popups/solutionconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 			}
 
 		<?php if ( $CFG->issuesManaged == false || ($CFG->issuesManaged == true && $USER->getIsAdmin() == "Y") ) { ?>
-		} else if (filternodetypes == 'Issue') {
-			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'issueconnect\', \''+URL_ROOT+'ui/popups/issueconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			} else if (filternodetypes == 'Issue') {
+				toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'issueconnect\', \''+URL_ROOT+'ui/popups/issueconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		<?php } ?>
 
 		} else if (filternodetypes == 'Challenge') {
-			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'challengeconnect\', \''+URL_ROOT+'ui/popups/challengeconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'challengeconnect\', \''+URL_ROOT+'ui/popups/challengeconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (filternodetypes == 'Project') {
-			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'projectconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'projectconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (filternodetypes == 'Organization') {
-			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (filternodetypes == 'Organization,Project') {
 			if (linktypename == 'partnered with') {
-				toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+				toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 			} else {
-				toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+				toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'orgconnect\', \''+URL_ROOT+'ui/popups/organizationconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,750);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 			}
 		} else if (filternodetypes == RESOURCE_TYPES_STR) {
-			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'resourceconnect\', \''+URL_ROOT+'ui/popups/resourceconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'resourceconnect\', \''+URL_ROOT+'ui/popups/resourceconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		} else if (filternodetypes == EVIDENCE_TYPES_STR) {
-			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
+			toolbar.insert('<a id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linktypename='+linktypename+'&focalnodeid='+focalnodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler='+handler+'\', 840,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></a>');
 		}
 
 		widgetHeader.insert(toolbar);
@@ -2051,7 +2051,7 @@ function buildActiveConnectionWidget(focalnodeid, model, title, height, handler,
 		var toolbar = new Element("div", {'class':'widgetheaderinner', 'style':'padding-top:0px;'});
 		let spancontent = '<span style="cursor:pointer" onclick="$(\'loginsubmit\').click(); return true;" title="';
 		spancontent += "<?php echo $LNG->WIDGET_SIGNIN_HINT; ?>";
-		spancontent += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
+		spancontent += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
 		toolbar.insert(spancontent);
 		widgetHeader.insert(toolbar);
 	}
@@ -2062,7 +2062,7 @@ function buildActiveConnectionWidget(focalnodeid, model, title, height, handler,
 	widgetBody.style.background = "white";
 	widgetBody.style.height = bodyheight+"px";
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 		widgetDiv.style.height = height+"px";
 	} else {
 		widgetBody.style.display = 'none';
@@ -2087,7 +2087,7 @@ function buildActiveConnectionWidget(focalnodeid, model, title, height, handler,
 			widgetBody.update("");
 
 			if (conns.length == 0) {
-				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 			} else {
 				var nodes = new Array();
 				for(var i=0; i< conns.length; i++){
@@ -2118,7 +2118,7 @@ function buildActiveConnectionWidget(focalnodeid, model, title, height, handler,
 					displayWidgetNodes(widgetBody,nodes,parseInt(0), true, key);
 					$(key+"headerlabel").update("<span class='widgetcountlabel'>("+nodes.length+")</span>"+title);
 				} else {
-					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 				}
 			}
 		}
@@ -2143,9 +2143,9 @@ function closeComment(key) {
 	$(key+"body").style.display = 'block';
 	$('commenthidden').style.display = 'none';
 	$('commenttoolbar').style.display = 'block';
-	$(key+"buttonresize").style.visibility = 'visible';
+	$(key+"buttonresize").style.display = 'inline';
 	if ($(key+"headerinner").title == 'Expand') {
-		$(key+"buttonarrow").style.visibility = 'visible';
+		$(key+"buttonarrow").style.display = 'inline';
 	}
 }
 
@@ -2165,7 +2165,7 @@ function buildCommentWidget(focalnodeid, title, height, isOpen, color, key) {
 	widgetDiv.insert(widgetBody);
 
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 	} else {
 		widgetBody.style.display = 'none';
 		widgetDiv.style.height =  widgetHeader.style.height;
@@ -2173,13 +2173,13 @@ function buildCommentWidget(focalnodeid, title, height, isOpen, color, key) {
 
 	/* IF LOGGED IN, ADD EDITING ELEMENTS */
 	if (USER != "") {
-		var toolbar = new Element("div", {'id':'commenttoolbar', 'class':'widgetheaderinner '+color, 'style':'padding-top:0px;'});
+		var toolbar = new Element("div", {'id':'commenttoolbar', 'class':'widgetheaderinner col '+color, 'style':'padding-top:0px;'});
 		var link = new Element("a", {'title':"<?php echo $LNG->WIDGET_ADD_COMMENT_HINT; ?>", 'style':'cursor:pointer'});
-		link.insert('<span id="linkbutton"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>');
+		link.insert('<span id="linkbutton"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>');
 		Event.observe(link,"click", function(){
 
 			//check if the widget if closed, and if it is, open it first
-			if (widgetBody.style.display != "block") {
+			if (widgetBody.style.display != "flex") {
 				toggleWidget($(key+'buttonarrow'), key, height);
 			}
 
@@ -2188,8 +2188,8 @@ function buildCommentWidget(focalnodeid, title, height, isOpen, color, key) {
 			$('comment').style.height = ($(key+"body").offsetHeight-40)+"px";
 			$(key+"body").style.display = 'none';
 			$('commenttoolbar').style.display = 'none';
-			$(key+"buttonarrow").style.visibility = 'hidden';
-			$(key+"buttonresize").style.visibility = 'hidden';
+			$(key+"buttonarrow").style.display = 'none';
+			$(key+"buttonresize").style.display = 'none';
 		});
 		toolbar.insert(link);
 		widgetHeader.insert(toolbar);
@@ -2236,7 +2236,7 @@ function buildCommentWidget(focalnodeid, title, height, isOpen, color, key) {
 		var toolbar = new Element("div", {'class':'widgetheaderinner', 'style':'padding-top:0px;'});
 		let spancontent = '<span style="cursor:pointer" onclick="$(\'loginsubmit\').click(); return true;" title="';
 		spancontent += "<?php echo $LNG->WIDGET_SIGNIN_HINT; ?>";
-		spancontent += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
+		spancontent += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" alt="" /> <?php echo $LNG->WIDGET_ADD_LINK; ?></span>';
 		toolbar.insert(spancontent);
 		widgetHeader.insert(toolbar);
 	}
@@ -2255,7 +2255,7 @@ function buildCommentWidget(focalnodeid, title, height, isOpen, color, key) {
 			widgetBody.update("");
 
 			if (conns.length == 0) {
-				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2b; ?>");
+				widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND2; ?>");
 			} else {
 				var nodes = new Array();
 				for(var i=0; i< conns.length; i++){
@@ -2281,7 +2281,7 @@ function buildCommentWidget(focalnodeid, title, height, isOpen, color, key) {
 					displayWidgetNodes(widgetBody,nodes,parseInt(0), true, key);
 					$(key+"headerlabel").update("<span class='widgetcountlabel'>("+nodes.length+")</span>"+title);
 				} else {
-					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2b; ?>");
+					widgetBody.update("<?php echo $LNG->WIDGET_NONE_FOUND2; ?>");
 				}
 			}
 		}
@@ -2296,19 +2296,20 @@ function followUsersWidget(focalnodeid, title, height, isOpen, color, key) {
 	widgetDiv.style.height = height+"px";
 
 // WIDGET HEADER
-	var widgetHeader = new Element("div", {'class':'widgetheader '+color, 'id':key+"header"});
+	var widgetHeader = new Element("div", {'class':'widgetheader row m-0 p-0 '+color, 'id':key+"header"});
 
-	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner ', 'id':key+"headerinner", 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>'});
+	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner col', 'id':key+"headerinner", 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>'});
 	var widgetHeaderLabel = new Element("label", {'class':'widgetheaderlabel widgettextcolor ', 'id':key+"headerlabel"});
 
 	if (icon) {
-		var icon = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'alt':title+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'border':'0','src':icon});
+		var icon = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'alt':title+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'src':icon});
 		icon.align='left';
 		widgetInnerHeader.appendChild(icon);
 	}
 
 	var followbutton = new Element('img', {'style':'margin-right:5px;vertical-align:bottom'});
 	followbutton.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("follow_bit.png"); ?>');
+	followbutton.setAttribute('alt', '');
 	widgetInnerHeader.insert(followbutton);
 
 	widgetHeaderLabel.insert("<span class='widgetcountlabel'>(0)</span>"+title);
@@ -2316,7 +2317,7 @@ function followUsersWidget(focalnodeid, title, height, isOpen, color, key) {
 	widgetInnerHeader.insert(widgetHeaderLabel);
 	widgetHeader.insert(widgetInnerHeader);
 
-	var widgetHeaderControlButton = new Element('img',{ 'style':'cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
+	var widgetHeaderControlButton = new Element('img',{ 'style':'cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
 
 	Event.observe(widgetHeaderLabel,'mouseover',function (){widgetHeaderLabel.style.cursor = 'pointer'});
 	Event.observe(widgetHeaderLabel,'mouseout',function (){widgetHeaderLabel.style.cursor = 'normal'});
@@ -2325,10 +2326,10 @@ function followUsersWidget(focalnodeid, title, height, isOpen, color, key) {
 	Event.observe(widgetInnerHeader,'mouseout',function (){widgetInnerHeader.style.cursor = 'normal'});
 	Event.observe(widgetInnerHeader,'click',function (){toggleExpandWidget(widgetHeaderControlButton, key, height)});
 	Event.observe(widgetHeaderControlButton,'click',function (){toggleExpandWidget(this, key, height)});
-	var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol '});
+	var widgetInnerHeaderControl = new Element("div", {'class':'widgetheadercontrol col-auto'});
 	widgetInnerHeaderControl.insert(widgetHeaderControlButton);
 
-	var widgetHeaderControlButton2 = new Element('img',{ 'style':'cursor: pointer;visibility:visible', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
+	var widgetHeaderControlButton2 = new Element('img',{ 'style':'cursor: pointer;display: inline', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
 	Event.observe(widgetHeaderControlButton2,'click',function (){toggleWidget(this, key, height)});
 	widgetInnerHeaderControl.insert(widgetHeaderControlButton2);
 
@@ -2350,42 +2351,11 @@ function followUsersWidget(focalnodeid, title, height, isOpen, color, key) {
 	widgetDiv.insert(widgetBody);
 
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 	} else {
 		widgetBody.style.display = 'none';
 		widgetDiv.style.height =  widgetHeader.offsetHeight;
 	}
-
-
-	/* IF LOGGED IN, ADD FOLLOW BUTTON */
-	/*if (USER != "") {
-		var toolbar = new Element("div", {'id':'commenttoolbar', 'class':'widgetheaderinner', 'style':'padding-top:0px;'});
-		widgetHeader.insert(toolbar);
-
-		var followbutton = document.createElement('img');
-		followbutton.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("follow.png"); ?>');
-		followbutton.setAttribute('alt', 'Follow');
-		followbutton.setAttribute('id','follow'+nodeid);
-		followbutton.nodeid = focalnodeid;
-		followbutton.style.marginRight="3px";
-		followbutton.style.cursor = 'pointer';
-
-		toolbar.insert(followbutton);
-
-		if (nodeObj.userfollow && nodeObj.userfollow == "Y") {
-			Event.observe(followbutton,'click',function (){ unfollowNode(nodeObj, this, "loadfollowUsersWidget('"+focalnodeid+"', '"+title+"', '"+key+"')") } );
-			followbutton.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("follow.png"); ?>');
-			followbutton.setAttribute('title', '<?php echo $LNG->NODE_UNFOLLOW_ITEM_HINT; ?>');
-		} else {
-			Event.observe(followbutton,'click',function (){ followNode(nodeObj, this, "loadfollowUsersWidget('"+focalnodeid+"', '"+title+"', '"+key+"')") } );
-			followbutton.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("follow.png"); ?>');
-			followbutton.setAttribute('title', '<?php echo $LNG->NODE_FOLLOW_ITEM_HINT; ?>');
-		}
-	} else {
-		var toolbar = new Element("div", {'class':'widgetheaderinner', 'style':'padding-top:0px;'});
-		toolbar.insert("<img style='cursor:pointer' onclick='$(\"loginsubmit\").click(); return true;' title='<?php echo $LNG->WIDGET_FOLLOW_SIGNIN_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath("followgrey.png"); ?>' border='0' />");
-		widgetHeader.insert(toolbar);
-	}*/
 
 	loadfollowUsersWidget(focalnodeid, title, key, widgetBody);
 
@@ -2427,12 +2397,12 @@ function loadfollowUsersWidget(focalnodeid, title, key, widgetBody) {
 
 function overviewUserWidget(context, args, title, orderby, sort, count, width, height, buttontitle, key, hinttype, filtertype) {
 
-	var set = new Element("fieldset", {'class':'overviewfieldset', 'style':'width: '+width+'px;'});
+	var set = new Element("fieldset", {'class':'overviewfieldset'});
 	var legend = new Element("legend", {'class':'overviewlegend widgettextcolor'});
 
 	legend.insert(title);
 	set.insert(legend);
-	var main = new Element("div", {'style':'height: '+height+'px; overflow-y: auto; overflow-x: none'});
+	var main = new Element("div", {"class":"mb-2", 'style':'height: '+height+'px; overflow-y: auto; overflow-x: hidden; '});
 	main.insert(getLoading("(<?php echo $LNG->WIDGET_LOADING; ?> "+title+"...)"));
 	set.insert(main);
 
@@ -2485,12 +2455,12 @@ function overviewUserWidget(context, args, title, orderby, sort, count, width, h
 
 function overviewActiveUserWidget(context, args, title, orderby, sort, count, width, height, buttontitle, key, hinttype, filtertype) {
 
-	var set = new Element("fieldset", {'class':'overviewfieldset', 'style':'width: '+width+'px;'});
+	var set = new Element("fieldset", {'class':'overviewfieldset'});
 	var legend = new Element("legend", {'class':'overviewlegend widgettextcolor'});
 
 	legend.insert(title);
 	set.insert(legend);
-	var main = new Element("div", {'style':'height: '+height+'px; overflow-y: auto; overflow-x: none'});
+	var main = new Element("div", {'style':'height: '+height+'px; overflow-y: auto; overflow-x: hidden;'});
 	main.insert(getLoading("(<?php echo $LNG->WIDGET_LOADING; ?> "+title+"...)"));
 	set.insert(main);
 
@@ -2550,11 +2520,11 @@ function overviewActiveUserWidget(context, args, title, orderby, sort, count, wi
 
 function overviewFollowedUserWidget(context, args, title, orderby, sort, count, width, height, buttontitle, key, hinttype, filtertype) {
 
-	var set = new Element("fieldset", {'class':'overviewfieldset', 'style':'width: '+width+'px;'});
+	var set = new Element("fieldset", {'class':'overviewfieldset'});
 	var legend = new Element("legend", {'class':'overviewlegend widgettextcolor'});
 	legend.insert(title);
 	set.insert(legend);
-	var main = new Element("div", {'style':'height: '+height+'px; overflow-y: auto; overflow-x: none'});
+	var main = new Element("div", {'style':'height: '+height+'px; overflow-y: auto; overflow-x: hidden;'});
 	main.insert(getLoading("(<?php echo $LNG->WIDGET_LOADING; ?> "+title+"...)"));
 	set.insert(main);
 
@@ -2607,7 +2577,7 @@ function overviewNodeWidget(context, args, title, filternodetypes, orderby, sort
 		uniqueid = 'something';
 	}
 
-	var set = new Element("fieldset", {'class':'overviewfieldset', 'style':'width: '+width+'px;'});
+	var set = new Element("fieldset", {'class':'overviewfieldset'});
 	var legend = new Element("legend", {'class':'overviewlegend widgettextcolor'});
 	legend.insert(title);
 	set.insert(legend);
@@ -2666,7 +2636,7 @@ function overviewHomeNodeWidget(context, args, filternodetypes, orderby, sort, c
 		uniqueid = 'homelist';
 	}
 
-	var main = new Element("div", {'style':'height: '+height+'px; overflow-y: auto; overflow-x: auto;padding-right:5px;'});
+	var main = new Element("div", {'class':'overview-home-node-widget'});
 	main.insert(getLoading("(<?php echo $LNG->WIDGET_LOADING; ?>...)"));
 
 	var args2 = Object.clone(args);
@@ -2706,7 +2676,7 @@ function overviewHomeNodeWidget(context, args, filternodetypes, orderby, sort, c
 
 function overviewThemeWidget(context, args, title, filternodetypes, count, width, height, buttontitle, key, hinttype) {
 
-	var set = new Element("fieldset", {'class':'overviewfieldset', 'style':'width: '+width+'px;'});
+	var set = new Element("fieldset", {'class':'overviewfieldset'});
 	var legend = new Element("legend", {'class':'overviewlegend widgettextcolor'});
 	legend.insert(title);
 	set.insert(legend);
@@ -2751,7 +2721,7 @@ function overviewThemeWidget(context, args, title, filternodetypes, count, width
 
 					var divarea = new Element("div", {'style':'width:'+width-50+'px;clear:both;float:left; margin-left: 5px; margin-top:5px;font-weight:bold;'});
 
-	 				var nodeicon = new Element('img',{'alt':role.name, 'title':role.name, 'style':'float:left;width:20px;height:20px;margin-top:3px;padding-right:5px;','align':'left','border':'0','src': URL_ROOT + role.image});
+	 				var nodeicon = new Element('img',{'alt':role.name, 'title':role.name, 'style':'float:left;width:20px;height:20px;margin-top:3px;padding-right:5px;','align':'left','src': URL_ROOT + role.image});
 					var popthemeanchor = new Element("a", {'class':'itemtext', 'title':count+" : Click to explore", 'href':URL_ROOT+'explore.php?id='+nodeid, 'style':'float:left; margin-left: 5px; margin-top:5px; margin-bottom:10px;'});
 					popthemeanchor.insert(name);
 
@@ -2788,12 +2758,12 @@ function buildTagSuggestionByType(nodeid, type, tags, title, height, isOpen, col
 
 	/*****************/
 
-	var widgetHeader = new Element("div", {'class':'widgetheader '+color, 'id':key+"header"});
+	var widgetHeader = new Element("div", {'class':'test1 widgetheader '+color, 'id':key+"header"});
 
-	var widgetHeaderControlButton = new Element('img',{ 'style':'visibility:hidden; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
+	var widgetHeaderControlButton = new Element('img',{ 'style':'display: none; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_RESIZE_ITEM_ALT; ?>', 'id':key+'buttonresize', 'title': '<?php echo $LNG->WIDGET_RESIZE_ITEM_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("enlarge2.gif"); ?>'});
 	Event.observe(widgetHeaderControlButton,'click',function (){toggleExpandWidget(this, key, height)});
 
-	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner', 'id':key+"headerinner", 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>'});
+	var widgetInnerHeader = new Element("div", {'class':'widgetheaderinner col', 'id':key+"headerinner", 'title':'<?php echo $LNG->WIDGET_EXPAND_HINT; ?>'});
 
 	var widgetHeaderLabel = new Element("label", {'class':'widgetheaderlabel widgettextcolor', 'id':key+"headerlabel"});
 	widgetHeaderLabel.insert(title);
@@ -2805,7 +2775,7 @@ function buildTagSuggestionByType(nodeid, type, tags, title, height, isOpen, col
 
 	widgetInnerHeaderControl.insert(widgetHeaderControlButton);
 
-	var widgetHeaderControlButton2 = new Element('img',{ 'style':'visibility:hidden; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
+	var widgetHeaderControlButton2 = new Element('img',{ 'style':'display: none; cursor: pointer;', 'alt':'<?php echo $LNG->WIDGET_OPEN_CLOSE_ALT; ?>', 'id':key+'buttonarrow', 'title': '<?php echo $LNG->WIDGET_OPEN_CLOSE_HINT; ?>', 'src': '<?php echo $HUB_FLM->getImagePath("arrow-up2.png"); ?>'});
 	Event.observe(widgetHeaderControlButton2,'click',function (){toggleWidget(this, key, height)});
 	widgetInnerHeaderControl.insert(widgetHeaderControlButton2);
 
@@ -2841,7 +2811,7 @@ function buildTagSuggestionByType(nodeid, type, tags, title, height, isOpen, col
 	widgetHeader.insert(toolbar);
 
 	if (isOpen) {
-		widgetBody.style.display = 'block';
+		widgetBody.style.display = 'flex';
 	} else {
 		widgetBody.style.display = 'none';
 		widgetDiv.style.height =  widgetHeader.style.height;
@@ -2855,8 +2825,8 @@ function loadTagSuggestionByType(nodeid, type, tags, title, height, key) {
 	$(key+"body").update(getLoading("(<?php echo $LNG->WIDGET_LOADING; ?> "+title+"...)"));
 	$(key+"headerlabel").update(title+"<span style='margin-left:5px;'>( <?php echo $LNG->WIDGET_LOADING; ?>... )</span>");
 
-	$(key+'buttonarrow').style.visibility = 'visible';
-	$(key+'buttonresize').style.visibility = 'visible';
+	$(key+'buttonarrow').style.display = 'inline';
+	$(key+'buttonresize').style.display = 'inline';
 
 	Event.observe($(key+"headerinner"),'mouseover',function (){widgetInnerHeader.style.cursor = 'pointer'});
 	Event.observe($(key+"headerinner"),'mouseout',function (){widgetInnerHeader.style.cursor = 'normal'});
@@ -2883,7 +2853,7 @@ function loadTagSuggestionByType(nodeid, type, tags, title, height, key) {
 				$(key+"body").update("");
 
 				if (nodes.length == 0) {
-					$(key+"body").update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1;?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2;?>");
+					$(key+"body").update("<?php echo $LNG->WIDGET_NONE_FOUND;?>");
 				} else {
 					var finalnodes = new Array();
 					var check = new Array();
@@ -2919,7 +2889,7 @@ function loadTagSuggestionByType(nodeid, type, tags, title, height, key) {
 			}
 		});
 	} else {
-		$(key+"body").update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1;?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2;?>");
+		$(key+"body").update("<?php echo $LNG->WIDGET_NONE_FOUND;?>");
 		$(key+"headerlabel").update("<span class='widgetcountlabel'>(0)</span>"+title);
 	}
 }

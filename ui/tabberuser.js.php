@@ -133,16 +133,14 @@ function setTabPushed(e) {
 		if ($("tab-"+i)) {
 			if(tab == i){
 				if($("tab-"+i)) {
-					$("tab-"+i).removeClassName("unselected");
-					$("tab-"+i).addClassName("current");
+					$("tab-"+i).addClassName("active");
 					if ($("tab-content-"+i+"-div")) {
 						$("tab-content-"+i+"-div").show();
 					}
 				}
 			} else {
 				if($("tab-"+i)) {
-					$("tab-"+i).removeClassName("current");
-					$("tab-"+i).addClassName("unselected");
+					$("tab-"+i).removeClassName("active");
 					if ($("tab-content-"+i+"-div")) {
 						$("tab-content-"+i+"-div").hide();
 					}
@@ -161,15 +159,13 @@ function setTabPushed(e) {
 		for (i in DATAVIZ){
 			if(viz == i){
 				if ($("tab-"+tab+"-"+i)) {
-					$("tab-"+tab+"-"+i).removeClassName("unselected");
-					$("tab-"+tab+"-"+i).addClassName("current");
+					$("tab-"+tab+"-"+i).addClassName("active");
 					$("tab-content-"+tab+"-"+i+"-div").show();
 					$("tab-content-"+tab+"-"+i).show();
 				}
 			} else {
 				if ($("tab-"+tab+"-"+i)) {
-					$("tab-"+tab+"-"+i).removeClassName("current");
-					$("tab-"+tab+"-"+i).addClassName("unselected");
+					$("tab-"+tab+"-"+i).removeClassName("active");
 					$("tab-content-"+tab+"-"+i+"-div").hide();
 					$("tab-content-"+tab+"-"+i).hide();
 				}
@@ -432,7 +428,7 @@ function loadchallenges(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
@@ -517,7 +513,7 @@ function loadorgs(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
@@ -599,7 +595,7 @@ function loadprojects(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
@@ -675,7 +671,7 @@ function loadissues(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
@@ -751,7 +747,7 @@ function loadsolutions(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
@@ -826,7 +822,7 @@ function loadclaims(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
@@ -906,7 +902,7 @@ function loadevidence(context,args) {
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
@@ -982,7 +978,7 @@ function loadresources(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
@@ -1073,7 +1069,7 @@ function loadchats(context,args) {
 				//preprosses nodes to add searchid if it is there
 				if (args['searchid'] && args['searchid'] != "") {
 					var count = nodes.length;
-					for (var i=0; i<count; i++) {
+					for (var i=0; i < count; i++) {
 						var node = nodes[i];
 						node.cnode.searchid = args['searchid'];
 					}
@@ -1149,7 +1145,7 @@ function loadcomments(context,args) {
 				//preprosses nodes to add searchid if it is there
 				if (args['searchid'] && args['searchid'] != "") {
 					var count = nodes.length;
-					for (var i=0; i<count; i++) {
+					for (var i=0; i < count; i++) {
 						var node = nodes[i];
 						node.cnode.searchid = args['searchid'];
 					}
@@ -1624,65 +1620,19 @@ function filterSearchChats() {
 }
 
 /**
- *  filter after search entered and run
- */
-/*function filterSearches() {
-	var query = $('qdata').value;
- 	var scope = 'all';
-
- 	CHALLENGE_ARGS['q'] = query;
- 	CHALLENGE_ARGS['scope'] = scope;
-	DATA_LOADED.challenge = false;
-
- 	ISSUE_ARGS['q'] = query;
- 	ISSUE_ARGS['scope'] = scope;
-	DATA_LOADED.issue = false;
-
- 	SOLUTION_ARGS['q'] = query;
- 	SOLUTION_ARGS['scope'] = scope;
-	DATA_LOADED.solution = false;
-
- 	CLAIM_ARGS['q'] = query;
- 	CLAIM_ARGS['scope'] = scope;
-	DATA_LOADED.claim = false;
-
- 	EVIDENCE_ARGS['q'] = query;
- 	EVIDENCE_ARGS['scope'] = scope;
-	DATA_LOADED.evidence = false;
-
- 	RESOURCE_ARGS['q'] = query;
- 	RESOURCE_ARGS['scope'] = scope;
-	DATA_LOADED.resource = false;
-
- 	NODE_ARGS['q'] = query;
- 	NODE_ARGS['scope'] = scope;
-	DATA_LOADED.comment = false;
-
- 	ORG_ARGS['q'] = query;
- 	ORG_ARGS['scope'] = scope;
-	DATA_LOADED.org = false;
-
- 	PROJECT_ARGS['q'] = query;
- 	PROJECT_ARGS['scope'] = scope;
-	DATA_LOADED.project = false;
-
-	refreshData();
-}
-*/
-
-/**
  * show the sort form
  */
 function displaySortForm(sortOpts,args,tab,handler){
 
-	var sbTool = new Element("span", {'class':'sortback toolbar2'});
+	var sbTool = new Element("span", {'class':'sortback toolbar2  col-auto'});
     sbTool.insert("<?php echo $LNG->SORT_BY; ?> ");
 
     var selOrd = new Element("select");
  	Event.observe(selOrd,'change',handler);
     selOrd.id = "select-orderby-"+tab;
-    selOrd.className = "toolbar";
+    selOrd.className = "toolbar form-select";
     selOrd.name = "orderby";
+    selOrd.setAttribute("aria-label","Sort by");
     sbTool.insert(selOrd);
     for(var key in sortOpts){
         var opt = new Element("option");
@@ -1697,8 +1647,9 @@ function displaySortForm(sortOpts,args,tab,handler){
     var sortBy = new Element("select");
  	Event.observe(sortBy,'change',handler);
     sortBy.id = "select-sort-"+tab;
-    sortBy.className = "toolbar";
+    sortBy.className = "toolbar form-select";
     sortBy.name = "sort";
+    sortBy.setAttribute("aria-label","Order by");
     sbTool.insert(sortBy);
     for(var key in sortBys){
         var opt = new Element("option");
@@ -1752,16 +1703,17 @@ function setSelectedUsers(types) {
 
 function createThemeFilter(context, args, type) {
 
-	var sbTool = new Element("span", {'class':'themebackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});	
+    filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_THEMES_ALL; ?>');
 	filterMenu.insert(option);
 
-	for(var i=0; i<THEMES.length; i++){
+	for(var i=0; i < THEMES.length; i++){
 		var option = new Element("option", {'value':THEMES[i]});
 		if (args['filterthemes'] && args['filterthemes'] == THEMES[i]) {
 			option.selected = true;
@@ -1801,16 +1753,17 @@ function createThemeFilter(context, args, type) {
 
 function createThemeFilterNet(context, args, type) {
 
-	var sbTool = new Element("span", {'class':'themebackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_THEME_LABEL; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_ALSO_SELECT_THEME; ?>');
 	filterMenu.insert(option);
 
-	for(var i=0; i<THEMES.length; i++){
+	for(var i=0; i < THEMES.length; i++){
 		var option = new Element("option", {'value':THEMES[i]});
 		if (args['filterthemes'] && args['filterthemes'] == THEMES[i]) {
 			option.selected = true;
@@ -1868,16 +1821,17 @@ function createThemeFilterNet(context, args, type) {
 }
 
 function createEvidenceFilter(context, args) {
-	var sbTool = new Element("span", {'class':'evidencebackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var resourceFilterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var resourceFilterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	resourceFilterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_TYPES_ALL; ?>');
 	resourceFilterMenu.insert(option);
 
-	for(var i=0; i<EVIDENCE_TYPES.length; i++){
+	for(var i=0; i < EVIDENCE_TYPES.length; i++){
 		var option = new Element("option", {'value':EVIDENCE_TYPES[i]});
 		if (args['filternodetypes'] == EVIDENCE_TYPES[i]) {
 			option.selected = true;
@@ -1913,16 +1867,17 @@ function createEvidenceFilter(context, args) {
 
 
 function createResourceFilter(context, args) {
-	var sbTool = new Element("span", {'class':'resourcebackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var resourceFilterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var resourceFilterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	resourceFilterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_TYPES_ALL; ?>');
 	resourceFilterMenu.insert(option);
 
-	for(var i=0; i<RESOURCE_TYPES.length; i++){
+	for(var i=0; i < RESOURCE_TYPES.length; i++){
 		var option = new Element("option", {'value':RESOURCE_TYPES[i]});
 		if (args['filternodetypes'] == RESOURCE_TYPES[i]) {
 			option.selected = true;
@@ -1957,10 +1912,11 @@ function createResourceFilter(context, args) {
 
 function createNodeTypeFilter(context, args) {
 
-	var sbTool = new Element("span", {'class':'orgbackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_TYPES_ALL; ?>');
@@ -2030,10 +1986,11 @@ function createNodeTypeFilter(context, args) {
 
 function createConnectedFilter(context, args, type) {
 
-	var sbTool = new Element("span", {'class':'orgbackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->ALL_ITEMS_FILTER; ?>');
@@ -2086,16 +2043,16 @@ function createConnectedFilter(context, args, type) {
  */
 function createNav(total, start, count, argArray, context, type){
 
-	var nav = new Element ("div",{'id':'page-nav', 'class':'toolbarrow', 'style':'padding-top: 8px; padding-bottom: 8px;'});
+	var nav = new Element ("div",{'id':'page-nav', 'class':'toolbarrow pb-3' });
 
 	var header = createNavCounter(total, start, count, type);
 	nav.insert(header);
 
 	if (total > parseInt( argArray["max"] )) {
 		//previous
-	    var prevSpan = new Element("span", {'id':"nav-previous"});
+	    var prevSpan = new Element("span", {'id':"nav-previous", "class": "page-nav page-chevron"});
 	    if(start > 0){
-			prevSpan.update("<img title='<?php echo $LNG->LIST_NAV_PREVIOUS_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath("arrow-left2.png"); ?>' class='toolbar' style='padding-right: 0px;' />");
+			prevSpan.update("<i class=\"fas fa-chevron-left fa-lg\" aria-hidden=\"true\"></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_PREVIOUS_HINT; ?></span>");
 	        prevSpan.addClassName("active");
 	        Event.observe(prevSpan,"click", function(){
 	            var newArr = argArray;
@@ -2103,15 +2060,15 @@ function createNav(total, start, count, argArray, context, type){
 	            eval("load"+type+"(context,newArr)");
 	        });
 	    } else {
-			prevSpan.update("<img title='<?php echo $LNG->LIST_NAV_NO_PREVIOUS_HINT; ?>' disabled src='<?php echo $HUB_FLM->getImagePath("arrow-left2-disabled.png"); ?>' class='toolbar' style='padding-right: 0px;' />");
+			prevSpan.update("<i disabled class=\"fas fa-chevron-left fa-lg\" aria-hidden=\"true\"></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_NO_PREVIOUS_HINT; ?></span>");
 	        prevSpan.addClassName("inactive");
 	    }
 
 	    //pages
-	    var pageSpan = new Element("span", {'id':"nav-pages"});
+	    var pageSpan = new Element("span", {'id':"nav-pages", "class": "page-nav"});
 	    var totalPages = Math.ceil(total/argArray["max"]);
 	    var currentPage = (start/argArray["max"]) + 1;
-	    for (var i = 1; i<totalPages+1; i++){
+	    for (var i = 1; i < totalPages+1; i++){
 	    	var page = new Element("span", {'class':"nav-page"}).insert(i);
 	    	if(i != currentPage){
 		    	page.addClassName("active");
@@ -2125,9 +2082,9 @@ function createNav(total, start, count, argArray, context, type){
 	    }
 
 	    //next
-	    var nextSpan = new Element("span", {'id':"nav-next"});
+	    var nextSpan = new Element("span", {'id':"nav-next", "class": "page-nav page-chevron"});
 	    if(parseInt(start)+parseInt(count) < parseInt(total)){
-		    nextSpan.update("<img title='<?php echo $LNG->LIST_NAV_NEXT_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath('arrow-right2.png'); ?>' class='toolbar' style='padding-right: 0px;' />");
+			nextSpan.update("<i class=\"fas fa-chevron-right fa-lg\" aria-hidden=\"true\"></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_NEXT_HINT; ?></span>");
 	        nextSpan.addClassName("active");
 	        Event.observe(nextSpan,"click", function(){
 	            var newArr = argArray;
@@ -2135,7 +2092,7 @@ function createNav(total, start, count, argArray, context, type){
 	            eval("load"+type+"(context, newArr)");
 	        });
 	    } else {
-		    nextSpan.update("<img title='<?php echo $LNG->LIST_NAV_NO_NEXT_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath('arrow-right2-disabled.png'); ?>' class='toolbar' style='padding-right: 0px;' />");
+			nextSpan.update("<i class=\"fas fa-chevron-right fa-lg\" aria-hidden=\"true\" disabled></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_NO_NEXT_HINT; ?></span>");
 	        nextSpan.addClassName("inactive");
 	    }
 

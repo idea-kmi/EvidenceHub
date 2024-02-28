@@ -1,27 +1,27 @@
 <?php
-/********************************************************************************
- *                                                                              *
- *  (c) Copyright 2013 The Open University UK                                   *
- *                                                                              *
- *  This software is freely distributed in accordance with                      *
- *  the GNU Lesser General Public (LGPL) license, version 3 or later            *
- *  as published by the Free Software Foundation.                               *
- *  For details see LGPL: http://www.fsf.org/licensing/licenses/lgpl.html       *
- *               and GPL: http://www.fsf.org/licensing/licenses/gpl-3.0.html    *
- *                                                                              *
- *  This software is provided by the copyright holders and contributors "as is" *
- *  and any express or implied warranties, including, but not limited to, the   *
- *  implied warranties of merchantability and fitness for a particular purpose  *
- *  are disclaimed. In no event shall the copyright owner or contributors be    *
- *  liable for any direct, indirect, incidental, special, exemplary, or         *
- *  consequential damages (including, but not limited to, procurement of        *
- *  substitute goods or services; loss of use, data, or profits; or business    *
- *  interruption) however caused and on any theory of liability, whether in     *
- *  contract, strict liability, or tort (including negligence or otherwise)     *
- *  arising in any way out of the use of this software, even if advised of the  *
- *  possibility of such damage.                                                 *
- *                                                                              *
- ********************************************************************************/
+	/********************************************************************************
+	 *                                                                              *
+	 *  (c) Copyright 2013 The Open University UK                                   *
+	 *                                                                              *
+	 *  This software is freely distributed in accordance with                      *
+	 *  the GNU Lesser General Public (LGPL) license, version 3 or later            *
+	 *  as published by the Free Software Foundation.                               *
+	 *  For details see LGPL: http://www.fsf.org/licensing/licenses/lgpl.html       *
+	 *               and GPL: http://www.fsf.org/licensing/licenses/gpl-3.0.html    *
+	 *                                                                              *
+	 *  This software is provided by the copyright holders and contributors "as is" *
+	 *  and any express or implied warranties, including, but not limited to, the   *
+	 *  implied warranties of merchantability and fitness for a particular purpose  *
+	 *  are disclaimed. In no event shall the copyright owner or contributors be    *
+	 *  liable for any direct, indirect, incidental, special, exemplary, or         *
+	 *  consequential damages (including, but not limited to, procurement of        *
+	 *  substitute goods or services; loss of use, data, or profits; or business    *
+	 *  interruption) however caused and on any theory of liability, whether in     *
+	 *  contract, strict liability, or tort (including negligence or otherwise)     *
+	 *  arising in any way out of the use of this software, even if advised of the  *
+	 *  possibility of such damage.                                                 *
+	 *                                                                              *
+	 ********************************************************************************/
     include_once("../config.php");
 
     $me = substr($_SERVER["PHP_SELF"], 1); // remove initial '/'
@@ -32,21 +32,14 @@
 	}
 
     checkLogin();
-    array_push($HEADER,"<script src='".$CFG->homeAddress."ui/lib/scriptaculous/scriptaculous.js' type='text/javascript'></script>");
 
-    include_once($HUB_FLM->getCodeDirPath("ui/dialogheader.php"));
+    include_once($HUB_FLM->getCodeDirPath("ui/headeradmin.php"));
 
     if($USER == null || $USER->getIsAdmin() == "N"){
         echo "<div class='errors'>.".$LNG->ADMIN_NOT_ADMINISTRATOR_MESSAGE."</div>";
-        include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
+        include_once($HUB_FLM->getCodeDirPath("ui/footeradmin.php"));
         die;
 	}
-
-	//if($USER->userid != $CFG->ADMIN_USERID){
-    //    echo "<div class='errors'>.".$LNG->ADMIN_NOT_ADMINISTRATOR_MESSAGE."</div>";
-    //    include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
-    //    die;
-	//}
 
     $errors = array();
 
@@ -135,272 +128,256 @@
     $nodes = $ns->nodes;
 ?>
 
-<script type="text/javascript">
+<div class="container-fluid">
+	<div class="row p-4 pt-0">
+		<div class="col">
+			<script type="text/javascript">
 
-	function init() {
-		$('dialogheader').insert('<?php echo $LNG->ADMIN_THEME_TITLE; ?>');
-	}
+				function deleteTheme(objno){
+					var name = $('themelabelval'+objno).value;
+					var answer = confirm("<?php echo $LNG->ADMIN_THEME_DELETE_QUESTION_PART1; ?> '"+name+"' <?php echo $LNG->ADMIN_THEME_DELETE_QUESTION_PART2; ?>");
+					if(answer){
+						var reqUrl = SERVICE_ROOT + "&method=deletenode&nodeid="+objno;
 
-   function deleteTheme(objno){
-        var name = $('themelabelval'+objno).value;
-        var answer = confirm("<?php echo $LNG->ADMIN_THEME_DELETE_QUESTION_PART1; ?> '"+name+"' <?php echo $LNG->ADMIN_THEME_DELETE_QUESTION_PART2; ?>");
-        if(answer){
-            var reqUrl = SERVICE_ROOT + "&method=deletenode&nodeid="+objno;
+						new Ajax.Request(reqUrl, { method:'get',
+							onSuccess: function(transport){
+								var json = transport.responseText.evalJSON();
+								if(json.error){
+									alert(json.error[0].message);
+									return;
+								}
+								alert("<?php echo $LNG->ADMIN_THEME_DELETE_SUCCESS_PART1; ?> "+name+" <?php echo $LNG->ADMIN_THEME_DELETE_SUCCESS_PART2; ?>");
+								window.location.href = "thememanager.php";
+							}
+						});
 
-            new Ajax.Request(reqUrl, { method:'get',
-                onSuccess: function(transport){
-                    var json = transport.responseText.evalJSON();
-                    if(json.error){
-                        alert(json.error[0].message);
-                        return;
-                    }
-                    alert("<?php echo $LNG->ADMIN_THEME_DELETE_SUCCESS_PART1; ?> "+name+" <?php echo $LNG->ADMIN_THEME_DELETE_SUCCESS_PART2; ?>");
-                    window.location.href = "thememanager.php";
-                }
-            });
+					}
+				}
 
-        }
-    }
+				function editTheme(objno){
+					cancelAddTheme();
+					cancelAllEdits();
 
-    function editTheme(objno){
-    	cancelAddTheme();
-   		cancelAllEdits();
+					$('editthemeform'+objno).show();
+					$('savelink'+objno).show();
 
-        $('editthemeform'+objno).show();
-        $('savelink'+objno).show();
+					$('themelabeldiv'+objno).hide();
+					$('editthemelink'+objno).hide();
+					$('editlink'+objno).hide();
+				}
 
-        $('themelabeldiv'+objno).hide();
-        $('editthemelink'+objno).hide();
-        $('editlink'+objno).hide();
-    }
+				function cancelEditTheme(objno){
+					if ($('editthemeform'+objno)) {
+						$('editthemeform'+objno).hide();
+					}
+					if ($('savelink'+objno)) {
+						$('savelink'+objno).hide();
+					}
 
-    function cancelEditTheme(objno){
-    	if ($('editthemeform'+objno)) {
-         	$('editthemeform'+objno).hide();
-    	}
-    	if ($('savelink'+objno)) {
-    		$('savelink'+objno).hide();
-    	}
+					if ($('themelabeldiv'+objno)) {
+						$('themelabeldiv'+objno).show();
+					}
+					if ($('editthemelink'+objno)) {
+						$('editthemelink'+objno).show();
+					}
+					if ($('editlink'+objno)) {
+						$('editlink'+objno).show();
+					}
+				}
 
-		if ($('themelabeldiv'+objno)) {
-    		$('themelabeldiv'+objno).show();
-    	}
-    	if ($('editthemelink'+objno)) {
-    		$('editthemelink'+objno).show();
-    	}
-    	if ($('editlink'+objno)) {
-    		$('editlink'+objno).show();
-    	}
-    }
+				function cancelAllEdits() {
+					var array = document.getElementsByTagName('div');
+					for(var i=0;i<array.length;i++) {
+						if (array[i].id.startsWith('editthemeform')) {
+							var objno = array[i].id.substring(13);
+							cancelEditTheme(objno);
+						}
+					}
+				}
 
-    function cancelAllEdits() {
-		var array = document.getElementsByTagName('div');
-		for(var i=0;i<array.length;i++) {
-			if (array[i].id.startsWith('editthemeform')) {
-				var objno = array[i].id.substring(13);
-				cancelEditTheme(objno);
-			}
-		}
-    }
+				function addTheme(){
+					cancelAllEdits();
+					$('newthemeform').show();
+					$('addnewthemelink').hide();
+				}
 
-   	function addTheme(){
-   		cancelAllEdits();
-    	$('newthemeform').show();
-        $('addnewthemelink').hide();
-	}
+				function cancelAddTheme(){
+					$('newthemeform').hide();
+					$('addnewthemelink').show();
+				}
 
-	function cancelAddTheme(){
-        $('newthemeform').hide();
-        $('addnewthemelink').show();
-   	}
+				window.onload = init;
 
-	window.onload = init;
+				function checkFormDelete(name) {
+					var ans = confirm("<?php echo $LNG->ADMIN_THEME_DELETE_QUESTION_PART1; ?> '"+name+"' <?php echo $LNG->ADMIN_THEME_DELETE_QUESTION_PART2; ?>");
+					if (ans){
+						return true;
+					} else {
+						return false;
+					}
+				}
 
-	function checkFormDelete(name) {
-        var ans = confirm("<?php echo $LNG->ADMIN_THEME_DELETE_QUESTION_PART1; ?> '"+name+"' <?php echo $LNG->ADMIN_THEME_DELETE_QUESTION_PART2; ?>");
-		if (ans){
-			return true;
-		} else {
-			return false;
-		}
-	}
+			</script>
 
-</script>
+			<?php
+				if(!empty($errors)){
+					echo "<div class='alert alert-danger'>".$LNG->FORM_ERROR_MESSAGE.":<ul>";
+					foreach ($errors as $error){
+						echo "<li>".$error."</li>";
+					}
+					echo "</ul></div>";
+				}
+			?>
 
-<?php
-if(!empty($errors)){
-    echo "<div class='errors'>".$LNG->FORM_ERROR_MESSAGE.":<ul>";
-    foreach ($errors as $error){
-        echo "<li>".$error."</li>";
-    }
-    echo "</ul></div>";
-}
-?>
+			<h1 class="mb-3"><?php echo $LNG->ADMIN_THEME_TITLE; ?></h1>
 
-
-<div id="themesdiv" style="margin-left:10px;">
-
-    <div class="formrow">
-        <a id="addnewthemelink" href="javascript:addTheme()" class="form"><?php echo $LNG->ADMIN_THEME_ADD_NEW_LINK; ?></a>
-    </div>
-
-   <div id="newthemeform" class="formrow" style="display:none; clear:both;">
-   		<form id="addtheme" name="addtheme" action="thememanager.php" method="post" enctype="multipart/form-data">
-        <div class="subform" style="width: 620px;">
-
- 			<div class='subformrow' style="margin-top:10px;">
- 				<label class='formlabelmid' style="width: 75px" for='name'><?php echo $LNG->ADMIN_THEME_NAME_LABEL; ?></label>
- 				<input type='text' class='forminput' style='width: 300px' id='name' name='name' value=''/>
- 			</div>
-
-			<div class="subformrow">
-				<label class="formlabel" style="width: 75px" for="image"><?php echo $LNG->ADMIN_THEME_IMAGE_LABEL; ?></label>
-				<input class="forminput" type="file" id="image" name="image" size="40">
-			</div>
-			<div class="subformrow">
-				<label class="formlabel" style="width: 75px">&nbsp;</label>
-				<span class="forminput"><?php echo $LNG->ADMIN_THEME_IMAGE_HELP; ?></span>
-			</div>
-
-            <div class='subformrow'>
-				<label  class="formlabelbig" for="desc">
-				<span style="vertical-align:top"><?php echo $LNG->ADMIN_THEME_DESC_LABEL; ?>
-				<a id="editortogglebuttonadd" href="javascript:void(0)" style="vertical-align:top" onclick="switchCKEditorMode(this, 'textareadivadd', 'descadd')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
-				</span>
-				</label>
-
-				<div id="textareadivadd" style="clear:none;float:left;margin-top:5px;">
-					<textarea rows="4" class="forminput hgrinput hgrwide" id="descadd" name="desc"></textarea>
+			<div id="themesdiv">
+				<div class="mb-3 row">
+					<div class="col-auto">
+						<a id="addnewthemelink" href="javascript:addTheme()" class="form"><i class="fas fa-plus-square" aria-hidden="true"></i> <?php echo $LNG->ADMIN_THEME_ADD_NEW_LINK; ?></a>
+					</div>
 				</div>
-			</div>
 
-            <div class="subformrow">
-            	<input class="subformbutton" style="margin-left:30px; margin-top:5px;" type="submit" value="<?php echo $LNG->FORM_BUTTON_ADD; ?>" id="addtheme" name="addtheme">
-                <input class="subformbutton" style="margin-left:7px;" type="button" name="cancelbutton" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="cancelAddTheme();">
-            </div>
-        </div>
-        </form>
-    </div>
+				<div id="newthemeform" class="mb-3 row" style="display:none;">
+					<form id="addtheme" name="addtheme" action="thememanager.php" method="post" enctype="multipart/form-data">
+						<div class="subform p-4 mb-3 row">
+							<div class="mb-3 row">
+								<label class='col-sm-3 col-form-label'><?php echo $LNG->ADMIN_THEME_NAME_LABEL; ?></label>
+								<div class="col-sm-9"><input type='text' class='form-control' id='name' name='name' value='' aria-label="add new theme - name" /></div>
+							</div>
+							<div class="mb-3 row">
+								<label class="col-sm-3 col-form-label" for="image"><?php echo $LNG->ADMIN_THEME_IMAGE_LABEL; ?></label>
+								<div class="col-sm-9">
+									<input class="form-control" type="file" id="image" name="image" />
+									<p class="text-end"><?php echo $LNG->ADMIN_THEME_IMAGE_HELP; ?></p>
+								</div>
+							</div>							
+							<div class="mb-3 row">
+								<label  class="col-sm-3 col-form-label" for="descadd">
+									<?php echo $LNG->ADMIN_THEME_DESC_LABEL; ?><br />
+									<a id="editortogglebuttonadd" href="javascript:void(0)" onclick="switchCKEditorMode(this, 'textareadivadd', 'descadd')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>								
+								</label>
+								<div id="textareadivadd" class="col-sm-9">
+									<textarea rows="4" class="form-control" id="descadd" name="desc"></textarea>
+								</div>
+							</div>
+							<div class="mb-3 row">
+								<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+									<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="cancelAddTheme();" name="cancelbutton" />
+									<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_ADD; ?>" id="addtheme" name="addtheme" />
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
 
-    <div class="formrow">
-        <div id="nodes" class="forminput">
+				<div class="row mb-3">
+					<div id="nodes">					
+						<table class='table table-sm'>
+							<tr>
+								<th><?php echo $LNG->ADMIN_THEME_THEME_HEADING; ?></th>
+								<th width="100px"><?php echo $LNG->ADMIN_THEME_ACTION_HEADING; ?></th>
+								<th width="100px"><?php echo $LNG->ADMIN_THEME_ACTION_HEADING; ?></th>
+							</tr>
+							<?php foreach($nodes as $node){ ?>
+								<tr id='node-<?php echo $node->nodeid; ?>'>
+									<td id='second-<?php echo $node->nodeid; ?>'>
+										<div class='subform m-3 p-3' id='editthemeform<?php echo $node->nodeid; ?>' style='display:none;'>
+											<form name='managetheme'<?php echo $node->nodeid; ?> action='thememanager.php' method='post' enctype='multipart/form-data'>
+												<input name='nodeid' type='hidden' value='<?php echo $node->nodeid; ?>' />											
+												<div class='mb-3 row'>
+													<label class='col-sm-3 col-form-label'><?php echo $LNG->FORM_LABEL_NAME; ?></label>
+													<div class='col-sm-9'><input type='text' class='form-control' id='name' name='name' aria-label="edit name for <?php echo $node->name; ?>" value="<?php echo $node->name; ?>"/></div>
+												</div>
 
-        <?php
-            echo "<table class='table' cellspacing='0' cellpadding='3' border='0' style='margin: 0px;'>";
-            echo "<tr>";
-            echo "<th width='450'>".$LNG->ADMIN_THEME_THEME_HEADING."</th>";
-            echo "<th width='30'>".$LNG->ADMIN_THEME_ACTION_HEADING."</th>";
-            echo "<th width='75'>".$LNG->ADMIN_THEME_ACTION_HEADING."</th>";
+												<?php if (isset($node->imageurlid) && $node->imageurlid != "") { ?>												
+													<div class="mb-3 row">
+														<label class="col-sm-3 col-form-label"><?php echo $LNG->ADMIN_THEME_IMAGE_LABEL; ?></label>
+														<div class="col-sm-9">
+															<div style="width:<?php echo $CFG->THEME_IMAGE_WIDTH; ?>px; height:<?php echo $CFG->THEME_IMAGE_HEIGHT; ?>;">
+																<img class="img-fluid" src="<?php echo $node->imageurlid; ?>" alt="" />
+															</div>
+														</div>
+													</div>
+												<?php  } ?>
 
-            echo "</tr>";
-            foreach($nodes as $node){
-                echo "<tr id='node-".$node->nodeid."'>";
+												<div class="mb-3 row">
+													<?php if (isset($node->imageurlid) && $node->imageurlid != "") { ?>
+														<label class="col-sm-3 col-form-label" for="image<?php echo $node->nodeid; ?>"><?php echo $LNG->ADMIN_THEME_REPLACE_IMAGE_LABEL; ?></label>
+													<?php } else { ?>
+														<label class="col-sm-3 col-form-label" for="image<?php echo $node->nodeid; ?>"><?php echo $LNG->ADMIN_THEME_IMAGE_LABEL; ?></label>
+													<?php } ?>
+													<div class="col-sm-7">
+														<input class="form-control" type="file" id="image<?php echo $node->nodeid; ?>" name="image<?php echo $node->nodeid; ?>" />
+														<span><?php echo $LNG->ADMIN_THEME_IMAGE_HELP; ?></span>
+													</div>
 
-                echo "<td id='second-".$node->nodeid."'>";
+													<?php if (isset($node->imageurlid) && $node->imageurlid != "") { ?>
+														<div class="col-sm-2">
+															<div class="form-check pt-2">
+																<label class="form-check-label">
+																	<input class="form-check-input" type="checkbox" name="imagedelete" value="Y" id="imagedelete" aria-label="delete image imageurlid">
+																	<?php echo $LNG->ADMIN_THEME_IMAGE_DELETE_LABEL; ?>
+																</label>
+															</div>
+														</div>
+													<?php } ?>
+												</div>
 
-		        echo "<div class='subform' id='editthemeform".$node->nodeid."' style='width: 590px; display:none; clear:both;'>";
-		   		echo '<form name="managetheme"'.$node->nodeid.' action="thememanager.php" method="post" enctype="multipart/form-data">';
-		   		echo "<input name='nodeid' type='hidden' value='".$node->nodeid."' />";
+												<div class="mb-3 row">
+													<label class="col-sm-3 col-form-label" for="desc<?php echo $node->nodeid; ?>">
+														<?php echo $LNG->FORM_LABEL_DESC; ?><br />
+														<a id="editortogglebutton" href="javascript:void(0)" onclick="switchCKEditorMode(this, 'textareadiv<?php echo $node->nodeid; ?>', 'desc<?php echo $node->nodeid; ?>')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
+													</label>
+													<?php if (isProbablyHTML($node->description)) { ?>
+														<div id="textareadiv<?php echo $node->nodeid; ?>" class="col-sm-9">
+															<textarea rows="4" class="ckeditor form-control" id="desc<?php echo $node->nodeid; ?>" name="desc"><?php echo $node->description; ?></textarea>
+														</div>
+													<?php } else { ?>
+														<div id="textareadiv<?php echo $node->nodeid; ?>" class="col-sm-9">
+															<textarea rows="4" class="form-control" id="desc<?php echo $node->nodeid; ?>" name="desc"><?php echo $node->description; ?></textarea>
+														</div>
+													<?php } ?>
+												</div>
+												
+												<div class="mb-3 row" id="savelink<?php echo $node->nodeid; ?>" style="display:none; clear:both;">
+													<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+														<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="cancelEditTheme('<?php echo $node->nodeid; ?>');" />
+														<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_SAVE; ?>" id="savetheme" name="savetheme" />
+													</div>
+												</div>
+											</form>
+										</div>
 
-		        echo "<div class='subformrow'>";
+										<div id='themelabeldiv<?php echo $node->nodeid; ?>'>
+											<span class='labelinput' id='nodelabel<?php echo $node->nodeid; ?>'><?php echo $node->name; ?></span>
+											<input type='hidden' id='themelabelval<?php echo $node->nodeid; ?>' value="<?php echo $node->name; ?>"/>
+										</div>
+									</td>
 
-                echo "<div class='subformrow' style='margin-top:10px;'>";
-		        echo "<label class='formlabel' style='width: 75px;' for='name'>".$LNG->FORM_LABEL_NAME."</label><input type='text' class='forminput' style='width:300px' id='name' name='name' value=\"".$node->name."\"/></div>";
-				echo '</div>';
+									<td id='third-<?php echo $node->nodeid; ?>'>
+										<div id='editlink<?php echo $node->nodeid; ?>'>
+											<a id='editthemelink<?php echo $node->nodeid; ?>' href='javascript:editTheme("<?php echo $node->nodeid; ?>")' class='form'><?php echo $LNG->ADMIN_THEME_EDIT_LINK; ?></a>
+										</div>
+									</td>
 
-				if (isset($node->imageurlid) && $node->imageurlid != "") {
-					echo '<div class="subformrow">';
-					echo '	<label class="formlabel" style="width: 75px">'.$LNG->ADMIN_THEME_IMAGE_LABEL.'</label>';
-					echo '	<div style="padding:0px;padding-left:8px;position:relative;overflow:hidden;width:'.$CFG->THEME_IMAGE_WIDTH.'px;height:'.$CFG->THEME_IMAGE_HEIGHT.';max-width:'.$CFG->THEME_IMAGE_WIDTH.'px;max-height:'.$CFG->THEME_IMAGE_HEIGHT.'px;min-width:'.$CFG->THEME_IMAGE_WIDTH.'px;min-height:'.$CFG->THEME_IMAGE_HEIGHT.'px;">';
-					echo '		<img style="position:absolute; top:0px left:0px;cursor:move;" border="0" src="'.$node->imageurlid.'"/>';
-					echo '	</div>';
-					echo '</div>';
-				}
-
-				echo '<div class="subformrow">';
-				if (isset($node->imageurlid) && $node->imageurlid != "") {
-					echo '	<label class="formlabel" style="width: 75px" for="image'.$node->nodeid.'">'.$LNG->ADMIN_THEME_REPLACE_IMAGE_LABEL.'</label>';
-				} else {
-					echo '	<label class="formlabel" style="width: 75px" for="image'.$node->nodeid.'">'.$LNG->ADMIN_THEME_IMAGE_LABEL.'</label>';
-				}
-				echo '	<input class="forminput" type="file" id="image'.$node->nodeid.'" name="image'.$node->nodeid.'" size="40">';
-
-				if (isset($node->imageurlid) && $node->imageurlid != "") {
-					echo '<input id="imagedelete" class="forminput" type="checkbox" name="imagedelete" value="Y" /> '.$LNG->ADMIN_THEME_IMAGE_DELETE_LABEL;
-				}
-
-				echo '</div>';
-
-
-
-				echo '<div class="subformrow">';
-				echo '	<label class="formlabel" style="width: 75px">&nbsp;</label>';
-				echo '	<span class="forminput">'.$LNG->ADMIN_THEME_IMAGE_HELP.'</span>';
-				echo '</div>';
-
-                echo "<div class='subformrow'>";
-				echo '<label  class="formlabelbig" for="desc">';
-				echo '<span style="vertical-align:top">'.$LNG->FORM_LABEL_DESC;
-				echo '<a id="editortogglebutton" href="javascript:void(0)" style="vertical-align:top" onclick="switchCKEditorMode(this, \'textareadiv'.$node->nodeid.'\', \'desc'.$node->nodeid.'\')" title="'.$LNG->FORM_DESC_HTML_TEXT_HINT.'">'.$LNG->FORM_DESC_HTML_TEXT_LINK.'</a>';
-				echo '</span>';
-				echo '</label>';
-
-				if (isProbablyHTML($node->description)) {
-					 echo '<div id="textareadiv'.$node->nodeid.'" style="clear:both;float:left;margin-top:5px;">';
-					 echo '	<textarea rows="4" class="ckeditor forminput hgrinput hgrwide" id="desc'.$node->nodeid.'" name="desc">'.$node->description.'</textarea>';
-					 echo '</div>';
-				} else {
-					 echo '<div id="textareadiv'.$node->nodeid.'" style="clear:none;float:left;margin-top:5px;">';
-					 echo '<textarea rows="4" class="forminput hgrinput hgrwide" id="desc'.$node->nodeid.'" name="desc">'.$node->description.'</textarea>';
-					 echo '</div>';
-				}
-
-                echo "</div>";
- 		        echo "<div class='subformrow' id='savelink".$node->nodeid."' style='display:none; clear:both;'>";
-                echo '<input class="subformbutton" style="margin-left:30px;margin-top:5px;" type="submit" value="'.$LNG->FORM_BUTTON_SAVE.'" id="savetheme" name="savetheme" />';
-                echo '<input class="subformbutton" style="margin-left:7px;" type="button" value="'.$LNG->FORM_BUTTON_CANCEL.'" onclick="javascript:cancelEditTheme(\''.$node->nodeid.'\');" />';
-                echo '</div>';
-                echo "</form>";
-                echo "</div>";
-
-                echo "<div id='themelabeldiv".$node->nodeid."'>";
-		        echo "<span class='labelinput' style='width: 90%' id='nodelabel".$node->nodeid."'>".$node->name."</span>";
-                echo "<input type='hidden' id='themelabelval".$node->nodeid."' value=\"".$node->name."\"/>";
-		        echo "</div>";
-
-                echo "</td>";
-
-                echo "<td id='third-".$node->nodeid."'>";
-                echo "<div id='editlink".$node->nodeid."'>";
-  				echo "<a id='editthemelink".$node->nodeid."' href='javascript:editTheme(\"".$node->nodeid."\")' class='form'>".$LNG->ADMIN_THEME_EDIT_LINK."</a>";
-                echo "</td>";
-
-                echo "<td id='fourth-".$node->nodeid."'>";
-				echo '<form id="delete-'.$node->nodeid.'" action="" enctype="multipart/form-data" method="post" onsubmit="return checkFormDelete(\''.htmlspecialchars($node->name).'\');">';
-				echo '<input type="hidden" id="nodeid" name="nodeid" value="'.$node->nodeid.'" />';
-				echo '<input type="hidden" id="deletetheme" name="deletetheme" value="" />';
-				echo '<span class="active" onclick="if (checkFormDelete(\''.htmlspecialchars($node->name).'\')) { $(\'delete-'.$node->nodeid.'\').submit(); }" id="deletetheme" name="deletetheme">'.$LNG->ADMIN_THEME_DELETE_LINK.'</a>';
-				echo '</form>';
-                echo "</td>";
-
-   				echo "</div>";
-                echo "</td>";
-
-                echo "</tr>";
-            }
-            echo "</table>";
-        ?>
-        </div>
-   </div>
-
-    <div class="formrow">
-    <input type="button" value="<?php echo $LNG->FORM_BUTTON_CLOSE; ?>" onclick="window.close();"/>
-
-    </div>
-
+									<td id='fourth-<?php echo $node->nodeid; ?>'>
+										<form id="delete-<?php echo $node->nodeid; ?>" action="" enctype="multipart/form-data" method="post" onsubmit="return checkFormDelete('<?php echo htmlspecialchars($node->name); ?>');">
+											<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $node->nodeid; ?>" />
+											<input type="hidden" id="deletetheme" name="deletetheme" value="" />
+											<span class="active" onclick="if (checkFormDelete('<?php echo htmlspecialchars($node->name); ?>')) { $('delete-<?php echo $node->nodeid; ?>').submit(); }" id="deletetheme" name="deletetheme"><?php echo $LNG->ADMIN_THEME_DELETE_LINK; ?></a>
+										</form>
+									</td>
+								</tr>
+							<?php } ?>
+						</table>
+					</div>
+				</div>
+			</div>					
+		</div>
+	</div>
 </div>
 
-
 <?php
-    include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
+    include_once($HUB_FLM->getCodeDirPath("ui/footeradmin.php"));
 ?>

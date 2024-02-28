@@ -136,34 +136,43 @@ window.onload = init;
 
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="solutionform" name="solutionform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
-	<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
+			<form id="solutionform" name="solutionform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
+				<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
 
-    <div class="hgrformrow">
-		<label  class="formlabelbig" for="solution"><span style="vertical-align:top"><?php echo $LNG->FORM_SOLUTION_LABEL_SUMMARY; ?></span>
-			<span class="active" onMouseOver="showFormHint('SolutionSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" id="solution" name="solution" value="<?php echo( $solution ); ?>" />
+				<div class="mb-3 row">
+					<label for="solution" class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_SOLUTION_LABEL_SUMMARY; ?></span>
+						<a class="active" onMouseOver="showFormHint('SolutionSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">
+						<input class="form-control" id="solution" name="solution" value="<?php echo( $solution ); ?>" />
+					</div>
+				</div>
+
+				<?php insertDescription('SolutionDesc'); ?>
+				<?php insertAddTags('SolutionTag'); ?>
+				<?php insertTagsAdded('SolutionTagAdded'); ?>
+
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addsolution" name="addsolution" />
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
-	<?php insertDescription('SolutionDesc'); ?>
-
-	<?php insertAddTags('SolutionTag'); ?>
-
-	<?php insertTagsAdded('SolutionTagAdded'); ?>
-
-    <br>
-
-    <div class="hgrformrow">
-        <input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_SAVE; ?>" id="editsolution" name="editsolution">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-</form>
-
+</div>
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
 ?>

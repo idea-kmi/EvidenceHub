@@ -30,7 +30,7 @@
  */
 function displayUsers(objDiv,users,start){
 
-	var lOL = new Element("ol", {'class':'user-list-ol'});
+	var lOL = new Element("ol", {'class':'user-list-ol user-list-tab-view'});
 	for(var i=0; i< users.length; i++){
 		if(users[i].user){
 			var iUL = new Element("li", {'id':users[i].user.userid, 'class':'user-list-li'});
@@ -49,10 +49,10 @@ function displayUsers(objDiv,users,start){
  */
 function displayWidgetUsers(objDiv,users,start){
 
-	var lOL = new Element("ol", {'class':'user-list-ol', 'style':'margin: 0px; padding: 0px;'});
+	var lOL = new Element("ol", {'class':'user-list-ol user-dashboard-view'});
 	for(var i=0; i< users.length; i++){
 		if(users[i].user){
-			var iUL = new Element("li", {'id':users[i].user.userid, 'class':'user-list-li', 'style':'border-bottom:none;'});
+			var iUL = new Element("li", {'id':users[i].user.userid, 'class':'user-list-li'});
 			lOL.insert(iUL);
 			var blobDiv = new Element("div", {'class':'user-blob'});
 			var blobUser = renderWidgetUser(users[i].user);
@@ -68,10 +68,10 @@ function displayWidgetUsers(objDiv,users,start){
  */
 function displayChatUsers(objDiv,users,start){
 
-	var lOL = new Element("ol", {'class':'user-list-ol', 'style':'margin: 0px; padding: 0px;'});
+	var lOL = new Element("ol", {'class':'user-list-ol chatUsers'});
 	for(var i=0; i< users.length; i++){
 		if(users[i].user){
-			var iUL = new Element("li", {'id':users[i].user.userid, 'class':'user-list-li', 'style':'border-bottom:none;'});
+			var iUL = new Element("li", {'id':users[i].user.userid, 'class':'user-list-li'});
 			lOL.insert(iUL);
 			var blobDiv = new Element("div", {'class':'user-blob'});
 			var blobUser = renderChatUser(users[i].user);
@@ -88,7 +88,7 @@ function displayChatUsers(objDiv,users,start){
 function displayReportUsers(objDiv,users,start){
 	for(var i=0; i< users.length; i++){
 		if(users[i].user){
-			var iUL = new Element("span", {'id':users[i].user.userid, 'class':'idea-list-li', 'style':'padding-bottom: 5px;'});
+			var iUL = new Element("span", {'id':users[i].user.userid, 'class':'idea-list-li'});
 			objDiv.insert(iUL);
 			var blobDiv = new Element("div", {'style':'margin: 2px; width: 650px'});
 			var blobUser = renderReportUser(users[i].user);
@@ -213,19 +213,19 @@ function reportUserSpamAlert(obj, user) {
  */
 function renderUser(user){
 
-	var uDiv = new Element("div",{id:'context'});
-	var cI = new Element('div',{'id':'contextimage'});
+	var uDiv = new Element("div", {"id":'context', "class": "row"});
+	var cI = new Element('div', {'id':'contextimage'});
 
 	// fake white invisible border to make IE draw the name properly at top of image area not lower down.
-	var imgDiv = new Element("div",{'style':'border: 1px solid transparent;'});
+	var imgDiv = new Element("div",{'class':'renderUser col-auto'});
 
 	if(user.isgroup == 'Y'){
-		cI.insert("<div style='float:left'><a href='group.php?groupid="+ user.userid +"'><img src='"+user.photo+"'/></a></div>");
+		cI.insert("<div><a href='group.php?groupid="+ user.userid +"'><img src='"+user.photo+"'/></a></div>");
 	} else {
 		if (user.searchid && user.searchid != "") {
-			cI.insert("<div style='float:left'><a href='user.php?userid="+ user.userid +"&sid="+user.searchid+"'><img src='"+user.photo+"'/></a></div>");
+			cI.insert("<div><a href='user.php?userid="+ user.userid +"&sid="+user.searchid+"'><img src='"+user.photo+"' alt='profile image for "+ user.name +"' /></a></div>");
 		} else {
-			cI.insert("<div style='float:left'><a href='user.php?userid="+ user.userid +"'><img src='"+user.photo+"'/></a></div>");
+			cI.insert("<div><a href='user.php?userid="+ user.userid +"'><img src='"+user.photo+"' alt='profile image for "+ user.name +"' /></a></div>");
 		}
 	}
 
@@ -233,12 +233,7 @@ function renderUser(user){
 
 	// Add spam icon
 	var spamDiv = new Element("div");
-	spamDiv.style.marginTop="5px";
-	spamDiv.style.cssFloat = "left";
-	spamDiv.style.clear = "both";
 	var spamimg = document.createElement('img');
-	spamimg.style.verticalAlign="bottom";
-	spamimg.style.marginLeft="5px";
 	if(USER != ""){
 		if (user.status == <?php echo $CFG->USER_STATUS_REPORTED; ?>) {
 			spamimg.setAttribute('alt', "<?php echo $LNG->SPAM_USER_REPORTED_ALT; ?>");
@@ -250,7 +245,6 @@ function renderUser(user){
 			spamimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("spam.png"); ?>');
 			spamimg.id = user.userid;
 			spamimg.label = user.name;
-			spamimg.style.cursor = 'pointer';
 			Event.observe(spamimg,'click',function (){ reportUserSpamAlert(this, user) } );
 		}
 	} else {
@@ -263,14 +257,11 @@ function renderUser(user){
 
 	uDiv.insert(imgDiv);
 
-	var uiDiv = new Element("div",{id:'contextinfo', 'style':'float:left;margin-left:5px;'});
+	var uiDiv = new Element("div",{id:'contextinfo', "class":"col contextinfo"});
 	uDiv.insert(uiDiv);
 
 	if(user.isgroup == 'N'){
 		var statusImg = document.createElement('img');
-		statusImg.style.verticalAlign="bottom";
-		statusImg.style.marginRight="5px";
-		statusImg.style.marginBottom="3px";
 		statusImg.setAttribute('alt', 'Offline');
 		statusImg.setAttribute('title', "<?php echo $LNG->USERS_PRESENCE_OFF; ?>");
 		statusImg.setAttribute('src', URL_ROOT+'images/red-light.png');
@@ -298,15 +289,11 @@ function renderUser(user){
 
 	if(USER != ""){
 		var followDiv = new Element("div");
-		followDiv.style.marginBottom="5px";
 		var followbutton = document.createElement('img');
 		followbutton.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("follow.png"); ?>');
 		followbutton.setAttribute('alt', "<?php echo $LNG->USERS_FOLLOW_ICON_ALT; ?>");
 		followbutton.setAttribute('id','follow'+user.userid);
 		followbutton.userid = user.userid;
-		followbutton.style.verticalAlign="bottom";
-		followbutton.style.marginRight="3px";
-		followbutton.style.cursor = 'pointer';
 		followDiv.insert(followbutton);
 		if (user.userfollow && user.userfollow == "Y") {
 			Event.observe(followbutton,'click',function (){ unfollowUser(this) } );
@@ -320,33 +307,33 @@ function renderUser(user){
 		uiDiv.insert(followDiv);
 	}
 
-	var str = "<div style='margin-bottom:5px;'>";
+	var str = "<div>";
 	if (user.creationdate && user.creationdate > 0) {
 		var cDate = new Date(user.creationdate*1000);
-		str += "<span><b><?php echo $LNG->USERS_DATE_JOINED; ?> </b>"+cDate.format(DATE_FORMAT)+"</span>";
+		str += "<span class=\"user-date-joined\"><b><?php echo $LNG->USERS_DATE_JOINED; ?> </b>"+cDate.format(DATE_FORMAT)+"</span>";
 	} else {
 		var cDate = new Date(user.creationdate*1000);
-		str += "<span><b><?php echo $LNG->USERS_DATE_JOINED; ?> </b>"+cDate.format(DATE_FORMAT)+"</span>";
+		str += "<span class=\"user-date-joined\"><b><?php echo $LNG->USERS_DATE_JOINED; ?> </b>"+cDate.format(DATE_FORMAT)+"</span>";
 	}
 
 	if (user.lastactive && user.lastactive > 0) {
 		var cDate = new Date(user.lastactive*1000);
-		str += "<span style='margin-left:20px;'><b><?php echo $LNG->USERS_LAST_ACTIVE; ?> </b>"+cDate.format(TIME_FORMAT)+"</span>";
+		str += "<span class=\"user-last-active\"><b><?php echo $LNG->USERS_LAST_ACTIVE; ?> </b>"+cDate.format(TIME_FORMAT)+"</span>";
 	} else {
 		var cDate = new Date(user.lastlogin*1000);
-		str += "<span style='margin-left:20px;'><b><?php echo $LNG->USERS_LAST_LOGIN; ?> </b>"+cDate.format(TIME_FORMAT)+"</span>";
+		str += "<span class=\"user-last-login\"><b><?php echo $LNG->USERS_LAST_LOGIN; ?> </b>"+cDate.format(TIME_FORMAT)+"</span>";
 	}
 
 	uiDiv.insert(str+"</div>");
 
 	if(user.description != ""){
-		uiDiv.insert("<div style='margin-bottom:5px;'>"+user.description+"</div>");
+		uiDiv.insert("<div>"+user.description+"</div>");
 	}
 	if(user.website != ""){
-        uiDiv.insert("<div style='margin-bottom:5px;'><a href='"+user.website+"' target='_blank'>"+user.website+"</a></div>");
+        uiDiv.insert("<div><a href='"+user.website+"' target='_blank'>"+user.website+"</a></div>");
     }
 	if(user.tags && user.tags.length > 0) {
-		var tagsStr = "<div style='margin-bottom:5px;'><b><?php echo $LNG->USERS_PROFILE_TAGS; ?> </b>";
+		var tagsStr = "<div><b><?php echo $LNG->USERS_PROFILE_TAGS; ?> </b>";
 		for (var i=0 ; i< user.tags.length; i++){
 			if (i > 0) {
 				tagsStr += ", ";
@@ -358,7 +345,6 @@ function renderUser(user){
 	}
 
 	uDiv.insert(uiDiv);
-	uDiv.insert("<div style='clear:both'></div>");
 	return uDiv;
 
 }
@@ -369,17 +355,17 @@ function renderUser(user){
 function renderWidgetUser(user){
 
 	var uDiv = new Element("div",{id:'context'});
-	var imgDiv = new Element("div", {'style':'clear:both;float:left;'});
-	var cI = new Element("div", {'class':'idea-user2', 'style':'clear:both;float:left;'});
+	var imgDiv = new Element("div", {"class":"idea-user-image-wrap row"});
+	var cI = new Element("div", {'class':'idea-user2 col-auto'});
 	if(user.isgroup == 'Y'){
-		cI.insert("<a href='group.php?groupid="+ user.userid +"'><img border='0' src='"+user.thumb+"'/></a>");
+		cI.insert("<a href='group.php?groupid="+ user.userid +"'><img border='0' src='"+user.thumb+"' alt='profile image for "+user.name+"'/></a>");
 	} else {
-		cI.insert("<a href='user.php?userid="+ user.userid +"'><img border='0' src='"+user.thumb+"'/></a>")
+		cI.insert("<a href='user.php?userid="+ user.userid +"'><img border='0' src='"+user.thumb+"' alt='profile image for "+user.name+"'/></a>")
 	}
 
 	imgDiv.insert(cI);
 
-	var uiDiv = new Element("div", {'style':'float:left;'});
+	var uiDiv = new Element("div", {"class":"idea-user-wrap col"});
 	if(user.isgroup == 'Y'){
 		uiDiv.insert("<b><a href='group.php?groupid="+ user.userid +"'>" + user.name + "</a></b>");
 	} else {
@@ -402,18 +388,18 @@ function renderWidgetUser(user){
  */
 function renderChatUser(user){
 
-	var uDiv = new Element("div",{id:'context'});
-	var imgDiv = new Element("div", {'style':'clear:both;float:left;'});
-	var cI = new Element("div", {'class':'idea-user2', 'style':'clear:both;float:left;'});
+	var uDiv = new Element("div",{id:'context', 'class':'chatUserList'});
+	var imgDiv = new Element("div", {'class':'row'});
+	var cI = new Element("div", {'class':'idea-user2 col-auto'});
 	if(user.isgroup == 'Y'){
-		cI.insert("<a href='group.php?groupid="+ user.userid +"'><img border='0' src='"+user.thumb+"'/></a>");
+		cI.insert("<a href='group.php?groupid="+ user.userid +"'><img border='0' src='"+user.thumb+"' alt='profile image for "+user.name+"'/></a>");
 	} else {
-		cI.insert("<a href='user.php?userid="+ user.userid +"'><img border='0' src='"+user.thumb+"'/></a>")
+		cI.insert("<a href='user.php?userid="+ user.userid +"'><img border='0' src='"+user.thumb+"' alt='profile image for "+user.name+"'/></a>")
 	}
 
 	imgDiv.insert(cI);
 
-	var uiDiv = new Element("div", {'style':'float:left;'});
+	var uiDiv = new Element("div", {'class':'chatUserInfo col-auto'});
 	if(user.isgroup == 'Y'){
 		uiDiv.insert("<b><a href='group.php?groupid="+ user.userid +"'>" + user.name + "</a></b>");
 	} else {

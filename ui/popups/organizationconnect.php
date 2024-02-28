@@ -229,7 +229,7 @@ function addSelectedResource(node, num) {
 		$('identifierdiv-'+num).style.display="none";
 	}
 
-	$('typehiddendiv-'+num).style.display="block";
+	$('typehiddendiv-'+num).style.display="flex";
 	$('typediv-'+num).style.display="none";
 	$('resourceurldiv-'+num).style.display="none";
 	$('resourcedescdiv-'+num).style.display="none";
@@ -243,15 +243,15 @@ function removeSelectedResource(num) {
 	$('resourcenodeidsarray-'+num).value = "";
 
 	$('typehiddendiv-'+num).style.display="none";
-	$('typediv-'+num).style.display="block";
-	$('resourceurldiv-'+num).style.display="block";
-	$('resourcedescdiv-'+num).style.display="block";
+	$('typediv-'+num).style.display="flex";
+	$('resourceurldiv-'+num).style.display="flex";
+	$('resourcedescdiv-'+num).style.display="flex";
 }
 
 function addSelectedNode(node) {
 	$('nodeid').value = node.nodeid;
 
-	$('labeldiv').style.display="block";
+	$('labeldiv').style.display="flex";
 	$('orglabel').value = node.name;
 
 	$('typediv').style.display="none";
@@ -280,20 +280,20 @@ function removeSelectedNode() {
 	if (nodeType == 'Project') {
 		$('typediv').style.display="none";
 	} else {
-		$('typediv').style.display="block";
+		$('typediv').style.display="flex";
 	}
-	$('namediv').style.display="block";
-	$('descdiv').style.display="block";
-	$('datediv').style.display="block";
-	$('locationdiv').style.display="block";
-	$('resourcediv').style.display="block";
-	$('themediv').style.display="block";
-	$('linediv1').style.display="block";
-	$('linediv2').style.display="block";
-	$('tagsdiv').style.display="block";
+	$('namediv').style.display="flex";
+	$('descdiv').style.display="flex";
+	$('datediv').style.display="flex";
+	$('locationdiv').style.display="flex";
+	$('resourcediv').style.display="flex";
+	$('themediv').style.display="flex";
+	$('linediv1').style.display="flex";
+	$('linediv2').style.display="flex";
+	$('tagsdiv').style.display="flex";
 
 	if ($('endmessagediv')) {
-		$('endmessagediv').style.display="block";
+		$('endmessagediv').style.display="flex";
 	}
 }
 
@@ -326,91 +326,101 @@ window.onload = init;
 
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="orgform" name="orgform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
-	<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
-	<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
-	<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
-	<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
-	<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
-	<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
+			<form id="orgform" name="orgform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
+				<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
+				<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
+				<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
+				<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
+				<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
+				<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
 
-<h2 style="margin-left:5px;"><?php if ($filternodetypes == "Organization") { $LNG->FORM_TITLE_ORG_SECTION;} else if ($filternodetypes == "Project") { $LNG->FORM_TITLE_PROJECT_SECTION; } else { echo $LNG->FORM_TITLE_ORGPROJECT_CONNECT; } ?></h2>
-<div class="subformconnect" style="float:left;margin-bottom:10px;">
-	<div class="hgrformrow" id="typediv">
-		<div style="display: block; float:left; margin:0px; padding: 0px;">
-			<label class="formlabelbig" for="type2"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_TYPE; ?></span>
-				<span class="active" onMouseOver="showFormHint('OrgType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-				<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-			</label>
-			<input style="margin-left: 5px; margin-top: 0px" onclick="typeChangedOrg()" type="radio" name="type" id="type1" value="Organization" <?php if ($type == 'Organization' || $type == '') echo "checked"; ?>> <?php echo $LNG->ORG_NAME; ?>
-			<input type="radio" name="type" id="type2" onclick="typeChangedProject()" value="Project" <?php if ($type == 'Project') echo "checked"; ?> > <?php echo $LNG->PROJECT_NAME; ?><br>
+				<div class="mb-3 row" id="typediv">
+					<label class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_LABEL_TYPE; ?>
+						<a class="active" onMouseOver="showFormHint('OrgType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="type" id="type1" onclick="typeChangedOrg()" value="Organization" <?php if ($type == 'Organization') echo "checked"; ?> />
+							<label class="form-check-label" for="type1"><?php echo $LNG->ORG_NAME; ?></label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="type" id="type2" onclick="typeChangedProject()" value="Project" <?php if ($type == 'Project') echo "checked"; ?> />
+							<label class="form-check-label" for="type2"><?php echo $LNG->PROJECT_NAME; ?></label>
+						</div>
+					</div>
+				</div>
+
+				<div class="mb-3 row" id="labeldiv" style="display: none;">
+					<label class="col-sm-3 col-form-label" for="orglabel">
+						<?php echo $LNG->FORM_LABEL_NAME; ?>
+						<a class="active" onMouseOver="showFormHint('OrgName', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="orglabel" name="orglabel" value="" />
+					</div>
+					<div class="col-sm-3 pt-2">
+						<span class="active d-inline-block me-2" onClick="javascript: removeSelectedNode()"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
+						<span class="active d-inline-block ms-2" onClick="javascript: openSelector()"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>
+					</div>
+				</div>
+
+				<div class="mb-3 row" id="namediv">
+					<label class="col-sm-3 col-form-label" for="orgname">
+						<?php echo $LNG->FORM_LABEL_NAME; ?>
+						<a class="active" onMouseOver="showFormHint('OrgName', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="orgname" name="orgname" value="<?php echo( $orgname ); ?>" />
+					</div>
+					<?php if ($focalnodeid != "") { ?>
+						<div class="col-sm-3 pt-2">
+							<span class="active" onClick="javascript: openSelector()"><?php echo $LNG->FORM_ORG_SELECT_EXISTING; ?></span>
+						</div>
+					<?php }; ?>
+				</div>
+
+				<?php insertDescription('OrgDesc'); ?>
+				<?php insertProjectDates('OrgDates'); ?>
+				<hr class="hrline" id="linediv1" />
+				<?php insertLocation('Org'); ?>
+				<hr class="hrline" id="linediv2" />
+				<?php insertResourceForm('OrgResources');  ?>
+				<?php insertThemes('OrgTheme', $theme); ?>
+				<?php insertAddTags('OrgTag'); ?>
+
+				<div class="alert alert-info" id="endmessagediv">
+					<span><?php echo $LNG->FORM_ORG_PUBLISH_MESSAGE; ?></span>
+				</div>
+
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addorg" name="addorg" />
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
-
-    <div class="hgrformrow" id="labeldiv" style="display: none;">
-		<label  class="formlabelbig" for="orglabel"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_NAME; ?></span>
-			<span class="active" onMouseOver="showFormHint('OrgName', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" style="width: 340px" id="orglabel" name="orglabel" value="" />
-	    <span class="active" onClick="javascript: removeSelectedNode()" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
-	    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>
-	</div>
-
-    <div class="hgrformrow" id="namediv">
-		<label  class="formlabelbig" for="orgname"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_NAME; ?></span>
-			<span class="active" onMouseOver="showFormHint('OrgName', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" style="width: 340px" id="orgname" name="orgname" value="<?php echo( $orgname ); ?>" />
-		<?php if ($focalnodeid != "") { ?>
-		    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 5px; vertical-align: bottom"><?php echo $LNG->FORM_ORG_SELECT_EXISTING; ?></span>
-		<?php }; ?>
-	</div>
-
-	<?php insertDescription('OrgDesc'); ?>
-
-	<?php insertProjectDates('OrgDates'); ?>
-
-    <div class="hgrformrow" id="linediv1">
-		<hr class="hrline" />
-	</div>
-
-	<?php insertLocation('Org'); ?>
-
-    <div class="hgrformrow" id="linediv2">
-		<hr class="hrline" />
-	</div>
-
-	<?php insertResourceForm('OrgResources');  ?>
-
-	<?php insertThemes('OrgTheme', $theme); ?>
-
-	<?php insertAddTags('OrgTag'); ?>
-
 </div>
-<div style="clear:both;"></div>
-
-<?php if ($theme == "") { ?>
-<!-- h2 style="margin-left:5px;"><?php echo $LNG->FORM_CONNECT_RELEVANCE_SECTION; ?></h2>
-<div class="subformconnect">
-	<?php insertReason('OrgReason'); ?>
-</div -->
-<?php } ?>
-
-<div class="hgrformrow" id="endmessagediv">
-	<span><?php echo $LNG->FORM_ORG_PUBLISH_MESSAGE; ?></span>
-</div>
-
-<div class="hgrformrow">
-	<input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addorg" name="addorg">
-	<input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-</div>
-
-</form>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

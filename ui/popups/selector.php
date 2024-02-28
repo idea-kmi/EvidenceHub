@@ -177,12 +177,12 @@
 	 */
 	function displayPickerNodes(objDiv,nodes,start, includeUser){
 		objDiv.insert('<div style="clear:both; margin: 0px; padding: 0px;"></div>');
-		var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol', 'style':'overflow-y: auto; overflow-x: hidden; height: 410px;'});
+		var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol '});
 		for(var i=0; i< nodes.length; i++){
 			if(nodes[i].cnode){
-				var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li', 'style':'padding-bottom: 5px;'});
+				var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li'});
 				lOL.insert(iUL);
-				var blobDiv = new Element("div", {'style':'margin: 2px; width: 335px'});
+				var blobDiv = new Element("div", {'class':'d-block'});
 
 				var blobNode = renderPickerNode(nodes[i].cnode, nodes[i].cnode.role[0].role,includeUser);
 				blobDiv.insert(blobNode);
@@ -197,19 +197,19 @@
 	 */
 	function createNav(total, count, start, max, type){
 
-   	   var nav = new Element ("div",{'id':'page-nav', 'class':'toolbarrow', 'style':'padding-top: 3px;'});
+   	   var nav = new Element ("div",{'id':'page-nav', 'class':'toolbarrow'});
 
    	   var header = createNavCounter(total, start, count);
    	   nav.insert(header);
 
-   	   var clearnav = new Element ("div",{'style':'clear: both; margin: 3px; height: 3px;'});
+   	   var clearnav = new Element ("div",{'class':'d-block'});
    	   nav.insert(clearnav);
 
    	   if (total > parseInt( max )) {
    	   		//previous
-   	   	    var prevSpan = new Element("span", {'id':"nav-previous"});
+   	   	    var prevSpan = new Element("span", {'id':"nav-previous", "class": "page-nav page-chevron"});
    	   	    if(start > 0){
-   	   			prevSpan.update("<img title='<?php echo $LNG->LIST_NAV_PREVIOUS_HINT; ?>' alt='<?php echo $LNG->LIST_NAV_PREVIOUS_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath("arrow-left2.png"); ?>' class='toolbar' style='padding-right: 0px;' />");
+   	   			prevSpan.update("<i class=\"fas fa-chevron-left fa-lg\" aria-hidden=\"true\"></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_PREVIOUS_HINT; ?></span>");
    	   	        prevSpan.addClassName("active");
    	   	        Event.observe(prevSpan,"click", function(){
    	   		    	var newArr = {"max":max, "start":start};
@@ -221,12 +221,12 @@
    	   	            }
    	   	        });
    	   	    } else {
-   	   			prevSpan.update("<img title='<?php echo $LNG->LIST_NAV_NO_PREVIOUS_HINT; ?>' alt='<?php echo $LNG->LIST_NAV_NO_PREVIOUS_HINT; ?>' disabled src='<?php echo $HUB_FLM->getImagePath("arrow-left2-disabled.png"); ?>' class='toolbar' style='padding-right: 0px;' />");
+   	   			prevSpan.update("<i disabled class=\"fas fa-chevron-left fa-lg\" aria-hidden=\"true\"></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_NO_PREVIOUS_HINT; ?></span>");
    	   	        prevSpan.addClassName("inactive");
    	   	    }
 
    	   	    //pages
-   	   	    var pageSpan = new Element("span", {'id':"nav-pages"});
+   	   	    var pageSpan = new Element("span", {'id':"nav-pages", "class": "page-nav"});
    	   	    var totalPages = Math.ceil(total/max);
    	   	    var currentPage = (start/max) + 1;
    	   	    for (var i = 1; i<totalPages+1; i++){
@@ -243,9 +243,9 @@
    	   	    }
 
    	   	    //next
-   	   	    var nextSpan = new Element("span", {'id':"nav-next"});
+   	   	    var nextSpan = new Element("span", {'id':"nav-next", "class": "page-nav page-chevron"});
    	   	    if(parseInt(start)+parseInt(count) < parseInt(total)){
-   	   		    nextSpan.update("<img title='<?php echo $LNG->LIST_NAV_NEXT_HINT; ?>' alt='<?php echo $LNG->LIST_NAV_NEXT_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath("arrow-right2.png"); ?>' class='toolbar' style='padding-right: 0px;' />");
+   	   		    nextSpan.update("<i class=\"fas fa-chevron-right fa-lg\" aria-hidden=\"true\"></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_NEXT_HINT; ?></span>");
    	   	        nextSpan.addClassName("active");
    	   	        Event.observe(nextSpan,"click", function(){
    	   		    	var newArr = {"max":max, "start":start};
@@ -259,7 +259,7 @@
    	   	            }
    	   	        });
    	   	    } else {
-   	   		    nextSpan.update("<img title='<?php echo $LNG->LIST_NAV_NO_NEXT_HINT; ?>' alt='<?php echo $LNG->LIST_NAV_NO_NEXT_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath("arrow-right2-disabled.png"); ?>' class='toolbar' style='padding-right: 0px;' />");
+   	   		    nextSpan.update("<i class=\"fas fa-chevron-right fa-lg\" aria-hidden=\"true\" disabled></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_NO_NEXT_HINT; ?></span>");
    	   	        nextSpan.addClassName("inactive");
    	   	    }
 
@@ -301,22 +301,18 @@
 	}
 
 	function viewNodes() {
-   	   	$("tab-item-node").removeClassName("unselected");
-   	   	$("tab-item-node").addClassName("current");
+   	   	$("tab-item-node").addClassName("active");
    	   	$("item-idea-list").style.display = 'block';
 
- 	   	$("tab-item-search").removeClassName("current");
- 	   	$("tab-item-search").addClassName("unselected");
+ 	   	$("tab-item-search").removeClassName("active");
  	   	$("item-search-list").style.display = 'none';
 	}
 
  	function viewSearch() {
-   	   	$("tab-item-node").removeClassName("current");
-   	   	$("tab-item-node").addClassName("unselected");
+   	   	$("tab-item-node").removeClassName("active");
    	   	$("item-idea-list").style.display = 'none';
 
-   	   	$("tab-item-search").removeClassName("unselected");
-   	   	$("tab-item-search").addClassName("current");
+   	   	$("tab-item-search").addClassName("active");
    	   	$("item-search-list").style.display = 'block';
   	}
 
@@ -325,32 +321,44 @@
 
 </script>
 
-<div id="nodepicker" style="clear: both;float: left; width: 400px; margin-left: 10px; display: block;">
-	<div style="float:left;width:100%">
-		<label for="itemsearch" style="float: left; margin-right: 3px; margin-top: 3px;"><?php echo $LNG->FORM_SELECTOR_SEARCH_LABEL; ?></label>
-		<div style="float: left;">
-			<input type="text" onkeyup="if (checkKeyPressed(event)) { $('selector-go-button').onclick();}" style=" margin-right:3px; width:280px" id="itemsearch" name="itemsearch" value="" onkeypress="pickerSearchKeyPressed(event)" />
-			<div id="item_choices" class="autocomplete" style="border-color: white;"></div>
-		</div>
-		<div style="float:left;">
-			<img src="<?php echo $HUB_FLM->getImagePath('search.png'); ?>" class="active" width="20" height="20" onclick="javascript: runPickerSearch('0', '10');" title="<?php echo $LNG->HEADER_SEARCH_RUN_ICON_HINT; ?>" alt="<?php echo $LNG->HEADER_SEARCH_RUN_ICON_ALT; ?>" />
-		</div>
-	</div>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<div id="nodepicker">
+				<div class="mb-3 row">
+					<label for="itemsearch" class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_SELECTOR_SEARCH_LABEL; ?>
+					</label>
+					<div class="col-sm-9">
+						<div class="input-group">
+							<input type="text" class="form-control" aria-label="<?php echo $LNG->FORM_SELECTOR_SEARCH_LABEL; ?>" aria-describedby="button-addon2" onkeyup="if (checkKeyPressed(event)) { $('selector-go-button').onclick();}" id="itemsearch" name="itemsearch" value="" onkeypress="pickerSearchKeyPressed(event)" />
+							<div id="item_choices" class="autocomplete" style="border-color: white;"></div>
+							<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="javascript: runPickerSearch('0', '10');" title="<?php echo $LNG->HEADER_SEARCH_RUN_ICON_HINT; ?>">Search</button>
+						</div>
+						<small><?php echo $LNG->FORM_SELECTOR_SEARCH_MESSAGE; ?></small>
+					</div>
+				</div>
 
-
-	<label style="clear:both; float: left; margin-bottom:15px;width:100%"><?php echo $LNG->FORM_SELECTOR_SEARCH_MESSAGE; ?></label>
-
-	<div id="tabber" style="clear:both;float:left;width:380px;">
-		<div style="float:left;">
-			<ul id="tabs" class="tab2">
-				<li class="tab"><a class="tab current" id="tab-item-node" href="javascript:void(0)" onclick="javascript: viewNodes();"><span class="tab"><?php echo $LNG->FORM_SELECTOR_TAB_MINE; ?> <span id="catheading"></span> (<span id="node-item-list-count">0</span>)</span></a></li>
-				<li class="tab"><a class="tab unselected" id="tab-item-search" href="javascript:void(0)" onclick="javascript: viewSearch();"><span class="tab"><?php echo $LNG->FORM_SELECTOR_TAB_SEARCH_RESULTS; ?> (<span id="search-item-list-count">0</span>)</span></a></li>
-			</ul>
-		</div>
-		<div id="tabs-content" style="clear:both; float:left;height:540px;">
-			<div id='item-idea-list' class='tabcontent' style="width: 360px; height: 520px;"></div>
-			<div id='item-search-list' class='tabcontent' style="width: 360px; height: 520px; display: none;">
-				 <?php echo $LNG->FORM_SELECTOR_SEARCH_EMPTY_MESSAGE; ?>
+				<div id="tabber" class="tabber-search">
+					<ul id="tabs" class="nav nav-tabs">
+						<li class="nav-item">
+							<a class="nav-link active" id="tab-item-node" href="javascript:void(0)" onclick="javascript: viewNodes();">
+								<?php echo $LNG->FORM_SELECTOR_TAB_MINE; ?> <span id="catheading"></span> (<span id="node-item-list-count">0</span>)
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="tab-item-search" href="javascript:void(0)" onclick="javascript: viewSearch();">
+								<?php echo $LNG->FORM_SELECTOR_TAB_SEARCH_RESULTS; ?> (<span id="search-item-list-count">0</span>)
+							</a>
+						</li>
+					</ul>
+					<div id="tabs-content" class="border border-top-0 p-3">
+						<div id='item-idea-list' class='tabcontent'></div>
+						<div id='item-search-list' class='tabcontent' style="display: none;">
+							<?php echo $LNG->FORM_SELECTOR_SEARCH_EMPTY_MESSAGE; ?>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -589,7 +589,7 @@ function addConnectionToFDGraph(c, graph) {
 		tNNodeImage = URL_ROOT + tN.role[0].role.image;
 	}
 	var toroleicon = new Image();
-	toroleicon.src = fNNodeImage;
+	toroleicon.src = tNNodeImage;
 
 	var fromRole = fN.role[0].role.name;
 	var toRole = tN.role[0].role.name;
@@ -682,6 +682,7 @@ function addConnectionToFDGraph(c, graph) {
 	} else {
 		fromuser = fN.users[0].user;
 	}
+
 	var fromusericon = new Image();
 	fromusericon.src = fromuser.thumb
 
@@ -692,7 +693,7 @@ function addConnectionToFDGraph(c, graph) {
 		touser = tN.users[0].user;
 	}
 	var tousericon = new Image();
-	tousericon.src = fromuser.thumb
+	tousericon.src = touser.thumb
 
 	var fromNode = null;
 	if (!checkNodes[fN.nodeid]) {
@@ -713,6 +714,7 @@ function addConnectionToFDGraph(c, graph) {
 		        "id": fN.nodeid,
 		        "name": fromRole+": "+fromName,
 	       };
+
    		graph.addNode(fromNode);
    		checkNodes[fN.nodeid] = fN.nodeid;
 	} else {

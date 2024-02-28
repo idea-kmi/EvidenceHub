@@ -235,65 +235,74 @@ window.onload = init;
 
 </script>
 
-<div class="toolbarrow" style="color:#27318B; font-size: 10pt; font-weight:bold; margin-bottom: 10px;">Add a question you are investigating or a issue you think the community has to tackle.</div>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<div class="alert alert-info">Add a question you are investigating or a issue you think the community has to tackle.</div>
+			<?php insertFormHeaderMessage(); ?>
 
-<?php insertFormHeaderMessage(); ?>
+			<form id="issueform" name="issueform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
+				<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
+				<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
+				<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
+				<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
+				<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
+				<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
+	
+				<div class="mb-3 row" id="issuelabeldiv" style="display: none;">
+					<label for="issuelabel" class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_ISSUE_LABEL_SUMMARY; ?> 
+						<a class="active" onMouseOver="showFormHint('IssueSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>	
+					<div class="col-sm-6">
+						<input class="form-control" readonly id="issuelabel" name="issuelabel" value="" />
+					</div>
+					<div class="col-sm-3 pt-2">		
+						<span class="active" onClick="javascript: removeSelectedNode()" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
+						<span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>	
+					</div>
+				</div>
+				
+				<div class="mb-3 row" id="issuediv">
+					<label for="issue" class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_ISSUE_LABEL_SUMMARY; ?> 
+						<a class="active" onMouseOver="showFormHint('IssueSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>	
+					<div class="col-sm-6">
+						<input class="form-control" id="issue" name="issue" value="<?php echo( $issue ); ?>" />	
+					</div>
+					<?php if ($focalnodeid != "") { ?>	
+						<div class="col-sm-3 pt-2">	
+							<span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_ISSUE_SELECT_EXISTING; ?></span>	
+						</div>
+					<?php }; ?>
+				</div>	
 
-<form id="issueform" name="issueform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
-	<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
-	<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
-	<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
-	<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
-	<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
-	<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
-
-<h2 style="margin-left:5px;"><?php echo $LNG->FORM_ISSUE_TITLE_SECTION; ?></h2>
-<div class="subformconnect" style="float:left;margin-bottom:10px;padding-bottom:10px;">
-    <div class="hgrformrow" id="issuelabeldiv" style="display: none;margin-bottom:10px;">
-		<label class="formlabelbig" for="issue"><span style="vertical-align:top"><?php echo $LNG->FORM_ISSUE_LABEL_SUMMARY; ?></span>
-			<span class="active" onMouseOver="showFormHint('IssueSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" style="width:340px;" readonly id="issuelabel" name="issuelabel" value="" />
-	    <span class="active" onClick="javascript: removeSelectedNode()" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
-	    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>
+				<?php insertDescription('IssueDesc'); ?>
+				<?php insertThemes('IssueTheme', $theme); ?>
+				<?php insertAddTags('IssueTag'); ?>
+				<?php if ($CFG->HAS_CHALLENGE) { insertChallenges('IssueChallenges', true); } ?>
+				<?php if ($theme == "") { insertReason('IssueReason'); } ?>
+				
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addissue" name="addissue" />
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
-    <div class="hgrformrow" id="issuediv">
-		<label  class="formlabelbig" for="url"><span style="vertical-align:top"><?php echo $LNG->FORM_ISSUE_LABEL_SUMMARY; ?></span>
-			<span class="active" onMouseOver="showFormHint('IssueSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" style="width:340px" id="issue" name="issue" value="<?php echo( $issue ); ?>" />
-		<?php if ($focalnodeid != "") { ?>
-		    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_ISSUE_SELECT_EXISTING; ?></span>
-		<?php }; ?>
-	</div>
-
-	<?php insertDescription('IssueDesc'); ?>
-
-	<?php insertThemes('IssueTheme', $theme); ?>
-
-	<?php insertAddTags('IssueTag'); ?>
-
-	<?php if ($CFG->HAS_CHALLENGE) { insertChallenges('IssueChallenges', true); } ?>
 </div>
-<div style="clear:both;"></div>
-
-<?php if ($theme == "") { ?>
-<!-- h2 style="margin-left:5px;"><?php echo $LNG->FORM_CONNECT_RELEVANCE_SECTION; ?></h2>
-<div class="subformconnect">
-	<?php insertReason('IssueReason'); ?>
-</div -->
-<?php } ?>
-
-<div class="hgrformrow">
-	<input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addissue" name="addissue">
-	<input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();" />
-</div>
-
-</form>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

@@ -73,7 +73,7 @@ function getAllChatConnections() {
 				var conns = json.connectionset[0].connections;
 				if (conns.length == 0) {
 					$('chatloading').update("");
-					$('chatarea').update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> Chats <?php echo $LNG->WIDGET_NONE_FOUND_PART2b; ?>");
+					$('chatarea').update("<?php echo $LNG->WIDGET_NONE_FOUND2; ?>");
 				} else {
 					var topnodes = new Array();
 					var nodes = new Array();
@@ -152,7 +152,7 @@ function getAllChatConnections() {
 						//$(key+"headerlabel").update(title+"<span style='margin-left:5px'>("+topnodes.length+")</span>");
 					} else {
 						$('chatloading').update("");
-						$('chatarea').update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> Chats <?php echo $LNG->WIDGET_NONE_FOUND_PART2b; ?>");
+						$('chatarea').update("<?php echo $LNG->WIDGET_NONE_FOUND2; ?>");
 					}
 				}
 			}
@@ -180,7 +180,7 @@ function getChatConnections(nodetofocusid) {
 				var conns = json.connectionset[0].connections;
 				if (conns.length == 0) {
 					$('chatloading').update("");
-					$('chatarea').update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> Chats <?php echo $LNG->WIDGET_NONE_FOUND_PART2b; ?>");
+					$('chatarea').update("<?php echo $LNG->WIDGET_NONE_FOUND2; ?>");
 				} else {
 					var nodes = new Array();
 					var check = new Array();
@@ -226,7 +226,7 @@ function getChatConnections(nodetofocusid) {
 						//$(key+"headerlabel").update(title+"<span style='margin-left:5px'>("+nodes.length+")</span>");
 					} else {
 						$('chatloading').update("");
-						$('chatarea').update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> Chats <?php echo $LNG->WIDGET_NONE_FOUND_PART2b; ?>");
+						$('chatarea').update("<?php echo $LNG->WIDGET_NONE_FOUND2; ?>");
 					}
 				}
 			}

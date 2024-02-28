@@ -159,7 +159,7 @@ function init() {
 
 function addSelectedNode(node) {
 	$('claimdiv').style.display="none";
-	$('claimlabeldiv').style.display="block";
+	$('claimlabeldiv').style.display="flex";
 	$('claimlabel').value = node.name;
 	$('nodeid').value = node.nodeid;
 	$('themediv').style.display="none";
@@ -168,13 +168,13 @@ function addSelectedNode(node) {
 }
 
 function removeSelectedNode() {
-	$('claimdiv').style.display="block";
+	$('claimdiv').style.display="flex";
 	$('claimlabeldiv').style.display="none";
 	$('claimlabel').value="";
 	$('nodeid').value = "";
-	$('themediv').style.display="block";
-	$('descdiv').style.display="block";
-	$('tagsdiv').style.display="block";
+	$('themediv').style.display="flex";
+	$('descdiv').style.display="flex";
+	$('tagsdiv').style.display="flex";
 }
 
 function openSelector() {
@@ -207,58 +207,72 @@ window.onload = init;
 
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="claimform" name="claimform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
-	<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
-	<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
-	<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
-	<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
-	<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
-	<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
+			<form id="claimform" name="claimform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
+				<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
+				<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
+				<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
+				<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
+				<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
+				<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
 
-<h2 style="margin-left:5px;"><?php echo $LNG->FORM_CLAIM_TITLE_SECTION; ?></h2>
-<div class="subformconnect">
-    <div class="hgrformrow" id="claimlabeldiv" style="display: none;">
-		<label class="formlabelbig" for="claimlabel"><span style="vertical-align:top"><?php echo $LNG->FORM_CLAIM_LABEL_SUMMARY; ?></span>
-			<span class="active" onMouseOver="showFormHint('ClaimSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" style="width:340px;" readonly id="claimlabel" name="claimlabel" value="" />
-	    <span class="active" onClick="javascript: removeSelectedNode()" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
-	    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>
+				<div class="mb-3 row" id="claimlabeldiv" style="display: none;">
+					<label class="col-sm-3 col-form-label" for="claimlabel">						
+						<?php echo $LNG->FORM_CLAIM_LABEL_SUMMARY; ?>
+						<a class="active" onMouseOver="showFormHint('ClaimSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" readonly id="claimlabel" name="claimlabel" value="" />
+					</div>
+					<div class="col-sm-3 pt-2">
+						<span class="active me-3 d-inline-block" onClick="javascript: removeSelectedNode()"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
+						<span class="active me-3 d-inline-block" onClick="javascript: openSelector()"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>
+					</div>
+				</div>
+
+				<div class="mb-3 row" id="claimdiv">
+					<label class="col-sm-3 col-form-label" for="claim">
+						<?php echo $LNG->FORM_CLAIM_LABEL_SUMMARY; ?>
+						<a class="active" onMouseOver="showFormHint('ClaimSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="claim" name="claim" value="<?php echo( $claim ); ?>" />
+					</div>
+					<?php if ($focalnodeid != "") { ?>
+						<div class="col-sm-3 pt-2">
+							<span class="active me-3 d-inline-block" onClick="javascript: openSelector()"><?php echo $LNG->FORM_CLAIM_SELECT_EXISTING; ?></span>
+						</div>
+					<?php }; ?>
+				</div>
+
+				<?php insertDescription('ClaimDesc'); ?>
+				<?php insertThemes('ClaimTheme', $theme); ?>
+				<?php insertAddTags('ClaimTag'); ?>
+
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addclaim" name="addclaim" />
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
-    <div class="hgrformrow" id="claimdiv">
-		<label  class="formlabelbig" for="claim"><span style="vertical-align:top"><?php echo $LNG->FORM_CLAIM_LABEL_SUMMARY; ?></span>
-			<span class="active" onMouseOver="showFormHint('ClaimSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" style="width:340px" id="claim" name="claim" value="<?php echo( $claim ); ?>" />
-		<?php if ($focalnodeid != "") { ?>
-		    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_CLAIM_SELECT_EXISTING; ?></span>
-		<?php }; ?>
-	</div>
-
-	<?php insertDescription('ClaimDesc'); ?>
-
-	<?php insertThemes('ClaimTheme', $theme); ?>
-
-	<?php insertAddTags('ClaimTag'); ?>
-</div>
-<div style="clear:both;"></div>
-<!-- h2 style="margin-left:5px;"><?php echo $LNG->FORM_CONNECT_RELEVANCE_SECTION; ?></h2>
-<div class="subformconnect">
-	<?php insertReason('ClaimReason'); ?>
-</div -->
-
-<div class="hgrformrow">
-	<input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addclaim" name="addclaim">
-	<input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
 </div>
 
-</form>
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
 ?>

@@ -180,7 +180,7 @@ function init() {
     $('dialogheader').insert('<?php echo $LNG->FORM_ORG_TITLE_ADD; ?>');
 
 	if (initialtype == 'Project') {
-		document.getElementById('datediv').style.display = "block";
+		document.getElementById('datediv').style.display = "";
 	} else if (initialtype == 'Organization') {
 		document.getElementById('datediv').style.display = "none";
 	}
@@ -242,61 +242,72 @@ window.onload = init;
 
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="orgform" name="orgform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="from" name="from" value="<?php echo $from; ?>" />
+			<form id="orgform" name="orgform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="from" name="from" value="<?php echo $from; ?>" />
 
-	<div class="hgrformrow">
-		<div style="display: block; float:left; margin:0px; padding: 0px;">
-			<label class="formlabelbig" for="type2"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_TYPE; ?></span>
-				<span class="active" onMouseOver="showFormHint('OrgType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-				<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-			</label>
-			<input style="margin-left: 5px; margin-top: 0px" onclick="typeChangedOrg()" type="radio" name="type" id="type1" value="Organization" <?php if ($type == 'Organization' || $type == '') echo "checked"; ?>> <?php echo $LNG->ORG_NAME; ?>
-			<input type="radio" name="type" id="type2" onclick="typeChangedProject()" value="Project" <?php if ($type == 'Project') echo "checked"; ?> > <?php echo $LNG->PROJECT_NAME; ?><br>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_LABEL_TYPE; ?> 
+						<a class="active" onMouseOver="showFormHint('OrgType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+					</label>
+					<div class="col-sm-9">
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="type" id="type1" onclick="typeChangedOrg()" value="Organization" <?php if ($type == 'Organization') echo "checked"; ?> />
+							<label class="form-check-label" for="type1"><?php echo $LNG->ORG_NAME; ?></label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="type" id="type2" onclick="typeChangedProject()" value="Project" <?php if ($type == 'Project') echo "checked"; ?> />
+							<label class="form-check-label" for="type2"><?php echo $LNG->PROJECT_NAME; ?></label>
+						</div>
+					</div>
+				</div>	
+
+				<div class="mb-3 row">
+					<label for="orgname" class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_LABEL_NAME; ?> 
+						<a class="active" onMouseOver="showFormHint('OrgName', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>						
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="orgname" name="orgname" value="<?php echo( $orgname ); ?>" />
+					</div>
+				</div>
+
+				<?php insertDescription('OrgDesc'); ?>
+				<?php insertProjectDates('OrgDates'); ?>
+				<hr id="linediv1" />
+				<?php insertLocation('Org'); ?>
+				<hr id="linediv2" />
+				<?php insertResourceForm('OrgResources');  ?>
+				<?php insertThemes('OrgTheme'); ?>
+				<?php insertAddTags('OrgTag'); ?>
+				<?php if ($isRemote === FALSE) { ?>
+					<div class="alert alert-info" id="endmessagediv">
+						<p><?php echo $LNG->FORM_ORG_PUBLISH_MESSAGE; ?></p>
+					</div>
+				<?php } ?>
+
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addorg" name="addorg" />
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
-
-    <div class="hgrformrow">
-		<label  class="formlabelbig" for="orgname"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_NAME; ?></span>
-			<span class="active" onMouseOver="showFormHint('OrgName', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" id="orgname" name="orgname" value="<?php echo( $orgname ); ?>" />
-	</div>
-
-	<?php insertDescription('OrgDesc'); ?>
-
-	<?php insertProjectDates('OrgDates'); ?>
-
-	<div class="hgrformrow" id="linediv1">
-		<hr class="hrline" />
-	</div>
-
-	<?php insertLocation('Org'); ?>
-
-	<div class="hgrformrow" id="linediv2">
-		<hr class="hrline" />
-	</div>
-
-	<?php insertResourceForm('OrgResources');  ?>
-
-	<?php insertThemes('OrgTheme'); ?>
-
-	<?php insertAddTags('OrgTag'); ?>
-
-	<?php if ($isRemote === FALSE) { ?>
-   	<div class="hgrformrow" id="endmessagediv">
-		<span><?php echo $LNG->FORM_ORG_PUBLISH_MESSAGE; ?></span>
-	</div>
-	<?php } ?>
-
-    <div class="hgrformrow">
-        <input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addorg" name="addorg">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-</form>
+</div>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

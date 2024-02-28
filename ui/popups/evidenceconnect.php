@@ -197,7 +197,7 @@ function init() {
 
 function addSelectedNode(node) {
 	$('typediv').style.display="none";
-	$('typehiddendiv').style.display="block";
+	$('typehiddendiv').style.display="flex";
 	$('nodetypelabel').value=node.role[0].role.name;
 	$('summary').value = node.name;
 	$('summary').disabled = true;
@@ -210,17 +210,17 @@ function addSelectedNode(node) {
 }
 
 function removeSelectedNode() {
-	$('typediv').style.display="block";
+	$('typediv').style.display="flex";
 	$('typehiddendiv').style.display="none";
 	$('nodetypelabel').value='<?php echo $CFG->RESOURCE_TYPES_DEFAULT; ?>';
 	$('summary').value = "";
 	$('summary').disabled = false;
 	$('nodeid').value = "";
 
-	$('resourcediv').style.display="block";
-	$('themediv').style.display="block";
-	$('descdiv').style.display="block";
-	$('tagsdiv').style.display="block";
+	$('resourcediv').style.display="flex";
+	$('themediv').style.display="flex";
+	$('descdiv').style.display="flex";
+	$('tagsdiv').style.display="flex";
 }
 
 function addSelectedResource(node, num) {
@@ -234,7 +234,7 @@ function addSelectedResource(node, num) {
 		$('identifierdiv-'+num).style.display="none";
 	}
 
-	$('typehiddendiv-'+num).style.display="block";
+	$('typehiddendiv-'+num).style.display="flex";
 	$('typediv-'+num).style.display="none";
 	$('resourceurldiv-'+num).style.display="none";
 	$('resourcedescdiv-'+num).style.display="none";
@@ -248,9 +248,9 @@ function removeSelectedResource(num) {
 	$('resourcenodeidsarray-'+num).value = "";
 
 	$('typehiddendiv-'+num).style.display="none";
-	$('typediv-'+num).style.display="block";
-	$('resourceurldiv-'+num).style.display="block";
-	$('resourcedescdiv-'+num).style.display="block";
+	$('typediv-'+num).style.display="flex";
+	$('resourceurldiv-'+num).style.display="flex";
+	$('resourcedescdiv-'+num).style.display="flex";
 }
 
 function openSelector() {
@@ -285,94 +285,105 @@ window.onload = init;
 
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="evidenceform" name="evidenceform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
-	<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
-	<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
-	<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
-	<input type="hidden" id="linknodetypename" name="linknodetypename" value="<?php echo $linknodetypename; ?>" />
-	<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
-	<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
-	<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
+			<form id="evidenceform" name="evidenceform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
+				<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
+				<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
+				<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
+				<input type="hidden" id="linknodetypename" name="linknodetypename" value="<?php echo $linknodetypename; ?>" />
+				<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
+				<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
+				<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
 
-<h2 style="margin-left:5px;"><?php echo $formTitle; ?></h2>
-<div class="subformconnect">
-   <div class="hgrformrow" id="typehiddendiv" style="display:none;margin-bottom:10px;">
-		<label  class="formlabelbig" for="nodetypelabel"><span style="vertical-align:top;"><?php echo $LNG->FORM_LABEL_TYPE; ?></span>
-		<span class="active" onMouseOver="showFormHint('EvidenceType', event, 'hgrhint', '<?php echo $CFG->EVIDENCE_TYPES_DEFAULT;?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-		<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<select class="subforminput hgrselect forminputmust" style="width:300px;" disabled id="nodetypelabel" name="nodetypelabel">
-			<?php
-				foreach($CFG->EVIDENCE_TYPES as $item){?>
-				$count = 0;
-				if (is_countable($CFG->EVIDENCE_TYPES)) {
-					$count = count($CFG->EVIDENCE_TYPES);
-				}
-				for($i=0; $i<$count; $i++){
-					$item = $CFG->EVIDENCE_TYPES[$i];
-					$name = $LNG->EVIDENCE_TYPES[$i];
-					error_log($name);
-				?>
-					<option value='<?php echo $item; ?>' <?php if ($nodetypename == $item || ($nodetypename == "" && $item == $CFG->EVIDENCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; }  ?> ><?php echo $name; ?></option>
-			<?php } ?>
-		</select>
-	    <span class="active" onClick="javascript: removeSelectedNode()" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
-	    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>
-   </div>
+				<div class="mb-3 row" id="typehiddendiv" style="display:none;">
+					<label class="col-sm-3 col-form-label" for="nodetypelabel">
+						<?php echo $LNG->FORM_LABEL_TYPE; ?>
+						<a class="active" onMouseOver="showFormHint('EvidenceType', event, 'hgrhint', '<?php echo $CFG->EVIDENCE_TYPES_DEFAULT;?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-6">		
+						<select class="form-select" disabled id="nodetypelabel" name="nodetypelabel">
+							<?php
+								foreach($CFG->EVIDENCE_TYPES as $item){
+									$count = 0;
+									if (is_countable($CFG->EVIDENCE_TYPES)) {
+										$count = count($CFG->EVIDENCE_TYPES);
+									}
+									for($i=0; $i < $count; $i++){
+										$item = $CFG->EVIDENCE_TYPES[$i];
+										$name = $LNG->EVIDENCE_TYPES[$i];
+										error_log($name);
+									?>
+									<option value='<?php echo $item; ?>' <?php if ($nodetypename == $item || ($nodetypename == "" && $item == $CFG->EVIDENCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; }  ?> ><?php echo $name; ?></option>
+							<?php } } ?>
+						</select>
+					</div>
+					<div class="col-sm-3 pt-2">	
+						<span class="active d-inline-block me-3" onClick="javascript: removeSelectedNode()"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
+						<span class="active d-inline-block ms-3" onClick="javascript: openSelector()"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>
+					</div>
+				</div>
 
-   <div class="hgrformrow" id="typediv">
-		<label  class="formlabelbig" for="nodetypename"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_TYPE; ?></span>
-		<span class="active" onMouseOver="showFormHint('EvidenceType', event, 'hgrhint', '<?php echo $CFG->EVIDENCE_TYPES_DEFAULT;?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-		<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<select class="subforminput hgrselect forminputmust" style="width:300px;" id="nodetypename" name="nodetypename">
-			<?php
-				$count = 0;
-				if (is_countable($CFG->EVIDENCE_TYPES)) {
-					$count = count($CFG->EVIDENCE_TYPES);
-				}
-				for($i=0; $i<$count; $i++){
-					$item = $CFG->EVIDENCE_TYPES[$i];
-					$name = $LNG->EVIDENCE_TYPES[$i];
-					error_log($name);
-				?>
-					<option value='<?php echo $item; ?>' <?php if ($nodetypename == $item || ($nodetypename == "" && $item == $CFG->EVIDENCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; }  ?> ><?php echo $name; ?></option>
-			<?php } ?>
-		</select>
-		<?php if ($focalnodeid != "") { ?>
-		    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_EVIDENCE_SELECT_EXISTING; ?></span>
-		<?php }; ?>
-   </div>
+				<div class="mb-3 row" id="typediv">
+					<label class="col-sm-3 col-form-label" for="nodetypename">
+						<?php echo $LNG->FORM_LABEL_TYPE; ?>
+						<a class="active" onMouseOver="showFormHint('EvidenceType', event, 'hgrhint', '<?php echo $CFG->EVIDENCE_TYPES_DEFAULT;?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-6">
+						<select class="form-select" id="nodetypename" name="nodetypename">
+							<?php
+								$count = 0;
+								if (is_countable($CFG->EVIDENCE_TYPES)) {
+									$count = count($CFG->EVIDENCE_TYPES);
+								}
+								for($i=0; $i < $count; $i++){
+									$item = $CFG->EVIDENCE_TYPES[$i];
+									$name = $LNG->EVIDENCE_TYPES[$i];
+									error_log($name);
+								?>
+									<option value='<?php echo $item; ?>' <?php if ($nodetypename == $item || ($nodetypename == "" && $item == $CFG->EVIDENCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; }  ?> ><?php echo $name; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<?php if ($focalnodeid != "") { ?>
+						<div class="col-sm-3 pt-2">	
+							<span class="active" onClick="javascript: openSelector()"><?php echo $LNG->FORM_EVIDENCE_SELECT_EXISTING; ?></span>
+						</div>
+					<?php }; ?>
+				</div>
 
-	<?php insertSummary('EvidenceSummary', $LNG->FORM_EVIDENCE_LABEL_SUMMARY); ?>
+				<?php insertSummary('EvidenceSummary', $LNG->FORM_EVIDENCE_LABEL_SUMMARY); ?>
+				<?php insertDescription('EvidenceDesc'); ?>
+				<?php insertResourceForm('Resources'); ?>
+				<?php insertThemes('EvidenceTheme', $theme); ?>
+				<?php insertAddTags('EvidenceTag'); ?>
 
-	<?php insertDescription('EvidenceDesc'); ?>
+				<?php if ($theme == "") { ?>
+					<?php insertReason('EvidenceReason'); ?>
+				<?php } ?>
 
-	<?php insertResourceForm('Resources'); ?>
-
-	<?php insertThemes('EvidenceTheme', $theme); ?>
-
-	<?php insertAddTags('EvidenceTag'); ?>
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addresource" name="addresource" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
-
-<div style="clear:both;"></div>
-
-<?php if ($theme == "") { ?>
-<!-- h2 style="margin-left:5px;"><?php echo $LNG->FORM_CONNECT_RELEVANCE_SECTION; ?></h2>
-<div class="subformconnect">
-	<?php insertReason('EvidenceReason'); ?>
-</div -->
-<?php } ?>
-
-<div class="hgrformrow">
-	<input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addresource" name="addresource">
-	<input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-</div>
-
-</form>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

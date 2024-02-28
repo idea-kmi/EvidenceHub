@@ -96,23 +96,21 @@ Event.observe(window, 'load', function() {
 
 </script>
 
-<div id="nodearealineartitle" class="plainback plainborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-	<div class="plainback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
+<div id="nodearealineartitle" class="plainback plainborder">
+	<div class="plainback tabtitlebar">
 		<label class="linearnodeheaderlabel", id="exploreheaderlabel">
 		</label>
 	</div>
 </div>
 
-<!-- div id="searchnetheadermessage" style="clear:both;float:left;margin-top:10px;font-weight:bold"><?php echo $LNG->SEARCH_NET_MESSAGE; ?></div -->
-
-<div style="border-bottom:1px solid #E8E8E8; width:100%;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-	<div id="headertoolbar" style="clear:both;float:left;margin-top:10px;margin-left:5px;"></div>
+<div>
+	<div id="headertoolbar"></div>
 </div>
 
-<div id="tabber" style="clear:both;float:left;width:100%;">
+<div id="tabber">
     <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
        	<div id='tab-content-explore-net' class='explorepagesection' style="display:block">
-			<div id="tab-content-search-net" style="clear:both; float:left;width:100%;"></div>
+			<div id="tab-content-search-net"></div>
 		</div>
 	</div>
 </div>

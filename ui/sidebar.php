@@ -36,6 +36,8 @@ function scrollHistoryDivLeft() {
   	}
   	if ($('historyBarDiv').scrollLeft == 0) {
   		$('historyBarLeftButton').src = "<?php echo $CFG->homeAddress; ?>images/back-arrow-grey.png";
+  		$('historyBarLeftButton').alt = "Scroll left";
+		
   		stopScrollLeft();
   	}
 	timerLeft = setTimeout('scrollHistoryDivLeft()', 20);
@@ -45,10 +47,12 @@ function scrollHistoryDivRight() {
   	$('historyBarDiv').scrollLeft += timerStep;
   	if ($('historyBarDiv').scrollLeft > 0) {
   		$('historyBarLeftButton').src = "<?php echo $CFG->homeAddress; ?>images/back-arrow2.png";
+  		$('historyBarLeftButton').alt = "Scroll left";
   	}
 
   	if ($('historyBarDiv').scrollLeft >= ($('historyBar').offsetWidth-$('historyBarDiv').offsetWidth)) {
   		$('historyBarRightButton').src = "<?php echo $CFG->homeAddress; ?>images/forward-arrow-grey.png";
+  		$('historyBarRightButton').alt = "Scroll right";
   		stopScrollRight();
 	}
 	timerRight = setTimeout('scrollHistoryDivRight()', 20);
@@ -69,11 +73,13 @@ function stopScrollRight() {
 function resizeHistoryBar() {
 	if ($('historyBarDiv')) {
 		var width = getWindowWidth();
-		$('historyBarDiv').style.width = width-160+"px";
+		console.log(width)
+		$('historyBarDiv').style.width = "70%";
 		$('historyBarDiv').scrollLeft = 0;
 
 		if ($('historyBarDiv').scrollLeft >= ($('historyBar').offsetWidth-$('historyBarDiv').offsetWidth)) {
 			$('historyBarRightButton').src = "<?php echo $CFG->homeAddress; ?>images/forward-arrow-grey.png";
+  			$('historyBarRightButton').alt = "Scroll right";
 		}
 	}
 }
@@ -96,168 +102,113 @@ Event.observe(window,"resize",resizeHistoryBar);
 
 </script>
 
-<div id="sidebar-content">
-
-<?php
-$items = array();
-if (isset($_SESSION['hubhistory'])) {
-	foreach($_SESSION['hubhistory'] as $next) {
-		$pos = strrpos( $next , '?id=');
-		if ($pos == false) {
-			$pos = strrpos( $next,'userid=');
-			if ($pos !== false) {
-				$posnext = strrpos($next, '&');
-				if ($posnext ===  false || $posnext < $pos) {
-					$userid = substr($next, $pos+7);
+<div id="sidebar-content" class="sidebar-content row">
+	<?php
+		$items = array();
+		if (isset($_SESSION['hubhistory'])) {
+			foreach($_SESSION['hubhistory'] as $next) {
+				$pos = strrpos( $next , '?id=');
+				if ($pos == false) {
+					$pos = strrpos( $next,'userid=');
+					if ($pos !== false) {
+						$posnext = strrpos($next, '&');
+						if ($posnext ===  false || $posnext < $pos) {
+							$userid = substr($next, $pos+7);
+						} else {
+							$userid = substr($next, $pos+7, ($posnext-($pos+7)));
+						}
+						$user = getUser($userid);
+						if($user instanceof User){
+							$items[count($items)] = $user;
+						}
+					}
 				} else {
-					$userid = substr($next, $pos+7, ($posnext-($pos+7)));
+					$posnext = strrpos( $next , '&');
+					if ($posnext ===  false || $posnext < $pos) {
+						$nodeid = substr($next, $pos+4);
+					} else {
+						$nodeid = substr($next, $pos+4, ($posnext-($pos+4)));
+					}
+					$node = getNode($nodeid);
+					$node->url = $next;
+					if($node instanceof CNode){
+						$items[count($items)] = $node;
+					}
 				}
-				$user = getUser($userid);
-				if($user instanceof User){
-					$items[count($items)] = $user;
-				}
-			}
-		} else {
-			$posnext = strrpos( $next , '&');
-			if ($posnext ===  false || $posnext < $pos) {
-				$nodeid = substr($next, $pos+4);
-			} else {
-				$nodeid = substr($next, $pos+4, ($posnext-($pos+4)));
-			}
-			$node = getNode($nodeid);
-			$node->url = $next;
-			if($node instanceof CNode){
-				$items[count($items)] = $node;
 			}
 		}
-	}
-}
 
-$count = count($items);
+		$count = count($items);
 
-if ($count > 0) {
-	echo '<div style="float:left;clear:both;margin-left:15px;margin-top:10px;">';
-	echo '<h2 style="margin:0px;">'.$LNG->SIDEBAR_TITLE;
-	echo '</h2>';
-	echo '</div>';
+		if ($count > 0) {
+			echo '<div class="col-12">
+					<hr />
+					<div class="row p-3">
+						<div class="col">
+							<h2>'.$LNG->SIDEBAR_TITLE.'</h2>
+						</div>
+					</div>
+					<div class="row p-3 justify-content-between" id="historybarcontent">
+						<div class="col-auto">
+							<img class="mt-4" id="historyBarLeftButton" alt="Scroll left" onmouseover="scrollHistoryDivLeft()" onmouseout="stopScrollLeft()" src="'.$CFG->homeAddress.'images/back-arrow-grey.png" />
+						</div>
+						<div id="historyBarDiv" class="col-10 overflow-hidden">
+							<div id="historyBar" style="width:'.((($count+1)*120.5)).'px;">';
 
-	echo '<div style="padding:0px; margin:0px;float:left;clear:both;padding:3px;margin-left:15px;margin-top:3px;" id="historybarcontent">';
+								for ($i=0; $i<$count; $i++) {
+									$next = $items[$i];
+									if ($next instanceof CNode) {
 
-	echo '<div style="clear:both;float:left;height:80px">';
-	echo '<img style="margin-top:20px; margin-right:5px;" id="historyBarLeftButton" onmouseover="scrollHistoryDivLeft()" onmouseout="stopScrollLeft()" src="'.$CFG->homeAddress.'images/back-arrow-grey.png" />';
-	echo '</div>';
+										$text = $next->name;
+										if (in_array($next->role->name, $CFG->RESOURCE_TYPES)) {
+											$text = $next->description;
+										}
+										$hint = $text;
 
-	echo '<div id="historyBarDiv" style="width: 750px;overflow-x:hidden;overflow-y:hidden;height:90px;float:left;/*border: 2px solid lightgray;*/">';
-	echo '<div id="historyBar" style="float:left;width:'.((($count+1)*120.5)).'px;">';
+										if (strlen($text) > 45) {
+											$text = substr($text,0,45)."...";
+										}
 
-	for ($i=0; $i<$count; $i++) {
-		$next = $items[$i];
-		if ($next instanceof CNode) {
+										$url = $next->url;
+										$viewtype = "";
+										if (strpos($url, 'explore.php') !== FALSE) {
+											$viewtype = $LNG->VIEWS_WIDGET_TITLE;;
+										} if (strpos($url, 'chats.php') !== FALSE) {
+											$viewtype = $LNG->VIEWS_CHAT_TITLE;
+										} if (strpos($url, 'knowledgetrees.php') !== FALSE) {
+											$viewtype = $LNG->VIEWS_LINEAR_TITLE;
+										} if (strpos($url, 'networkgraph.php') !== FALSE) {
+											$viewtype = $LNG->VIEWS_EVIDENCE_MAP_TITLE;
+										}
 
-			$text = $next->name;
-			if (in_array($next->role->name, $CFG->RESOURCE_TYPES)) {
-				$text = $next->description;
-			}
-			$hint = $text;
+										echo '<div class="history-item" >';
+										if ($viewtype != "") {
+											echo '<span class="history-title">'.$viewtype.': </span>';
+										}
+										echo '<a class="itemtext" title="'.$LNG->HISTORY_ITEM_HINT.' '.$viewtype.': '.$hint.'" href="'.$url.'">';
+										if (isset($next->role->image) && $next->role->image != "") {
+											echo '<img alt="'.$next->role->name.' icon" class="img-fluid" src="'.$CFG->homeAddress.$next->role->image.'" />';
+										}
+										echo '<span>'.$text.'</span></a>';
+										echo '</div>';
+									} else if ($next instanceof User) {
+										echo '<div class="history-user" >';
+										echo '<a class="itemtext" title="'.$LNG->HISTORY_ITEM_HINT.'" href="'.$CFG->homeAddress.'user.php?userid='.$next->userid.'">';
+										if (isset($next->thumb) && $next->thumb != "") {
+											echo '<img alt="'.$next->name.' profile picture" class="img-fluid" src="'.$next->thumb.'" />';
+										}
+										echo $next->name.'</a>';
+										echo '</div>';
+									}
+								}
+						echo '</div>
+						</div>';
 
-			if (strlen($text) > 45) {
-				$text = substr($text,0,45)."...";
-			}
+					echo '<div class="col-auto">';
+						echo '<img class="mt-4" id="historyBarRightButton" onmouseover="scrollHistoryDivRight()" onmouseout="stopScrollRight()" src="'.$CFG->homeAddress.'images/forward-arrow2.png" alt="Scroll right" />';
+					echo '</div>';
 
-			$url = $next->url;
-			$viewtype = "";
-			if (strpos($url, 'explore.php') !== FALSE) {
-    			$viewtype = $LNG->VIEWS_WIDGET_TITLE;;
-			} if (strpos($url, 'chats.php') !== FALSE) {
-				$viewtype = $LNG->VIEWS_CHAT_TITLE;
-			} if (strpos($url, 'knowledgetrees.php') !== FALSE) {
-				$viewtype = $LNG->VIEWS_LINEAR_TITLE;
-			} if (strpos($url, 'networkgraph.php') !== FALSE) {
-				$viewtype = $LNG->VIEWS_EVIDENCE_MAP_TITLE;
-			}
-
-			echo '<div style="background: white;overflow:hidden;padding:5px;float:left;';
-			echo 'border-right: 1px solid lightgray;';
-			echo 'height:75px;width:120px;">';
-			if ($viewtype != "") {
-				echo '<span style="font-weight:bold; color:black;">'.$viewtype.': </span>';
-			}
-			echo '<a class="itemtext" title="'.$LNG->HISTORY_ITEM_HINT.' '.$viewtype.': '.$hint.'" href="'.$url.'">';
-			if (isset($next->role->image) && $next->role->image != "") {
-				echo '<img title="'.$next->role->name.'" style="width:20px;height:20px;margin-top:2px;padding-right:3px;" align="left" border="0" src="'.$CFG->homeAddress.$next->role->image.'" />';
-			}
-			echo '<span>'.$text.'</span></a>';
-			echo '</div>';
-		} else if ($next instanceof User) {
-			echo '<div style="background: white;overflow:hidden;padding:5px;float:left;';
-			echo 'border-right: 1px solid lightgray;';
-			echo 'height:75px;width:120px;">';
-			echo '<a class="itemtext" title="'.$LNG->HISTORY_ITEM_HINT.'" href="'.$CFG->homeAddress.'user.php?userid='.$next->userid.'">';
-			if (isset($next->thumb) && $next->thumb != "") {
-				echo '<img title="'.$next->name.'" style="margin-top:2px;padding-right:3px;" align="left" border="0" src="'.$next->thumb.'" />';
-			}
-			echo $next->name.'</a>';
-			echo '</div>';
+			echo '</div>'; // historybarcontent
 		}
-	}
-	echo '</div></div>';
-
-	echo '<div style="float:left;height:80px">';
-	echo '<img style="margin-left:5px;margin-top:20px;" id="historyBarRightButton" onmouseover="scrollHistoryDivRight()" onmouseout="stopScrollRight()" src="'.$CFG->homeAddress.'images/forward-arrow2.png" />';
-	echo '</div>';
-
-
-	echo '</div>'; // historybarcontent
-
-/*
-	echo '<div id="sidebar-header">';
-	echo '<h2 style="font-size:11pt;margin-left:0px;margin-bottom:3px;">'.$LNG->SIDEBAR_TITLE.'</h2>';
-	echo '</div>';
-
-	//echo '<div id="sidebar-open" style="width: 10px;display:block"><img src="'.$HUB_FLM->getImagePath('arrow-right2.png').'" border="0" onclick="javascript:showSideBar();" /></div>';
-
-
-	echo '<div id="sidebar-content" style="width:100%;height:80px;float:left;clear:both;padding:1px;margin-top:0px;">';
-
-	echo '<div style="float:left;width:50px;height:70px;">';
-	echo '<img style="margin-top:5px; margin-left:5px;margin-bottom:5px;" id="historyBarLeftButton" onmouseover="scrollHistoryDivUp()" onmouseout="stopScrollUp()" src="'.$HUB_FLM->getImagePath('left-arrow-grey.png').'" />';
-	echo '</div>';
-
-	echo '<div id="historyBarDiv" style="width: 100%;height:80px;overflow-x:hidden;overflow-y:hidden;float:left;border: 2px solid #D3D3D3">';
-	echo '<div id="historyBar" style="float:left;height:'.((($count)*80)).'px;">';
-
-	for ($i=0; $i<$count; $i++) {
-		$next = $items[$i];
-		if ($next instanceof CNode) {
-			echo '<div style="background: white;overflow:hidden;padding:5px;float:left;';
-			echo 'border-bottom: 1px solid #D3D3D3;';
-			echo 'height:70px;width:110px;">';
-			echo '<a class="itemtext" style="font-size:8pt" title="Click to explore" href="'.$CFG->homeAddress.'explore.php?id='.$next->nodeid.'">';
-			if (isset($next->role->image) && $next->role->image != "") {
-				echo '<img title="'.$next->role->name.'" style="width:20px;height:20px;margin-top:2px;padding-right:3px;" align="left" border="0" src="'.$CFG->homeAddress.$next->role->image.'" />';
-			}
-			echo $next->name.'</a>';
-			echo '</div>';
-		} else if ($next instanceof User) {
-			echo '<div style="background: white;overflow:hidden;padding:5px;float:left;';
-			echo 'border-bottom: 1px solid #D3D3D3;';
-			echo 'height:70px;width:110px;">';
-			echo '<a class="itemtext" style="font-size:8pt" title="Click to explore" href="'.$CFG->homeAddress.'user.php?userid='.$next->userid.'">';
-			if (isset($next->thumb) && $next->thumb != "") {
-				echo '<img title="'.$next->name.'" style="margin-top:2px;padding-right:3px;" align="left" border="0" src="'.$next->thumb.'" />';
-			}
-			echo $next->name.'</a>';
-			echo '</div>';
-		}
-	}
-	echo '</div></div>';
-
-	echo '<div style="float:left;width:50px;height:70px">';
-	echo '<img style="margin-left:45px;margin-top:5px;" id="historyBarRightButton" onmouseover="scrollHistoryDivDown()" onmouseout="stopScrollDown()" src="'.$HUB_FLM->getImagePath('right-arrow2.png').'" />';
-	echo '</div>';
-	echo '</div>';
-*/
-}
-?>
-
+	?>
 </div>

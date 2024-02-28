@@ -220,55 +220,63 @@ window.onload = init;
 
 </script>
 
-<div class="toolbarrow" style="float:left; color:#27318B; font-size: 10pt; font-weight:bold; margin-bottom: 10px;">Add a contribution which can then serve as Evidence to support/counter Solutions or Claims.</div>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<div class="alert alert-info">Add a contribution which can then serve as Evidence to support/counter Solutions or Claims.</div>
+			<?php insertFormHeaderMessage(); ?>
 
-<?php insertFormHeaderMessage(); ?>
+			<form id="evidenceform" name="evidenceform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="chatnodeid" name="chatnodeid" value="<?php echo $chatnodeid; ?>" />
+				<input type="hidden" id="chatparentid" name="chatparentid" value="<?php echo $chatparentid; ?>" />
 
-<form id="evidenceform" name="evidenceform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="chatnodeid" name="chatnodeid" value="<?php echo $chatnodeid; ?>" />
-	<input type="hidden" id="chatparentid" name="chatparentid" value="<?php echo $chatparentid; ?>" />
+				<div class="mb-3 row">
+					<label for="nodetypename" class="col-sm-3 col-form-label">
+						<?php echo $LNG->FORM_LABEL_TYPE; ?>
+						<a class="active" onMouseOver="showFormHint('EvidenceType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">							
+						<select class="form-select" aria-label="Evidence type" id="nodetypename" name="nodetypename" >
+							<?php
+								$count = 0;
+								if (is_countable($CFG->EVIDENCE_TYPES)) {
+									$count = count($CFG->EVIDENCE_TYPES);
+								}
+								for($i=0; $i<$count; $i++){
+									$item = $CFG->EVIDENCE_TYPES[$i];
+									$name = $LNG->EVIDENCE_TYPES[$i];
+								?>
+									<option value='<?php echo $item; ?>' <?php if ($nodetypename == $item || ($nodetypename == "" && $item == $CFG->EVIDENCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; }  ?> ><?php echo $name; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
 
-   <div class="hgrformrow">
-		<label  class="formlabelbig" for="url"><?php echo $LNG->FORM_LABEL_TYPE; ?>
-		<a href="javascript:void(0)" onMouseOver="showFormHint('EvidenceType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>
-		<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<select class="subforminput hgrselect forminputmust" id="nodetypename" style="width:300px;" name="nodetypename">
-			<?php
-				$count = 0;
-				if (is_countable($CFG->EVIDENCE_TYPES)) {
-					$count = count($CFG->EVIDENCE_TYPES);
-				}
-				for($i=0; $i<$count; $i++){
-					$item = $CFG->EVIDENCE_TYPES[$i];
-					$name = $LNG->EVIDENCE_TYPES[$i];
+				<?php insertSummary('EvidenceSummary', $LNG->FORM_EVIDENCE_LABEL_SUMMARY); ?>
+				<?php insertDescription('EvidenceDesc'); ?>
+				<?php if ($isRemote) {
+						insertResourceForm('RemoteEvidenceResources');
+					} else {
+						insertResourceForm('Resources');
+					}
 				?>
-					<option value='<?php echo $item; ?>' <?php if ($nodetypename == $item || ($nodetypename == "" && $item == $CFG->EVIDENCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; }  ?> ><?php echo $name; ?></option>
-			<?php } ?>
-		</select>
+				<?php insertThemes('EvidenceTheme'); ?>
+				<?php insertAddTags('EvidenceTag'); ?>
+
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addevidence" name="addevidence" />
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
-	<?php insertSummary('EvidenceSummary', $LNG->FORM_EVIDENCE_LABEL_SUMMARY); ?>
-
-	<?php insertDescription('EvidenceDesc'); ?>
-
-	<?php if ($isRemote) {
-			insertResourceForm('RemoteEvidenceResources');
-		} else {
-			insertResourceForm('Resources');
-		}
-	?>
-
-	<?php insertThemes('EvidenceTheme'); ?>
-
-	<?php insertAddTags('EvidenceTag'); ?>
-
-    <br>
-    <div class="hgrformrow">
-        <input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addevidence" name="addevidence">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-</form>
+</div>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

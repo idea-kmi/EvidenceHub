@@ -25,7 +25,7 @@
  ?>
 
 
-<div id="tagcloud" style="clear:both; float:left; width: 100%;">
+<div id="tagcloud">
 	<ul>
 	<?php
 

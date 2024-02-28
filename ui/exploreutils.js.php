@@ -39,14 +39,14 @@ var DEBATE_LOADED_ARRAY = {};
 var DEBATE_TIMER = null;
 
 function toggleDebateMode() {
-	if ($('toggleDebateButton').innerHTML == "<?php echo $LNG->DEBATE_SWITCH_WIDER_BUTTON; ?>") {
+	if ($('toggleDebateButton').innerHTML == "<small><?php echo $LNG->DEBATE_SWITCH_WIDER_BUTTON; ?></small>") {
 		DEBATE_TREE_SMALL = false;
-		$('toggleDebateButton').innerHTML = "<?php echo $LNG->DEBATE_SWITCH_NARROW_BUTTON; ?>";
+		$('toggleDebateButton').innerHTML = "<small><?php echo $LNG->DEBATE_SWITCH_NARROW_BUTTON; ?></small>";
 		$('toggleDebateButton').title = "<?php echo $LNG->DEBATE_SWITCH_NARROW_HINT; ?>";
 		drawDebates(false, "");
 	} else {
 		DEBATE_TREE_SMALL = true;
-		$('toggleDebateButton').innerHTML = "<?php echo $LNG->DEBATE_SWITCH_WIDER_BUTTON; ?>";
+		$('toggleDebateButton').innerHTML = "<small><?php echo $LNG->DEBATE_SWITCH_WIDER_BUTTON; ?></small>";
 		$('toggleDebateButton').title = "<?php echo $LNG->DEBATE_SWITCH_WIDER_HINT; ?>";
 		drawDebates(false, "");
 	}
@@ -101,7 +101,7 @@ function buildNodeTitle(from) {
 	if (widgetHeaderLabel) {
 		if (icon) {
 			icon = URL_ROOT+icon;
-			var iconObj = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'title':title, 'alt':title+' Icon', 'border':'0','src':icon});
+			var iconObj = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'title':title, 'alt':title+' Icon', 'src':icon});
 			iconObj.align='left';
 			widgetHeaderLabel.appendChild(iconObj);
 		}
@@ -146,15 +146,15 @@ function buildSearchTitle(type, query, tagsonly) {
 	if (widgetHeaderLabel) {
 		if (type == 'tree') {
 			if (tagsonly == true) {
-				widgetHeaderLabel.insert('<span style="font-style:italic;font-size:10pt"><?php echo $LNG->SEARCH_TREE_TITLE_TAGS; ?></span> '+query);
+				widgetHeaderLabel.insert('<span><?php echo $LNG->SEARCH_TREE_TITLE_TAGS; ?></span> '+query);
 			} else {
-				widgetHeaderLabel.insert('<span style="font-style:italic;font-size:10pt"><?php echo $LNG->SEARCH_TREE_TITLE; ?></span> '+query);
+				widgetHeaderLabel.insert('<span><?php echo $LNG->SEARCH_TREE_TITLE; ?></span> '+query);
 			}
 		} else if (type == 'net') {
 			if (tagsonly == true) {
-				widgetHeaderLabel.insert('<span style="font-style:italic;font-size:10pt"><?php echo $LNG->SEARCH_NET_TITLE_TAGS; ?></span> '+query);
+				widgetHeaderLabel.insert('<span><?php echo $LNG->SEARCH_NET_TITLE_TAGS; ?></span> '+query);
 			} else {
-				widgetHeaderLabel.insert('<span style="font-style:italic;font-size:10pt"><?php echo $LNG->SEARCH_NET_TITLE; ?></span> '+query);
+				widgetHeaderLabel.insert('<span><?php echo $LNG->SEARCH_NET_TITLE; ?></span> '+query);
 			}
 		}
 	}
@@ -166,51 +166,51 @@ function buildExploreToolbar(container, name, type, node, from) {
 
 	// parent list button
 	if (type == 'issue') {
-		var homelink = new Element('a',{'style':'float:left;margin-right:10px;margin-top:10px;'});
+		var homelink = new Element('a',{'class':'exploreToolbarIcon'});
 		homelink.href="<?php echo $CFG->homeAddress; ?>index.php?#issue-list";
-		var homebutton = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'style':'margin-right: 5px;', 'title':'<?php echo $LNG->ISSUE_HOME_LIST_BUTTON_HINT; ?>'});
+		var homebutton = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'title':'<?php echo $LNG->ISSUE_HOME_LIST_BUTTON_HINT; ?>'});
 		homelink.insert(homebutton);
 		container.insert(homelink);
 	} else if (type == 'challenge') {
-		var homelink = new Element('a',{'style':'float:left;margin-right:10px;margin-top:10px;'});
+		var homelink = new Element('a',{'class':'exploreToolbarIcon'});
 		homelink.href="<?php echo $CFG->homeAddress; ?>index.php?#challenge-list";
-		var homebutton = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'style':'margin-right: 5px;', 'title':'<?php echo $LNG->CHALLENGE_HOME_LIST_BUTTON_HINT; ?>'});
+		var homebutton = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'title':'<?php echo $LNG->CHALLENGE_HOME_LIST_BUTTON_HINT; ?>'});
 		homelink.insert(homebutton);
 		container.insert(homelink);
 	} else if (type == 'claim') {
-		var homelink = new Element('a',{'style':'float:left;margin-right:10px;margin-top:10px;'});
+		var homelink = new Element('a',{'class':'exploreToolbarIcon'});
 		homelink.href="<?php echo $CFG->homeAddress; ?>index.php?#claim-list";
-		var homebutton = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'style':'margin-right: 5px;', 'title':'<?php echo $LNG->CLAIM_HOME_LIST_BUTTON_HINT; ?>'});
+		var homebutton = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'title':'<?php echo $LNG->CLAIM_HOME_LIST_BUTTON_HINT; ?>'});
 		homelink.insert(homebutton);
 		container.insert(homelink);
 	} else if (type == 'solution') {
-		var homelink = new Element('a',{'style':'float:left;margin-right:10px;margin-top:10px;'});
+		var homelink = new Element('a',{'class':'exploreToolbarIcon'});
 		homelink.href="<?php echo $CFG->homeAddress; ?>index.php?#solution-list";
-		var homebutton = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'style':'margin-right: 5px;', 'title':'<?php echo $LNG->SOLUTION_HOME_LIST_BUTTON_HINT; ?>'});
+		var homebutton = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'title':'<?php echo $LNG->SOLUTION_HOME_LIST_BUTTON_HINT; ?>'});
 		homelink.insert(homebutton);
 		container.insert(homelink);
 	} else if (type == 'org') {
-		var homelink = new Element('a',{'style':'float:left;margin-right:10px;margin-top:10px;'});
+		var homelink = new Element('a',{'class':'exploreToolbarIcon'});
 		homelink.href="<?php echo $CFG->homeAddress; ?>index.php?#org-list";
-		var homebutton = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'style':'margin-right: 5px;', 'title':'<?php echo $LNG->ORG_HOME_LIST_BUTTON_HINT; ?>'});
+		var homebutton = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'title':'<?php echo $LNG->ORG_HOME_LIST_BUTTON_HINT; ?>'});
 		homelink.insert(homebutton);
 		container.insert(homelink);
 	} else if (type == 'project') {
-		var homelink = new Element('a',{'style':'float:left;margin-right:10px;margin-top:10px;'});
+		var homelink = new Element('a',{'class':'exploreToolbarIcon'});
 		homelink.href="<?php echo $CFG->homeAddress; ?>index.php?#project-list";
-		var homebutton = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'style':'margin-right: 5px;', 'title':'<?php echo $LNG->PROJECT_HOME_LIST_BUTTON_HINT; ?>'});
+		var homebutton = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'title':'<?php echo $LNG->PROJECT_HOME_LIST_BUTTON_HINT; ?>'});
 		homelink.insert(homebutton);
 		container.insert(homelink);
 	} else if (type == 'evidence') {
-		var homelink = new Element('a',{'style':'float:left;margin-right:10px;margin-top:10px;'});
+		var homelink = new Element('a',{'class':'exploreToolbarIcon'});
 		homelink.href="<?php echo $CFG->homeAddress; ?>index.php?#evidence-list";
-		var homebutton = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'style':'margin-right: 5px;', 'title':'<?php echo $LNG->EVIDENCE_HOME_LIST_BUTTON_HINT; ?>'});
+		var homebutton = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'title':'<?php echo $LNG->EVIDENCE_HOME_LIST_BUTTON_HINT; ?>'});
 		homelink.insert(homebutton);
 		container.insert(homelink);
 	}  else if (type == 'web') {
-		var homelink = new Element('a',{'style':'float:left;margin-right:10px;margin-top:10px;'});
+		var homelink = new Element('a',{'class':'exploreToolbarIcon'});
 		homelink.href="<?php echo $CFG->homeAddress; ?>index.php?#web-list";
-		var homebutton = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'style':'margin-right: 5px;', 'title':'<?php echo $LNG->RESOURCE_HOME_LIST_BUTTON_HINT; ?>'});
+		var homebutton = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("list.png"); ?>', 'title':'<?php echo $LNG->RESOURCE_HOME_LIST_BUTTON_HINT; ?>'});
 		homelink.insert(homebutton);
 		container.insert(homelink);
 	}
@@ -220,8 +220,7 @@ function buildExploreToolbar(container, name, type, node, from) {
 		{'src': '<?php echo $HUB_FLM->getImagePath("printer.png"); ?>',
 		'alt': '<?php echo $LNG->EXPLORE_PRINT_BUTTON_ALT;?>',
 		'title': '<?php echo $LNG->EXPLORE_PRINT_BUTTON_HINT;?>',
-		'class': 'active',
-		'style': 'float:left;padding-top:0px;padding-right:10px;margin-top:10px;'});
+		'class': 'active exploreToolbarIcon'});
 	container.insert(print);
 	Event.observe(print,'click',function(){
 		 if (from == 'trees') {
@@ -232,7 +231,7 @@ function buildExploreToolbar(container, name, type, node, from) {
 	});
 
 	// Add spam icon
-	var spaming = new Element('img', {'style':'float:left;padding-top:0px;padding-right:10px;margin-top:10px;'});
+	var spaming = new Element('img', {'class':'exploreToolbarIcon'});
 	if (node.status == <?php echo $CFG->STATUS_SPAM; ?>) {
 		spaming.setAttribute('alt', '<?php echo $LNG->SPAM_REPORTED_TEXT; ?>');
 		spaming.setAttribute('title', '<?php echo $LNG->SPAM_REPORTED_HINT; ?>');
@@ -242,13 +241,11 @@ function buildExploreToolbar(container, name, type, node, from) {
 			spaming.setAttribute('alt', '<?php echo $LNG->SPAM_REPORT_TEXT; ?>');
 			spaming.setAttribute('title', '<?php echo $LNG->SPAM_REPORT_HINT; ?>');
 			spaming.setAttribute('src', '<?php echo $HUB_FLM->getImagePath('spam.png'); ?>');
-			spaming.style.cursor = 'pointer';
 			Event.observe(spaming,'click',function (){ reportNodeSpamAlert(this, type, node); } );
 		} else {
 			spaming.setAttribute('alt', '<?php echo $LNG->SPAM_LOGIN_REPORT_TEXT; ?>');
 			spaming.setAttribute('title', '<?php echo $LNG->SPAM_LOGIN_REPORT_HINT; ?>');
 			spaming.setAttribute('src', '<?php echo $HUB_FLM->getImagePath('spam-disabled.png'); ?>');
-			spaming.style.cursor = 'pointer';
 			Event.observe(spaming,'click',function (){ $('loginsubmit').click(); return true; } );
 		}
 	}
@@ -261,43 +258,43 @@ function buildExploreToolbar(container, name, type, node, from) {
 			var otheruserconnections = node.otheruserconnections;
 
 			if (type == 'issue') {
-				var edit = new Element('img',{'style':'float:left;cursor: pointer;margin-top:10px;','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_ISSUE;?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
+				var edit = new Element('img',{'class':'exploreToolbarIcon','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_ISSUE;?>', 'src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
 				Event.observe(edit,'click',function (){loadDialog('editissue',URL_ROOT+"ui/popups/issueedit.php?nodeid="+nodeid, 770,500)});
 				container.appendChild(edit);
 			} if (type == 'challenge') {
-				var edit = new Element('img',{'style':'float:left;cursor: pointer;margin-top:10px;','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_CHALLENGE;?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
+				var edit = new Element('img',{'class':'exploreToolbarIcon','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_CHALLENGE;?>', 'src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
 				Event.observe(edit,'click',function (){loadDialog('editchallenge',URL_ROOT+"ui/popups/challengeedit.php?nodeid="+nodeid, 770,500)});
 				container.appendChild(edit);
 			} else if (type == 'claim') {
-				var edit = new Element('img',{'style':'float:left;cursor: pointer;margin-top:10px;','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_CLAIM;?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
+				var edit = new Element('img',{'class':'exploreToolbarIcon','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_CLAIM;?>', 'src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
 				Event.observe(edit,'click',function (){loadDialog('editclaim',URL_ROOT+"ui/popups/claimedit.php?nodeid="+nodeid, 770,500)});
 				container.appendChild(edit);
 			} else if (type == 'solution') {
-				var edit = new Element('img',{'style':'float:left;cursor: pointer;margin-top:10px;','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_SOLUTION;?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
+				var edit = new Element('img',{'class':'exploreToolbarIcon','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_SOLUTION;?>', 'src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
 				Event.observe(edit,'click',function (){loadDialog('editsolution',URL_ROOT+"ui/popups/solutionedit.php?nodeid="+nodeid, 770,500)});
 				container.appendChild(edit);
 			} else if (type == 'org' || type == 'project') {
-				var edit = new Element('img',{'style':'float:left;cursor: pointer;margin-top:10px;','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_ITEM;?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
+				var edit = new Element('img',{'class':'exploreToolbarIcon','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_ITEM;?>', 'src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
 				Event.observe(edit,'click',function (){loadDialog('editorg',URL_ROOT+"ui/popups/organizationedit.php?nodeid="+nodeid, 770,500)});
 				container.appendChild(edit);
 			} else if (type == 'evidence') {
-				var edit = new Element('img',{'style':'float:left;cursor: pointer;margin-top:10px;','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_EVIDENCE;?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
+				var edit = new Element('img',{'class':'exploreToolbarIcon','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_EVIDENCE;?>', 'src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
 				Event.observe(edit,'click',function (){loadDialog('editevidence',URL_ROOT+"ui/popups/evidenceedit.php?nodeid="+nodeid, 770,500)});
 				container.appendChild(edit);
 			}  else if (type == 'web') {
-				var edit = new Element('img',{'style':'float:left;cursor: pointer;margin-top:10px;','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_RESOURCE;?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
+				var edit = new Element('img',{'class':'exploreToolbarIcon','alt':'<?php echo $LNG->EDIT_BUTTON_TEXT;?>', 'title': '<?php echo $LNG->EDIT_BUTTON_HINT_RESOURCE;?>', 'src': '<?php echo $HUB_FLM->getImagePath("edit.png"); ?>'});
 				Event.observe(edit,'click',function (){loadDialog('editresource',URL_ROOT+"ui/popups/resourceedit.php?nodeid="+nodeid, 770,500)});
 				container.appendChild(edit);
 			}
 
 			if (otheruserconnections == 0) {
-				var del = new Element('img',{'style':'float:left;cursor: pointer;margin-top:10px;padding-left:5px;margin-right: 10px','alt':'<?php echo $LNG->DELETE_BUTTON_ALT;?>', 'title': '<?php echo $LNG->DELETE_BUTTON_HINT;?>', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("delete.png"); ?>'});
+				var del = new Element('img',{'class':'exploreToolbarIcon','alt':'<?php echo $LNG->DELETE_BUTTON_ALT;?>', 'src': '<?php echo $HUB_FLM->getImagePath("delete.png"); ?>'});
 				Event.observe(del,'click',function (){
 					deleteNode(node.nodeid, node.name, node.role.name, 'gotoHomeList', type);
 				});
 				container.appendChild(del);
 			} else {
-				var del = new Element('img',{'alt':'<?php echo $LNG->NO_DELETE_BUTTON_ALT;?>', 'title': '<?php echo $LNG->NO_DELETE_BUTTON_HINT;?>', 'style':'float:left;padding-left:5px;float:left;margin-top:10px;margin-right: 10px', 'border':'0','src': '<?php echo $HUB_FLM->getImagePath("delete-off.png"); ?>'});
+				var del = new Element('img',{'alt':'<?php echo $LNG->NO_DELETE_BUTTON_ALT;?>', 'title': '<?php echo $LNG->NO_DELETE_BUTTON_HINT;?>', 'class':'exploreToolbarIcon', 'src': '<?php echo $HUB_FLM->getImagePath("delete-off.png"); ?>'});
 				container.appendChild(del);
 			}
 		}
@@ -305,13 +302,11 @@ function buildExploreToolbar(container, name, type, node, from) {
 
 	// follow button
 	if (USER != "") {
-		var followbutton = new Element('img', {'style':'float:left;padding-top:0px;margin-top:10px;'});
+		var followbutton = new Element('img', {'class':'exploreToolbarIcon'});
 		followbutton.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("follow.png"); ?>');
 		followbutton.setAttribute('alt', 'Follow');
 		followbutton.setAttribute('id','follow'+nodeid);
 		followbutton.nodeid = nodeid;
-		followbutton.style.marginRight="3px";
-		followbutton.style.cursor = 'pointer';
 
 		container.insert(followbutton);
 
@@ -325,29 +320,26 @@ function buildExploreToolbar(container, name, type, node, from) {
 			followbutton.setAttribute('title', '<?php echo $LNG->NODE_FOLLOW_ITEM_HINT; ?>');
 		}
 	} else {
-		container.insert("<img style='float:left;padding-top:0px;margin-top:10px;cursor:pointer' onclick='$(\"loginsubmit\").click(); return true;' title='<?php echo $LNG->WIDGET_FOLLOW_SIGNIN_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath("followgrey.png"); ?>' border='0' />");
+		container.insert("<img class=\"exploreToolbarIcon\" onclick='$(\"loginsubmit\").click(); return true;' title='<?php echo $LNG->WIDGET_FOLLOW_SIGNIN_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath("followgrey.png"); ?>' border='0' />");
 	}
 
 	// add explore button on all non explore views
 	if (from != 'explore') {
-		var explore = new Element('a',{'style':'float:left;margin-left:20px;margin-right:5px;margin-bottom:5px;'});
+		var explore = new Element('a',{'class':'exploreToolbarIcon'});
 		explore.href="<?php echo $CFG->homeAddress; ?>explore.php?id="+nodeid;
-		var image = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("explore.png"); ?>', 'style':'margin-right: 5px;width:26px; height:26px;padding:3px;'});
+		var image = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("explore.png"); ?>', 'alt':'<?php echo $LNG->NODE_DETAIL_BUTTON_HINT;?>'});
 		explore.insert(image);
 		explore.title = '<?php echo $LNG->NODE_DETAIL_BUTTON_HINT;?>';
 		container.appendChild(explore);
-		//if (from == 'explore') {
-		//	image.style.border = "1px dashed blue";
-		//}
 	}
 
 	// Add Chat view button
-	var chat = new Element('a',{'style':'float:left;margin-right:5px;margin-bottom:5px;'});
+	var chat = new Element('a',{'class':'exploreToolbarIcon'});
 	if (from == 'explore') {
 		chat.style.marginLeft ='20px';
 	}
 	chat.href="<?php echo $CFG->homeAddress; ?>chats.php?id="+nodeid;
-	var image = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("chat.png"); ?>', 'style':'margin-right: 5px;width:26px; height:26px;padding:3px;'});
+	var image = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("chat.png"); ?>', 'alt':'<?php echo $LNG->VIEWS_CHAT_HINT;?>'});
 	chat.insert(image);
 	chat.title = '<?php echo $LNG->VIEWS_CHAT_HINT;?>';
 	container.appendChild(chat);
@@ -357,9 +349,9 @@ function buildExploreToolbar(container, name, type, node, from) {
 
 	// Add Linear/tree view button
 	if (type != 'org' && type != 'project') {
-		var tree = new Element('a',{'style':'float:left;margin-right:5px;margin-bottom:5px;'});
+		var tree = new Element('a',{'class':'exploreToolbarIcon'});
 		tree.href="<?php echo $CFG->homeAddress; ?>knowledgetrees.php?id="+nodeid;
-		var image = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("knowledge-tree2.png"); ?>', 'style':'margin-right: 5px;width:30px; height:30px;padding:0px;'});
+		var image = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("knowledge-tree2.png"); ?>', 'alt':'<?php echo $LNG->VIEWS_LINEAR_HINT;?>'});
 		tree.insert(image);
 		tree.title = '<?php echo $LNG->VIEWS_LINEAR_HINT;?>';
 		container.appendChild(tree);
@@ -369,9 +361,9 @@ function buildExploreToolbar(container, name, type, node, from) {
 	}
 
 	// Add Network view button
-	var net = new Element('a',{'style':'float:left;margin-right:0px;margin-bottom:5px;'});
+	var net = new Element('a',{'class':'exploreToolbarIcon'});
 	net.href="<?php echo $CFG->homeAddress; ?>networkgraph.php?id="+nodeid;
-	var image = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("network-graph.png"); ?>', 'style':'margin-right: 5px;width:26px; height:26px;padding:3px;'});
+	var image = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("network-graph.png"); ?>', 'alt':'<?php echo $LNG->VIEWS_EVIDENCE_MAP_HINT;?>'});
 	net.insert(image);
 	net.title = '<?php echo $LNG->VIEWS_EVIDENCE_MAP_HINT;?>';
 	container.appendChild(net);
@@ -382,9 +374,9 @@ function buildExploreToolbar(container, name, type, node, from) {
 	// Add Debate View button only on Issues
 	<?php if ($CFG->hasIssueDebateView) { ?>
 		if (type == 'issue' && from != 'debate') {
-			var net = new Element('a',{'style':'float:left;margin-right:0px;margin-bottom:5px;'});
+			var net = new Element('a',{'class':'exploreToolbarIcon'});
 			net.href="<?php echo $CFG->homeAddress; ?>debate.php?id="+nodeid;
-			var image = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("debate.png"); ?>', 'style':'margin-right: 5px;width:26px; height:26px;padding:3px;'});
+			var image = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("debate.png"); ?>'});
 			net.insert(image);
 			net.title = '<?php echo $LNG->VIEWS_DEBATE_MAP_HINT;?>';
 			container.appendChild(net);
@@ -397,37 +389,31 @@ function buildExploreToolbar(container, name, type, node, from) {
 
 function buildChatHeader() {
 
-	var keyDiv = new Element("div", {'style':'float:left;margin-left:40px;padding:2px;'});
-	keyDiv.className = 'plainborder';
-	keyDiv.style.borderWidth = "1px";
-	keyDiv.style.borderStyle = "dotted";
+	var keyDiv = new Element("div");
+	keyDiv.className = 'plainborder col-auto recentReply';
 	keyDiv.insert('<?php echo $LNG->CHAT_HIGHLIGHT_NEWEST_TEXT; ?>');
 
 	if (USER != "") {
-		var toolbar = new Element("div", {'id':'commenttoolbar', 'class':'widgetheaderinner ', 'style':'padding-top:10px;padding-left:10px;'});
-		var link = new Element("a", {'title':"<?php echo $LNG->CHAT_ADD_BUTTON_HINT; ?>", 'style':'float:left;cursor:pointer'});
-		link.insert('<span id="linkbutton"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="20" height="20" style="margin:0px;padding:0px" /> <?php echo $LNG->CHAT_ADD_BUTTON_TEXT; ?></span>');
+		var toolbar = new Element("div", {'id':'commenttoolbar', 'class':'widgetheaderinner widgetheaderinnerChat row'});
+		var link = new Element("a", {'title':"<?php echo $LNG->CHAT_ADD_BUTTON_HINT; ?>", 'class':'col-auto'});
+		link.insert('<span id="linkbutton"><img src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" alt="" /> <?php echo $LNG->CHAT_ADD_BUTTON_TEXT; ?></span>');
 		Event.observe(link,"click", function(){
 			$('commenthidden').style.display = 'block';
-			$('commenthidden').style.height = "95px";
-			$('comment').style.height = "60px";
 			$('commenttoolbar').style.display = 'none';
 			$('comment').focus();
 		});
 		toolbar.insert(link);
-
 		toolbar.insert(keyDiv);
 
 		$('chattoolbar').update(toolbar);
 
-		var hidden = new Element("div", {'class':'widgetheaderinner', 'id':'commenthidden','class':'commentdiv', 'style':'background:#E8E8E8 ;display:none;width:100%'});
+		var hidden = new Element("div", {'class':'widgetheaderinner', 'id':'commenthidden','class':'commentdiv', 'style':'display:none;'});
 		$('chattoolbar').insert(hidden);
 
-		var box = new Element("textarea", {'value':'', 'id':'comment', 'rows':'1'});
-		box.style.width = "98%";
+		var box = new Element("textarea", {'value':'', 'id':'comment', 'class':'form-control', 'aria-label':'enter comment'});
 		hidden.insert(box);
 
-		var button = new Element("input", {'value':'<?php echo $LNG->WIDGET_ADD_BUTTON; ?>', 'type':'button', 'style':'vertical-align: bottom'});
+		var button = new Element("input", {'value':'<?php echo $LNG->WIDGET_ADD_BUTTON; ?>', 'type':'button', 'class':'btn btn-primary m-2 ms-0'});
 		Event.observe(button,"click", function(){
 			var comment = $('comment').value;
 			$('comment').value = "";
@@ -452,7 +438,7 @@ function buildChatHeader() {
 
 		hidden.insert(button);
 
-		var button = new Element("input", {'value':'<?php echo $LNG->FORM_BUTTON_CLOSE; ?>', 'type':'button', 'style':'vertical-align: bottom'});
+		var button = new Element("input", {'value':'<?php echo $LNG->FORM_BUTTON_CLOSE; ?>', 'type':'button', 'class':'btn btn-secondary m-2'});
 		Event.observe(button,"click", function(){
 			$('comment').value = "";
 			$('chatarea').style.display = 'block';
@@ -462,10 +448,10 @@ function buildChatHeader() {
 
 		hidden.insert(button);
 	} else {
-		var toolbar = new Element("div", {'id':'commenttoolbar', 'class':'widgetheaderinner ', 'style':'float:left;padding-top:10px;padding-left:10px;'});
-		let spancontent = '<span style="float:left;cursor:pointer" onclick="$(\'loginsubmit\').click(); return true;" title="';
+		var toolbar = new Element("div", {'id':'commenttoolbar', 'class':'widgetheaderinner '});
+		let spancontent = '<span onclick="$(\'loginsubmit\').click(); return true;" title="';
 		spancontent += "<?php echo $LNG->WIDGET_SIGNIN_HINT; ?>";
-		spancontent += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->CHAT_ADD_BUTTON_TEXT; ?></span>';
+		spancontent += '"><img src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" alt="" /> <?php echo $LNG->CHAT_ADD_BUTTON_TEXT; ?></span>';
 		toolbar.insert(spancontent);
 		toolbar.insert(keyDiv);
 		$('chattoolbar').insert(toolbar);

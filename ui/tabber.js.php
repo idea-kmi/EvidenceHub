@@ -310,7 +310,7 @@ function getViz(viz) {
 		if (allcookies != null) {
 			var cookiearray  = allcookies.split(';');
 
-			for(var i=0; i<cookiearray.length; i++){
+			for(var i=0; i < cookiearray.length; i++){
 				var param = cookiearray[i].split('=')
 				var name = param[0];
 			    var value = param[1];
@@ -1166,27 +1166,27 @@ function loadChallengeOverview(context, args) {
 
 	$("tab-content-challenge-overview").innerHTML = "";
 
-	var row1 = new Element("div", {'style':'float:left;width:100%'});
+	var row1 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var recentorgs = new Element("div", {'style':'float:left; margin-left: 10px;margin-top:10px;'});
+	var recentorgs = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_CHALLENGE_MOSTRECENT_TITLE; ?>', "Challenge", 'date', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'challenge', '<?php echo $LNG->CHALLENGES_NAME; ?>', 'mostrecent');
 
 	recentorgs.insert(set);
 
-	var connectedorgs = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var connectedorgs = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_CHALLENGE_MOSTCONNECTED_TITLE; ?>', "Challenge", 'connectedness', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'challenge', '<?php echo $LNG->CHALLENGES_NAME; ?>', 'mostconnected');
 	connectedorgs.insert(set);
 
 	row1.insert(recentorgs);
 	row1.insert(connectedorgs);
 
-	var row2 = new Element("div", {'style':'clear:both;float:left;width:100%'});
+	var row2 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var voted = new Element("div", {'style':'float:left; margin-left: 10px;margin-top:10px;'});
+	var voted = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set3 = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_CHALLENGE_MOSTVOTED_TITLE; ?>', "Challenge", 'vote', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'challenge', '<?php echo $LNG->CHALLENGES_NAME; ?>', 'mostvoted');
 	voted.insert(set3);
 
-	var poptheme = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var poptheme = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewThemeWidget(context, args, '<?php echo $LNG->OVERVIEW_CHALLENGE_POPULARTHEMES_TITLE; ?>', 'Challenge', '5', 350, 201, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'challenge', '<?php echo $LNG->CHALLENGES_NAME; ?>', 'mostthemes');
 	poptheme.insert(set2);
 
@@ -1207,26 +1207,26 @@ function loadIssueOverview(context, args) {
 
 	$("tab-content-issue-overview").innerHTML = "";
 
-	var row1 = new Element("div", {'style':'float:left;width:100%'});
+	var row1 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var recentorgs = new Element("div", {'style':'float:left; margin-left:10px; margin-top:10px;'});
+	var recentorgs = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_ISSUE_MOSTRECENT_TITLE; ?>', "Issue", 'date', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'issue', '<?php echo $LNG->ISSUES_NAME; ?>', 'mostrecent');
 	recentorgs.insert(set);
 
-	var connectedorgs = new Element("div", {'style':'float:left; margin-left:10px; margin-top:10px;'});
+	var connectedorgs = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_ISSUE_MOSTCONNECTED_TITLE; ?>', "Issue", 'connectedness', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'issue', '<?php echo $LNG->ISSUES_NAME; ?>', 'mostconnected');
 	connectedorgs.insert(set);
 
 	row1.insert(recentorgs);
 	row1.insert(connectedorgs);
 
-	var row2 = new Element("div", {'style':'clear:both;float:left;width:100%'});
+	var row2 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var voted = new Element("div", {'style':'float:left; margin-left:10px; margin-top:10px;'});
+	var voted = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set3 = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_ISSUE_MOSTVOTED_TITLE; ?>', "Issue", 'vote', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'issue', '<?php echo $LNG->ISSUES_NAME; ?>', 'mostvoted');
 	voted.insert(set3);
 
-	var poptheme = new Element("div", {'style':'float:left; margin-top:10px;margin-left: 10px;'});
+	var poptheme = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewThemeWidget(context, args, '<?php echo $LNG->OVERVIEW_ISSUE_POPULARTHEMES_TITLE; ?>', 'Issue', '5', 350, 201, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'issue', '<?php echo $LNG->ISSUES_NAME; ?>', 'mostthemes');
 	poptheme.insert(set2);
 
@@ -1247,26 +1247,26 @@ function loadSolutionOverview(context, args) {
 
 	$("tab-content-solution-overview").innerHTML = "";
 
-	var row1 = new Element("div", {'style':'float:left;width:100%'});
+	var row1 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var recent = new Element("div", {'style':'float:left; margin-top:10px; margin-left: 10px;'});
+	var recent = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_SOLUTION_MOSTRECENT_TITLE; ?>', "Solution", 'date', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'solution', '<?php echo $LNG->SOLUTIONS_NAME; ?>', 'mostrecent');
 	recent.insert(set);
 
-	var connected = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var connected = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_SOLUTION_MOSTCONNECTED_TITLE; ?>', "Solution", 'connectedness', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'solution', '<?php echo $LNG->SOLUTIONS_NAME; ?>', 'mostconnected');
 	connected.insert(set);
 
 	row1.insert(recent);
 	row1.insert(connected);
 
-	var row2 = new Element("div", {'style':'clear:both;float:left;width:100%'});
+	var row2 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var voted = new Element("div", {'style':'float:left; margin-top:10px; margin-left: 10px;'});
+	var voted = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set3 = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_SOLUTION_MOSTVOTED_TITLE; ?>', "Solution", 'vote', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'solution', '<?php echo $LNG->SOLUTIONS_NAME; ?>', 'mostvoted');
 	voted.insert(set3);
 
-	var poptheme = new Element("div", {'style':'float:left; margin-top:10px; margin-left: 10px;'});
+	var poptheme = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewThemeWidget(context, args, '<?php echo $LNG->OVERVIEW_SOLUTION_POPULARTHEMES_TITLE; ?>', 'Solution', '5', 350, 201, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'solution', '<?php echo $LNG->SOLUTIONS_NAME; ?>', 'mostthemes');
 	poptheme.insert(set2);
 
@@ -1287,26 +1287,26 @@ function loadClaimOverview(context, args) {
 
 	$("tab-content-claim-overview").innerHTML = "";
 
-	var row1 = new Element("div", {'style':'float:left;width:100%'});
+	var row1 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var recent = new Element("div", {'style':'float:left; margin-top:10px; margin-left: 10px;'});
+	var recent = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_CLAIM_MOSTRECENT_TITLE; ?>', "Claim", 'date', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'claim', '<?php echo $LNG->CLAIMS_NAME; ?>', 'mostrecent');
 	recent.insert(set);
 	row1.insert(recent);
 
-	var connected = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var connected = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_CLAIM_MOSTCONNECTED_TITLE; ?>', "Claim", 'connectedness', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'claim', '<?php echo $LNG->CLAIMS_NAME; ?>', 'mostconnected');
 	connected.insert(set);
 	row1.insert(connected);
 
-	var row2 = new Element("div", {'style':'clear:both;float:left;width:100%'});
+	var row2 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var voted = new Element("div", {'style':'float:left; margin-top:10px; margin-left: 10px;'});
+	var voted = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set3 = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_CLAIM_MOSTVOTED_TITLE; ?>', "Claim", 'vote', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'claim', '<?php echo $LNG->CLAIMS_NAME; ?>', 'mostvoted');
 	voted.insert(set3);
 	row2.insert(voted);
 
-	var poptheme = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var poptheme = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewThemeWidget(context, args, '<?php echo $LNG->OVERVIEW_CLAIM_POPULARTHEMES_TITLE; ?>', 'Claim', '5', 350, 201, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'claim', '<?php echo $LNG->CLAIMS_NAME; ?>', 'mostthemes');
 	poptheme.insert(set2);
 	row2.insert(poptheme);
@@ -1326,26 +1326,26 @@ function loadEvidenceOverview(context, args) {
 
 	$("tab-content-evidence-overview").innerHTML = "";
 
-	var row1 = new Element("div", {'style':'float:left;width:100%'});
+	var row1 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var recent = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var recent = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_EVIDENCE_MOSTRECENT_TITLE; ?>', EVIDENCE_TYPES_STR, 'date', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'evidence', '<?php echo $LNG->EVIDENCES_NAME; ?>', 'mostrecent');
 	recent.insert(set);
 	row1.insert(recent);
 
-	var connected = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var connected = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_EVIDENCE_MOSTCONNECTED_TITLE; ?>', EVIDENCE_TYPES_STR, 'connectedness', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'evidence', '<?php echo $LNG->EVIDENCES_NAME; ?>', 'mostconnected');
 	connected.insert(set);
 	row1.insert(connected);
 
-	var row2 = new Element("div", {'style':'clear:both;float:left;width:100%'});
+	var row2 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var voted = new Element("div", {'style':'Clear:both;float:left; margin-left: 10px; margin-top:10px;'});
+	var voted = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set3 = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_EVIDENCE_MOSTVOTED_TITLE; ?>', EVIDENCE_TYPES_STR, 'vote', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'evidence', '<?php echo $LNG->EVIDENCES_NAME; ?>', 'mostvoted');
 	voted.insert(set3);
 	row2.insert(voted);
 
-	var poptheme = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var poptheme = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewThemeWidget(context, args, '<?php echo $LNG->OVERVIEW_EVIDENCE_POPULARTHEMES_TITLE; ?>', EVIDENCE_TYPES_STR, '5', 350, 201, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'evidence', '<?php echo $LNG->EVIDENCES_NAME; ?>', 'mostthemes');
 	poptheme.insert(set2);
 	row2.insert(poptheme);
@@ -1365,21 +1365,21 @@ function loadWebOverview(context, args) {
 
 	$("tab-content-web-overview").innerHTML = "";
 
-	var row1 = new Element("div", {'style':'float:left;width:100%'});
+	var row1 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var recent = new Element("div", {'style':'float:left; margin-left: 10px;  margin-top:10px;'});
+	var recent = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_RESOURCE_MOSTRECENT_TITLE; ?>', RESOURCE_TYPES_STR, 'date', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'web', '<?php echo $LNG->RESOURCES_NAME; ?>', 'mostrecent');
 	recent.insert(set);
 	row1.insert(recent);
 
-	var connected = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var connected = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_RESOURCE_MOSTCONNECTED_TITLE; ?>', RESOURCE_TYPES_STR, 'connectedness', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'web', '<?php echo $LNG->RESOURCES_NAME; ?>', 'mostconnected');
 	connected.insert(set);
 	row1.insert(connected);
 
-	var row2 = new Element("div", {'style':'clear:both;float:left;width:100%'});
+	var row2 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var poptheme = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var poptheme = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewThemeWidget(context, args, '<?php echo $LNG->OVERVIEW_RESOURCE_POPULARTHEMES_TITLE; ?>', RESOURCE_TYPES_STR, '5', 350, 191, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'web', '<?php echo $LNG->RESOURCES_NAME; ?>', 'mostthemes');
 	poptheme.insert(set2);
 	row2.insert(poptheme);
@@ -1398,34 +1398,34 @@ function loadWebOverview(context, args) {
 function loadUserOverview(context, args) {
 	$("tab-content-user-overview").innerHTML = "";
 
-	var row1 = new Element("div", {'style':'float:left;width:100%'});
+	var row1 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var recentusers = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var recentusers = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewUserWidget(context, args, "<?php echo $LNG->OVERVIEW_USER_MOSTRECENT_TITLE; ?>", 'date', 'DESC', '5', 350, 190, "<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>", 'user', '<?php echo $LNG->USERS_NAME;?>');
 	recentusers.insert(set);
 	row1.insert(recentusers);
 
-	var followedusers = new Element("div", {'style':'float:left; margin-left: 10px;  margin-top:10px;'});
+	var followedusers = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewFollowedUserWidget(context, args, "<?php echo $LNG->OVERVIEW_USER_MOSTFOLLOWED_TITLE; ?>", 'date', 'DESC', '5', 350, 190, "<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>", 'user', '<?php echo $LNG->USERS_NAME;?>');
 	followedusers.insert(set);
 	row1.insert(followedusers);
 
-	var row2 = new Element("div", {'style':'clear:both;float:left;width:100%'});
+	var row2 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var activeusers = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var activeusers = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewActiveUserWidget(context, args, "<?php echo $LNG->OVERVIEW_USER_MOSTACTIVE_TITLE; ?>", 'date', 'DESC', '5', 350, 190, "<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>", 'user', '<?php echo $LNG->USERS_NAME;?>');
 	activeusers.insert(set);
 	row2.insert(activeusers);
 
-	var usercountries = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var usercountries = new Element("div", {"class":"col-md-6 col-sm-12"});
 
-	var set2 = new Element("fieldset", {'class':'overviewfieldset', 'style':'width: 350px;'});
+	var set2 = new Element("fieldset", {'class':'overviewfieldset'});
 	var legend2 = new Element("legend", {'class':'overviewlegend widgettextcolor'});
 	legend2.insert("<?php echo $LNG->OVERVIEW_USER_COUNTRIES_TITLE; ?>");
 	set2.insert(legend2);
 
-	var main2 = new Element("div", {'style':'height: 190px; overflow-y: auto; overflow-x: hidden;'});
-	var tagcloud = new Element("div", {'id':'tagcloud','style':'width: 300px;' });
+	var main2 = new Element("div", {"class":"overviewDiv", 'style':'height: 190px; overflow-y: auto; overflow-x: hidden;'});
+	var tagcloud = new Element("div", {'id':'tagcloud', "class": "user-tagcloud" });
 	tagcloud.insert(createCountryCloud(userscountrycloud, 'users'));
 	main2.insert(tagcloud);
 	set2.insert(main2);
@@ -1457,30 +1457,28 @@ function loadOrgOverview(context, args) {
 
 	$("tab-content-org-overview").innerHTML = "";
 
-	var row1 = new Element("div", {'style':'float:left;width:100%'});
+	var row1 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var recentorgs = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var recentorgs = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_ORG_MOSTRECENT_TITLE; ?>', "Organization", 'date', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'org', '<?php echo $LNG->ORGS_NAME; ?>', 'recentorg', 'Organization');
 	recentorgs.insert(set);
 	row1.insert(recentorgs);
 
-	var connectedorgs = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var connectedorgs = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_ORG_MOSTCONNECTED_TITLE; ?>', "Organization", 'connectedness', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'org', '<?php echo $LNG->ORGS_NAME; ?>', 'connectorg', 'Organization');
 	connectedorgs.insert(set);
 	row1.insert(connectedorgs);
 
-	var enddiv = new Element("div", {'style':'float:left;'});
+	var row2 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var row2 = new Element("div", {'style':'clear:both;float:left;width:100%'});
+	var orgcountries = new Element("div", {"class":"col-md-6 col-sm-12"});
 
-	var orgcountries = new Element("div", {'style':'clear: both; float:left; margin-left: 10px; margin-top:10px;'});
-
-	var set2 = new Element("fieldset", {'class':'overviewfieldset', 'style':'width: 350px;'});
+	var set2 = new Element("fieldset", {'class':'overviewfieldset'});
 	var legend2 = new Element("legend", {'class':'overviewlegend widgettextcolor'});
 	legend2.insert('<?php echo $LNG->OVERVIEW_ORG_COUNTRIES_TITLE; ?>');
 	set2.insert(legend2);
 
-	var main2 = new Element("div", {'style':'height: 190px; overflow-y: auto; overflow-x: hidden;'});
+	var main2 = new Element("div", {"class":"overviewDiv", 'style':'height: 190px; overflow-y: auto; overflow-x: hidden;'});
 	var tagcloud = new Element("div", {'id':'tagcloud','style':'width: 350px;'});
 	tagcloud.insert(createCountryCloud(orgcountrycloud, 'orgs'));
 	main2.insert(tagcloud);
@@ -1497,14 +1495,12 @@ function loadOrgOverview(context, args) {
 	set2.insert(buttondiv);
 
 	orgcountries.insert(set2);
-	enddiv.insert(orgcountries);
+	row2.insert(orgcountries);
 
-	var poptheme = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var poptheme = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewThemeWidget(context, args, '<?php echo $LNG->OVERVIEW_ORG_POPULARTHEMES_TITLE; ?>', 'Organization', '5', 350, 201, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'org', '<?php echo $LNG->ORGS_NAME; ?>', 'mostthemes');
 	poptheme.insert(set2);
-	enddiv.insert(poptheme);
-
-	row2.insert(enddiv);
+	row2.insert(poptheme);
 
 	$("tab-content-org-overview").insert( row1 );
 	$("tab-content-org-overview").insert( row2 );
@@ -1521,25 +1517,23 @@ function loadProjectOverview(context, args) {
 
 	$("tab-content-project-overview").innerHTML = "";
 
-	var row1 = new Element("div", {'style':'float:left;width:100%'});
+	var row1 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var recentprojects = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var recentprojects = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_PROJECT_MOSTRECENT_TITLE; ?>', "Project", 'date', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'project', '<?php echo $LNG->PROJECTS_NAME; ?>', 'recentprojects', 'Project');
 	recentprojects.insert(set2);
 	row1.insert(recentprojects);
 
-	var connectedprojects = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var connectedprojects = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewNodeWidget(context, args, '<?php echo $LNG->OVERVIEW_PROJECT_MOSTCONNECTED_TITLE; ?>', "Project", 'connectedness', 'DESC', '5', 350, 190, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'project', '<?php echo $LNG->PROJECTS_NAME; ?>','connectedprojects', 'Project');
 	connectedprojects.insert(set2);
 	row1.insert(connectedprojects);
 
-	var row2 = new Element("div", {'style':'clear:both;float:left;width:100%'});
+	var row2 = new Element("div", {"class":"tab-content-overview row mb-3"});
 
-	var enddiv = new Element("div", {'style':'float:left;'});
+	var projectcountries = new Element("div", {"class":"col-md-6 col-sm-12"});
 
-	var projectcountries = new Element("div", {'style':'clear: both; float:left; margin-left: 10px; margin-top:10px;'});
-
-	var set2 = new Element("fieldset", {'class':'overviewfieldset', 'style':'width: 350px;'});
+	var set2 = new Element("fieldset", {'class':'overviewfieldset'});
 	var legend2 = new Element("legend", {'class':'overviewlegend widgettextcolor'});
 	legend2.insert('<?php echo $LNG->OVERVIEW_PROJECT_COUNTRIES_TITLE; ?>');
 	set2.insert(legend2);
@@ -1559,15 +1553,12 @@ function loadProjectOverview(context, args) {
 	set2.insert(buttondiv2);
 
 	projectcountries.insert(set2);
-	enddiv.insert(projectcountries);
+	row2.insert(projectcountries);
 
-	var poptheme2 = new Element("div", {'style':'float:left; margin-left: 10px; margin-top:10px;'});
+	var poptheme2 = new Element("div", {"class":"col-md-6 col-sm-12"});
 	var set2 = overviewThemeWidget(context, args, '<?php echo $LNG->OVERVIEW_PROJECT_POPULARTHEMES_TITLE; ?>', 'Project', '5', 350, 211, '<?php echo $LNG->OVERVIEW_BUTTON_EXPLOREALL; ?>', 'project', '<?php echo $LNG->PROJECTS_NAME; ?>', 'mostthemes');
 	poptheme2.insert(set2);
-	enddiv.insert(poptheme2);
-
-
-	row2.insert(enddiv);
+	row2.insert(poptheme2);
 
 	$("tab-content-project-overview").insert( row1 );
 	$("tab-content-project-overview").insert( row2 );
@@ -1627,7 +1618,7 @@ function createCountryCloud(countries, type) {
 		var minCount = -1;
 		var maxCount = -1;
 		var range = 0;
-		for( var i=0; i<count; i++) {
+		for( var i=0; i < count; i++) {
 			var item = countries[i];
 			var itemcount = item['UseCount'];
 			if (itemcount > maxCount) {
@@ -1646,7 +1637,7 @@ function createCountryCloud(countries, type) {
 			range = Math.round((maxCount - minCount) / 10);
 		}
 
-		for( var i=0; i<count; i++) {
+		for( var i=0; i < count; i++) {
 			var item = countries[i];
 
 			var cloudlistcolour = "";
@@ -1660,25 +1651,25 @@ function createCountryCloud(countries, type) {
 			var itemcount = item['UseCount'];
 
 			if (itemcount >= minCount && itemcount < minCount+range) {
-				cloud +='<li style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag1 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag1 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			} else if (itemcount >= minCount+(range*1) && itemcount < minCount+(range*2)) {
-				cloud +='<li style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag2 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag2 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			} else if (itemcount >= minCount+(range*2) && itemcount < minCount+(range*3)) {
-				cloud +='<li  style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag3 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li  onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag3 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			} else if (itemcount >= minCount+(range*3) && itemcount < minCount+(range*4)) {
-				cloud +='<li style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag4 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag4 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			} else if (itemcount >= minCount+(range*4) && itemcount < minCount+(range*5)) {
-				cloud +='<li style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag5 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag5 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			} else if (itemcount >= minCount+(range*5) && itemcount < minCount+(range*6)) {
-				cloud +='<li style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag6 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag6 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			} else if (itemcount >= minCount+(range*6) && itemcount < minCount+(range*7)) {
-				cloud +='<li style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag7 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag7 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			} else if (itemcount >= minCount+(range*7) && itemcount < minCount+(range*8)) {
-				cloud +='<li style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag8 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag8 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			} else if (itemcount >= minCount+(range*8) && itemcount < minCount+(range*9)) {
-				cloud +='<li style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag9 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag9 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			} else if (itemcount >= minCount+(range*9))  {
-				cloud +='<li style="cursor:pointer;font-weight:bold;padding:2px;" onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag10 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
+				cloud +='<li onclick="gotoCountry(\''+type+'\', \''+item['Country']+'\')" class="tag10 still '+cloudlistcolour+'" title="'+itemcount+'">'+item['Country']+'</li>';
 			}
 		}
 	}
@@ -1736,13 +1727,13 @@ function loadchallenges(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
 					}
 
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 
 					var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>', moddate: '<?php echo $LNG->SORT_MODDATE; ?>',connectedness:'<?php echo $LNG->SORT_CONNECTIONS; ?>', vote:'<?php echo $LNG->SORT_VOTES; ?>'};
 					tb3.insert(displaySortForm(sortOpts,args,'challenge',reorderChallenges));
@@ -1753,7 +1744,7 @@ function loadchallenges(context,args){
 
 					displayNodes($("tab-content-challenge-list"),json.nodeset[0].nodes,parseInt(args['start'])+1, true);
 				} else {
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 					tb3.insert(createThemeFilter(context, args, 'challenges'));
 					tb3.insert(createConnectedFilter(context, args, 'challenges'));
 					$("tab-content-challenge-list").insert(tb3);
@@ -1821,13 +1812,13 @@ function loadorgs(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
 					}
 
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 
 					var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>', moddate: '<?php echo $LNG->SORT_MODDATE; ?>',connectedness:'<?php echo $LNG->SORT_CONNECTIONS; ?>'};
 					tb3.insert(displaySortForm(sortOpts,args,'org',reorderOrgs));
@@ -1837,7 +1828,7 @@ function loadorgs(context,args){
 					$("tab-content-org-list").insert(tb3);
 					displayNodes($("tab-content-org-list"),json.nodeset[0].nodes,parseInt(args['start'])+1, true);
 				} else {
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 					tb3.insert(createThemeFilter(context, args, 'orgs'));
 					tb3.insert(createConnectedFilter(context, args, 'orgs'));
 					$("tab-content-org-list").insert(tb3);
@@ -1904,13 +1895,13 @@ function loadprojects(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
 					}
 
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 
 					var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>', moddate: '<?php echo $LNG->SORT_MODDATE; ?>',connectedness:'<?php echo $LNG->SORT_CONNECTIONS; ?>'};
 					tb3.insert(displaySortForm(sortOpts,args,'project',reorderProjects));
@@ -1920,7 +1911,7 @@ function loadprojects(context,args){
 					$("tab-content-project-list").insert(tb3);
 					displayNodes($("tab-content-project-list"),json.nodeset[0].nodes,parseInt(args['start'])+1, true);
 				} else {
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 					tb3.insert(createThemeFilter(context, args, 'projects'));
 					tb3.insert(createConnectedFilter(context, args, 'projects'));
 					$("tab-content-project-list").insert(tb3);
@@ -1982,13 +1973,13 @@ function loadissues(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
 					}
 
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 
 					var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>', moddate: '<?php echo $LNG->SORT_MODDATE; ?>',connectedness:'<?php echo $LNG->SORT_CONNECTIONS; ?>', vote:'<?php echo $LNG->SORT_VOTES; ?>'};
 					tb3.insert(displaySortForm(sortOpts,args,'issue',reorderIssues));
@@ -1999,7 +1990,7 @@ function loadissues(context,args){
 
 					displayNodes($("tab-content-issue-list"),json.nodeset[0].nodes,parseInt(args['start'])+1, true);
 				} else {
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 					tb3.insert(createThemeFilter(context, args, 'issues'));
 					tb3.insert(createConnectedFilter(context, args, 'issues'));
 					$("tab-content-issue-list").insert(tb3);
@@ -2060,13 +2051,13 @@ function loadsolutions(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
 					}
 
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 
 					var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>', moddate: '<?php echo $LNG->SORT_MODDATE; ?>',connectedness:'<?php echo $LNG->SORT_CONNECTIONS; ?>', vote:'<?php echo $LNG->SORT_VOTES; ?>'};
 					tb3.insert(displaySortForm(sortOpts,args,'solution',reorderSolutions));
@@ -2076,7 +2067,7 @@ function loadsolutions(context,args){
 					$("tab-content-solution-list").insert(tb3);
 					displayNodes($("tab-content-solution-list"),json.nodeset[0].nodes,parseInt(args['start'])+1, true);
 				} else {
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 					tb3.insert(createThemeFilter(context, args, 'solutions'));
 					tb3.insert(createConnectedFilter(context, args, 'solutions'));
 					$("tab-content-solution-list").insert(tb3);
@@ -2137,13 +2128,13 @@ function loadclaims(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
 					}
 
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 
 					var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>', moddate: '<?php echo $LNG->SORT_MODDATE; ?>',connectedness:'<?php echo $LNG->SORT_CONNECTIONS; ?>', vote:'<?php echo $LNG->SORT_VOTES; ?>'};
 					tb3.insert(displaySortForm(sortOpts,args,'claim',reorderClaims));
@@ -2153,7 +2144,7 @@ function loadclaims(context,args){
 					$("tab-content-claim-list").insert(tb3);
 					displayNodes($("tab-content-claim-list"),json.nodeset[0].nodes,parseInt(args['start'])+1, true);
 				} else {
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 					tb3.insert(createThemeFilter(context, args, 'claims'));
 					tb3.insert(createConnectedFilter(context, args, 'claims'));
 					$("tab-content-claim-list").insert(tb3);
@@ -2220,13 +2211,13 @@ function loadevidence(context,args) {
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
 					}
 
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 
 					var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>', moddate: '<?php echo $LNG->SORT_MODDATE; ?>',connectedness:'<?php echo $LNG->SORT_CONNECTIONS; ?>', vote:'<?php echo $LNG->SORT_VOTES; ?>'};
 					tb3.insert(displaySortForm(sortOpts,args,'evidence',reorderEvidence));
@@ -2239,7 +2230,7 @@ function loadevidence(context,args) {
 					displayNodes($("tab-content-evidence-list"),json.nodeset[0].nodes,parseInt(args['start'])+1, true);
 				} else {
 					// in case caused by filter.
-					var tb3 = new Element("div", {'class':'toolbarrow'});
+					var tb3 = new Element("div", {'class':'toolbarrow row'});
 					tb3.insert(createThemeFilter(context, args, 'evidence'));
 					tb3.insert(createEvidenceFilter(context, args));
 					tb3.insert(createConnectedFilter(context, args, 'evidence'));
@@ -2302,13 +2293,13 @@ function loadurls(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var nodes = json.nodeset[0].nodes;
 						var count = nodes.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var node = nodes[i];
 							node.cnode.searchid = args['searchid'];
 						}
 					}
 
-					var tb2 = new Element("div", {'class':'toolbarrow'});
+					var tb2 = new Element("div", {'class':'toolbarrow row'});
 
 					var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>', moddate: '<?php echo $LNG->SORT_MODDATE; ?>',connectedness:'<?php echo $LNG->SORT_CONNECTIONS; ?>'};
 					tb2.insert(displaySortForm(sortOpts,args,'urls',reorderURLs));
@@ -2321,7 +2312,7 @@ function loadurls(context,args){
 					displayNodes($("tab-content-web-list"),json.nodeset[0].nodes,parseInt(args['start'])+1, true);
 				} else {
 					// in case caused by filter.
-					var tb2 = new Element("div", {'class':'toolbarrow'});
+					var tb2 = new Element("div", {'class':'toolbarrow row'});
 
 					tb2.insert(createThemeFilter(context, args, 'web'));
 					tb2.insert(createResourceFilter(context, args));
@@ -2368,7 +2359,7 @@ function loadusers(context,args){
 
 				$("tab-content-user-list").innerHTML = "";
 
-				var tb1 = new Element("div", {'class':'toolbarrow'});
+				var tb1 = new Element("div", {'class':'toolbarrow row'});
 				$("tab-content-user-list").insert(tb1);
 
 				//display nav
@@ -2387,13 +2378,13 @@ function loadusers(context,args){
 					if (args['searchid'] && args['searchid'] != "") {
 						var users = json.userset[0].users;
 						var count = users.length;
-						for (var i=0; i<count; i++) {
+						for (var i=0; i < count; i++) {
 							var user = users[i].user;
 							user.searchid = args['searchid'];
 						}
 					}
 
-					var tb2 = new Element("div", {'class':'toolbarrow'});
+					var tb2 = new Element("div", {'class':'toolbarrow row'});
 					var sortOpts = {lastactive: '<?php echo $LNG->SORT_LAST_ACTIVE; ?>', name: '<?php echo $LNG->SORT_NAME; ?>', date: '<?php echo $LNG->SORT_DATE_JOINED; ?>'};
 					tb2.insert(displaySortForm(sortOpts,args,'user',reorderUsers));
 					$("tab-content-user-list").insert(tb2);
@@ -2469,13 +2460,13 @@ function loadcomments(context,args) {
 				//preprosses nodes to add searchid if it is there
 				if (args['searchid'] && args['searchid'] != "") {
 					var count = nodes.length;
-					for (var i=0; i<count; i++) {
+					for (var i=0; i < count; i++) {
 						var node = nodes[i];
 						node.cnode.searchid = args['searchid'];
 					}
 				}
 
-				var tb3 = new Element("div", {'class':'toolbarrow'});
+				var tb3 = new Element("div", {'class':'toolbarrow row'});
 
 				var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>'};
 				tb3.insert(displaySortForm(sortOpts,args,'comment',reorderComments));
@@ -2487,7 +2478,7 @@ function loadcomments(context,args) {
 
 				displayNodes($("tab-content-comment-list"),nodes,parseInt(args['start'])+1, true);
 			} else {
-				var tb3 = new Element("div", {'class':'toolbarrow'});
+				var tb3 = new Element("div", {'class':'toolbarrow row'});
 				var filter = createCommentFilter(context, args);
 				tb3.insert(filter);
 				$("tab-content-comment-list").insert(tb3);
@@ -2552,13 +2543,13 @@ function loadnews(context,args) {
 				//preprosses nodes to add searchid if it is there
 				if (args['searchid'] && args['searchid'] != "") {
 					var count = nodes.length;
-					for (var i=0; i<count; i++) {
+					for (var i=0; i < count; i++) {
 						var node = nodes[i];
 						node.cnode.searchid = args['searchid'];
 					}
 				}
 
-				var tb3 = new Element("div", {'class':'toolbarrow'});
+				var tb3 = new Element("div", {'class':'toolbarrow row'});
 
 				var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>'};
 				tb3.insert(displaySortForm(sortOpts,args,'news',reorderNews));
@@ -3108,14 +3099,15 @@ function filterWebsites() {
  */
 function displaySortForm(sortOpts,args,tab,handler){
 
-	var sbTool = new Element("span", {'class':'sortback toolbar2'});
+	var sbTool = new Element("span", {'class':'sortback toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->SORT_BY; ?> ");
 
     var selOrd = new Element("select");
  	Event.observe(selOrd,'change',handler);
     selOrd.id = "select-orderby-"+tab;
-    selOrd.className = "toolbar";
+    selOrd.className = "toolbar form-select";
     selOrd.name = "orderby";
+    selOrd.setAttribute("aria-label","Sort by");
     sbTool.insert(selOrd);
     for(var key in sortOpts){
         var opt = new Element("option");
@@ -3130,8 +3122,9 @@ function displaySortForm(sortOpts,args,tab,handler){
     var sortBy = new Element("select");
  	Event.observe(sortBy,'change',handler);
     sortBy.id = "select-sort-"+tab;
-    sortBy.className = "toolbar";
+    sortBy.className = "toolbar form-select";
     sortBy.name = "sort";
+    sortBy.setAttribute("aria-label","Order by");
     sbTool.insert(sortBy);
     for(var key in sortBys){
         var opt = new Element("option");
@@ -3185,10 +3178,11 @@ function setSelectedUsers(types) {
 
 function createOrgFilter(context, args) {
 
-	var sbTool = new Element("span", {'class':'orgbackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});	
+    filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_TYPES_ALL; ?>');
@@ -3234,16 +3228,17 @@ function createOrgFilter(context, args) {
 
 function createThemeFilter(context, args, type) {
 
-	var sbTool = new Element("span", {'class':'themebackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_THEMES_ALL; ?>');
 	filterMenu.insert(option);
 
-	for(var i=0; i<THEMES.length; i++){
+	for(var i=0; i < THEMES.length; i++){
 		var option = new Element("option", {'value':THEMES[i]});
 		if (args['filterthemes'] && args['filterthemes'] == THEMES[i]) {
 			option.selected = true;
@@ -3284,16 +3279,17 @@ function createThemeFilter(context, args, type) {
 
 function createThemeFilterNet(context, args, type) {
 
-	var sbTool = new Element("span", {'class':'themebackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_THEME_LABEL; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_ALSO_SELECT_THEME; ?>');
 	filterMenu.insert(option);
 
-	for(var i=0; i<THEMES.length; i++){
+	for(var i=0; i < THEMES.length; i++){
 		var option = new Element("option", {'value':THEMES[i]});
 		if (args['filterthemes'] && args['filterthemes'] == THEMES[i]) {
 			option.selected = true;
@@ -3353,16 +3349,17 @@ function createThemeFilterNet(context, args, type) {
 }
 
 function createEvidenceFilter(context, args) {
-	var sbTool = new Element("span", {'class':'evidencebackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var resourceFilterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var resourceFilterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	resourceFilterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_TYPES_ALL; ?>');
 	resourceFilterMenu.insert(option);
 
-	for(var i=0; i<EVIDENCE_TYPES.length; i++){
+	for(var i=0; i < EVIDENCE_TYPES.length; i++){
 		var option = new Element("option", {'value':EVIDENCE_TYPES[i]});
 		if (args['filternodetypes'] == EVIDENCE_TYPES[i]) {
 			option.selected = true;
@@ -3398,16 +3395,17 @@ function createEvidenceFilter(context, args) {
 
 
 function createResourceFilter(context, args) {
-	var sbTool = new Element("span", {'class':'resourcebackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var resourceFilterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var resourceFilterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	resourceFilterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_TYPES_ALL; ?>');
 	resourceFilterMenu.insert(option);
 
-	for(var i=0; i<RESOURCE_TYPES.length; i++){
+	for(var i=0; i < RESOURCE_TYPES.length; i++){
 		var option = new Element("option", {'value':RESOURCE_TYPES[i]});
 		if (args['filternodetypes'] == RESOURCE_TYPES[i]) {
 			option.selected = true;
@@ -3443,10 +3441,11 @@ function createResourceFilter(context, args) {
 
 function createNodeTypeFilter(context, args) {
 
-	var sbTool = new Element("span", {'class':'orgbackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_TYPES_ALL; ?>');
@@ -3515,10 +3514,11 @@ function createNodeTypeFilter(context, args) {
 }
 
 function createCountryFilter(context, args) {
-	var sbTool = new Element("span", {'class':'toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->ZOOM_TO; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar', 'style':'width:150px;'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_COUNTRY_DEFAULT; ?>');
@@ -3559,10 +3559,11 @@ function createCountryFilter(context, args) {
 
 function createConnectedFilter(context, args, type) {
 
-	var sbTool = new Element("span", {'class':'orgbackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
+	filterMenu.setAttribute("aria-label","Filter by");
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->ALL_ITEMS_FILTER; ?>');
@@ -3615,16 +3616,16 @@ function createConnectedFilter(context, args, type) {
  */
 function createNav(total, start, count, argArray, context, type){
 
-	var nav = new Element ("div",{'id':'page-nav', 'class':'toolbarrow', 'style':'padding-top: 8px; padding-bottom: 8px;'});
+	var nav = new Element ("div",{'id':'page-nav', 'class':'toolbarrow pb-3' });
 
 	var header = createNavCounter(total, start, count, type);
 	nav.insert(header);
 
 	if (total > parseInt( argArray["max"] )) {
 		//previous
-	    var prevSpan = new Element("span", {'id':"nav-previous"});
+	    var prevSpan = new Element("span", {'id':"nav-previous", "class": "page-nav page-chevron"});
 	    if(start > 0){
-			prevSpan.update("<img title='<?php echo $LNG->LIST_NAV_PREVIOUS_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath("arrow-left2.png"); ?>' class='toolbar' style='padding-right: 0px;' />");
+			prevSpan.update("<i class=\"fas fa-chevron-left fa-lg\" aria-hidden=\"true\"></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_PREVIOUS_HINT; ?></span>");
 	        prevSpan.addClassName("active");
 	        Event.observe(prevSpan,"click", function(){
 	            var newArr = argArray;
@@ -3632,15 +3633,15 @@ function createNav(total, start, count, argArray, context, type){
 	            eval("load"+type+"(context,newArr)");
 	        });
 	    } else {
-			prevSpan.update("<img title='<?php echo $LNG->LIST_NAV_NO_PREVIOUS_HINT; ?>' disabled src='<?php echo $HUB_FLM->getImagePath("arrow-left2-disabled.png"); ?>' class='toolbar' style='padding-right: 0px;' />");
+			prevSpan.update("<i disabled class=\"fas fa-chevron-left fa-lg\" aria-hidden=\"true\"></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_NO_PREVIOUS_HINT; ?></span>");
 	        prevSpan.addClassName("inactive");
 	    }
 
 	    //pages
-	    var pageSpan = new Element("span", {'id':"nav-pages"});
+	    var pageSpan = new Element("span", {'id':"nav-pages", "class": "page-nav"});
 	    var totalPages = Math.ceil(total/argArray["max"]);
 	    var currentPage = (start/argArray["max"]) + 1;
-	    for (var i = 1; i<totalPages+1; i++){
+	    for (var i = 1; i < totalPages+1; i++){
 	    	var page = new Element("span", {'class':"nav-page"}).insert(i);
 	    	if(i != currentPage){
 		    	page.addClassName("active");
@@ -3654,9 +3655,9 @@ function createNav(total, start, count, argArray, context, type){
 	    }
 
 	    //next
-	    var nextSpan = new Element("span", {'id':"nav-next"});
+	    var nextSpan = new Element("span", {'id':"nav-next", "class": "page-nav page-chevron"});
 	    if(parseInt(start)+parseInt(count) < parseInt(total)){
-		    nextSpan.update("<img title='<?php echo $LNG->LIST_NAV_NEXT_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath('arrow-right2.png'); ?>' class='toolbar' style='padding-right: 0px;' />");
+			nextSpan.update("<i class=\"fas fa-chevron-right fa-lg\" aria-hidden=\"true\"></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_NEXT_HINT; ?></span>");
 	        nextSpan.addClassName("active");
 	        Event.observe(nextSpan,"click", function(){
 	            var newArr = argArray;
@@ -3664,7 +3665,7 @@ function createNav(total, start, count, argArray, context, type){
 	            eval("load"+type+"(context, newArr)");
 	        });
 	    } else {
-		    nextSpan.update("<img title='<?php echo $LNG->LIST_NAV_NO_NEXT_HINT; ?>' src='<?php echo $HUB_FLM->getImagePath('arrow-right2-disabled.png'); ?>' class='toolbar' style='padding-right: 0px;' />");
+			nextSpan.update("<i class=\"fas fa-chevron-right fa-lg\" aria-hidden=\"true\" disabled></i><span class=\"sr-only\"><?php echo $LNG->LIST_NAV_NO_NEXT_HINT; ?></span>");
 	        nextSpan.addClassName("inactive");
 	    }
 

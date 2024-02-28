@@ -53,36 +53,47 @@
 	}
 
     include_once($HUB_FLM->getCodeDirPath("ui/headerlogin.php"));
+	?>
+	
+<div class="container-fluid">
+	<div class="row p-4 justify-content-center">	
+		<div class="col-sm-12 col-lg-8">
+			<?php 
+				echo '<h1>'.$LNG->REGISTRATION_COMPLETE_TITLE.'</h1>';
 
-	echo '<h1>'.$LNG->REGISTRATION_COMPLETE_TITLE.'</h1>';
+				$user = new User($userid);
+				if ($user instanceof User && $user->validateRegistrationKey($key)) {
+					$user->load();
 
-	$user = new User($userid);
-	if ($user instanceof User && $user->validateRegistrationKey($key)) {
-		$user->load();
+					// check if link already clicked and account validated.
+					if ($user->isEmailValidated()) {
+							echo '<p>'.$LNG->REGISTRATION_SUCCESSFUL_LOGIN.'</p>';
+					} else {
+						if ($user->completeRegistration($key)) {
 
-		// check if link already clicked and account validated.
-		if ($user->isEmailValidated()) {
-				echo '<p>'.$LNG->REGISTRATION_SUCCESSFUL_LOGIN.'</p>';
-		} else {
-			if ($user->completeRegistration($key)) {
+							// now email confirmed sign them up to newletter if they wanted to
+							if ($CFG->MAILCHIMP_ON && $user->newsletter == "Y") {
+								subscribeMailChimpMember($user->name, $user->getEmail());
+							}
 
-				// now email confirmed sign them up to newletter if they wanted to
-				if ($CFG->MAILCHIMP_ON && $user->newsletter == "Y") {
-					subscribeMailChimpMember($user->name, $user->getEmail());
+							// send completion email to user
+							$paramArray = array ($user->name,$CFG->SITE_TITLE,$LNG->WELCOME_REGISTER_OPEN_BODY);
+							sendMail("welcome",$LNG->WELCOME_REGISTER_OPEN_SUBJECT,$user->getEmail(),$paramArray);
+
+							echo '<p>'.$LNG->REGISTRATION_SUCCESSFUL_LOGIN.'</p>';
+						} else {
+							echo '<p>'.$LNG->REGISTRATION_FAILED.'</p>';
+						}
+					}
+				} else {
+					echo '<p>'.$LNG->REGISTRATION_FAILED_INVALID.'</p>';
 				}
+			?>
+		</div>
+	</div>
+</div>
 
-				// send completion email to user
-				$paramArray = array ($user->name,$CFG->SITE_TITLE,$LNG->WELCOME_REGISTER_OPEN_BODY);
-				sendMail("welcome",$LNG->WELCOME_REGISTER_OPEN_SUBJECT,$user->getEmail(),$paramArray);
 
-				echo '<p>'.$LNG->REGISTRATION_SUCCESSFUL_LOGIN.'</p>';
-			} else {
-				echo '<p>'.$LNG->REGISTRATION_FAILED.'</p>';
-			}
-		}
-	} else {
-		echo '<p>'.$LNG->REGISTRATION_FAILED_INVALID.'</p>';
-	}
-
+<?php
     include_once($HUB_FLM->getCodeDirPath("ui/footerpublic.php"));
 ?>

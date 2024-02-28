@@ -654,7 +654,14 @@ $LNG->FORM_SELECT_RESOURCE_HINT = 'Select/create a '.$LNG->RESOURCE_NAME.' to su
 $LNG->FORM_BUTTON_REMOVE = 'remove';
 $LNG->FORM_BUTTON_REMOVE_CAP = 'Remove';
 $LNG->FORM_BUTTON_SELECT_ANOTHER = 'Select Another';
+
 $LNG->FORM_BUTTON_ADD_ANOTHER = 'add another';
+
+$LNG->FORM_BUTTON_ADD_ANOTHER_THEME = "add another ".$LNG->THEME_NAME;
+$LNG->FORM_BUTTON_ADD_ANOTHER_RESOURCE = "add another ".$LNG->RESOURCE_NAME;
+$LNG->FORM_BUTTON_ADD_ANOTHER_PARTNER = "add another";
+$LNG->FORM_BUTTON_ADD_ANOTHER_SEE_ALSO ="add another";
+
 $LNG->FORM_BUTTON_CHANGE = 'change';
 $LNG->FORM_BUTTON_ADD = 'Add';
 $LNG->FORM_BUTTON_ADD_NEW = 'Add New';
@@ -1895,9 +1902,6 @@ $LNG->WIDGET_EVIDENCE_ADD_HINT = 'Select/create a contribution to add it as evid
 $LNG->WIDGET_ADD_LINK = 'Add';
 $LNG->WIDGET_SIGNIN_HINT = 'Sign In to add to the Evidence Hub';
 $LNG->WIDGET_FOLLOW_SIGNIN_HINT = 'Sign In to follow this entry';
-$LNG->WIDGET_NONE_FOUND_PART1 = 'No';
-$LNG->WIDGET_NONE_FOUND_PART2 = 'added yet';
-$LNG->WIDGET_NONE_FOUND_PART2b = 'listed';
 $LNG->WIDGET_THEME_SELECT_OPTION = 'Select '.$LNG->THEME_NAME.'...';
 $LNG->WIDGET_ADD_BUTTON = 'Add';
 $LNG->WIDGET_NO_RELATED_THEMES_FOUND = 'No related '.$LNG->THEMES_NAME.' found';
@@ -1910,6 +1914,12 @@ $LNG->WIDGET_NO_RESULTS_FOUND = 'No results found';
 $LNG->WIDGET_NO_FOLLOWERS_FOUND = 'No '.$LNG->FOLLOWERS_NAME.' found';
 $LNG->WIDGET_HOW_EVIDENCE_RELATES_MESSAGE = 'Please select how this '.$LNG->EVIDENCE_NAME.' relates?';
 $LNG->WIDGET_ADD_COMMENT_HINT = 'Add a new comment against the current focal item';
+
+$LNG->WIDGET_NONE_FOUND = 'No items added';
+$LNG->WIDGET_NONE_FOUND2 = 'No items listed';
+$LNG->WIDGET_NONE_FOUND_PART1 = 'No';
+$LNG->WIDGET_NONE_FOUND_PART2 = 'added yet';
+$LNG->WIDGET_NONE_FOUND_PART2b = 'listed';
 
 /** ADMIN AREA **/
 $LNG->ADMIN_TITLE = "Administration Area";
@@ -2027,6 +2037,10 @@ $LNG->ADMIN_CRON_RECENT_ACTIVITY_DIGEST_RUN = 'Recent Activite Digest on '.$CFG-
 $LNG->ADMIN_CRON_RECENT_ACTIVITY_NO_DIGEST = 'No recent activity digest for:';
 $LNG->ADMIN_CRON_RECENT_ACTIVITY_TITLE = 'Evidence Hub Recent Activity Report';
 $LNG->ADMIN_CRON_RECENT_ACTIVITY_MESSAGE = 'See below for the top 5 most recent items entered for each Evidence Hub Category.';
+
+$LNG->ADMIN_NEW_USERS = 'Users';
+$LNG->ADMIN_NEW_GROUPS = 'Groups';
+$LNG->ADMIN_DASHBOARD = 'Admin Dashboard';
 
 /** HELP PAGES **/
 $LNG->HELP_NETWORKMAP_TITLE = 'Network Map';
@@ -2464,6 +2478,8 @@ $LNG->STATS_GLOBAL_CONNS_GRAPH_MONTH_Y_LABEL = 'Months (from';
 $LNG->STATS_GLOBAL_CONNS_GRAPH_WEEK_Y_LABEL = 'Weeks (from';
 $LNG->STATS_GLOBAL_CONNS_GRAPH_X_LABEL = 'Number of Connections';
 
+$LNG->BACKTOTOP = 'Back to top';
+
 /** BIBTEX IMPORT **/
 $LNG->IMPORT_BIBTEX_TITLE = 'Import from Bib TeX';
 $LNG->IMPORT_BIBTEX_HELP_LINK = 'help';
@@ -2527,11 +2543,11 @@ $LNG->SPAM_USER_ADMIN_DELETE_CHECK_MESSAGE_PART2 = "Be warned: all their data wi
 $LNG->SPAM_USER_ADMIN_RESTORE_CHECK_MESSAGE_PART1 = "Are you sure you want to restore the account of: ";
 $LNG->SPAM_USER_ADMIN_RESTORE_CHECK_MESSAGE_PART2 = "This will remove this ".$LNG->USER_NAME." from this list";
 $LNG->SPAM_USER_ADMIN_SUSPEND_CHECK_MESSAGE = "Are you sure you want to suspend the account of: ";
-$LNG->SPAM_USER_ADMIN_NONE_MESSAGE = 'There are currently no ".$LNG->USERS_NAME." reported as Spammers / Inappropriate';
+$LNG->SPAM_USER_ADMIN_NONE_MESSAGE = "There are currently no ".$LNG->USERS_NAME." reported as Spammers / Inappropriate";
 $LNG->SPAM_USER_ADMIN_TITLE = "User Report Manager";
 $LNG->SPAM_USER_ADMIN_MANAGER_SPAM_LINK = "Reported ".$LNG->USERS_NAME;
 $LNG->SPAM_USER_ADMIN_ID_ERROR = "Can not process request as id is missing";
-$LNG->SPAM_USER_ADMIN_NONE_SUSPENDED_MESSAGE = 'There are currently no ".$LNG->USERS_NAME." suspended';
+$LNG->SPAM_USER_ADMIN_NONE_SUSPENDED_MESSAGE = "There are currently no ".$LNG->USERS_NAME." suspended";
 $LNG->SPAM_USER_ADMIN_SPAM_TITLE = $LNG->USER_NAME.' Reported';
 $LNG->SPAM_USER_ADMIN_SUSPENDED_TITLE = $LNG->USER_NAME.' Suspended';
 
@@ -2656,6 +2672,9 @@ $LNG->REGSITRATION_ADMIN_ID_ERROR = "Can not process user request as id is missi
 $LNG->REGSITRATION_ADMIN_USER_EMAILED_ACCEPTANCE = 'has been emailed that their registration request was accepted';
 $LNG->REGSITRATION_ADMIN_USER_EMAILED_REJECTION = 'has been emailed that their registration request was rejected';
 $LNG->REGSITRATION_ADMIN_EMAIL_REQUEST_SUBJECT = $LNG->WELCOME_REGISTER_REQUEST_SUBJECT;
+
+$LNG->REGSITRATION_ADMIN_USER_LIST_LINK = "Users";
+$LNG->ADMIN_NEW_USERS = "Users";
 
 // %s will be replace with the name of the current Evidence Hub. When translating please leave this in the sentence appropariately placed.
 $LNG->REGSITRATION_ADMIN_EMAIL_REJECT_BODY = 'Thank you for requesting registration on the %s.<br>Unfortunately, on this occasion, your request for a user account has not been successful.';

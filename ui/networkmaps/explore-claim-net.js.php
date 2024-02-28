@@ -195,7 +195,7 @@ function loadClaimData(forcedirectedGraph, toolbar, messagearea) {
 						}
 					}
 					$('graphConnectionCount').innerHTML = "";
-					$('graphConnectionCount').insert('<span style="font-size:10pt;color:black;float:left;margin-left:20px"><?php echo $LNG->GRAPH_CONNECTION_COUNT_LABEL; ?> '+(conns.length+conns2.length)+'</span>');
+					$('graphConnectionCount').insert('<span class="connections-count"><?php echo $LNG->GRAPH_CONNECTION_COUNT_LABEL; ?> '+(conns.length+conns2.length)+'</span>');
 
 					if (conns.length > 0 || (conns2 && conns2.length > 0)) {
 						layoutAndAnimate(forcedirectedGraph, messagearea);

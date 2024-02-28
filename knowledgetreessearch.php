@@ -84,52 +84,60 @@
 	echo "</script>";
 ?>
 
-<script type='text/javascript'>
+<div class="container-fluid">
+	<div class="row p-3">		
+		<div class="col">
+			<script type='text/javascript'>
+				Event.observe(window, 'load', function() {
+					buildSearchTitle("tree", NODE_ARGS['q'], NODE_ARGS['tagsonly']);
+					var bObj = new JSONscriptRequest('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/searchlineartree.js.php"); ?>');
+					bObj.buildScriptTag();
+					bObj.addScriptTag();
+				});
+			</script>
 
-Event.observe(window, 'load', function() {
-	buildSearchTitle("tree", NODE_ARGS['q'], NODE_ARGS['tagsonly']);
+			<div id="nodearealineartitle" class="plainback plainborder">
+				<div class="plainback tabtitlebar">
+					<label class="linearnodeheaderlabel" id="exploreheaderlabel">
+					</label>
+				</div>
+			</div>
 
-	var bObj = new JSONscriptRequest('<?php echo $HUB_FLM->getCodeWebPath("ui/explore/linear/searchlineartree.js.php"); ?>');
-	bObj.buildScriptTag();
-	bObj.addScriptTag();
-});
+			<div class="p-1 border-bottom d-block">
+				<div id="headertoolbar" class="d-block"></div>
+			</div>
 
-</script>
+			<div id="tabber">
+				<div id="tabs-content" class="tabcontentexplore">
 
-<div id="nodearealineartitle" class="plainback plainborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-	<div class="plainback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-		<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-		</label>
-	</div>
-</div>
+				<!-- LINEAR/DEABATE PAGES -->
+					<div id='tab-content-explore-linear' class='explorepagesection'>
+						<div class="linearpagediv" id="linearpagediv">
+							<div>
+								<div>
+									<h2>
+										<?php echo $LNG->VIEWS_LINEAR_TITLE; ?>
+										<div id="toggleDebateButton" class="active" style="display:none" onClick="toggleDebateMode();" title="<?php echo $LNG->DEBATE_SWITCH_WIDER_HINT; ?>">
+											<small>
+												<?php echo $LNG->DEBATE_SWITCH_WIDER_BUTTON; ?>
+											</small>
+										</div>
+									</h2>
 
-<div style="border-bottom:1px solid #E8E8E8; width:100%;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-	<div id="headertoolbar" style="clear:both;float:left;margin-top:10px;margin-left:5px;"></div>
-</div>
-
-<div id="tabber" style="clear:both;float:left;width:100%;">
-    <div id="tabs-content" class="tabcontentexplore plainborder" style="min-height:400px;">
-
-	<!-- LINEAR/DEABATE PAGES -->
-       	<div id='tab-content-explore-linear' class='explorepagesection'>
-			<div class="linearpagediv" id="linearpagediv">
-				<div style="clear:both;float:left; width 100%;margin-left:5px;">
-					<div style="clear:both;float:left;margin-top:5px;margin-right:5px;">
-						<h2 style="margin-bottom:5px;"><div style="font-size:13pt;font-style: italic;float:left; "><?php echo $LNG->VIEWS_LINEAR_TITLE; ?></div>
-						<div id="toggleDebateButton" class="active" style="margin-left:30px;margin-top:2px;font-size:10pt;float:left;display:none" onClick="javascript: toggleDebateMode();" title="<?php echo $LNG->DEBATE_SWITCH_WIDER_HINT; ?>"><?php echo $LNG->DEBATE_SWITCH_WIDER_BUTTON; ?></div>
-						</h2>
-
-						<div style="clear:both;float:left;margin-bottom:5px;margin-top:5px;">
-							<span style="color: dimgray; font-size:10pt; font-weight:normal"><?php echo $LNG->DEABTES_COUNT_SEARCH_MESSAGE_PART1; ?> <span id="debatecount" style="font-size:12pt; font-weight:bold">0</span> <?php echo $LNG->DEABTES_COUNT_SEARCH_MESSAGE_PART2; ?></span>
-						</div>
-						<div style="clear:both;float:left;margin-bottom:5px;">
-							<span id="lineardebateheading" style="margin-top:3px;"></span>
+									<div>
+										<div class="alert alert-info"><?php echo $LNG->DEABTES_COUNT_SEARCH_MESSAGE_PART1; ?> <span id="debatecount">0</span> <?php echo $LNG->DEABTES_COUNT_SEARCH_MESSAGE_PART2; ?></span>
+									</div>
+									<div>
+										<span id="lineardebateheading"></span>
+									</div>
+								</div>
+								<div class="linearcontent" id="content-list"></div>
+								<div class="linearcontent" id="content-list-expanded" style="display:none;"></div>
+							</div>
+							<div id="treeaddarea" style="display:none;"></div>
 						</div>
 					</div>
-					<div class="linearcontent" id="content-list"></div>
-					<div class="linearcontent" id="content-list-expanded" style="display:none;"></div>
 				</div>
-				<div id="treeaddarea" style="display:none;clear:both;float:left;margin:0px;padding: 0px;margin-top:10px;margin-left:10px;background:white;"></div>
 			</div>
 		</div>
 	</div>

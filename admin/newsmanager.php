@@ -1,27 +1,27 @@
 <?php
-/********************************************************************************
- *                                                                              *
- *  (c) Copyright 2013 The Open University UK                                   *
- *                                                                              *
- *  This software is freely distributed in accordance with                      *
- *  the GNU Lesser General Public (LGPL) license, version 3 or later            *
- *  as published by the Free Software Foundation.                               *
- *  For details see LGPL: http://www.fsf.org/licensing/licenses/lgpl.html       *
- *               and GPL: http://www.fsf.org/licensing/licenses/gpl-3.0.html    *
- *                                                                              *
- *  This software is provided by the copyright holders and contributors "as is" *
- *  and any express or implied warranties, including, but not limited to, the   *
- *  implied warranties of merchantability and fitness for a particular purpose  *
- *  are disclaimed. In no event shall the copyright owner or contributors be    *
- *  liable for any direct, indirect, incidental, special, exemplary, or         *
- *  consequential damages (including, but not limited to, procurement of        *
- *  substitute goods or services; loss of use, data, or profits; or business    *
- *  interruption) however caused and on any theory of liability, whether in     *
- *  contract, strict liability, or tort (including negligence or otherwise)     *
- *  arising in any way out of the use of this software, even if advised of the  *
- *  possibility of such damage.                                                 *
- *                                                                              *
- ********************************************************************************/
+	/********************************************************************************
+	 *                                                                              *
+	 *  (c) Copyright 2013 The Open University UK                                   *
+	 *                                                                              *
+	 *  This software is freely distributed in accordance with                      *
+	 *  the GNU Lesser General Public (LGPL) license, version 3 or later            *
+	 *  as published by the Free Software Foundation.                               *
+	 *  For details see LGPL: http://www.fsf.org/licensing/licenses/lgpl.html       *
+	 *               and GPL: http://www.fsf.org/licensing/licenses/gpl-3.0.html    *
+	 *                                                                              *
+	 *  This software is provided by the copyright holders and contributors "as is" *
+	 *  and any express or implied warranties, including, but not limited to, the   *
+	 *  implied warranties of merchantability and fitness for a particular purpose  *
+	 *  are disclaimed. In no event shall the copyright owner or contributors be    *
+	 *  liable for any direct, indirect, incidental, special, exemplary, or         *
+	 *  consequential damages (including, but not limited to, procurement of        *
+	 *  substitute goods or services; loss of use, data, or profits; or business    *
+	 *  interruption) however caused and on any theory of liability, whether in     *
+	 *  contract, strict liability, or tort (including negligence or otherwise)     *
+	 *  arising in any way out of the use of this software, even if advised of the  *
+	 *  possibility of such damage.                                                 *
+	 *                                                                              *
+	 ********************************************************************************/
     include_once("../config.php");
 
     $me = substr($_SERVER["PHP_SELF"], 1); // remove initial '/'
@@ -32,21 +32,14 @@
 	}
 
     checkLogin();
-    array_push($HEADER,"<script src='".$CFG->homeAddress."ui/lib/scriptaculous/scriptaculous.js' type='text/javascript'></script>");
 
-    include_once($HUB_FLM->getCodeDirPath("ui/dialogheader.php"));
+    include_once($HUB_FLM->getCodeDirPath("ui/headeradmin.php"));
 
     if($USER == null || $USER->getIsAdmin() == "N"){
         echo "<div class='errors'>.".$LNG->ADMIN_NOT_ADMINISTRATOR_MESSAGE."</div>";
-        include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
+        include_once($HUB_FLM->getCodeDirPath("ui/footeradmin.php"));
         die;
 	}
-
-	//if($USER->userid != $CFG->ADMIN_USERID){
-    //    echo "<div class='errors'>.".$LNG->ADMIN_NOT_ADMINISTRATOR_MESSAGE."</div>";
-    //    include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
-    //    die;
-	//}
 
     $errors = array();
 
@@ -104,205 +97,190 @@
     $nodes = $ns->nodes;
 ?>
 
-<script type="text/javascript">
-
-	function init() {
-		$('dialogheader').insert('<?php echo $LNG->ADMIN_NEWS_TITLE; ?>');
-	}
-
-    function editNews(objno){
-    	cancelAddNews();
-   		cancelAllEdits();
-
-        $('editnewsform'+objno).show();
-        $('savelink'+objno).show();
-
-        $('newslabeldiv'+objno).hide();
-        $('editnewslink'+objno).hide();
-        $('editlink'+objno).hide();
-    }
-
-    function cancelEditNews(objno){
-    	if ($('editnewsform'+objno)) {
-         	$('editnewsform'+objno).hide();
-    	}
-    	if ($('savelink'+objno)) {
-    		$('savelink'+objno).hide();
-    	}
-
-		if ($('newslabeldiv'+objno)) {
-    		$('newslabeldiv'+objno).show();
-    	}
-    	if ($('editnewslink'+objno)) {
-    		$('editnewslink'+objno).show();
-    	}
-    	if ($('editlink'+objno)) {
-    		$('editlink'+objno).show();
-    	}
-    }
-
-    function cancelAllEdits() {
-		var array = document.getElementsByTagName('div');
-		for(var i=0;i<array.length;i++) {
-			if (array[i].id.startsWith('editnewsform')) {
-				var objno = array[i].id.substring(13);
-				cancelEditNews(objno);
-			}
-		}
-    }
-
-   	function addNews(){
-   		cancelAllEdits();
-    	$('newnewsform').show();
-        $('addnewnewslink').hide();
-	}
-
-	function cancelAddNews(){
-        $('newnewsform').hide();
-        $('addnewnewslink').show();
-   	}
-
-	window.onload = init;
-
-	function checkFormDelete(name) {
-        var ans = confirm("<?php echo $LNG->ADMIN_NEWS_DELETE_QUESTION_PART1; ?> '"+name+"' <?php echo $LNG->ADMIN_NEWS_DELETE_QUESTION_PART2; ?>");
-		if (ans){
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-</script>
-
-<?php
-if(!empty($errors)){
-    echo "<div class='errors'>".$LNG->FORM_ERROR_MESSAGE.":<ul>";
-    foreach ($errors as $error){
-        echo "<li>".$error."</li>";
-    }
-    echo "</ul></div>";
-}
-?>
-
-
-<div id="newsdiv" style="margin-left:10px;">
-
-    <div class="formrow">
-        <a id="addnewnewslink" href="javascript:addNews()" class="form"><?php echo $LNG->ADMIN_NEWS_ADD_NEW_LINK; ?></a>
-    </div>
-
-   <div id="newnewsform" class="formrow" style="display:none; clear:both;">
-   		<form id="addnews" name="addnews" action="newsmanager.php" method="post" enctype="multipart/form-data">
-        <div class="subform" style="width: 620px;">
-            <div class='subformrow'><label class='formlabel' style='width: 75px' for='name'><?php echo $LNG->ADMIN_NEWS_NAME_LABEL; ?></label><input type='text' class='forminput' style='width: 300px' id='name' name='name' value=''/></div>
-            <div class='subformrow'>
-
-				<label  class="formlabelbig" for="desc">
-				<span style="vertical-align:top"><?php echo $LNG->ADMIN_NEWS_DESC_LABEL; ?>
-				<a id="editortogglebuttonadd" href="javascript:void(0)" style="vertical-align:top" onclick="switchCKEditorMode(this, 'textareadivadd', 'descadd')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
-				</span>
-				</label>
-
-				<div id="textareadivadd" style="clear:none;float:left;margin-top:5px;">
-					<textarea rows="4" class="forminput hgrinput hgrwide" id="descadd" name="desc"></textarea>
-				</div>
-			</div>
-
-            <div class="subformrow">
-            	<input class="subformbutton" style="margin-left:30px; margin-top:5px;" type="submit" value="<?php echo $LNG->FORM_BUTTON_ADD; ?>" id="addnews" name="addnews">
-                <input class="subformbutton" style="margin-left:7px;" type="button" name="cancelbutton" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="cancelAddNews();">
-            </div>
-        </div>
-        </form>
-    </div>
-
-    <div class="formrow">
-        <div id="nodes" class="forminput">
-
-        <?php
-            echo "<table class='table' cellspacing='0' cellpadding='3' border='0' style='margin: 0px;'>";
-            echo "<tr>";
-            echo "<th width='450'>".$LNG->ADMIN_NEWS_TITLE_HEADING."</th>";
-            echo "<th width='30'>".$LNG->ADMIN_NEWS_ACTION_HEADING."</th>";
-            echo "<th width='75'>".$LNG->ADMIN_NEWS_ACTION_HEADING."</th>";
-
-            echo "</tr>";
-            foreach($nodes as $node){
-                echo "<tr id='node-".$node->nodeid."'>";
-
-                echo "<td id='second-".$node->nodeid."'>";
-
-		        echo "<div class='subform' id='editnewsform".$node->nodeid."' style='width: 590px; display:none; clear:both;'>";
-		   		echo '<form name="managenews"'.$node->nodeid.' action="newsmanager.php" method="post" enctype="multipart/form-data">';
-		   		echo "<input name='nodeid' type='hidden' value='".$node->nodeid."' />";
-		        echo "<div class='subformrow'>";
-		        echo "<label class='formlabel' style='width: 75px' for='name'>".$LNG->FORM_LABEL_NAME."</label><input type='text' class='forminput' style='width:300px' id='name' name='name' value=\"".$node->name."\"/></div>";
-
-
-                echo "<div class='subformrow'>";
-				echo '<label  class="formlabelbig" for="desc">';
-				echo '<span style="vertical-align:top">'.$LNG->FORM_LABEL_DESC;
-				echo '<a id="editortogglebutton" href="javascript:void(0)" style="vertical-align:top" onclick="switchCKEditorMode(this, \'textareadiv'.$node->nodeid.'\', \'desc'.$node->nodeid.'\')" title="'.$LNG->FORM_DESC_HTML_TEXT_HINT.'">'.$LNG->FORM_DESC_HTML_TEXT_LINK.'</a>';
-				echo '</span>';
-				echo '</label>';
-
-				if (isProbablyHTML($node->description)) {
-					 echo '<div id="textareadiv'.$node->nodeid.'" style="clear:both;float:left;margin-top:5px;">';
-					 echo '	<textarea rows="4" class="ckeditor forminput hgrinput hgrwide" id="desc'.$node->nodeid.'" name="desc">'.$node->description.'</textarea>';
-					 echo '</div>';
-				} else {
-					 echo '<div id="textareadiv'.$node->nodeid.'" style="clear:none;float:left;margin-top:5px;">';
-					 echo '<textarea rows="4" class="forminput hgrinput hgrwide" id="desc'.$node->nodeid.'" name="desc">'.$node->description.'</textarea>';
-					 echo '</div>';
+<div class="container-fluid">
+	<div class="row p-4 pt-0">
+		<div class="col">
+			<script type="text/javascript">
+				function editNews(objno){
+					cancelAddNews();
+					cancelAllEdits();
+					$('editnewsform'+objno).show();
+					$('savelink'+objno).show();
+					$('newslabeldiv'+objno).hide();
+					$('editnewslink'+objno).hide();
+					$('editlink'+objno).hide();
 				}
 
-                echo "</div>";
- 		        echo "<div class='subformrow' id='savelink".$node->nodeid."' style='display:none; clear:both;'>";
-                echo '<input class="subformbutton" style="margin-left:30px;margin-top:5px;" type="submit" value="'.$LNG->FORM_BUTTON_SAVE.'" id="savenews" name="savenews" />';
-                echo '<input class="subformbutton" style="margin-left:7px;" type="button" value="'.$LNG->FORM_BUTTON_CANCEL.'" onclick="javascript:cancelEditNews(\''.$node->nodeid.'\');" />';
-                echo '</div>';
-                echo "</form>";
-                echo "</div>";
+				function cancelEditNews(objno){
+					if ($('editnewsform'+objno)) {
+						$('editnewsform'+objno).hide();
+					}
+					if ($('savelink'+objno)) {
+						$('savelink'+objno).hide();
+					}
+					if ($('newslabeldiv'+objno)) {
+						$('newslabeldiv'+objno).show();
+					}
+					if ($('editnewslink'+objno)) {
+						$('editnewslink'+objno).show();
+					}
+					if ($('editlink'+objno)) {
+						$('editlink'+objno).show();
+					}
+				}
 
-                echo "<div id='newslabeldiv".$node->nodeid."'>";
-		        echo "<span class='labelinput' style='width: 90%' id='nodelabel".$node->nodeid."'>".$node->name."</span>";
-                echo "<input type='hidden' id='newslabelval".$node->nodeid."' value=\"".$node->name."\"/>";
-		        echo "</div>";
+				function cancelAllEdits() {
+					var array = document.getElementsByTagName('div');
+					for(var i=0;i<array.length;i++) {
+						if (array[i].id.startsWith('editnewsform')) {
+							var objno = array[i].id.substring(13);
+							cancelEditNews(objno);
+						}
+					}
+				}
 
-                echo "</td>";
+				function addNews(){
+					cancelAllEdits();
+					$('newnewsform').show();
+					$('addnewnewslink').hide();
+				}
 
-                echo "<td id='third-".$node->nodeid."'>";
-                echo "<div id='editlink".$node->nodeid."'>";
-  				echo "<a id='editnewslink".$node->nodeid."' href='javascript:editNews(\"".$node->nodeid."\")' class='form'>".$LNG->ADMIN_NEWS_EDIT_LINK."</a>";
-                echo "</td>";
+				function cancelAddNews(){
+					$('newnewsform').hide();
+					$('addnewnewslink').show();
+				}
 
-                echo "<td id='fourth-".$node->nodeid."'>";
-				echo '<form id="delete-'.$node->nodeid.'" action="" enctype="multipart/form-data" method="post" onsubmit="return checkFormDelete(\''.htmlspecialchars($node->name).'\');">';
-				echo '<input type="hidden" id="nodeid" name="nodeid" value="'.$node->nodeid.'" />';
-				echo '<input type="hidden" id="deletenews" name="deletenews" value="" />';
-				echo '<span class="active" onclick="if (checkFormDelete(\''.htmlspecialchars($node->name).'\')) { $(\'delete-'.$node->nodeid.'\').submit(); }" id="deletenews" name="deletenews">'.$LNG->ADMIN_NEWS_DELETE_LINK.'</a>';
-				echo '</form>';
-                echo "</td>";
+				window.onload = init;
 
-   				echo "</div>";
-                echo "</td>";
+				function checkFormDelete(name) {
+					var ans = confirm("<?php echo $LNG->ADMIN_NEWS_DELETE_QUESTION_PART1; ?> '"+name+"' <?php echo $LNG->ADMIN_NEWS_DELETE_QUESTION_PART2; ?>");
+					if (ans){
+						return true;
+					} else {
+						return false;
+					}
+				}
+			</script>
 
-                echo "</tr>";
-            }
-            echo "</table>";
-        ?>
-        </div>
-   </div>
+			<?php
+				if(!empty($errors)){
+					echo "<div class='alert alert-danger'>".$LNG->FORM_ERROR_MESSAGE.":<ul>";
+					foreach ($errors as $error){
+						echo "<li>".$error."</li>";
+					}
+					echo "</ul></div>";
+				}
+			?>
 
-    <div class="formrow">
-    <input type="button" value="<?php echo $LNG->FORM_BUTTON_CLOSE; ?>" onclick="window.close();"/>
+			<h1 class="mb-3"><?php echo $LNG->ADMIN_NEWS_TITLE; ?></h1>
 
-    </div>
+			<div id="newsdiv">
+				<div class="mb-3 row">
+					<div class="col-auto">
+						<a id="addnewnewslink" href="javascript:addNews()" class="form"><i class="fas fa-plus-square" aria-hidden="true"></i> <?php echo $LNG->ADMIN_NEWS_ADD_NEW_LINK; ?></a>
+					</div>
+				</div>
 
+				<div id="newnewsform" class="mb-3 row" style="display:none;">
+					<form id="addnews" name="addnews" action="newsmanager.php" method="post" enctype="multipart/form-data">
+						<div class="subform p-4 mb-3 row">
+							<div class='mb-3 row'>
+								<label class='col-sm-3 col-form-label'><?php echo $LNG->ADMIN_NEWS_NAME_LABEL; ?></label>
+								<div class="col-sm-9"><input type='text' class='form-control' id='name' name='name' value='' aria-label="add News Article - name" /></div>
+							</div>
+							<div class='mb-3 row'>
+								<label class="col-sm-3 col-form-label" for="descadd">
+									<?php echo $LNG->ADMIN_NEWS_DESC_LABEL; ?><br />
+									<a id="editortogglebuttonadd" href="javascript:void(0)" onclick="switchCKEditorMode(this, 'textareadivadd', 'descadd')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
+								</label>
+								<div id="textareadivadd" class="col-sm-9">
+									<textarea rows="4" class="form-control" id="descadd" name="desc"></textarea>
+								</div>
+							</div>
+							<div class="mb-3 row">
+								<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+									<input class="btn btn-secondary" type="button" name="cancelbutton" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="cancelAddNews();" />
+									<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_ADD; ?>" id="addnews" name="addnews" />
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="mb-3 row">
+					<div id="nodes">					
+						<table class='table table-sm'>
+							<tr>
+								<th><?php echo $LNG->ADMIN_NEWS_TITLE_HEADING; ?></th>
+								<th width="100px"><?php echo $LNG->ADMIN_NEWS_ACTION_HEADING; ?></th>
+								<th width="100px"><?php echo $LNG->ADMIN_NEWS_ACTION_HEADING; ?></th>
+							</tr>
+							<?php foreach($nodes as $node){ ?>
+								<tr id='node-<?php echo $node->nodeid; ?>'>
+									<td id='second-<?php echo $node->nodeid; ?>'>
+										<div class='subform m-3 p-3' id='editnewsform<?php echo $node->nodeid; ?>' style='display:none;'>
+
+											<form name='managenews'<?php echo $node->nodeid; ?> action='newsmanager.php' method='post' enctype='multipart/form-data'>
+												<input name='nodeid' type='hidden' value='<?php echo $node->nodeid; ?>' />											
+												<div class='mb-3 row'>
+													<label class='col-sm-3 col-form-label'><?php echo $LNG->FORM_LABEL_NAME; ?></label>
+													<div class='col-sm-9'><input type='text' class='form-control' id='name' name='name' aria-label="edit name for <?php echo $node->name; ?>" value="<?php echo $node->name; ?>"/></div>
+												</div>
+
+												<div class="mb-3 row">
+													<label class="col-sm-3 col-form-label" for="desc<?php echo $node->nodeid; ?>">
+														<?php echo $LNG->FORM_LABEL_DESC; ?><br />
+														<a id="editortogglebutton" href="javascript:void(0)" onclick="switchCKEditorMode(this, 'textareadiv<?php echo $node->nodeid; ?>', 'desc<?php echo $node->nodeid; ?>')" title="<?php echo $LNG->FORM_DESC_HTML_TEXT_HINT; ?>"><?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?></a>
+													</label>
+													<?php if (isProbablyHTML($node->description)) { ?>
+														<div id="textareadiv<?php echo $node->nodeid; ?>" class="col-sm-9">
+															<textarea rows="4" class="ckeditor form-control" id="desc<?php echo $node->nodeid; ?>" name="desc"><?php echo $node->description; ?></textarea>
+														</div>
+													<?php } else { ?>
+														<div id="textareadiv<?php echo $node->nodeid; ?>" class="col-sm-9">
+															<textarea rows="4" class="form-control" id="desc<?php echo $node->nodeid; ?>" name="desc"><?php echo $node->description; ?></textarea>
+														</div>
+													<?php } ?>
+												</div>
+												
+												<div class="mb-3 row" id="savelink<?php echo $node->nodeid; ?>" style="display:none; clear:both;">
+													<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+														<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="cancelEditNews('<?php echo $node->nodeid; ?>');" />
+														<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_SAVE; ?>" id="savenews" name="savenews" />
+													</div>
+												</div>
+											</form>
+										</div>
+
+										<div id='newslabeldiv<?php echo $node->nodeid; ?>'>
+											<span class='labelinput' id='nodelabel<?php echo $node->nodeid; ?>'><?php echo $node->name; ?></span>
+											<input type='hidden' id='newslabelval<?php echo $node->nodeid; ?>' value="<?php echo $node->name; ?>"/>
+										</div>
+									</td>
+
+									<td id='third-<?php echo $node->nodeid; ?>'>
+										<div id='editlink<?php echo $node->nodeid; ?>'>
+											<a id='editnewslink<?php echo $node->nodeid; ?>' href='javascript:editNews("<?php echo $node->nodeid; ?>")' class='form'><?php echo $LNG->ADMIN_NEWS_EDIT_LINK; ?></a>
+										</div>
+									</td>
+
+									<td id='fourth-<?php echo $node->nodeid; ?>'>
+										<form id="delete-<?php echo $node->nodeid; ?>" action="" enctype="multipart/form-data" method="post" onsubmit="return checkFormDelete(\'<?php echo htmlspecialchars($node->name); ?>');">
+											<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $node->nodeid; ?>" />
+											<input type="hidden" id="deletenews" name="deletenews" value="" />
+											<span class="active" onclick="if (checkFormDelete('<?php echo htmlspecialchars($node->name); ?>')) { $('delete-<?php echo $node->nodeid; ?>').submit(); }" id="deletenews" name="deletenews"><?php echo $LNG->ADMIN_NEWS_DELETE_LINK; ?></a>
+										</form>
+									</td>
+								</tr>
+							<?php } ?>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-
 <?php
-    include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
+    include_once($HUB_FLM->getCodeDirPath("ui/footeradmin.php"));
 ?>

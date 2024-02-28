@@ -231,199 +231,229 @@
 
 	    include_once($HUB_FLM->getCodeDirPath("ui/header.php"));
     }
+	?>
+<div class="container-fluid">
+	<div class="row p-3">		
+		<div class="col">
+			<h1>
+				<?php echo $LNG->PROFILE_TITLE; ?>
+				<?php if ($USER->getAuthType() == $CFG->AUTH_TYPE_EVHUB) { ?>
+					<span class="fs-6"><a href="<?php echo $CFG->homeAddress; ?>ui/pages/changepassword.php"><?php echo $LNG->PROFILE_CHANGE_PASSWORD_LINK; ?></a></span>
+				<?php } ?>
+			</h1>
+			
+			<?php
+			if(!empty($errors)){
+				echo "<div class='alert alert-danger'>".$LNG->FORM_ERROR_MESSAGE.":<ul>";
+				foreach ($errors as $error){
+					echo "<li>".$error."</li>";
+				}
+				echo "</ul></div>";
+			}
+			?>
 
-    echo '<h1>'.$LNG->PROFILE_TITLE;
-    if ($USER->getAuthType() == $CFG->AUTH_TYPE_EVHUB) {
-    	echo '<span style="margin-left:3-px; font-size: 10pt;"><a style="margin-left: 30px;" href="'.$CFG->homeAddress.'ui/pages/changepassword.php">'.$LNG->PROFILE_CHANGE_PASSWORD_LINK.'</a></span>';
-    }
-    echo '</h1>';
-?>
+			<script type="text/javascript">
+				function toggleTags() {
+					if ( $("tagsdiv").style.display == "flex") {
+						$("tagsdiv").style.display = "none";
+						$("toggle_tags").innerHTML = 'Show <i class="fas fa-chevron-circle-down" aria-hidden="true"></i>';
+					} else {
+						$("tagsdiv").style.display = "flex";
+						$("toggle_tags").innerHTML = 'Hide <i class="fas fa-chevron-circle-up" aria-hidden="true"></i>';
+					}
+				}
+				function checkForm() {
+					var originalemail = '<?php echo $email; ?>';
+					var email = ($('email').value).trim();
+					if (email != originalemail){
+						var ans = confirm("<?php echo $LNG->PROFILE_EMAIL_CHANGE_CONFIRM; ?>");
+						if (ans){
+							return true;
+						} else {
+							return false;
+						}
+					}
+					$('editprofile').style.cursor = 'wait';
+					return true;
+				}
+			</script>
 
-<?php
-if(!empty($errors)){
-    echo "<div class='errors'>".$LNG->FORM_ERROR_MESSAGE.":<ul>";
-    foreach ($errors as $error){
-        echo "<li>".$error."</li>";
-    }
-    echo "</ul></div>";
-}
-?>
+			<p class="text-end"><span class="required">*</span> <?php echo $LNG->FORM_REQUIRED_FIELDS; ?></p>
 
-<script type="text/javascript">
+			<form id="editprofile" name="editprofile" action="" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label"><?php echo $LNG->PROFILE_PHOTO_CURRENT_LABEL; ?></label>
+					<div class="col-sm-9">
+						<img class="img-fluid" src="<?php print $USER->photo; ?>" alt="profile image for <?php echo $fullname; ?>" />
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="photo"><?php echo $LNG->PROFILE_PHOTO_REPLACE_LABEL; ?></label>
+					<div class="col-sm-9">
+						<input type="file" class="form-control" id="photo" name="photo" />
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="email">
+						<?php echo $LNG->FORM_REGISTER_EMAIL; ?>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">
+						<?php if ($USER->getAuthType() == $CFG->AUTH_TYPE_EVHUB) { ?>
+							<?php if ($user->isEmailValidated()) { ?>
+								<div class="input-group">
+									<input type="text" class="form-control" aria-describedby="valid_email" id="email" name="email" value="<?php print $email; ?>" />
+									<span class="input-group-text" id="valid_email">
+										<img title="<?php echo $LNG->PROFILE_EMAIL_VALIDATE_COMPLETE;?>" src="<?php echo $HUB_FLM->getImagePath('tick.png'); ?>" />
+									</span>
+								</div>
+							<?php } else { ?>
+								<div class="input-group">
+									<input type="hidden" id="userid" name="userid" value="<?php echo $user->userid; ?>" />
+									<input type="hidden" id="validateemail" name="validateemail" value="" />
+									<input type="text" class="form-control" aria-describedby="validateemail" id="email" name="email" value="<?php print $email; ?>" />					
+									<input class="btn btn-outline-secondary" type="submit" title="<?php echo $LNG->PROFILE_EMAIL_VALIDATE_HINT; ?>" id="validateemail" name="validateemail" value="<?php echo $LNG->PROFILE_EMAIL_VALIDATE_TEXT; ?>" />
+								</div>
+							<?php } ?>
+						<?php } else { ?>
+							<input type="text" class="form-control" id="email" name="email" value="<?php print $email; ?>" disabled readonly />
+							<?php if ($USER->getAuthType() == 'facebook') { ?>
+								<img src="<?php echo $HUB_FLM->getImagePath('icons/facebook.png'); ?>" width="24" height="24" />
+							<?php } else if ($USER->getAuthType() == 'google') { ?>
+								<img src="<?php echo $HUB_FLM->getImagePath('icons/google.png'); ?>" width="24" height="24" />
+							<?php } else if ($USER->getAuthType() == 'yahoo') { ?>
+								<img src="<?php echo $HUB_FLM->getImagePath('icons/yahoo.png'); ?>" width="24" height="24" />
+							<?php } else if ($USER->getAuthType() == 'linkedin') { ?>
+								<img src="<?php echo $HUB_FLM->getImagePath('icons/linkedin.png'); ?>" width="24" height="24" />
+							<?php } else if ($USER->getAuthType() == 'twitter') { ?>
+								<img src="<?php echo $HUB_FLM->getImagePath('icons/twitter.png'); ?>" width="24" height="24" />
+							<?php } ?>
+						<?php } ?>
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="fullname"><?php echo $LNG->FORM_REGISTER_NAME; ?><span class="required">*</span></label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="fullname" name="fullname" value="<?php print $fullname; ?>" />
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="description"><?php echo $LNG->PROFILE_DESC_LABEL; ?></label>
+					<div class="col-sm-9">
+						<textarea class="form-control" id="description" name="description"><?php print $description; ?></textarea>
+					</div>
+				</div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="location"><?php echo $LNG->PROFILE_LOCATION; ?></label>
+					<div class="col-sm-5">
+						<input class="form-control" id="location" name="location" value="<?php echo $location; ?>">
+					</div>
+					<div class="col-sm-4">
+						<select id="loccountry" name="loccountry" class="form-select" aria-label="select country">
+							<option value="" ><?php echo $LNG->PROFILE_COUNTRY; ?></option>
+							<?php
+								foreach($countries as $code=>$c){
+									echo "<option value='".$code."'";
+									if($code == $loccountry){
+										echo " selected='true'";
+									}
+									echo ">".$c."</option>";
+								}
+							?>
+						</select>
+					</div>
+				</div>
 
-function toggleTags() {
-	if ( $("tagsdiv").style.display == "block") {
-		$("tagsdiv").style.display = "none";
-		$("tagsimg").src="<?php echo $HUB_FLM->getImagePath('arrow-right2.png'); ?>";
-	} else {
-		$("tagsdiv").style.display = "block";
-		$("tagsimg").src="<?php echo $HUB_FLM->getImagePath('arrow-down2.png'); ?>";
-	}
-}
+				<?php if ($CFG->hasUserHomePageOption) { ?>
+					<div class="mb-3 row">
+						<label class="col-sm-3 col-form-label" for="homepage"><?php echo $LNG->PROFILE_HOMEPAGE; ?></label>
+						<div class="col-sm-9">
+							<input class="form-control" type="text" id="homepage" name="homepage" value="<?php print $homepage; ?>">
+						</div>
+					</div>
+				<?php } ?>
 
-function checkForm() {
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="newtags"><?php echo $LNG->FORM_LABEL_TAGS; ?></label>
+					<div class="col-sm-9">
+						<input class="form-control" id="newtags" name="newtags" value="<?php echo $newtags; ?>" /> 
+						<small><?php echo $LNG->FORM_LABEL_TAGS_HINT; ?></small>
+					</div>
+				</div>
 
-	var originalemail = '<?php echo $email; ?>';
-	var email = ($('email').value).trim();
+				<?php if (is_countable($tags) && count($tags) > 0) { ?>
+					<div class="mb-3 row">
+						<label class="col-sm-3 col-form-label">Show/Hide <?php echo $LNG->FORM_LABEL_ADDED_TAGS; ?></label>
+						<div class="col-sm-9">
+							<span class="active" id="toggle_tags" onclick="toggleTags()" >Show <i class="fas fa-chevron-circle-down" aria-hidden="true"></i></span>
+						</div>
+					</div>
+					<div id="tagsdiv" class="mb-3 row" style="display: none;">
+						<label class="col-sm-3 col-form-label"><?php echo $LNG->FORM_LABEL_ADDED_TAGS; ?></label>
+						<div class="col-sm-9">
+							<div id="tagform">
+								<?php
+									$i = 0;
+									foreach($tags as $tag){ ?>
+										<div id="tagfield<?php echo $i; ?>" class="form-check">
+											<input type="checkbox" class="form-check-input" id="removetags-<?php echo $tag->tagid; ?>" name="removetags[]" value="<?php echo $tag->tagid; ?>" 
+											<?php 
+												if($removetagsarray != "" && is_countable($removetagsarray) && count($removetagsarray) > 0){
+													for($j=0; $j<count($removetagsarray); $j++){
+														if ($removetagsarray[$j] != "" && $removetagsarray[$j] == $tag->tagid) {
+																echo ' checked="true"';
+																break;
+														}
+													}
+												}
+											?> />
+											<label class="form-check-label" for="removetags-<?php echo $tag->tagid; ?>"><?php echo $tag->name; ?></label>
+										</div>
+										<?php $i++;
+									} ?>
+								<small><?php echo $LNG->FORM_LABEL_ADDED_TAGS_HINT; ?></small>
+							</div>
+						</div>
+					</div>
+				<?php } ?>
 
-	if (email != originalemail){
-		var ans = confirm("<?php echo $LNG->PROFILE_EMAIL_CHANGE_CONFIRM; ?>");
-		if (ans){
-			return true;
-		} else {
-			return false;
-		}
-	}
+				<?php if ($CFG->RECENT_EMAIL_SENDING_ON) { ?>
+					<div class="mb-3 row">
+						<label class="col-sm-3 col-form-label"><?php echo $LNG->RECENT_EMAIL_DIGEST_LABEL; ?></label>
+						<div class="col-sm-9">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="Y" id="recentactivitiesemail" name="recentactivitiesemail" <?php if ($recentactivitiesemail == 'Y') { echo "checked='true'"; } ?> />
+								<label class="form-check-label" for="recentactivitiesemail"><?php echo $LNG->RECENT_EMAIL_DIGEST_PROFILE_MESSAGE; ?></label>
+							</div>
+						</div>
+					</div>
+				<?php } ?>
 
-    $('editprofile').style.cursor = 'wait';
-	return true;
-}
+				<?php if ($CFG->MAILCHIMP_ON) { ?>
+					<div class="mb-3 row">
+						<label class="col-sm-3 col-form-label"><?php echo $LNG->FORM_REGISTER_NEWSLETTER; ?></label>
+						<div class="col-sm-9">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="Y" id="mailchimpnews" name="mailchimpnews" <?php if ($mailchimpnews == 'Y') { echo "checked='true'"; } ?> />
+								<label class="form-check-label" for="mailchimpnews"><?php echo $LNG->MAILCHIMP_NEWSLETTER_FORM_PROFILE_MESSAGE; ?></label>
+							</div>
+							<p><?php echo $LNG->MAILCHIMP_NEWSLETTER_FORM_MESSAGE; ?></p>
+							<?php if ($CFG->MAILCHIMP_NEWSLETTER_INFO_URL != "") { ?>
+								<p><small><a href="<?php echo $CFG->MAILCHIMP_NEWSLETTER_INFO_URL; ?>" target="_blank"><?php echo $LNG->MAILCHIMP_NEWSLETTER_FORM_FURTHER_INFO; ?></a></small></p>
+							<?php } ?>
+						</div>
+					</div>
+				<?php } ?>
 
-
-</script>
-
-<p><span class="required">*</span> <?php echo $LNG->FORM_REQUIRED_FIELDS; ?></p>
-
-<form id="editprofile" name="editprofile" action="" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
-
-    <div class="formrow">
-    <label class="formlabel" for="photo"><?php echo $LNG->PROFILE_PHOTO_CURRENT_LABEL; ?></label>
-    <img class="forminput" src="<?php print $USER->photo; ?>"/>
-    </div>
-    <div class="formrow">
-    <label class="formlabel" for="photo"><?php echo $LNG->PROFILE_PHOTO_REPLACE_LABEL; ?></label>
-    <input class="forminput" type="file" id="photo" name="photo" size="40">
-    </div>
-    <div class="formrow">
-        <label class="formlabel" for="email"><?php echo $LNG->FORM_REGISTER_EMAIL; ?>
-			<span class="required">*</span>
-		</label>
-
-		<?php if ($USER->getAuthType() == $CFG->AUTH_TYPE_EVHUB) { ?>
-	        <input class="forminput" id="email" name="email" size="40" value="<?php print $email; ?>">
-
-			<?php if ($user->isEmailValidated()) { ?>
-				<img style="margin-left:5px;" title="<?php echo $LNG->PROFILE_EMAIL_VALIDATE_COMPLETE;?>" src="<?php echo $HUB_FLM->getImagePath('tick.png'); ?>" border="0" />
-			<?php } else { ?>
-				<input type="hidden" id="userid" name="userid" value="'.$user->userid.'" />
-				<input type="hidden" id="validateemail" name="validateemail" value="" />
-				<input type="submit" title="<?php echo $LNG->PROFILE_EMAIL_VALIDATE_HINT; ?>" id="validateemail" name="validateemail" value="<?php echo $LNG->PROFILE_EMAIL_VALIDATE_TEXT; ?>" />
-			<?php } ?>
-		<?php } else { ?>
-	        <input disabled class="forminput" id="email" name="email" size="40" value="<?php print $email; ?>">
-
-			<?php if ($USER->getAuthType() == 'facebook') { ?>
-				<img style="margin-left:5px;" src="<?php echo $HUB_FLM->getImagePath('icons/facebook.png'); ?>" width="24" height="24" border="0" />
-			<?php } else if ($USER->getAuthType() == 'google') { ?>
-				<img style="margin-left:5px;" src="<?php echo $HUB_FLM->getImagePath('icons/google.png'); ?>" width="24" height="24" border="0" />
-			<?php } else if ($USER->getAuthType() == 'yahoo') { ?>
-				<img style="margin-left:5px;" src="<?php echo $HUB_FLM->getImagePath('icons/yahoo.png'); ?>" width="24" height="24" border="0" />
-			<?php } else if ($USER->getAuthType() == 'linkedin') { ?>
-				<img style="margin-left:5px;" src="<?php echo $HUB_FLM->getImagePath('icons/linkedin.png'); ?>" width="24" height="24" border="0" />
-			<?php } else if ($USER->getAuthType() == 'twitter') { ?>
-				<img style="margin-left:5px;" src="<?php echo $HUB_FLM->getImagePath('icons/twitter.png'); ?>" width="24" height="24" border="0" />
-			<?php } ?>
-		<?php } ?>
-
-    </div>
-
-    <div class="formrow">
-        <label class="formlabel" for="fullname"><?php echo $LNG->FORM_REGISTER_NAME; ?>
-			<span class="required">*</span>
-        </label>
-        <input class="forminput" type="text" id="fullname" name="fullname" size="40" value="<?php print $fullname; ?>">
-    </div>
-    <div class="formrow">
-        <label class="formlabel" for="description"><?php echo $LNG->PROFILE_DESC_LABEL; ?></label>
-        <textarea class="forminput" id="description" name="description" cols="40" rows="5"><?php print $description; ?></textarea>
-    </div>
-
-    <div class="formrow">
-		<label class="formlabel" for="location"><?php echo $LNG->PROFILE_LOCATION; ?></label>
-		<input class="forminput" id="location" name="location" style="width:160px;" value="<?php echo $location; ?>">
-		<select id="loccountry" name="loccountry" style="margin-left: 5px;width:160px;">
-	        <option value="" ><?php echo $LNG->PROFILE_COUNTRY; ?></option>
-	        <?php
-	            foreach($countries as $code=>$c){
-	                echo "<option value='".$code."'";
-	                if($code == $loccountry){
-	                    echo " selected='true'";
-	                }
-	                echo ">".$c."</option>";
-	            }
-	        ?>
-	    </select>
-	</div>
-
-	<?php if ($CFG->hasUserHomePageOption) { ?>
-    <div class="formrow">
-        <label class="formlabel" for="homepage"><?php echo $LNG->PROFILE_HOMEPAGE; ?></label>
-        <input class="forminput" type="text" id="homepage" name="homepage" size="40" value="<?php print $homepage; ?>">
-    </div>
-    <?php } ?>
-
-    <div class="formrow">
-	<label class="formlabel" for="newtags"><?php echo $LNG->FORM_LABEL_TAGS; ?></label>
-	<input class="forminput" style="width:290px; font-size: 10pt;" id="newtags" name="newtags" value="<?php echo $newtags; ?>" /> <?php echo $LNG->FORM_LABEL_TAGS_HINT; ?>
-	</div>
-
-	<div class="formrow">
-		<?php if (is_countable($tags) && count($tags) > 0) { ?>
-	    <label class="formlabel"><?php echo $LNG->FORM_LABEL_ADDED_TAGS; ?> <img style="vertical-align: bottom;" id="tagsimg" src="<?php echo $HUB_FLM->getImagePath('arrow-right2.png'); ?>" onclick="javascript: toggleTags()" border="0" alt="Tags" /></label>
-		<div id="tagsdiv" class="forminput" style="display: none; float:left">
-		   	<div class="subform" style="" id="tagform">
-		   	<?php
-		            $i = 0;
-		            foreach($tags as $tag){
-		              $class = "subforminput";
-		              echo '<div id="tagfield'.$i.'" class="subformrow">';
-	                  echo '<input type="checkbox" class="'.$class.'" id="removetags" name="removetags[]" value="'.$tag->tagid.'"';
-		              if($removetagsarray != "" && is_countable($removetagsarray) && count($removetagsarray) > 0){
-		                  for($j=0; $j<count($removetagsarray); $j++){
-			            	  if ($removetagsarray[$j] != ""
-			            		  && $removetagsarray[$j] == $tag->tagid) {
-			                      echo ' checked="true"';
-			            		  break;
-			            	  }
-		                  }
-		              }
-	                  echo '>&nbsp;&nbsp;'.$tag->name.'<br/>';
-		              echo '</div>';
-		              $i++;
-		          }
-		      ?>
-		      <label><?php echo $LNG->FORM_LABEL_ADDED_TAGS_HINT; ?></label>
-		  </div>
-	   </div>
-	<?php } ?>
-	</div>
-
-	<?php if ($CFG->RECENT_EMAIL_SENDING_ON) { ?>
-		<div class="formrow">
-			<label class="formlabel" for="recentactivitiesemail"><?php echo $LNG->RECENT_EMAIL_DIGEST_LABEL; ?></label>
-			<input class="forminput" type="checkbox" name="recentactivitiesemail" <?php if ($recentactivitiesemail == 'Y') { echo "checked='true'"; } ?> value="Y" /> <?php echo $LNG->RECENT_EMAIL_DIGEST_PROFILE_MESSAGE; ?>
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->PROFILE_UPDATE_BUTTON; ?>" id="update" name="update" />
+					</div>
+				</div>
+			</form>
 		</div>
-	<?php } ?>
-
-	<?php if ($CFG->MAILCHIMP_ON) { ?>
-		<div class="formrow">
-			<label class="formlabel" for="mailchimpnews"><?php echo $LNG->FORM_REGISTER_NEWSLETTER; ?></label>
-			<input class="forminput" type="checkbox" name="mailchimpnews" <?php if ($mailchimpnews == 'Y') { echo "checked='true'"; } ?> value="Y" /> <?php echo $LNG->MAILCHIMP_NEWSLETTER_FORM_PROFILE_MESSAGE; ?>
-			<br>
-			<span class="forminput"><?php echo $LNG->MAILCHIMP_NEWSLETTER_FORM_MESSAGE; ?></span>
-			<br>
-			<?php if ($CFG->MAILCHIMP_NEWSLETTER_INFO_URL != "") { ?>
-				<span class="forminput">(<a href="<?php echo $CFG->MAILCHIMP_NEWSLETTER_INFO_URL; ?>" target="_blank"><?php echo $LNG->MAILCHIMP_NEWSLETTER_FORM_FURTHER_INFO; ?></a>)</span>
-			<?php } ?>
-		</div>
-	<?php } ?>
-
-	<div class="formrow">
-        <input class="formsubmit" type="submit" value="<?php echo $LNG->PROFILE_UPDATE_BUTTON; ?>" id="update" name="update">
-    </div>
-</form>
-
-
+	</div>
+</div>
 <?php
 	include_once($HUB_FLM->getCodeDirPath("ui/footer.php"));
 ?>

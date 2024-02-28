@@ -175,7 +175,7 @@ function startSession($time = 99999999, $ses = 'evidencehub') {
 
 	session_set_cookie_params($time);
 
-    if(session_id() == '') {
+    if(session_status() === PHP_SESSION_NONE) {
     	//session_name($ses); // messes up hybridauth - firefox sidebar needs to look for PHPSESSID
     	session_start();
 	}

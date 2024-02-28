@@ -37,12 +37,12 @@ function displayWidgetNodes(objDiv,nodes,start,includeUser,uniqueid){
 	if (uniqueid == undefined) {
 		uniqueid = 'widget-list';
 	}
-	var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol', 'style':'margin: 0px; padding: 0px;'});
+	var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol'});
 	for(var i=0; i < nodes.length; i++){
 		if(nodes[i].cnode){
 			var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li'});
 			lOL.insert(iUL);
-			var blobDiv = new Element("div", {'class':'idea-blob-list', 'style':'clear:both;float:left;margin:0px;padding:0px;margin-bottom:5px;width:100%'});
+			var blobDiv = new Element("div", {'class':'idea-blob-list'});
 			var blobNode = renderWidgetListNodeMini(nodes[i].cnode, uniqueid+i+start, nodes[i].cnode.role[0].role,includeUser);
 			blobDiv.insert(blobNode);
 			iUL.insert(blobDiv);
@@ -58,12 +58,12 @@ function displayChatNodes(objDiv,nodes,start,includeUser,uniqueid, childCountSpa
 	if (uniqueid == undefined) {
 		uniqueid = 'widget-list';
 	}
-	var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol', 'style':'margin: 0px; padding: 0px;'});
+	var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol'});
 	for(var i=0; i < nodes.length; i++){
 		if(nodes[i].cnode){
-			var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li', 'style':'margin: 0px; padding: 0px;'});
+			var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li'});
 			lOL.insert(iUL);
-			var blobDiv = new Element("div", {'class':'idea-blob-list', 'style':'clear:both;float:left;margin: 0px; padding: 0px;'});
+			var blobDiv = new Element("div", {'class':'idea-blob-list'});
 			var blobNode = renderChatNode(nodes[i].cnode, uniqueid+i+start, nodes[i].cnode.role[0].role,includeUser,'active', childCountSpan);
 			blobDiv.insert(blobNode);
 			iUL.insert(blobDiv);
@@ -80,12 +80,12 @@ function displayConnectionNodes(objDiv, nodes,start,includeUser,uniqueid, childC
 		uniqueid = 'idea-list';
 	}
 
-	var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol', 'style':'float:left;margin-top:0px;padding-top: 0px;padding-bottom:0px;'});
+	var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol'});
 	for(var i=0; i < nodes.length; i++){
 		if(nodes[i].cnode){
-			var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li', 'style':'margin: 0px; padding: 0px;'});
+			var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li'});
 			lOL.insert(iUL);
-			var blobDiv = new Element("div", {'class':'idea-blob-list', 'style':'clear:both;float:left;margin: 0px; padding: 0px;'});
+			var blobDiv = new Element("div", {'class':'idea-blob-list'});
 			var blobNode = renderConnectionNode(nodes[i].cnode, uniqueid,nodes[i].cnode.role[0].role,includeUser,'active', childCountSpan, parentrefreshhandler);
 			blobDiv.insert(blobNode);
 			iUL.insert(blobDiv);
@@ -102,12 +102,12 @@ function displayHomeNodes(objDiv,nodes,start,includeUser,uniqueid){
 	if (uniqueid == undefined) {
 		uniqueid = 'home-list';
 	}
-	var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol', 'style':'margin:0px;padding:0px'});
+	var lOL = new Element("ol", {'start':start, 'class':'idea-list-ol'});
 	for(var i=0; i < nodes.length; i++){
 		if(nodes[i].cnode){
 			var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li'});
 			lOL.insert(iUL);
-			var blobDiv = new Element("div", {'class':'idea-blob-list', 'style':'clear:both;float:left;padding:0px;margin:0px;margin-bottom:2px;'});
+			var blobDiv = new Element("div", {'class':'idea-blob-list'});
 			var blobNode = renderNodeMini(nodes[i].cnode, uniqueid+i+start,nodes[i].cnode.role[0].role,includeUser,'active', "", false, false);
 			blobDiv.insert(blobNode);
 			iUL.insert(blobDiv);
@@ -131,7 +131,7 @@ function displayNodes(objDiv,nodes,start,includeUser,uniqueid,includevoting){
 		if(nodes[i].cnode){
 			var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li'});
 			lOL.insert(iUL);
-			var blobDiv = new Element("div", {'class':'idea-blob-list', 'style':'clear:both;float:left;margin-bottom:2px;'});
+			var blobDiv = new Element("div", {'class':'idea-blob-list'});
 			var blobNode = renderNodeMini(nodes[i].cnode, uniqueid+i+start,nodes[i].cnode.role[0].role,includeUser,'active', "", false, includevoting);
 			blobDiv.insert(blobNode);
 			iUL.insert(blobDiv);
@@ -163,7 +163,7 @@ function displayConnectionStatNodes(objDiv,nodes,start,includeUser,uniqueid){
 		if(nodes[i].cnode){
 			var iUL = new Element("li", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li'});
 			lOL.insert(iUL);
-			var blobDiv = new Element("div", {'class':'idea-blob-list', 'style':'clear:both;float:left;margin-bottom:2px;'});
+			var blobDiv = new Element("div", {'class':'idea-blob-list'});
 			var blobNode = renderNode(nodes[i].cnode, uniqueid+i+start,nodes[i].cnode.role[0].role,includeUser,'active', "", true);
 			blobDiv.insert(blobNode);
 			iUL.insert(blobDiv);
@@ -183,7 +183,7 @@ function displaySearchNodes(objDiv,nodes,start,includeUser,uniqueid){
 
 	for(var i=0; i < nodes.length; i++){
 		if(nodes[i].cnode){
-			var blobDiv = new Element("div", {'class':'idea-blob-list', 'style':'clear:both;float:left;margin-bottom:4px;'});
+			var blobDiv = new Element("div", {'class':'idea-blob-list'});
 			var blobNode = renderNodeMini(nodes[i].cnode, uniqueid+i+start,nodes[i].cnode.role[0].role,includeUser,'active', "", false, false);
 			objDiv.insert(blobNode);
 		}
@@ -194,9 +194,6 @@ function displaySearchNodes(objDiv,nodes,start,includeUser,uniqueid){
  * Render a list of nodes
  */
 function displayReportNodes(objDiv,nodes,start){
-
-	//objDiv.insert('<div style="clear:both; margin: 0px; padding: 0px;"></div>');
-
 	for(var i=0; i <  nodes.length; i++){
 		if(nodes[i].cnode){
 			var iUL = new Element("span", {'id':nodes[i].cnode.nodeid, 'class':'idea-list-li', 'style':'padding-bottom: 5px;'});
@@ -279,7 +276,6 @@ function renderNodeFromLocalJSon(node, uniQ, role, includemenu, type) {
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
 	if (type == "connselect") {
 		nodeTable.style.cursor = 'pointer';
 		Event.observe(nodeTable,'click',function (){
@@ -316,12 +312,12 @@ function renderNodeFromLocalJSon(node, uniQ, role, includemenu, type) {
 		var iconlink = new Element('a', {
 			'href':originalurl,
 			'title':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'target': '_blank' });
- 		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'padding-right:5px;','align':'left', 'src': URL_ROOT + node.imagethumbnail});
+ 		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'padding-right:5px;', 'src': URL_ROOT + node.imagethumbnail});
  		iconlink.insert(nodeicon);
  		itDiv.insert(iconlink);
  		itDiv.insert(alttext+": ");
 	} else if (role.image != null && role.image != "") {
- 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'padding-right:5px;','align':'left', 'src': URL_ROOT + role.image});
+ 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'padding-right:5px;', 'src': URL_ROOT + role.image});
 		itDiv.insert(nodeicon);
 	} else {
  		itDiv.insert(alttext+": ");
@@ -413,20 +409,18 @@ function renderPickerNode(node, role,includeUser){
 		user = node.users[0].user;
 	}
 
-	var iDiv = new Element("div", {'style':'padding:0px;margin:0px;'});
+	var iDiv = new Element("div", {'style':'padding:0px;margin:0px;', 'class':'pickerNode'});
 	var ihDiv = new Element("div", {'style':'padding:0px;margin:0px;'});
 	var itDiv = new Element("div", {'class':'idea-title'});
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
 	nodeTable.style.cursor = 'pointer';
 
 	var row = nodeTable.insertRow(-1);
 	var leftCell = row.insertCell(-1);
 	leftCell.vAlign="top";
 	leftCell.align="left";
-	leftCell.class="test";
 
 	var rightCell = row.insertCell(-1);
 	rightCell.vAlign="top";
@@ -434,7 +428,7 @@ function renderPickerNode(node, role,includeUser){
 
 	var alttext = getNodeTitleAntecedence(role.name, false);
 	if (role.image != null && role.image != "") {
-		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'padding-right:5px;','align':'left','src': URL_ROOT + role.image});
+		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'padding-right:5px;','src': URL_ROOT + role.image});
 		itDiv.insert(nodeicon);
 	} else {
 		itDiv.insert(alttext+": ");
@@ -488,38 +482,33 @@ function renderNodeNews(node){
 	var cDate = new Date(node.creationdate*1000);
 	var date = cDate.format('mmmm d, yyyy');
 
-	var div = new Element("div", {'style':'clear:both;float:left;width:100%'});
-	var para1 = new Element("p", {'style':'margin-top:3px; margin-bottom:5px;'});
+	var div = new Element("div", {'class':'d-block'});
+	var para1 = new Element("p", {'class':'row newsText'});
 
 	var role = node.role[0].role;
 	if (role.image != null && role.image != "") {
-		var nodeicon = new Element('img',{'alt':role.name, 'title':role.name, 'style':'width:20px;height:20px;padding-right:5px;','align':'left','src': URL_ROOT + role.image});
+		var nodeicon = new Element('img',{'alt':role.name, 'title':role.name, 'class':'col-auto', 'style':'max-width: 45px;','src': URL_ROOT + role.image});
 		para1.insert(nodeicon);
 	}
 
-	var strong = new Element("strong");
+	var strong = new Element("strong",{'class':'col p-0'});
 	para1.insert(strong);
 
-	var anchor = new Element("a", {'style':'clear:both'});
+	var anchor = new Element("a");
 	anchor.href = link;
 	anchor.insert(title);
 
 	strong.insert(anchor);
 	strong.insert('<br />');
 
-	var small = new Element("small");
+	var small = new Element("small", {'class':'col-12'});
 	para1.insert(small);
 	var em = new Element("em");
 
 	em.insert('<?php echo $LNG->NODE_NEWS_POSTED_ON; ?> '+date);
 	small.insert(em);
 	para1.insert(small);
-
-	//var para2 = new Element("p", {'style':'margin-bottom:20px;'});
-	//para2.insert(description);
-
 	div.insert(para1);
-	//div.insert(para2);
 	return div;
 }
 
@@ -573,14 +562,12 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 		breakout = " target='_blank'";
 	}
 
-	var iDiv = new Element("div", {'style':'padding:0px;margin:0px;'});
-	var ihDiv = new Element("div", {'style':'padding:0px;margin:0px;'});
+	var iDiv = new Element("div", {'class':'m-0 p-0'});
+	var ihDiv = new Element("div", {'class':'m-0 p-0'});
 	var itDiv = new Element("div", {'class':'idea-title', 'style':''});
 
 	var nodeTable = document.createElement( 'table' );
-	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
-	//nodeTable.border = "1";
+	nodeTable.className = "toConnectionsTable table table-borderless ";
 
 	itDiv.insert(nodeTable);
 
@@ -596,10 +583,9 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 				|| EVIDENCE_TYPES_STR.indexOf(role.name) != -1) {
 
 				var voteCell = row.insertCell(-1);
-				voteCell.style.width = "75px";
+				voteCell.className = "voting-td";
 
-				var voteDiv = new Element("div", {'style':'clear:both;float:left;margin-right:5px;'});
-				//voteDiv.insert('<span style="margin-right:5px;"><?php echo $LNG->NODE_VOTE_MENU_TEXT; ?></span>');
+				var voteDiv = new Element("div", {'class':'voting'});
 				voteCell.insert(voteDiv);
 
 				// vote for
@@ -609,8 +595,6 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 				voteforimg.setAttribute('id','nodefor'+node.nodeid);
 				voteforimg.nodeid = node.nodeid;
 				voteforimg.vote='Y';
-				voteforimg.style.verticalAlign="bottom";
-				voteforimg.style.marginRight="2px";
 				voteDiv.insert(voteforimg);
 				if (!node.positivevotes) {
 					node.positivevotes = 0;
@@ -627,10 +611,10 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 						voteforimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-up-empty3.png"); ?>');
 						voteforimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_FOR_ADD_HINT; ?>');
 					}
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="nodevotefor'+node.nodeid+'">'+node.positivevotes+'</span></b>');
+					voteDiv.insert('<span id="nodevotefor'+node.nodeid+'">'+node.positivevotes+'</span>');
 				} else {
 					voteforimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_FOR_LOGIN_HINT; ?>');
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="nodevotefor'+node.nodeid+'">'+node.positivevotes+'</span></b>');
+					voteDiv.insert('<span id="nodevotefor'+node.nodeid+'">'+node.positivevotes+'</span>');
 				}
 
 				// vote against
@@ -640,8 +624,6 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 				voteagainstimg.setAttribute('id', 'nodeagainst'+node.nodeid);
 				voteagainstimg.nodeid = node.nodeid;
 				voteagainstimg.vote='N';
-				voteagainstimg.style.verticalAlign="bottom";
-				voteagainstimg.style.marginRight="2px";
 				voteDiv.insert(voteagainstimg);
 				if (!node.negativevotes) {
 					node.negativevotes = 0;
@@ -657,43 +639,20 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 						voteagainstimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-down-empty3.png"); ?>');
 						voteagainstimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_AGAINST_ADD_HINT; ?>');
 					}
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="nodevoteagainst'+node.nodeid+'">'+node.negativevotes+'</span></b>');
+					voteDiv.insert('<span id="nodevoteagainst'+node.nodeid+'">'+node.negativevotes+'</span>');
 				} else {
 					voteagainstimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_AGAINST_LOGIN_HINT; ?>');
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="nodevoteagainst'+node.nodeid+'">'+node.negativevotes+'</span></b>');
+					voteDiv.insert('<span id="nodevoteagainst'+node.nodeid+'">'+node.negativevotes+'</span>');
 				}
 			}
 		}
 	}
 
 	var textCell = row.insertCell(-1);
-	textCell.vAlign="middle";
-	textCell.align="left";
 
 	var alttext = getNodeTitleAntecedence(role.name, false);
-	/*if (node.imagethumbnail != null && node.imagethumbnail != "") {
-		var originalurl = "";
-		if(node.urls && node.urls.length > 0){
-			for (var i=0 ; i <  node.urls.length; i++){
-				var urlid = node.urls[i].url.urlid;
-				if (urlid == node.imageurlid) {
-					originalurl = node.urls[i].url.url;
-					break;
-				}
-			}
-		}
-		if (originalurl == "") {
-			originalurl = node.imagethumbnail;
-		}
-		var iconlink = new Element('a', {
-			'href':originalurl,
-			'title':'<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>', 'target': '_blank' });
-		var nodeicon = new Element('img',{'alt':'<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>', 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','align':'left', 'src': URL_ROOT + node.imagethumbnail});
-		iconlink.insert(nodeicon);
-		textCell.insert(iconlink);
-		textCell.insert(alttext+": ");
-	} else*/ if (role.image != null && role.image != "") {
-		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','align':'left','src': URL_ROOT + role.image});
+	if (role.image != null && role.image != "") {
+		var nodeicon = new Element('img',{'alt':alttext, 'class':'node-image-icon', 'src': URL_ROOT + role.image});
 		textCell.insert(nodeicon);
 	} else {
 		textCell.insert(alttext+": ");
@@ -705,7 +664,7 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 	}
 
 	if (COMMENT_TYPES.indexOf(role.name) != -1 || role.name == "Idea") {
-		textCell.insert("<span class='itemtext' style='line-height:1.8em' id='desctoggle"+uniQ+"' title='<?php echo $LNG->NODE_TOGGLE_HINT; ?>' onClick='ideatoggle2(\"desc"+uniQ+"\",\""+uniQ+"\", \""+node.nodeid+"\",\"desc\",\""+role.name+"\")'>"+title+"</span>");
+		textCell.insert("<span class='itemtext' id='desctoggle"+uniQ+"' title='<?php echo $LNG->NODE_TOGGLE_HINT; ?>' onClick='ideatoggle2(\"desc"+uniQ+"\",\""+uniQ+"\", \""+node.nodeid+"\",\"desc\",\""+role.name+"\")'>"+title+"</span>");
 	} else {
 		var exploreButton = new Element('a', {'title':'<?php echo $LNG->NODE_DETAIL_BUTTON_HINT; ?>', 'id':'desctoggle'+uniQ, 'style':'line-height:1.8em;font-weight:normal', 'class':'itemtext'});
 		if (node.searchid && node.searchid != "") {
@@ -715,16 +674,8 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 		}
 		exploreButton.insert(title);
 		textCell.insert(exploreButton);
-
-		//textCell.insert("<a class='itemtext' style='line-height:1.8em;font-weight:normal' id='desctoggle"+uniQ+"' title='<?php echo $LNG->NODE_DETAIL_BUTTON_HINT; ?>' href='<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"'>"+title+"</a>");
 	}
 
-	/*if (includeconnectedness && node.connectedness) {
-		var countCell = row.insertCell(-1);
-		countCell.vAlign="middle";
-		countCell.align="left";
-		countCell.insert("("+node.connectedness+")");
-	}*/
 
 	// ADD MENU ACTIONS
 	if (type == 'active') {
@@ -739,7 +690,7 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 					(BUILD_FROM_PERMISSIONS == "admin" && IS_USER_ADMIN == "Y")) || USER == user.userid
 				)){
 
-				var menuButton = new Element('img',{'alt':'>', 'style':'float:left;padding-left:5px;padding-right:5px;width:20px;height:20px;','width':'20','height':'20','align':'left','src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
+				var menuButton = new Element('img',{'alt':'>', 'class':'menuicon', 'src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
 				toolbarCell.appendChild(menuButton);
 				Event.observe(menuButton,'mouseout',function (event){
 					hideBox('toolbardiv'+uniQ);
@@ -753,7 +704,7 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 					var viewportWidth = getWindowWidth();
 
 					var x = position.x;
-					var y = position.y;
+					var y = position.y;toolbardiv
 
 					if ( (x+panelWidth+30) > viewportWidth) {
 						x = x-(panelWidth+30);
@@ -769,7 +720,7 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 					showBox('toolbardiv'+uniQ);
 				});
 
-				var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:140px;border:1px solid gray;background:white'} );
+				var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'class':'toolbarDiv', 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:140px;border:1px solid gray;background:white'} );
 				Event.observe(toolbarDiv,'mouseout',function (event){
 					hideBox('toolbardiv'+uniQ);
 				});
@@ -778,18 +729,18 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 
 				if (USER == user.userid) {
 
-					var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_RESOURCE_ICON_HINT; ?>'} );
+					var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_RESOURCE_ICON_HINT; ?>'} );
 					editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 					Event.observe(editButton,'click',function (){loadDialog('editcomment',URL_ROOT+"ui/popups/commentedit.php?handler="+parentrefreshhandler+"&nodeid="+node.nodeid, 750,500)});
 					toolbarDiv.appendChild(editButton);
 
 					if (node.otheruserconnections == 0) {
-						var delButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_DELETE_ICON_HINT; ?>'} );
+						var delButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_DELETE_ICON_HINT; ?>'} );
 						delButton.insert("<?php echo $LNG->NODE_DELETE_ICON_ALT; ?>");
 						Event.observe(delButton,'click',function (){deleteNode(node.nodeid,node.name,role.name,parentrefreshhandler)});
 						toolbarDiv.appendChild(delButton);
 					} else {
-						var delButton = new Element("span", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_NO_DELETE_ICON_HINT; ?>'} );
+						var delButton = new Element("span", {'style':'margin-bottom:5px; display: block;', 'title':'<?php echo $LNG->NODE_NO_DELETE_ICON_HINT; ?>'} );
 						delButton.insert("<?php echo $LNG->NODE_DELETE_ICON_ALT; ?>");
 						toolbarDiv.appendChild(delButton);
 					}
@@ -811,33 +762,33 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 					}
 
 					<?php if ($CFG->HAS_CHALLENGE && $USER->getIsAdmin() == "Y") { ?>
-						var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CHALLENGE_HINT; ?>'} );
+						var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CHALLENGE_HINT; ?>'} );
 						addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_CHALLENGE_TEXT; ?>");
 						Event.observe(addButton,'click',function (){loadDialog('addchallenge',URL_ROOT+"ui/popups/challengeadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 						toolbarDiv.appendChild(addButton);
 					<?php } ?>
 
 					<?php  if ( $CFG->issuesManaged == false || ($CFG->issuesManaged == true && $USER->getIsAdmin() == "Y") ) { ?>
-						var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_ISSUE_HINT; ?>'} );
+						var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_ISSUE_HINT; ?>'} );
 						addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_ISSUE_TEXT; ?>");
 						Event.observe(addButton,'click',function (){loadDialog('addissue',URL_ROOT+"ui/popups/issueadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 						toolbarDiv.appendChild(addButton);
 					<?php } ?>
 
 					if (hasClaim) {
-						var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CLAIM_HINT; ?>'} );
+						var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CLAIM_HINT; ?>'} );
 						addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_CLAIM_TEXT; ?>");
 						Event.observe(addButton,'click',function (){loadDialog('addclaim',URL_ROOT+"ui/popups/claimadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 						toolbarDiv.appendChild(addButton);
 					}
 					if (hasSolution) {
-						var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_SOLUTION_HINT; ?>'} );
+						var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_SOLUTION_HINT; ?>'} );
 						addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_SOLUTION_TEXT; ?>");
 						Event.observe(addButton,'click',function (){loadDialog('addsolution',URL_ROOT+"ui/popups/solutionadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 						toolbarDiv.appendChild(addButton);
 					}
 
-					var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_EVIDENCE_HINT; ?>'} );
+					var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_EVIDENCE_HINT; ?>'} );
 					addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_EVIDENCE_TEXT; ?>");
 					Event.observe(addButton,'click',function (){loadDialog('addevidence',URL_ROOT+"ui/popups/evidenceadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 					toolbarDiv.appendChild(addButton);
@@ -846,24 +797,24 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 						toolbarDiv.appendChild(createMenuSpacer());
 
 						<?php if ($CFG->HAS_SOLUTION && $CFG->HAS_CLAIM == FALSE) { ?>
-							var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_STORY_HINT; ?>'} );
+							var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_STORY_HINT; ?>'} );
 							addButton.insert("<?php echo $LNG->COMMENT_CONVERT_TO_STORY; ?>");
 							Event.observe(addButton,'click',function (){loadDialog('commentbuilderp',URL_ROOT+"ui/popups/quickformpractitionercomment.php?handler="+node.handler+"&chatnodeid="+node.nodeid, 750,750)});
 							toolbarDiv.appendChild(addButton);
 						<?php } ?>
 						<?php if ($CFG->HAS_SOLUTION && $CFG->HAS_CLAIM) { ?>
-							var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_PRACTITIONER_STORY_HINT; ?>'} );
+							var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_PRACTITIONER_STORY_HINT; ?>'} );
 							addButton.insert("<?php echo $LNG->COMMENT_CONVERT_TO_RESEARCHER_STORY; ?>");
 							Event.observe(addButton,'click',function (){loadDialog('commentbuilderp',URL_ROOT+"ui/popups/quickformpractitionercomment.php?handler="+node.handler+"&chatnodeid="+node.nodeid, 750,750)});
 							toolbarDiv.appendChild(addButton);
 
-							var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_RESEARCHER_STORY_HINT; ?>'} );
+							var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_RESEARCHER_STORY_HINT; ?>'} );
 							addButton.insert("<?php echo $LNG->COMMENT_CONVERT_TO_PRACTITIONER_STORY; ?>");
 							Event.observe(addButton,'click',function (){loadDialog('commentbuilderr',URL_ROOT+"ui/popups/quickformresearchercomment.php?handler="+node.handler+"&chatnodeid="+node.nodeid, 750,750)});
 							toolbarDiv.appendChild(addButton);
 						<?php } ?>
 						<?php if ($CFG->HAS_CLAIM && $CFG->HAS_SOLUTION === FALSE) { ?>
-							var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_STORY_HINT; ?>'} );
+							var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_STORY_HINT; ?>'} );
 							addButton.insert("<?php echo $LNG->COMMENT_CONVERT_TO_STORY; ?>");
 							Event.observe(addButton,'click',function (){loadDialog('commentbuilderr',URL_ROOT+"ui/popups/quickformresearchercomment.php?handler="+node.handler+"&chatnodeid="+node.nodeid, 750,750)});
 							toolbarDiv.appendChild(addButton);
@@ -881,11 +832,10 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 		var imDiv = new Element("div", {'class':'idea-main'});
 		var idDiv = new Element("div", {'class':'idea-detail'});
 
-		var expandDiv = new Element("div", {'id':'desc'+uniQ,'class':'ideadata', 'style':'padding-left:20px;color:Gray;display:none;'} );
+		var expandDiv = new Element("div", {'id':'desc'+uniQ,'class':'ideadata', 'style':'display:none;'} );
 
 		var nodeTable = document.createElement( 'table' );
 		nodeTable.className = "toConnectionsTable";
-		nodeTable.width="100%";
 
 		expandDiv.insert(nodeTable);
 
@@ -895,7 +845,7 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 		nextCell.align="left";
 
 		// USER ICON NAME AND CREATIONS DATES
-		var userbar = new Element("div", {'style':'clear:both;float:left;margin-bottom:5px;'} );
+		var userbar = new Element("div", {'class':'userbar'} );
 
 		if (includeUser == true) {
 
@@ -996,7 +946,7 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 		}
 
 		if (COMMENT_TYPES.indexOf(role.name) != -1 || role.name == "Idea") {
-			var commentdiv = new Element("div", { 'id':'commentdiv'+uniQ, 'name':'commentdiv', 'style':'float:left;padding:3px;margin-bottom:5px;display:block'});
+			var commentdiv = new Element("div", { 'id':'commentdiv'+uniQ, 'name':'commentdiv', 'class':'d-block commentdiv'});
 			expandDiv.insert(commentdiv);
 			if (role.name == "Idea") {
 				childcommentload(commentdiv, node.nodeid, "<?php echo $CFG->LINK_COMMENT_BUILT_FROM; ?>", "Solution,Issue,Challenge,Claim,"+EVIDENCE_TYPES_STR, uniQ, searchid);
@@ -1004,7 +954,7 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 				childchatusageload(commentdiv, node.nodeid,"<?php echo $CFG->LINK_COMMENT_NODE; ?>", EVIDENCE_TYPES_STR+","+BASE_TYPES_STR+","+COMMENT_TYPES, uniQ, searchid);
 			}
 		} else if (EVIDENCE_TYPES.indexOf(role.name) != -1 || role.name == "Challenge" || role.name == "Issue" || role.name == "Solution" || role.name == "Claim") {
-			var commentdiv = new Element("div", { 'id':'commentdiv'+uniQ, 'name':'commentdiv', 'style':'float:left;padding:3px;margin-bottom:5px;'});
+			var commentdiv = new Element("div", { 'id':'commentdiv'+uniQ, 'name':'commentdiv', 'class':'commentdiv'});
 			expandDiv.insert(commentdiv);
 			childcommentload(commentdiv, node.nodeid,"<?php echo $CFG->LINK_COMMENT_BUILT_FROM; ?>", COMMENT_TYPES+",Idea", uniQ, searchid);
 		}
@@ -1143,10 +1093,10 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 					var icon = getNodeIconElement(node.connection.parentnode[0].cnode);
 					var title = node.connection.parentnode[0].cnode.name;
 					var parentid = node.connection.parentnode[0].cnode.nodeid;
-					var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
+					var exploreButton = new Element("a", {'class':'d-block','title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
 					if (icon != null) {
 						exploreButton.insert(icon);
-						exploreButton.insert('<span style="float:left;margin-top:5px;">'+title+'</span>');
+						exploreButton.insert('<span class="col-auto">'+title+'</span>');
 					} else {
 						exploreButton.insert(title);
 					}
@@ -1160,10 +1110,10 @@ function renderNodeMini(node, uniQ, role, includeUser, type, parentrefreshhandle
 				expandDiv.insert(nextStr);
 
 				var icon = getNodeIconElement(tN);
-				var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
+				var exploreButton = new Element("a", {'class':'d-block','title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
 				if (icon != null) {
 					exploreButton.insert(icon);
-					exploreButton.insert('<span style="float:left;margin-top:5px;">'+title+'</span>');
+					exploreButton.insert('<span class="col-auto">'+title+'</span>');
 				} else {
 					exploreButton.insert(title);
 				}
@@ -1231,8 +1181,6 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
-	//nodeTable.border = "1";
 
 	itDiv.insert(nodeTable);
 
@@ -1259,12 +1207,12 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 		var iconlink = new Element('a', {
 			'href':originalurl,
 			'title':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'target': '_blank' });
-		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','align':'left', 'src': URL_ROOT + node.imagethumbnail});
+		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'width:auto;height:20px;margin-top:0;padding-right:10px;', 'src': URL_ROOT + node.imagethumbnail});
 		iconlink.insert(nodeicon);
 		textCell.insert(iconlink);
 		textCell.insert(alttext+": ");
 	} else if (role.image != null && role.image != "") {
-		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','align':'left','src': URL_ROOT + role.image});
+		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:auto;height:20px;margin-top:0;padding-right:10px;','src': URL_ROOT + role.image});
 		textCell.insert(nodeicon);
 	} else {
 		textCell.insert(alttext+": ");
@@ -1297,7 +1245,7 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 					(BUILD_FROM_PERMISSIONS == "admin" && IS_USER_ADMIN == "Y")) || USER == user.userid
 				)){
 
-				var menuButton = new Element('img',{'alt':'>', 'style':'float:left;padding-left:5px;padding-right:5px;width:20px;height:20px;','width':'20','height':'20','align':'left','src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
+				var menuButton = new Element('img',{'alt':'>', 'class':'menuicon','src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
 				toolbarCell.appendChild(menuButton);
 				Event.observe(menuButton,'mouseout',function (event){
 					hideBox('toolbardiv'+uniQ);
@@ -1327,7 +1275,7 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 					showBox('toolbardiv'+uniQ);
 				});
 
-				var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:140px;border:1px solid gray;background:white'} );
+				var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'class':'toolbarDiv', 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:140px;border:1px solid gray;background:white'} );
 				Event.observe(toolbarDiv,'mouseout',function (event){
 					hideBox('toolbardiv'+uniQ);
 				});
@@ -1336,18 +1284,18 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 
 				if (USER == user.userid) {
 
-					var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_RESOURCE_ICON_HINT; ?>'} );
+					var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_RESOURCE_ICON_HINT; ?>'} );
 					editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 					Event.observe(editButton,'click',function (){loadDialog('editcomment',URL_ROOT+"ui/popups/commentedit.php?handler="+parentrefreshhandler+"&nodeid="+node.nodeid, 750,500)});
 					toolbarDiv.appendChild(editButton);
 
 					if (node.otheruserconnections == 0) {
-						var delButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_DELETE_ICON_HINT; ?>'} );
+						var delButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_DELETE_ICON_HINT; ?>'} );
 						delButton.insert("<?php echo $LNG->NODE_DELETE_ICON_ALT; ?>");
 						Event.observe(delButton,'click',function (){deleteNode(node.nodeid,node.name,role.name,parentrefreshhandler)});
 						toolbarDiv.appendChild(delButton);
 					} else {
-						var delButton = new Element("span", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_NO_DELETE_ICON_HINT; ?>'} );
+						var delButton = new Element("span", {'style':'margin-bottom:5px; display: block;', 'title':'<?php echo $LNG->NODE_NO_DELETE_ICON_HINT; ?>'} );
 						delButton.insert("<?php echo $LNG->NODE_DELETE_ICON_ALT; ?>");
 						toolbarDiv.appendChild(delButton);
 					}
@@ -1369,33 +1317,33 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 					}
 
 					<?php if ($CFG->HAS_CHALLENGE && $USER->getIsAdmin() == "Y") { ?>
-						var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CHALLENGE_HINT; ?>'} );
+						var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CHALLENGE_HINT; ?>'} );
 						addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_CHALLENGE_TEXT; ?>");
 						Event.observe(addButton,'click',function (){loadDialog('addchallenge',URL_ROOT+"ui/popups/challengeadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 						toolbarDiv.appendChild(addButton);
 					<?php } ?>
 
 					<?php  if ( $CFG->issuesManaged == false || ($CFG->issuesManaged == true && $USER->getIsAdmin() == "Y") ) { ?>
-						var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_ISSUE_HINT; ?>'} );
+						var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_ISSUE_HINT; ?>'} );
 						addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_ISSUE_TEXT; ?>");
 						Event.observe(addButton,'click',function (){loadDialog('addissue',URL_ROOT+"ui/popups/issueadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 						toolbarDiv.appendChild(addButton);
 					<?php } ?>
 
 					if (hasClaim) {
-						var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CLAIM_HINT; ?>'} );
+						var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CLAIM_HINT; ?>'} );
 						addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_CLAIM_TEXT; ?>");
 						Event.observe(addButton,'click',function (){loadDialog('addclaim',URL_ROOT+"ui/popups/claimadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 						toolbarDiv.appendChild(addButton);
 					}
 					if (hasSolution) {
-						var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_SOLUTION_HINT; ?>'} );
+						var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_SOLUTION_HINT; ?>'} );
 						addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_SOLUTION_TEXT; ?>");
 						Event.observe(addButton,'click',function (){loadDialog('addsolution',URL_ROOT+"ui/popups/solutionadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 						toolbarDiv.appendChild(addButton);
 					}
 
-					var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_EVIDENCE_HINT; ?>'} );
+					var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_EVIDENCE_HINT; ?>'} );
 					addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_EVIDENCE_TEXT; ?>");
 					Event.observe(addButton,'click',function (){loadDialog('addevidence',URL_ROOT+"ui/popups/evidenceadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&desc="+encodeURIComponent(details), 750,500)});
 					toolbarDiv.appendChild(addButton);
@@ -1404,24 +1352,24 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 						toolbarDiv.appendChild(createMenuSpacer());
 
 						<?php if ($CFG->HAS_SOLUTION && $CFG->HAS_CLAIM == FALSE) { ?>
-							var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_STORY_HINT; ?>'} );
+							var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_STORY_HINT; ?>'} );
 							addButton.insert("<?php echo $LNG->COMMENT_CONVERT_TO_STORY; ?>");
 							Event.observe(addButton,'click',function (){loadDialog('commentbuilderp',URL_ROOT+"ui/popups/quickformpractitionercomment.php?handler="+node.handler+"&chatnodeid="+node.nodeid, 750,750)});
 							toolbarDiv.appendChild(addButton);
 						<?php } ?>
 						<?php if ($CFG->HAS_SOLUTION && $CFG->HAS_CLAIM) { ?>
-							var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_PRACTITIONER_STORY_HINT; ?>'} );
+							var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_PRACTITIONER_STORY_HINT; ?>'} );
 							addButton.insert("<?php echo $LNG->COMMENT_CONVERT_TO_RESEARCHER_STORY; ?>");
 							Event.observe(addButton,'click',function (){loadDialog('commentbuilderp',URL_ROOT+"ui/popups/quickformpractitionercomment.php?handler="+node.handler+"&chatnodeid="+node.nodeid, 750,750)});
 							toolbarDiv.appendChild(addButton);
 
-							var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_RESEARCHER_STORY_HINT; ?>'} );
+							var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_RESEARCHER_STORY_HINT; ?>'} );
 							addButton.insert("<?php echo $LNG->COMMENT_CONVERT_TO_PRACTITIONER_STORY; ?>");
 							Event.observe(addButton,'click',function (){loadDialog('commentbuilderr',URL_ROOT+"ui/popups/quickformresearchercomment.php?handler="+node.handler+"&chatnodeid="+node.nodeid, 750,750)});
 							toolbarDiv.appendChild(addButton);
 						<?php } ?>
 						<?php if ($CFG->HAS_CLAIM && $CFG->HAS_SOLUTION === FALSE) { ?>
-							var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_STORY_HINT; ?>'} );
+							var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->COMMENT_CONVERT_TO_STORY_HINT; ?>'} );
 							addButton.insert("<?php echo $LNG->COMMENT_CONVERT_TO_STORY; ?>");
 							Event.observe(addButton,'click',function (){loadDialog('commentbuilderr',URL_ROOT+"ui/popups/quickformresearchercomment.php?handler="+node.handler+"&chatnodeid="+node.nodeid, 750,750)});
 							toolbarDiv.appendChild(addButton);
@@ -1431,16 +1379,12 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 			}
 		} else {
 
-			var menuButton = new Element('img',{'alt':'>', 'style':'float:left;padding-left:5px;padding-right:5px;width:20px;height:20px;','width':'20','height':'20','align':'left','src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
+			var menuButton = new Element('img',{'alt':'>', 'class':'menuicon', 'src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
 			toolbarCell.appendChild(menuButton);
 			Event.observe(menuButton,'mouseout',function (event){
 				hideBox('toolbardiv'+uniQ);
 			});
 			Event.observe(menuButton,'mouseover',function (event) {
-				//var position = getPosition(this);
-				//$('toolbardiv'+uniQ).style.left = (position.x+30)+"px";
-				//$('toolbardiv'+uniQ).style.top = (position.y)+"px";
-
 				var position = getPosition(this);
 				var panel = $('toolbardiv'+uniQ);
 				var panelWidth = 175;
@@ -1466,7 +1410,7 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 				showBox('toolbardiv'+uniQ, event);
 			});
 
-			var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:175px;border:1px solid gray;background:white'} );
+			var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'class':'toolbarDiv connectionsToolbar', 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:175px;border:1px solid gray;background:white;'} );
 			Event.observe(toolbarDiv,'mouseout',function (event){
 				hideBox('toolbardiv'+uniQ);
 			});
@@ -1485,12 +1429,12 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 					if (RESOURCE_TYPES_STR.indexOf(role.name) != -1) {
 						deletename = node.description;
 					}
-					var delButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_DELETE_ICON_HINT; ?>'} );
+					var delButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_DELETE_ICON_HINT; ?>'} );
 					delButton.insert("<?php echo $LNG->NODE_DELETE_ICON_ALT; ?>");
 					Event.observe(delButton,'click',function (){deleteNode(node.nodeid,deletename,role.name,parentrefreshhandler)});
 					toolbarDiv.appendChild(delButton);
 				} else {
-					var delButton = new Element("span", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_NO_DELETE_ICON_HINT; ?>'} );
+					var delButton = new Element("span", {'style':'margin-bottom:5px;', 'title':'<?php echo $LNG->NODE_NO_DELETE_ICON_HINT; ?>'} );
 					delButton.insert("<?php echo $LNG->NODE_DELETE_ICON_ALT; ?>");
 					toolbarDiv.appendChild(delButton);
 				}
@@ -1507,7 +1451,7 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 				|| role.name == 'Challenge'
 				|| EVIDENCE_TYPES_STR.indexOf(role.name) != -1) {
 
-				var voteDiv = new Element("div", {'style':'clear:both;float:left;margin-top:5px;'});
+				var voteDiv = new Element("div", {'class':'voteDiv d-flex mt-1'});
 				voteDiv.insert('<span style="margin-right:5px;"><?php echo $LNG->NODE_VOTE_MENU_TEXT; ?></span>');
 				toolbarDiv.insert(voteDiv);
 
@@ -1536,10 +1480,10 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 						voteforimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-up-empty3.png"); ?>');
 						voteforimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_FOR_ADD_HINT; ?>');
 					}
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="nodevotefor'+node.nodeid+'">'+node.positivevotes+'</span></b>');
+					voteDiv.insert('<b><span id="nodevotefor'+node.nodeid+'">'+node.positivevotes+'</span></b>');
 				} else {
 					voteforimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_FOR_LOGIN_HINT; ?>');
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="nodevotefor'+node.nodeid+'">'+node.positivevotes+'</span></b>');
+					voteDiv.insert('<b><span id="nodevotefor'+node.nodeid+'">'+node.positivevotes+'</span></b>');
 				}
 
 				// vote against
@@ -1566,10 +1510,10 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 						voteagainstimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-down-empty3.png"); ?>');
 						voteagainstimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_AGAINST_ADD_HINT; ?>');
 					}
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="nodevoteagainst'+node.nodeid+'">'+node.negativevotes+'</span></b>');
+					voteDiv.insert('<b><span id="nodevoteagainst'+node.nodeid+'">'+node.negativevotes+'</span></b>');
 				} else {
 					voteagainstimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_AGAINST_LOGIN_HINT; ?>');
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="nodevoteagainst'+node.nodeid+'">'+node.negativevotes+'</span></b>');
+					voteDiv.insert('<b><span id="nodevoteagainst'+node.nodeid+'">'+node.negativevotes+'</span></b>');
 				}
 			}
 		}
@@ -1581,12 +1525,10 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 	var imDiv = new Element("div", {'class':'idea-main'});
 	var idDiv = new Element("div", {'class':'idea-detail'});
 
-	var expandDiv = new Element("div", {'id':'desc'+uniQ,'class':'ideadata', 'style':'padding-left:20px;color:Gray;display:none;'} );
+	var expandDiv = new Element("div", {'id':'desc'+uniQ,'class':'ideadata', 'style':'display:none;'} );
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
-
 	expandDiv.insert(nodeTable);
 
 	var row = nodeTable.insertRow(-1);
@@ -1595,7 +1537,7 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 	nextCell.align="left";
 
 	// USER ICON NAME AND CREATIONS DATES
-	var userbar = new Element("div", {'style':'clear:both;float:left;margin-bottom:5px;'} );
+	var userbar = new Element("div", {'class':'userbar'} );
 
 	if (includeUser == true) {
 
@@ -1695,7 +1637,7 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 	}
 
 	if (COMMENT_TYPES.indexOf(role.name) != -1 || role.name == "Idea") {
-		var commentdiv = new Element("div", { 'id':'commentdiv'+uniQ, 'name':'commentdiv', 'style':'float:left;padding:3px;margin-bottom:5px;display:block'});
+		var commentdiv = new Element("div", { 'id':'commentdiv'+uniQ, 'name':'commentdiv', 'class':'d-block commentdiv'});
 		expandDiv.insert(commentdiv);
 		if (role.name == "Idea") {
 			childcommentload(commentdiv, node.nodeid, "<?php echo $CFG->LINK_COMMENT_BUILT_FROM; ?>", "Solution,Issue,Challenge,Claim,"+EVIDENCE_TYPES_STR, uniQ, searchid);
@@ -1703,7 +1645,7 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 			childchatusageload(commentdiv, node.nodeid,"<?php echo $CFG->LINK_COMMENT_NODE; ?>", EVIDENCE_TYPES_STR+","+BASE_TYPES_STR+","+COMMENT_TYPES, uniQ, searchid);
 		}
 	} else if (EVIDENCE_TYPES.indexOf(role.name) != -1 || role.name == "Challenge" || role.name == "Issue" || role.name == "Solution" || role.name == "Claim") {
-		var commentdiv = new Element("div", { 'id':'commentdiv'+uniQ, 'name':'commentdiv', 'style':'float:left;padding:3px;margin-bottom:5px;'});
+		var commentdiv = new Element("div", { 'id':'commentdiv'+uniQ, 'name':'commentdiv', 'class':'d-block commentdiv'});
 		expandDiv.insert(commentdiv);
 		childcommentload(commentdiv, node.nodeid,"<?php echo $CFG->LINK_COMMENT_BUILT_FROM; ?>", COMMENT_TYPES+",Idea", uniQ, searchid);
 	}
@@ -1842,10 +1784,10 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 				var icon = getNodeIconElement(node.connection.parentnode[0].cnode);
 				var title = node.connection.parentnode[0].cnode.name;
 				var parentid = node.connection.parentnode[0].cnode.nodeid;
-				var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
+				var exploreButton = new Element("a", {'class':'d-block','title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
 				if (icon != null) {
 					exploreButton.insert(icon);
-					exploreButton.insert('<span style="float:left;margin-top:5px;">'+title+'</span>');
+					exploreButton.insert('<span class="col-auto">'+title+'</span>');
 				} else {
 					exploreButton.insert(title);
 				}
@@ -1859,10 +1801,10 @@ function renderNode(node, uniQ, role, includeUser, type, parentrefreshhandler, i
 			expandDiv.insert(nextStr);
 
 			var icon = getNodeIconElement(tN);
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
+			var exploreButton = new Element("a", {'class':'d-block','title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
 			if (icon != null) {
 				exploreButton.insert(icon);
-				exploreButton.insert('<span style="float:left;margin-top:5px;">'+title+'</span>');
+				exploreButton.insert('<span class="col-auto">'+title+'</span>');
 			} else {
 				exploreButton.insert(title);
 			}
@@ -1949,14 +1891,12 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 		uniQ = node.nodeid + uniQ;
 	}
 
-	var iDiv = new Element("div", {'style':'padding:0px;margin:0px;'});
-	var ihDiv = new Element("div", {'style':'padding:0px;margin:0px;'});
-	var itDiv = new Element("div", {'class':'idea-title','style':'padding:0px;'});
+	var iDiv = new Element("div", {'class':'d-block'});
+	var ihDiv = new Element("div", {'class':'d-block'});
+	var itDiv = new Element("div", {'class':'idea-title'});
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
-	//nodeTable.border = "1";
 
 	itDiv.insert(nodeTable);
 
@@ -1969,14 +1909,14 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 			|| role.name == "Issue" || role.name == "Solution" || role.name == "Claim") {
 
 			var arrowCell = row.insertCell(-1);
-			arrowCell.vAlign="middle";
-			arrowCell.align="left";
 
 			if (DEBATE_TREE_OPEN_ARRAY["desc"+uniQ] && DEBATE_TREE_OPEN_ARRAY["desc"+uniQ] == true) {
-				expandArrow = new Element('img',{'id':'explorearrow'+uniQ, 'name':'explorearrow', 'alt':'>', 'title':"<?php echo $LNG->NODE_DEBATE_TOGGLE; ?>", 'style':'float:left;visibility:visible;margin-top:3px;','align':'left','src': '<?php echo $HUB_FLM->getImagePath("arrow-down-blue.png"); ?>'});
+				expandArrow = new Element('span', {'id':'explorearrow'+uniQ });
+				expandArrow = new Element('img',{'id':'explorearrow'+uniQ, 'name':'explorearrow', 'class':'explorearrow', 'alt':'>', 'title':"<?php echo $LNG->NODE_DEBATE_TOGGLE; ?>",'src': '<?php echo $HUB_FLM->getImagePath("arrow-down-blue.png"); ?>'});
 				expandArrow.uniqueid = uniQ;
 			} else {
-				expandArrow = new Element('img',{'id':'explorearrow'+uniQ, 'name':'explorearrow', 'alt':'>', 'title':"<?php echo $LNG->NODE_DEBATE_TOGGLE; ?>", 'style':'float:left;visibility:visible;margin-top:3px;','align':'left','src': '<?php echo $HUB_FLM->getImagePath("arrow-right-blue.png"); ?>'});
+				expandArrow = new Element('span', {'id':'explorearrow'+uniQ });
+				expandArrow = new Element('img',{'id':'explorearrow'+uniQ, 'name':'explorearrow', 'class':'explorearrow', 'alt':'>', 'title':"<?php echo $LNG->NODE_DEBATE_TOGGLE; ?>",'src': '<?php echo $HUB_FLM->getImagePath("arrow-right-blue.png"); ?>'});
 				expandArrow.uniqueid = uniQ;
 			}
 			Event.observe(expandArrow,'click',function (){ toggleDebate("treedesc"+uniQ,uniQ);});
@@ -1984,7 +1924,6 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 		}
 	} else {
 		var lineCell = row.insertCell(-1);
-		//lineCell.style.borderLeft = "1px solid white"; // needed for IE to draw the background image
 		lineCell.width="15px;"
 		lineCell.vAlign="middle";
 		var lineDiv = new Element('div',{'class':'graylinewide', 'style':'float:left;width:100%;'});
@@ -1994,7 +1933,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 	var textCell = row.insertCell(-1);
 	textCell.vAlign="middle";
 	textCell.align="left";
-	var textCellDiv = new Element("div", { 'id':'textDivCell'+uniQ, 'name':'textDivCell', 'class':'whiteborder', 'style':'float:left;padding:3px;'});
+	var textCellDiv = new Element("div", { 'id':'textDivCell'+uniQ, 'name':'textDivCell', 'class':'textDivCell whiteborder'});
 	textCellDiv.nodeid = node.nodeid;
 	textCellDiv.focalnodeid = node.focalnodeid;
 	textCellDiv.nodetype = role.name;
@@ -2043,7 +1982,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 		//	bordercolor = 'selectedborder';
 		//}
 
-		textCellDiv = new Element("div", { 'id':'textDivCell'+uniQ, 'name':'textDivCell', 'class':backcolor+' '+bordercolor, 'style':'float:left;padding:3px'});
+		textCellDiv = new Element("div", { 'id':'textDivCell'+uniQ, 'name':'textDivCell', 'class':'textDivCell '+backcolor+' '+bordercolor});
 		textCellDiv.nodeid = node.nodeid;
 		textCellDiv.nodetype = role.name;
 		textCellDiv.focalnodeid = node.focalnodeid;
@@ -2074,7 +2013,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 			bordercolor = 'resourceborder';
 			backcolor = 'resourceback';
 		}
-		textCellDiv = new Element("div", { 'id':'textDivCell'+uniQ, 'name':'textDivCell','class':bordercolor+' '+backcolor, 'style':'float:left;padding:3px;'});
+		textCellDiv = new Element("div", { 'id':'textDivCell'+uniQ, 'name':'textDivCell', 'class':'textDivCell '+backcolor+' '+bordercolor});
 		textCellDiv.nodeid = node.nodeid;
 		textCellDiv.nodetype = role.name;
 		textCellDiv.focalnodeid = node.focalnodeid;
@@ -2095,7 +2034,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 	var dStr = "<?php echo $LNG->NODE_CONNECTED_BY; ?> "+user.name+ " on "+cDate.format(DATE_FORMAT)+' - <?php echo $LNG->NODE_TOGGLE_HINT;?>'
 
 	// ADD THE NODE ICON
-	var nodeArea = new Element("a", {'class':'itemtext', 'name':'nodeArea', 'style':'float:left;padding-top:2px;','title':dStr} );
+	var nodeArea = new Element("a", {'class':'itemtext', 'name':'nodeArea','title':dStr} );
 	nodeArea.nodeid = node.nodeid;
 	nodeArea.focalnodeid = node.focalnodeid;
 	var alttext = getNodeTitleAntecedence(role.name, false);
@@ -2116,12 +2055,12 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 		var iconlink = new Element('a', {
 			'href':originalurl,
 			'title':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'target': '_blank' });
-		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'width:20px;height:20px;padding-right:5px;','align':'left', 'src': URL_ROOT + node.imagethumbnail});
+		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'src': URL_ROOT + node.imagethumbnail});
 		iconlink.insert(nodeicon);
 		nodeArea.insert(iconlink);
 		nodeArea.insert(alttext+": ");
 	} else if (connrole.image != null && connrole.image != "") {
-		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:24px;height:24px;padding-right:5px;','align':'left','src': URL_ROOT + connrole.image});
+		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext,'src': URL_ROOT + connrole.image});
 		nodeArea.insert(nodeicon);
 	} else {
 		nodeArea.insert(alttext+": ");
@@ -2165,7 +2104,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 		if (EVIDENCE_TYPES_STR.indexOf(role.name) != -1 || role.name == "Challenge"
 			|| role.name == "Issue" || role.name == "Solution" || role.name == "Claim") {
 
-			var childCount = new Element('div',{'style':'float:left; margin-left:5px;margin-right:5px;margin-top:2px;', 'title':'<?php echo $LNG->NODE_DEBATE_TREE_COUNT_HINT; ?>'});
+			var childCount = new Element('div',{'class':'toptreecount', 'title':'<?php echo $LNG->NODE_DEBATE_TREE_COUNT_HINT; ?>'});
 			childCount.insert("(");
 			childCountSpan = new Element('span',{'name':'toptreecount'});
 			childCountSpan.id = 'toptreecount'+uniQ;
@@ -2180,16 +2119,12 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 	// ADD ACTION MENU
 	var menuButton = null;
 	if (type == 'active') {
-		menuButton = new Element('img',{'alt':'>', 'style':'float:left;padding-right:5px;width:20px;height:20px;','width':'20','height':'20','align':'left','src': '<?php echo $HUB_FLM->getImagePath("add.png"); ?>'});
+		menuButton = new Element('img',{'alt':'>', 'class':'menuicon', 'src': '<?php echo $HUB_FLM->getImagePath("add.png"); ?>'});
 		toolbarCell.appendChild(menuButton);
 		Event.observe(menuButton,'mouseout',function (event){
 			hideBox('toolbardiv'+uniQ);
 		});
 		Event.observe(menuButton,'mouseover',function (event) {
-			/*var position = getPosition(this);
-			$('toolbardiv'+uniQ).style.left = (position.x+30)+"px";
-			$('toolbardiv'+uniQ).style.top = (position.y)+"px";
-			*/
 
 			var position = getPosition(this);
 			var panel = $('toolbardiv'+uniQ);
@@ -2215,7 +2150,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 			showBox('toolbardiv'+uniQ);
 		});
 
-		var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:185px;border:1px solid gray;background:white'} );
+		var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'class':'toolbarDiv', 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px 15px;border:1px solid gray;background:white'} );
 		Event.observe(toolbarDiv,'mouseout',function (event){
 			hideBox('toolbardiv'+uniQ);
 		});
@@ -2237,19 +2172,18 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 					theme = escape(encodeURIComponent(decodedTheme));
 				}
 
-				//var toolbar = new Element("div", {'class':'widgetheaderinner '+color, 'style':'padding-top:0px;'});
 				if (role.name == 'Claim') {
 					var linktype = '<?php echo $CFG->LINK_EVIDENCE_SOLCLAIM_PRO; ?>';
-					toolbarDiv.insert('<a style="margin-bottom:3px;clear:both;float:left;" title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename=Pro&linktypename='+linktype+'&focalnodeid='+node.nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=&type=Pro&theme='+theme+'\', 770,600);" ><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_PRO_MENU_TEXT; ?></a>');
+					toolbarDiv.insert('<a class="d-block" title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename=Pro&linktypename='+linktype+'&focalnodeid='+node.nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=&type=Pro&theme='+theme+'\', 770,600);" ><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_PRO_MENU_TEXT; ?></a>');
 
 					var linktype = '<?php echo $CFG->LINK_EVIDENCE_SOLCLAIM_CON; ?>';
-					toolbarDiv.insert('<a style="margin-bottom:3px;clear:both;float:left;" title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename=Con&linktypename='+linktype+'&focalnodeid='+node.nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=&type=Con&theme='+theme+'\', 770,600);" ><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_CON_MENU_TEXT; ?></a>');
+					toolbarDiv.insert('<a class="d-block" title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename=Con&linktypename='+linktype+'&focalnodeid='+node.nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=&type=Con&theme='+theme+'\', 770,600);" ><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_CON_MENU_TEXT; ?></a>');
 				} else if (role.name == 'Solution') {
 					var linktype = '<?php echo $CFG->LINK_EVIDENCE_SOLCLAIM_PRO; ?>';
-					toolbarDiv.insert('<a style="margin-bottom:3px;clear:both;float:left;" title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename=Pro&linktypename='+linktype+'&focalnodeid='+node.nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=&type=Pro&theme='+theme+'\', 770,600);" ><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_PRO_MENU_TEXT; ?></a>');
+					toolbarDiv.insert('<a class="d-block" title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename=Pro&linktypename='+linktype+'&focalnodeid='+node.nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=&type=Pro&theme='+theme+'\', 770,600);" ><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_PRO_MENU_TEXT; ?></a>');
 
 					var linktype = '<?php echo $CFG->LINK_EVIDENCE_SOLCLAIM_CON; ?>';
-					toolbarDiv.insert('<a style="margin-bottom:3px;clear:both;float:left;" title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename=Con&linktypename='+linktype+'&focalnodeid='+node.nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=&type=Con&theme='+theme+'\', 770,600);" ><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_CON_MENU_TEXT; ?></a>');
+					toolbarDiv.insert('<a class="d-block" title="<?php echo $LNG->WIDGET_EVIDENCE_ADD_HINT; ?>" href="javascript: loadDialog(\'evidenceconnect\', \''+URL_ROOT+'ui/popups/evidenceconnect.php?linknodetypename=Con&linktypename='+linktype+'&focalnodeid='+node.nodeid+'&focalnodeend=to&filternodetypes='+EVIDENCE_TYPES+'&handler=&type=Con&theme='+theme+'\', 770,600);" ><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_CON_MENU_TEXT; ?></a>');
 				} else if (role.name == 'Challenge') {
 
 					// hide the issue add button if issues are managed
@@ -2259,7 +2193,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 						var linktypename = model.linktypes;
 						var focalnodeend = model.direction;
 						var hint = model.hint;
-						toolbarDiv.insert('<a style="margin-bottom:3px;clear:both;float:left;" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'issueconnect\', \''+URL_ROOT+'ui/popups/issueconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_ISSUE_MENU_TEXT; ?></a>');
+						toolbarDiv.insert('<a class="d-block" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'issueconnect\', \''+URL_ROOT+'ui/popups/issueconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_ISSUE_MENU_TEXT; ?></a>');
 					<?php } ?>
 
 				} else if (role.name == 'Issue') {
@@ -2269,14 +2203,14 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 						var linktypename = model.linktypes;
 						var focalnodeend = model.direction;
 						var hint = model.hint;
-						toolbarDiv.insert('<a style="margin-bottom:3px;clear:both;float:left;" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'solutionconnect\', \''+URL_ROOT+'ui/popups/solutionconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_SOLUTION_MENU_TEXT; ?></a>');
+						toolbarDiv.insert('<a class="d-block" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'solutionconnect\', \''+URL_ROOT+'ui/popups/solutionconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_SOLUTION_MENU_TEXT; ?></a>');
 
 						var model = HUB_DATAMODEL.issueToClaim;
 						var filternodetypes = model.getOtherEnd();
 						var linktypename = model.linktypes;
 						var focalnodeend = model.direction;
 						var hint = model.hint;
-						toolbarDiv.insert('<a style="margin-bottom:3px;clear:both;float:left;" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'claimconnect\', \''+URL_ROOT+'ui/popups/claimconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_CLAIM_MENU_TEXT; ?></a>');
+						toolbarDiv.insert('<a class="d-block" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'claimconnect\', \''+URL_ROOT+'ui/popups/claimconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_CLAIM_MENU_TEXT; ?></a>');
 
 					} else if (hasSolution) {
 						var model = HUB_DATAMODEL.issueToSolution;
@@ -2284,14 +2218,14 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 						var linktypename = model.linktypes;
 						var focalnodeend = model.direction;
 						var hint = model.hint;
-						toolbarDiv.insert('<a style="margin-bottom:3px;clear:both;float:left;" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'solutionconnect\', \''+URL_ROOT+'ui/popups/solutionconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_SOLUTION_MENU_TEXT; ?></a>');
+						toolbarDiv.insert('<a class="d-block" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'solutionconnect\', \''+URL_ROOT+'ui/popups/solutionconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_SOLUTION_MENU_TEXT; ?></a>');
 					} else if (hasClaim) {
 						var model = HUB_DATAMODEL.issueToClaim;
 						var filternodetypes = model.getOtherEnd();
 						var linktypename = model.linktypes;
 						var focalnodeend = model.direction;
 						var hint = model.hint;
-						toolbarDiv.insert('<a style="margin-bottom:3px;clear:both;float:left;" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'claimconnect\', \''+URL_ROOT+'ui/popups/claimconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_CLAIM_MENU_TEXT; ?></a>');
+						toolbarDiv.insert('<a class="d-block" id="addknowledge'+key+'button" title="'+hint+'" href="javascript: loadDialog(\'claimconnect\', \''+URL_ROOT+'ui/popups/claimconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_CLAIM_MENU_TEXT; ?></a>');
 					}
 				} else if (EVIDENCE_TYPES_STR.indexOf(role.name) != -1) {
 					var model = HUB_DATAMODEL.evidenceToResource;
@@ -2299,15 +2233,15 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 					var linktypename = model.linktypes;
 					var focalnodeend = model.direction;
 					let hint = model.hint;
-					let alink = '<a style="margin-bottom:3px;clear:both;float:left;" id="addknowledge'+key+'button" title="';
+					let alink = '<a class="d-block" id="addknowledge'+key+'button" title="';
 					alink += hint;
-					alink += '" href="javascript: loadDialog(\'resourceconnect\', \''+URL_ROOT+'ui/popups/resourceconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_RESOURCE_MENU_TEXT; ?></a>';
+					alink += '" href="javascript: loadDialog(\'resourceconnect\', \''+URL_ROOT+'ui/popups/resourceconnect.php?linktypename='+linktypename+'&focalnodeid='+nodeid+'&focalnodeend='+focalnodeend+'&filternodetypes='+filternodetypes+'&handler=&theme='+theme+'\', 770,600);"><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" alt="add" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_RESOURCE_MENU_TEXT; ?></a>';
 					toolbarDiv.insert(alink);
 				}
 			} else {
 				let alink = '<span style="clear:both;float:left;cursor:pointer" onclick="$(\'loginsubmit\').click(); return true;" title="';
 				alink += "<?php echo $LNG->WIDGET_SIGNIN_HINT; ?>";
-				alinkg += '"><img style="vertical-align:bottom" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_MENU_TEXT; ?></span>';
+				alinkg += '"><img style="vertical-align:middle;" src="<?php echo $HUB_FLM->getImagePath('addgrey.png'); ?>" border="0" width="16" height="16" style="margin:0px;margin-left: 5px;padding:0px" /> <?php echo $LNG->NODE_DEBATE_ADD_TO_MENU_TEXT; ?></span>';
 				toolbarDiv.insert(alink);
 			}
 		}
@@ -2328,14 +2262,13 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 				node.nodeid == connection.from[0].cnode.nodeid) {
 
 			if (COMMENT_TYPES.indexOf(role.name) == -1 ) {
-				//var focaltext = getNodeTitleAntecedence(focalrole.name, false);
 				var parentname = otherend.name;
 				if (parentname.length > 50) {
 					parentname = parentname.substr(0, 50)+"...";
 				}
 				parentname = " "+parentname;
 
-				var del = new Element('span',{'class':'active', 'style':'margin-bottom:3px;clear:both;float:left;','title':"<?php echo $LNG->NODE_DISCONNECT_TREE_MENU_HINT; ?> "+parentname});
+				var del = new Element('span',{'class':'active d-block','title':"<?php echo $LNG->NODE_DISCONNECT_TREE_MENU_HINT; ?> "+parentname});
 				del.insert("<?php echo $LNG->NODE_DISCONNECT_MENU_TEXT; ?>");
 				del.connid = connection.connid;
 				var fromName = node.name;
@@ -2355,7 +2288,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 				&& (COMMENT_TYPES.indexOf(role.name) == -1
 				&& role.name != "Theme" && focalrole.name != "Theme")) {
 				var extra = getNodeTitleAntecedence(connection.from[0].cnode.role[0].role.name, false);
-				var addRelevance = new Element('a',{'style':'float:left;clear:both;margin-bottom:3px;', 'href':'#', 'title':"<?php echo $LNG->NODE_RELEVANCE_ADD_MENU_HINT; ?> "+extra});
+				var addRelevance = new Element('a',{'class':'d-block', 'href':'#', 'title':"<?php echo $LNG->NODE_RELEVANCE_ADD_MENU_HINT; ?> "+extra});
 				addRelevance.insert("<?php echo $LNG->NODE_RELEVANCE_ADD_MENU_TEXT; ?>");
 				addRelevance.connid = connection.connid;
 				Event.observe(addRelevance,'click',function () { editConnectionDescription(this.connid, "") });
@@ -2364,7 +2297,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 				&& (COMMENT_TYPES.indexOf(role.name) == -1
 				&& role.name != "Theme" && focalrole.name != "Theme")) {
 				var extra = getNodeTitleAntecedence(connection.from[0].cnode.role[0].role.name, false);
-				var editRelevance = new Element('a',{'style':'float:left;clear:both;margin-bottom:3px;','href':'#', 'title':"<?php echo $LNG->NODE_RELEVANCE_EDIT_MENU_HINT; ?> "+extra});
+				var editRelevance = new Element('a',{'class':'d-block','href':'#', 'title':"<?php echo $LNG->NODE_RELEVANCE_EDIT_MENU_HINT; ?> "+extra});
 				editRelevance.insert("<?php echo $LNG->NODE_RELEVANCE_EDIT_MENU_TEXT; ?>");
 				editRelevance.connid = connection.connid;
 				Event.observe(editRelevance,'click',function () { editConnectionDescription(this.connid, connection.description) });
@@ -2384,7 +2317,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 					toolbarDiv.appendChild(createMenuSpacer());
 				}
 
-				var voteDiv = new Element("span", {'style':'clear:both;float:left;margin-top:5px;'});
+				var voteDiv = new Element("span", {'class':'d-block'});
 				voteDiv.insert('<span><?php echo $LNG->NODE_VOTE_MENU_TEXT; ?></span>');
 				Event.observe(voteDiv,'mouseover',function (event){ showBox('toolbardiv'+uniQ); });
 				toolbarDiv.insert(voteDiv);
@@ -2428,10 +2361,10 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 						voteforimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-up-empty.png"); ?>');
 						voteforimg.setAttribute('title', voteforimg.oldtitle);
 					}
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
+					voteDiv.insert('<b><span id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
 				} else {
 					voteforimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_FOR_LOGIN_HINT; ?>');
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
+					voteDiv.insert('<b><span id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
 				}
 
 				// vote against
@@ -2470,10 +2403,10 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 						voteagainstimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-down-empty.png"); ?>');
 						voteagainstimg.setAttribute('title', voteagainstimg.oldtitle);
 					}
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
+					voteDiv.insert('<b><span id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
 				} else {
 					voteagainstimg.setAttribute('title', 'Login to Demote this');
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
+					voteDiv.insert('<b><span id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
 				}
 			}
 		}
@@ -2494,7 +2427,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 			toolbarDiv.insert(addRelevance);
 		}
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_DETAIL_BUTTON_HINT; ?>"} );
+		var exploreButton = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_DETAIL_BUTTON_HINT; ?>"} );
 		Event.observe(exploreButton,'click',function () {
 			var width = getWindowWidth()-20;
 			var height = getWindowHeight()-20;
@@ -2506,14 +2439,13 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 		toolbarDiv.appendChild(exploreButton);
 
 		if (nodeObj && node.nodeid != nodeObj.nodeid) {
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_DEBATE_REFOCUS_MENU_HINT; ?>"} );
+			var exploreButton = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_DEBATE_REFOCUS_MENU_HINT; ?>"} );
 			exploreButton.href= URL_ROOT+"knowledgetrees.php?id="+node.nodeid;
-			//Event.observe(exploreButton,'mouseover',function (event){ showBox('toolbardiv'+uniQ); });
 			exploreButton.insert("<?php echo $LNG->NODE_DEBATE_REFOCUS_MENU_TEXT; ?>");
 			toolbarDiv.appendChild(exploreButton);
 		}
 
-		var connector = new Element('a',{'style':'margin-bottom:3px;clear:both;float:left;','title':"<?php echo $LNG->NODE_VIEW_CONNECTOR_MENU_HINT; ?> "+user.name});
+		var connector = new Element('a',{'class':'d-block','title':"<?php echo $LNG->NODE_VIEW_CONNECTOR_MENU_HINT; ?> "+user.name});
 		connector.insert("<?php echo $LNG->NODE_VIEW_CONNECTOR_MENU_TEXT; ?>");
 		connector.href = URL_ROOT+"user.php?userid="+user.userid,
 		toolbarDiv.appendChild(connector);
@@ -2521,18 +2453,6 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 		<?php if ($CFG->SPAM_ALERT_ON) { ?>
 			toolbarDiv.insert(createSpamMenuOption(node, role));
 		<?php } ?>
-
-		/*
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>"} );
-		exploreButton.insert("<?php echo $LNG->NODE_CHAT_BUTTON_TEXT; ?>");
-		exploreButton.href= "chats.php?id="+node.nodeid;
-		toolbarDiv.appendChild(exploreButton);
-
-		var exploreButtonNet = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_MAP_BUTTON_HINT; ?>"} );
-		exploreButtonNet.insert("<?php echo $LNG->NODE_MAP_BUTTON_TEXT; ?>");
-		exploreButtonNet.href= "networkgraph.php?id="+node.nodeid;
-		toolbarDiv.appendChild(exploreButtonNet);
-		*/
 	}
 
 	ihDiv.insert(itDiv);
@@ -2599,11 +2519,10 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 	}
 
 	/** EXPAND DIV **/
-	var innerexpandDiv = new Element("div", {'id':'desc'+uniQ,'class':'ideadata', 'style':'padding-left:20px;color:Gray;display:none;'} );
+	var innerexpandDiv = new Element("div", {'id':'desc'+uniQ,'class':'ideadata', 'style':'display:none;'} );
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
 
 	innerexpandDiv.insert(nodeTable);
 
@@ -2613,7 +2532,7 @@ function renderConnectionNode(node, uniQ, role, includeUser, type, childCountSpa
 	nextCell.align="left";
 
 	// USER ICON NAME AND CREATIONS DATES
-	var userbar = new Element("div", {'style':'clear:both;float:left;margin-bottom:5px;'} );
+	var userbar = new Element("div", {'class':'userbar'} );
 	if (includeUser == true) {
 		// Add right side with user image and date below
 		var iuDiv = new Element("div", {'class':'idea-user2', 'style':'clear:both;float:left;'});
@@ -2858,7 +2777,6 @@ function renderReportConnectionNode(node, uniQ, role, includeUser){
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
 	itDiv.insert(nodeTable);
 
 	var row = nodeTable.insertRow(-1);
@@ -2937,7 +2855,7 @@ function renderReportConnectionNode(node, uniQ, role, includeUser){
 		if (EVIDENCE_TYPES_STR.indexOf(role.name) != -1 || role.name == "Challenge"
 			|| role.name == "Issue" || role.name == "Solution" || role.name == "Claim") {
 
-			var childCount = new Element('div',{'style':'float:left; margin-left:5px;margin-right:5px;margin-top:2px;', 'title':'<?php echo $LNG->NODE_DEBATE_TREE_COUNT_HINT; ?>'});
+			var childCount = new Element('div',{'class':'toptreecount', 'title':'<?php echo $LNG->NODE_DEBATE_TREE_COUNT_HINT; ?>'});
 		}
 	}
 
@@ -2993,7 +2911,6 @@ function renderReportConnectionNode(node, uniQ, role, includeUser){
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
 
 	innerexpandDiv.insert(nodeTable);
 
@@ -3003,7 +2920,7 @@ function renderReportConnectionNode(node, uniQ, role, includeUser){
 	nextCell.align="left";
 
 	// USER ICON NAME AND CREATIONS DATES
-	var userbar = new Element("div", {'style':'clear:both;float:left;margin-bottom:5px;'} );
+	var userbar = new Element("div", {'class':'userbar'} );
 	if (includeUser == true) {
 		// Add right side with user image and date below
 		var iuDiv = new Element("div", {'class':'idea-user2', 'style':'clear:both;float:left;'});
@@ -3192,8 +3109,6 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
-	//nodeTable.border = "1";
 
 	itDiv.insert(nodeTable);
 
@@ -3203,14 +3118,13 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 	if (node.istop) {
 		var expandArrow = null;
 		var arrowCell = row.insertCell(-1);
-		arrowCell.vAlign="middle";
-		arrowCell.align="left";
+		arrowCell.width = "25px"
 
 		if (CHAT_TREE_OPEN_ARRAY["chat"+uniQ] && CHAT_TREE_OPEN_ARRAY["chat"+uniQ] == true) {
-			expandArrow = new Element('img',{'id':'explorechatarrow'+uniQ, 'name':'explorechatarrow', 'alt':'>', 'title':'<?php echo $LNG->CHAT_TREE_TOGGLE; ?>', 'style':'display:none;float:left;visibility:visible;margin-top:3px;','align':'left','src': '<?php echo $HUB_FLM->getImagePath("arrow-down-blue.png"); ?>'});
+			expandArrow = new Element('img',{'id':'explorechatarrow'+uniQ, 'name':'explorechatarrow', 'alt':'>', 'title':'<?php echo $LNG->CHAT_TREE_TOGGLE; ?>','src': '<?php echo $HUB_FLM->getImagePath("arrow-down-blue.png"); ?>'});
 			expandArrow.uniqueid = uniQ;
 		} else {
-			expandArrow = new Element('img',{'id':'explorechatarrow'+uniQ, 'name':'explorechatarrow', 'alt':'>', 'title':'<?php echo $LNG->CHAT_TREE_TOGGLE; ?>', 'style':'display:none;float:left;visibility:visible;margin-top:3px;','align':'left','src': '<?php echo $HUB_FLM->getImagePath("arrow-right-blue.png"); ?>'});
+			expandArrow = new Element('img',{'id':'explorechatarrow'+uniQ, 'name':'explorechatarrow', 'alt':'>', 'title':'<?php echo $LNG->CHAT_TREE_TOGGLE; ?>','src': '<?php echo $HUB_FLM->getImagePath("arrow-right-blue.png"); ?>'});
 			expandArrow.uniqueid = uniQ;
 		}
 		Event.observe(expandArrow,'click',function (){ toggleChat("chat"+uniQ,uniQ, false);});
@@ -3227,7 +3141,7 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 	var textCell = row.insertCell(-1);
 	textCell.vAlign="middle";
 	textCell.align="left";
-	var textCellDiv = new Element("div", { 'id':'textChatDivCell'+uniQ, 'name':'textChatDivCell', 'class':'whiteborder', 'style':'float:left;padding-top:1px;padding-bottom:3px;'});
+	var textCellDiv = new Element("div", { 'id':'textChatDivCell'+uniQ, 'name':'textChatDivCell', 'class':'whiteborder textChatDivCell'});
 	textCellDiv.nodeid = node.nodeid;
 	textCellDiv.focalnodeid = node.focalnodeid;
 	textCellDiv.nodetype = role.name;
@@ -3247,12 +3161,12 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 	var dStr = "<?php echo $LNG->NODE_REPLY_ON; ?> "+cDate.format(TIME_FORMAT);
 
 	// ADD THE NODE ICON - User IMAGE
-	var nodeArea = new Element("span", {'name':'nodeArea', 'style':'float:left;padding-top:2px;' ,'title':dStr} );
+	var nodeArea = new Element("span", {'name':'nodeArea' ,'title':dStr} );
 	nodeArea.nodeid = node.nodeid;
 	nodeArea.focalnodeid = node.focalnodeid;
 	var alttext = getNodeTitleAntecedence(role.name, false);
 
-	var userimageThumb = new Element('img',{'alt':user.name, 'title': user.name, 'style':'padding-left:5px;padding-right:5px;vertical-align:middle', 'src': user.thumb});
+	var userimageThumb = new Element('img',{'alt':user.name, 'title': user.name, 'class':'userChat', 'src': user.thumb});
 	if (type == "active") {
 		var imagelink = new Element('a', {
 			'href':URL_ROOT+"user.php?userid="+user.userid,
@@ -3273,8 +3187,7 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 	// parentnode in the case of the chat topic connection, is the newest node added, rather than the parent connection.
 	if (node.chattopic.parentnode &&
 		node.chattopic.parentnode[0].cnode.nodeid == node.nodeid) {
-		textCellDiv.className = 'plainborder';
-		textCellDiv.style.borderStyle = "dotted";
+		textCellDiv.className = 'plainborder recentReply';
 	}
 	if (CHATNODEID != "" && CHATNODEID == node.nodeid) {
 		textCellDiv.className = textCellDiv.className + ' selectedback';
@@ -3282,7 +3195,7 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 
 	// ADD THE MENU ICON IF REQUIRED
 	var menuButton = null;
-	var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:130px;border:1px solid gray;background:white'} );
+	var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'class':'toolbarDiv', 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:130px;border:1px solid gray;background:white'} );
 
 	Event.observe(toolbarDiv,'mouseout',function (event){
 		hideBox('toolbardiv'+uniQ);
@@ -3291,7 +3204,7 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 
 	if (node.istop) {
 		var expandArrow = null;
-		var childCount = new Element('div',{'style':'float:left; margin-left:5px;margin-right:5px;', 'title':'<?php echo $LNG->CHAT_TREE_COUNT_HINT; ?>'});
+		var childCount = new Element('div',{'class':'toptreecount', 'title':'<?php echo $LNG->CHAT_TREE_COUNT_HINT; ?>'});
 		childCount.insert("(");
 		childCountSpan = new Element('span',{'name':'topchattreecount'});
 		childCountSpan.id = 'topchattreecount'+uniQ;
@@ -3306,15 +3219,12 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 
 	// ADD ACTION MENU
 	if (type == 'active') {
-		menuButton = new Element('img',{'alt':'>', 'style':'float:left;padding-right:5px;width:20px;height:20px;','width':'20','height':'20','align':'left','src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
+		menuButton = new Element('img',{'alt':'>', 'class':'menuicon', 'src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
 		toolbarCell.appendChild(menuButton);
 		Event.observe(menuButton,'mouseout',function (event){
 			hideBox('toolbardiv'+uniQ);
 		});
 		Event.observe(menuButton,'mouseover',function (event) {
-			//var position = getPosition(this);
-			//$('toolbardiv'+uniQ).style.left = (position.x+30)+"px";
-			//$('toolbardiv'+uniQ).style.top = (position.y)+"px";
 
 			var position = getPosition(this);
 			var panel = $('toolbardiv'+uniQ);
@@ -3340,7 +3250,7 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 			showBox('toolbardiv'+uniQ);
 		});
 
-		var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:150px;border:1px solid gray;background:white'} );
+		var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'class':'toolbarDiv', 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:150px;border:1px solid gray;background:white'} );
 		Event.observe(toolbarDiv,'mouseout',function (event){
 			hideBox('toolbardiv'+uniQ);
 		});
@@ -3348,29 +3258,21 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 		toolbarCell.appendChild(toolbarDiv);
 
 		if (USER != "") {
-			var addButton = new Element("a", {'style':'margin-bottom:3px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_REPLY_TO_MENU_HINT; ?>'} );
+			var addButton = new Element("a", {'class':'d-block', 'title':'<?php echo $LNG->CHAT_REPLY_TO_MENU_HINT; ?>'} );
 			Event.observe(addButton,'click',function () {
 				hideBox('toolbardiv'+uniQ);
 
 				$('prompttext').innerHTML="";
-				$('prompttext').style.width = "300px";
-				$('prompttext').style.height = "130px";
 
 				var viewportHeight = getWindowHeight();
 				var viewportWidth = getWindowWidth();
 				var x = (viewportWidth-400)/2;
 				var y = (viewportHeight-200)/2;
-				if (GECKO || NS) {
-					$('prompttext').style.left = x+window.pageXOffset+"px";
-					$('prompttext').style.top = y+window.pageYOffset+"px";
-				}
-				else if (IE || IE5) {
-					$('prompttext').style.left = x+ document.documentElement.scrollLeft+"px";
-					$('prompttext').style.top = y+ document.documentElement.scrollTop+"px";
-				}
+				
+				var innerPromptDiv = new Element('div', {'class':'prompttext-inner'});
 
-				var textarea1 = new Element('textarea', {'id':'messagetextarea','rows':'5','style':'color: black; width:290px; border: 1px solid gray; padding: 3px; overflow:hidden'});
-				var buttonOK = new Element('input', { 'style':'clear: both;margin-top: 5px; font-size: 8pt', 'type':'button', 'value':'<?php echo $LNG->FORM_BUTTON_SAVE; ?>'});
+				var textarea1 = new Element('textarea', {'id':'messagetextarea','rows':'5','class':'form-control'});
+				var buttonOK = new Element('input', { 'class':'btn btn-primary', 'type':'button', 'value':'<?php echo $LNG->WIDGET_ADD_BUTTON; ?>'});
 				Event.observe(buttonOK,'click', function() {
 					var comment = textarea1.value;
 					if (comment != "") {
@@ -3394,18 +3296,33 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 					}
 					$('prompttext').style.display = "none";
 					$('prompttext').update("");
+					var backDrop = document.getElementById("backDrop");
+					backDrop.remove(); 
 				});
 
-				var buttonCancel = new Element('input', { 'style':'margin-left: 5px; margin-top: 5px; font-size: 8pt', 'type':'button', 'value':'<?php echo $LNG->FORM_BUTTON_CANCEL; ?>'});
+				var buttonCancel = new Element('input', { 'class':'btn btn-secondary', 'type':'button', 'value':'<?php echo $LNG->FORM_BUTTON_CLOSE; ?>'});
 				Event.observe(buttonCancel,'click', function() {
 					$('prompttext').style.display = "none";
 					$('prompttext').update("");
+					
+					var backDrop = document.getElementById("backDrop");
+					backDrop.remove(); 
 				});
 
-				$('prompttext').insert(textarea1);
-				$('prompttext').insert(buttonOK);
-				$('prompttext').insert(buttonCancel);
+				var footerPromptDiv = new Element('div', {'class':'prompttext-footer'});
+
+				footerPromptDiv.insert(buttonOK);
+				footerPromptDiv.insert(buttonCancel);
+				
+				innerPromptDiv.insert(textarea1);
+				innerPromptDiv.insert(footerPromptDiv);
+				$('prompttext').insert(innerPromptDiv);
 				$('prompttext').style.display = "block";
+
+				document.body.classList.add("modal-open");
+
+				var backDrop = new Element('div', {'class':'modal-backdrop fade show', 'id':'backDrop'});
+				document.body.insert(backDrop);
 
 				textarea1.focus();
 			});
@@ -3423,7 +3340,7 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 				}
 				parentname = " "+parentname;
 
-				delButton = new Element('span',{'id':'chatremove'+uniQ, 'class':'active', 'style':'display:none;margin-bottom:5px;clear:both;float:left;','title':"<?php echo $LNG->DELETE_BUTTON_HINT; ?> "});
+				delButton = new Element('span',{'id':'chatremove'+uniQ, 'class':'active', 'style':'display:none;','title':"<?php echo $LNG->DELETE_BUTTON_HINT; ?> "});
 				delButton.insert("<?php echo $LNG->DELETE_BUTTON_ALT; ?>");
 				delButton.connid = connection.connid;
 
@@ -3444,33 +3361,33 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 				toolbarDiv.appendChild(createMenuSpacer());
 
 				<?php if ($CFG->HAS_CHALLENGE && $USER->getIsAdmin() == "Y") { ?>
-					var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CHALLENGE_HINT; ?>'} );
+					var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CHALLENGE_HINT; ?>'} );
 					addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_CHALLENGE_TEXT; ?>");
 					Event.observe(addButton,'click',function (){loadDialog('addchallenge',URL_ROOT+"ui/popups/challengeadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&chatparentid=+"+nodeObj.nodeid+"&challenge="+encodeURIComponent(node.name), 750,500)});
 					toolbarDiv.appendChild(addButton);
 				<?php } ?>
 
 				<?php  if ( $CFG->issuesManaged == false || ($CFG->issuesManaged == true && $USER->getIsAdmin() == "Y") ) { ?>
-					var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_ISSUE_HINT; ?>'} );
+					var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_ISSUE_HINT; ?>'} );
 					addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_ISSUE_TEXT; ?>");
 					Event.observe(addButton,'click',function (){loadDialog('addissue',URL_ROOT+"ui/popups/issueadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&chatparentid=+"+nodeObj.nodeid+"&issue="+encodeURIComponent(node.name), 750,500)});
 					toolbarDiv.appendChild(addButton);
 				<?php } ?>
 
 				if (hasClaim) {
-					var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CLAIM_HINT; ?>'} );
+					var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_CLAIM_HINT; ?>'} );
 					addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_CLAIM_TEXT; ?>");
 					Event.observe(addButton,'click',function (){loadDialog('addclaim',URL_ROOT+"ui/popups/claimadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&chatparentid=+"+nodeObj.nodeid+"&claim="+encodeURIComponent(node.name), 750,500)});
 					toolbarDiv.appendChild(addButton);
 				}
 				if (hasSolution) {
-					var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_SOLUTION_HINT; ?>'} );
+					var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_SOLUTION_HINT; ?>'} );
 					addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_SOLUTION_TEXT; ?>");
 					Event.observe(addButton,'click',function (){loadDialog('addsolution',URL_ROOT+"ui/popups/solutionadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&chatparentid=+"+nodeObj.nodeid+"&solution="+encodeURIComponent(node.name), 750,500)});
 					toolbarDiv.appendChild(addButton);
 				}
 
-				var addButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_EVIDENCE_HINT; ?>'} );
+				var addButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->CHAT_CONVERT_TO_EVIDENCE_HINT; ?>'} );
 				addButton.insert("<?php echo $LNG->CHAT_CONVERT_TO_EVIDENCE_TEXT; ?>");
 				Event.observe(addButton,'click',function (){loadDialog('addevidence',URL_ROOT+"ui/popups/evidenceadd.php?handler="+node.handler+"&chatnodeid="+node.nodeid+"&chatparentid=+"+nodeObj.nodeid+"&summary="+encodeURIComponent(node.name), 750,500)});
 				toolbarDiv.appendChild(addButton);
@@ -3589,14 +3506,6 @@ function renderChatNode(node, uniQ, role, includeUser, type, childCountSpan){
 		}
 	}
 
-	/* else {
-		childCell.insert('<div style="clear:both;"></div>');
-		var childDiv = new Element("div", {'id':'comments'+uniQ, 'style':'clear:both;float:left;margin-bottom:5px;color:Gray;display:block;'} );
-		childCell.insert(childDiv);
-		childchatload(childDiv, node.nodeid, "Comments", "is related to", "Comment", node.chattopic, focalnodeid, uniQ, childCountSpan);
-		childCell.insert('<div style="clear:both;"></div>');
-	}*/
-
 	idDiv.insert(expandDiv);
 	imDiv.insert(idDiv);
 	iwDiv.insert(imDiv);
@@ -3666,8 +3575,6 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
-	//nodeTable.border = "1";
 
 	itDiv.insert(nodeTable);
 
@@ -3694,12 +3601,12 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 		var iconlink = new Element('a', {
 			'href':originalurl,
 			'title':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'target': '_blank' });
- 		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'width:20px;height:20px;padding-right:5px;','align':'left', 'src': URL_ROOT + node.imagethumbnail});
+ 		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'width:20px;height:20px;padding-right:5px;', 'src': URL_ROOT + node.imagethumbnail});
  		iconlink.insert(nodeicon);
  		textCell.insert(iconlink);
  		textCell.insert(alttext+": ");
 	} else if (role.image != null && role.image != "") {
- 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','align':'left','src': URL_ROOT + role.image});
+ 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','src': URL_ROOT + role.image});
 		textCell.insert(nodeicon);
 	} else {
  		textCell.insert(alttext+": ");
@@ -3724,15 +3631,12 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 	// ADD ACTION MENU / ITEMS
 	if (type == 'active') {
 		if (COMMENT_TYPES.indexOf(role.name) == -1 ) {
-			var menuButton = new Element('img',{'alt':'>', 'style':'float:left;padding-left:5px;padding-right:5px;width:20px;height:20px;','width':'20','height':'20','align':'left','src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
+			var menuButton = new Element('img',{'alt':'>', 'class':'menuicon','src': '<?php echo $HUB_FLM->getImagePath("menuicon.png"); ?>'});
 			toolbarCell.appendChild(menuButton);
 			Event.observe(menuButton,'mouseout',function (event){
 				hideBox('toolbardiv'+uniQ);
 			});
 			Event.observe(menuButton,'mouseover',function (event) {
-				//var position = getPosition(this);
-				//$('toolbardiv'+uniQ).style.left = (position.x+30)+"px";
-				//$('toolbardiv'+uniQ).style.top = (position.y)+"px";
 
 				var position = getPosition(this);
 				var panel = $('toolbardiv'+uniQ);
@@ -3758,7 +3662,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 				showBox('toolbardiv'+uniQ);
 			});
 
-			var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:130px;border:1px solid gray;background:white'} );
+			var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'class':'toolbarDiv', 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;width:130px;border:1px solid gray;background:white'} );
 			Event.observe(toolbarDiv,'mouseout',function (event){
 				hideBox('toolbardiv'+uniQ);
 			});
@@ -3766,29 +3670,29 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 			toolbarCell.appendChild(toolbarDiv);
 
 			if (RESOURCE_TYPES_STR.indexOf(role.name) != -1) {
-				var link = new Element("a", {'href':node.name,'title':'<?php echo $LNG->NODE_URL_LINK_HINT; ?>', 'target':'_blank', 'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+				var link = new Element("a", {'href':node.name,'title':'<?php echo $LNG->NODE_URL_LINK_HINT; ?>', 'target':'_blank', 'style':'margin-bottom:5px;clear:both;float:left;'} );
 				link.insert("<?php echo $LNG->NODE_URL_LINK_TEXT; ?>");
 				toolbarDiv.insert(link);
 			}
 
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_DETAIL_BUTTON_HINT; ?>"} );
+			var exploreButton = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_DETAIL_BUTTON_HINT; ?>"} );
 			exploreButton.insert("<?php echo $LNG->NODE_DETAIL_BUTTON_TEXT; ?>");
 			exploreButton.href= "explore.php?id="+node.nodeid;
 			toolbarDiv.appendChild(exploreButton);
 
 			if (role.name != 'Theme' && role.name != 'Organization' && role.name != 'Project') {
-				var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_DEBATE_BUTTON_HINT; ?>"} );
+				var exploreButton = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_DEBATE_BUTTON_HINT; ?>"} );
 				exploreButton.insert("<?php echo $LNG->NODE_DEBATE_BUTTON_TEXT; ?>");
 				exploreButton.href= "knowledgetrees.php?id="+node.nodeid;
 				toolbarDiv.appendChild(exploreButton);
 			}
 
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>"} );
+			var exploreButton = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>"} );
 			exploreButton.insert("<?php echo $LNG->NODE_CHAT_BUTTON_TEXT; ?>");
 			exploreButton.href= "chats.php?id="+node.nodeid;
 			toolbarDiv.appendChild(exploreButton);
 
-			var exploreButtonNet = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_MAP_BUTTON_HINT; ?>"} );
+			var exploreButtonNet = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_MAP_BUTTON_HINT; ?>"} );
 			exploreButtonNet.insert("<?php echo $LNG->NODE_MAP_BUTTON_TEXT; ?>");
 			exploreButtonNet.href= "networkgraph.php?id="+node.nodeid;
 			toolbarDiv.appendChild(exploreButtonNet);
@@ -3801,7 +3705,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 
 			if (connection && USER == connection.users[0].user.userid) {
 
-				var del = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_DISCONNECT_LINK_HINT; ?>"} );
+				var del = new Element("span", {'class':'active d-block', 'title':"<?php echo $LNG->NODE_DISCONNECT_LINK_HINT; ?>"} );
 				del.insert("<?php echo $LNG->NODE_DISCONNECT_LINK_TEXT; ?>");
 				del.connid = connection.connid;
 
@@ -3831,7 +3735,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 					&& (COMMENT_TYPES.indexOf(role.name) == -1
 					&& role.name != "Theme" && focalrole.name != "Theme")
 				) {
-					var addRelevance = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_RELEVANCE_ADD_ICON_HINT; ?>"} );
+					var addRelevance = new Element("span", {'class':'active d-block', 'title':"<?php echo $LNG->NODE_RELEVANCE_ADD_ICON_HINT; ?>"} );
 					addRelevance.insert("<?php echo $LNG->NODE_RELEVANCE_ADD_MENU_TEXT; ?>");
 					addRelevance.connid = connection.connid;
 					var handler = new function() {
@@ -3843,7 +3747,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 					&& (COMMENT_TYPES.indexOf(role.name) == -1
 					&& role.name != "Theme" && focalrole.name != "Theme")
 				) {
-					var editRelevance = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_RELEVANCE_EDIT_LINK_HINT; ?>"} );
+					var editRelevance = new Element("span", {'class':'active d-block', 'title':"<?php echo $LNG->NODE_RELEVANCE_EDIT_LINK_HINT; ?>"} );
 					editRelevance.insert("<?php echo $LNG->NODE_RELEVANCE_EDIT_LINK_TEXT; ?>");
 					editRelevance.connid = connection.connid;
 					var handler = new function() {
@@ -3855,7 +3759,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 
 			}
 
-			var connector = new Element('a',{'style':'margin-bottom:3px;clear:both;float:left;','title':"<?php echo $LNG->NODE_VIEW_CONNECTOR_MENU_HINT; ?> "+user.name});
+			var connector = new Element('a',{'class':'d-block','title':"<?php echo $LNG->NODE_VIEW_CONNECTOR_MENU_HINT; ?> "+user.name});
 			connector.insert("<?php echo $LNG->NODE_VIEW_CONNECTOR_MENU_TEXT; ?>");
 			connector.href = URL_ROOT+"user.php?userid="+user.userid,
 			toolbarDiv.appendChild(connector);
@@ -3871,7 +3775,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 					|| (role.name == 'Solution' && (connection.torole[0].role.name == "Issue" || connection.torole[0].role.name == "Challenge"))
 					)  {
 
-					var voteDiv = new Element("div", {'style':'clear:both;float:left;margin-top:5px;'});
+					var voteDiv = new Element("div", {'class':'voteDiv d-flex mt-1'});
 					voteDiv.insert('<span style="margin-right:5px;"><?php echo $LNG->NODE_VOTE_MENU_TEXT; ?></span>');
 					toolbarDiv.insert(voteDiv);
 
@@ -3913,10 +3817,10 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 							voteforimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-up-empty.png"); ?>');
 							voteforimg.setAttribute('title', voteforimg.oldtitle);
 						}
-						voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
+						voteDiv.insert('<b><span id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
 					} else {
 						voteforimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_FOR_LOGIN_HINT; ?>');
-						voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
+						voteDiv.insert('<b><span id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
 					}
 
 					// vote against
@@ -3955,10 +3859,10 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 							voteagainstimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-down-empty.png"); ?>');
 							voteagainstimg.setAttribute('title', voteagainstimg.oldtitle);
 						}
-						voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
+						voteDiv.insert('<b><span id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
 					} else {
 						voteagainstimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_AGAINST_LOGIN_HINT; ?>');
-						voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
+						voteDiv.insert('<b><span id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
 					}
 				}
 			}
@@ -3971,7 +3875,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 	var imDiv = new Element("div", {'class':'idea-main'});
 	var idDiv = new Element("div", {'class':'idea-detail'});
 
-	var expandDiv = new Element("div", {'id':'desc'+uniQ,'class':'ideadata', 'style':'padding-left:20px;color:Gray;display:none;'} );
+	var expandDiv = new Element("div", {'id':'desc'+uniQ,'class':'ideadata', 'style':'display:none;'} );
 
 	if (node.nodetofocusid && node.nodetofocusid != "" && node.nodetofocusid == node.nodeid) {
 		expandDiv.style.display="block";
@@ -3980,7 +3884,6 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 
 	var nodeTable = document.createElement( 'table' );
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
 
 	expandDiv.insert(nodeTable);
 
@@ -4160,7 +4063,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 
 				var title = node.connection.parentnode[0].cnode.name;
 				var parentid = node.connection.parentnode[0].cnode.nodeid;
-				var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
+				var exploreButton = new Element("a", {'class':'d-block','title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
 				exploreButton.insert(title);
 				exploreButton.href= "chats.php?chatnodeid="+node.nodeid+"&id="+parentid;
 				expandDiv.insert(exploreButton);
@@ -4171,7 +4074,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
 			nextStr += "</span>";
 			expandDiv.insert(nextStr);
 
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
+			var exploreButton = new Element("a", {'class':'d-block','title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
 			exploreButton.insert(title);
 			exploreButton.href= "chats.php?chatnodeid="+node.nodeid+"&id="+tN.nodeid;
 			expandDiv.insert(exploreButton);
@@ -4241,10 +4144,8 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 		uniQ = node.nodeid + uniQ;
 	}
 
-	var nodeTable = document.createElement('table', {'style':'width:100%'});
+	var nodeTable = document.createElement('table');
 	nodeTable.className = "toConnectionsTable";
-	nodeTable.width="100%";
-	//nodeTable.border = "1";
 	var row = nodeTable.insertRow(-1);
 
 	// VOTING
@@ -4259,10 +4160,8 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 				var voteCell = row.insertCell(-1);
 				voteCell.vAlign="top";
 				voteCell.align="left";
-				voteCell.width="40";
 
-				var voteDiv = new Element("div", {'style':'clear:both;float:left;margin-top:5px;'});
-				//voteDiv.insert('<span style="margin-right:5px;"><?php echo $LNG->NODE_VOTE_MENU_TEXT; ?></span>');
+				var voteDiv = new Element("div", {'class':'voteDiv d-flex mt-1'});
 				voteCell.insert(voteDiv);
 
 				var toRoleName = getNodeTitleAntecedence(connection.torole[0].role.name, false);
@@ -4275,8 +4174,6 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 				voteforimg.nodeid = node.nodeid;
 				voteforimg.connid = connection.connid;
 				voteforimg.vote='Y';
-				voteforimg.style.verticalAlign="bottom";
-				voteforimg.style.marginRight="3px";
 				voteDiv.insert(voteforimg);
 				if (!connection.positivevotes) {
 					connection.positivevotes = 0;
@@ -4303,10 +4200,10 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 						voteforimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-up-empty.png"); ?>');
 						voteforimg.setAttribute('title', voteforimg.oldtitle);
 					}
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
+					voteDiv.insert('<b><span id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
 				} else {
 					voteforimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_FOR_LOGIN_HINT; ?>');
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 5px;" id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
+					voteDiv.insert('<b><span id="'+connection.connid+'votefor">'+connection.positivevotes+'</span></b>');
 				}
 
 				// vote against
@@ -4317,9 +4214,6 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 				voteagainstimg.nodeid = node.nodeid;
 				voteagainstimg.connid = connection.connid;
 				voteagainstimg.vote='N';
-				voteagainstimg.style.verticalAlign="bottom";
-				voteagainstimg.style.marginTop="5px";
-				voteagainstimg.style.marginRight="3px";
 				voteDiv.insert(voteagainstimg);
 				if (!connection.negativevotes) {
 					connection.negativevotes = 0;
@@ -4346,46 +4240,14 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 						voteagainstimg.setAttribute('src', '<?php echo $HUB_FLM->getImagePath("thumb-down-empty.png"); ?>');
 						voteagainstimg.setAttribute('title', voteagainstimg.oldtitle);
 					}
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
+					voteDiv.insert('<b><span id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
 				} else {
 					voteagainstimg.setAttribute('title', '<?php echo $LNG->NODE_VOTE_AGAINST_LOGIN_HINT; ?>');
-					voteDiv.insert('<b><span style="font-size: 10pt; margin-right: 10px;" id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
+					voteDiv.insert('<b><span id="'+connection.connid+'voteagainst">'+connection.negativevotes+'</span></b>');
 				}
 			}
 		}
 	}
-
-	/*if (includeUser == true) {
-		var userCell = row.insertCell(-1);
-		userCell.vAlign="middle";
-		userCell.align="right";
-		userCell.width="40px;";
-		if (connection) {
-			var cDate = new Date(connection.creationdate*1000);
-			var dStr = "<?php echo $LNG->NODE_CONNECTED_BY; ?> "+user.name+ " on "+cDate.format(DATE_FORMAT)
-			userCell.title = dStr;
-		}
-
-
-		// Add right side with user image and date below
-		var iuDiv = new Element("div", {'class':'idea-user2', 'style':'float:left;'});
-
-		var userimageThumb = new Element('img',{'alt':nodeuser.name, 'style':'padding-left:5px;', 'src': nodeuser.thumb});
-		if (type == "active") {
-			var imagelink = new Element('a', {
-				'href':URL_ROOT+"user.php?userid="+nodeuser.userid
-				});
-			if (breakout != "") {
-				imagelink.target = "_blank";
-			}
-			imagelink.insert(userimageThumb);
-			iuDiv.update(imagelink);
-		} else {
-			iuDiv.insert(userimageThumb)
-		}
-
-		userCell.appendChild(iuDiv);
-	}*/
 
 	var textCell = row.insertCell(-1);
 	textCell.vAlign="middle";
@@ -4393,29 +4255,8 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 	textCell.width="90%";
 
 	var alttext = getNodeTitleAntecedence(role.name, false);
-	/*if (node.imagethumbnail != null && node.imagethumbnail != "") {
-		var originalurl = "";
-		if(node.urls && node.urls.length > 0){
-			for (var i=0 ; i <  node.urls.length; i++){
-				var urlid = node.urls[i].url.urlid;
-				if (urlid == node.imageurlid) {
-					originalurl = node.urls[i].url.url;
-					break;
-				}
-			}
-		}
-		if (originalurl == "") {
-			originalurl = node.imagethumbnail;
-		}
-		var iconlink = new Element('a', {
-			'href':originalurl,
-			'title':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'target': '_blank' });
- 		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'width:20px;height:20px;padding-right:5px;','align':'left', 'src': URL_ROOT + node.imagethumbnail});
- 		iconlink.insert(nodeicon);
- 		textCell.insert(iconlink);
- 		textCell.insert(alttext+": ");
-	} else*/ if (role.image != null && role.image != "") {
- 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','align':'left','src': URL_ROOT + role.image});
+	if (role.image != null && role.image != "") {
+ 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','src': URL_ROOT + role.image});
 		textCell.insert(nodeicon);
 	} else {
  		textCell.insert(alttext+": ");
@@ -4425,8 +4266,6 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 	if (RESOURCE_TYPES_STR.indexOf(role.name) != -1) {
 		title=node.description;
 	}
-
-	//textCell.insert("<a class='itemtext' style='line-height:1.8em;font-weight:normal' id='desctoggle"+uniQ+"' href='<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"'>"+title+"</a>");
 
 	var exploreButton = new Element('a', {'class':'itemtext', 'id':'desctoggle'+uniQ, 'style':'line-height:1.8em;'});
 	if (node.searchid && node.searchid != "") {
@@ -4451,9 +4290,8 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 		delCell.align="right";
 		delCell.width="20";
 
-		var del = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_DISCONNECT_LINK_HINT; ?>"} );
-		del.insert('<img src="<?php echo $HUB_FLM->getImagePath("delete.png"); ?>" />');
-		//del.insert("<?php echo $LNG->NODE_DISCONNECT_LINK_TEXT; ?>");
+		var del = new Element("span", {'class':'active d-block', 'title':"<?php echo $LNG->NODE_DISCONNECT_LINK_HINT; ?>"} );
+		del.insert('<img src="<?php echo $HUB_FLM->getImagePath("delete.png"); ?>" alt="" />');
 		del.connid = connection.connid;
 
 		var parentname = "";
@@ -4515,37 +4353,12 @@ function renderReportNode(node, uniQ, role){
 	//get url for any saved image.
 	//add left side with icon image and node text.
 	var alttext = getNodeTitleAntecedence(role.name, false);
-	//if (RESOURCE_TYPES_STR.indexOf(role.name) != -1
-	//	|| EVIDENCE_TYPES_STR.indexOf(role.name) != -1
-	//	|| role.name=="Project" || role.name=="Organization") {
-		/*if (node.imagethumbnail != null && node.imagethumbnail != "") {
-			var originalurl = "";
-			if(node.urls && node.urls.length > 0){
-				for (var i=0 ; i <  node.urls.length; i++){
-					var urlid = node.urls[i].url.urlid;
-					if (urlid == node.imageurlid) {
-						originalurl = node.urls[i].url.url;
-						break;
-					}
-				}
-			}
-			if (originalurl == "") {
-				originalurl = node.imagethumbnail;
-			}
-			var iconlink = new Element('a', {
-				'href':originalurl,
-				'title':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'target': '_blank' });
-			var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'width:16px;height:16px;margin-right:5px;','width':'16','height':'16','align':'left', 'src': URL_ROOT + node.imagethumbnail});
-			iconlink.insert(nodeicon);
-			itDiv.insert(iconlink);
-			itDiv.insert(alttext+": ");
-		} else*/ if (role.image != null && role.image != "") {
-			var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:16px;height:16px;margin-right:5px;','width':'16','height':'16','align':'left', 'src': URL_ROOT + role.image});
-			itDiv.insert(nodeicon);
-		} else {
-			itDiv.insert(alttext+": ");
-		}
-	//}
+	if (role.image != null && role.image != "") {
+		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:16px;height:16px;margin-right:5px;','width':'16','height':'16', 'src': URL_ROOT + role.image});
+		itDiv.insert(nodeicon);
+	} else {
+		itDiv.insert(alttext+": ");
+	}
 
 	if (RESOURCE_TYPES_STR.indexOf(role.name) != -1) {
 		if (node.description != "") {
@@ -4857,17 +4670,7 @@ function childload(section, nodeid, title, linktype, nodetype, focalnodeid, uniQ
 					DEBATE_LOADED_ARRAY['nodeid'+uniQ] = true;
 				}
 
-				if (conns.length > 0) {
-					//$("toggle"+section).style.display = 'block';
-					//section.style.display = 'block';
-					//$("count"+section).update(conns.length);
-				} else {
-					//$("toggle"+section).style.display = 'none';
-					//section.style.display = 'none';
-				}
-
 				if (conns.length == 0) {
-					//section.update("<span style='margin-left:10px;'>No "+title+" listed</span>");
 					section.style.display = 'none';
 				} else {
 					var nodes = new Array();
@@ -4916,10 +4719,7 @@ function childload(section, nodeid, title, linktype, nodetype, focalnodeid, uniQ
 						}
 
 						var parentrefreshhanlder = "";
-						//"refreshchildren(\'"+section+"\', \'"+nodeid+"\', \'"+title+"\', \'"+linktype+"\', \'"+nodetype+"\')";
 						displayConnectionNodes(section, nodes, parseInt(0), true, uniQ, childCountSpan, parentrefreshhanlder);
-					} else {
-						//section.update("<span style='margin-left:10px;'>No "+title+" listed</span>");
 					}
 
 					section.loaded = 'true';
@@ -4946,12 +4746,6 @@ function childcommentload(section, nodeid, linktype, nodetype, uniQ, searchid){
 	}
 
     if(!section.loaded || section.loaded == 'false'){
-    	//if (section.innerHTML == "") {
-		//	var hourglass = getLoadingLine("<?php echo $LNG->COMMENT_LOADING_MESSAGE; ?>");
-		//	hourglass.id="loading"+uniQ;
-    	//	section.insert(hourglass);
-    	//}
-
 		var reqUrl = SERVICE_ROOT + "&method=getconnectionsbynode&style=long";
 		reqUrl += "&filterlist="+encodeURIComponent(linktype)+"&filternodetypes="+nodetype+"&scope=all&start=0&max=-1&nodeid="+nodeid;
 
@@ -5019,7 +4813,7 @@ function childcommentload(section, nodeid, linktype, nodetype, uniQ, searchid){
 								if (icon != null) {
 									iconCell.insert(icon);
 								}
-								var exploreButton = new Element("a", {'style':'clear:both;float:left;font-size:10pt;', 'title':'<?php echo $LNG->NODE_EXPLORE_BUTTON_HINT; ?>'} );
+								var exploreButton = new Element("a", {'style':'clear:both;float:left;;', 'title':'<?php echo $LNG->NODE_EXPLORE_BUTTON_HINT; ?>'} );
 								exploreButton.insert(node.name);
 								if (searchid != "") {
 									exploreButton.href= "explore.php?id="+node.nodeid+"&sid="+searchid;
@@ -5033,7 +4827,7 @@ function childcommentload(section, nodeid, linktype, nodetype, uniQ, searchid){
 								}
 
 								if (rolename == "Idea") {
-									var exploreButton = new Element("a", {'style':'clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->BUILT_FROM_ITEM_HINT; ?>'} );
+									var exploreButton = new Element("a", {'style':'clear:both;float:left;', 'title':'<?php echo $LNG->BUILT_FROM_ITEM_HINT; ?>'} );
 									exploreButton.insert(node.name);
 									if (searchid != "") {
 										exploreButton.href= "explore.php?id="+node.nodeid+"&sid="+searchid;
@@ -5042,10 +4836,10 @@ function childcommentload(section, nodeid, linktype, nodetype, uniQ, searchid){
 									}
 									textCell.insert(exploreButton);
 								} else {
-									var exploreDiv = new Element("div", {'style':'clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->BUILT_FROM_ITEM_HINT; ?>'} );
-									var textdiv = new Element("div", {'style':'margin-top:3px;margin-bottom:5px;clear:both;float:left;font-size:10pt;'} );
+									var exploreDiv = new Element("div", {'style':'clear:both;float:left;', 'title':'<?php echo $LNG->BUILT_FROM_ITEM_HINT; ?>'} );
+									var textdiv = new Element("div", {'style':'margin-top:3px;margin-bottom:5px;clear:both;float:left;;'} );
 									textdiv.insert(node.name);
-									var innerdiv = new Element("div", {'style':'clear:both;float:left;font-size:10pt;'} );
+									var innerdiv = new Element("div", {'style':'clear:both;float:left;;'} );
 									exploreDiv.insert(textdiv);
 									exploreDiv.insert(innerdiv);
 									textCell.insert(exploreDiv);
@@ -5117,7 +4911,7 @@ function childchatusageload(section, nodeid, linktype, nodetype, uniQ, searchid)
 
 					if (nodes.length > 0) {
 						var	title="<?php echo $LNG->CHAT_COMMENT_PARENT_TREE; ?>";
-						section.insert('<span style="float:left; font-weight:bold">'+title+'</span>');
+						section.insert('<span class="d-block">'+title+'</span>');
 
 						var count = nodes.length;
 						for (var i=0; i < count; i++) {
@@ -5135,10 +4929,10 @@ function childchatusageload(section, nodeid, linktype, nodetype, uniQ, searchid)
 									var icon = getNodeIconElement(node.connection.parentnode[0].cnode);
 									var innertitle = node.connection.parentnode[0].cnode.name;
 									var parentid = node.connection.parentnode[0].cnode.nodeid;
-									var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
+									var exploreButton = new Element("a", {'class':'d-block','title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
 									if (icon != null) {
 										exploreButton.insert(icon);
-										exploreButton.insert('<span style="float:left;margin-top:5px;">'+innertitle+'</span>');
+										exploreButton.insert('<span class="col-auto">'+innertitle+'</span>');
 									} else {
 										exploreButton.insert(innertitle);
 									}
@@ -5150,17 +4944,17 @@ function childchatusageload(section, nodeid, linktype, nodetype, uniQ, searchid)
 
 									section.insert(exploreButton);
 								}
-								var nextStr = "<span style='clear:both;margin-left:25px;font-weight:bold;float:left;'>";
+								var nextStr = "<span class='fw-bold nodeComment'>";
 								nextStr += "<?php echo $LNG->NODE_COMMENT_PARENT; ?> ";
 								nextStr += "<span style='font-weight:normal'>"+name+"</span>";
 								nextStr += "</span>";
 								section.insert(nextStr);
 							} else {
 								var icon = getNodeIconElement(node);
-								var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
+								var exploreButton = new Element("a", {'class':'d-block','title':'<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>'} );
 								if (icon != null) {
 									exploreButton.insert(icon);
-									exploreButton.insert('<span style="float:left;margin-top:5px;">'+name+'</span>');
+									exploreButton.insert('<span class="col-auto">'+name+'</span>');
 								} else {
 									exploreButton.insert(name);
 								}
@@ -5173,7 +4967,7 @@ function childchatusageload(section, nodeid, linktype, nodetype, uniQ, searchid)
 
 								section.insert(exploreButton);
 
-								var nextStr = "<span style='clear:both;margin-left:25px;font-weight:bold;float:left;'>";
+								var nextStr = "<span class='fw-bold nodeComment'>";
 								nextStr += "<?php echo $LNG->NODE_COMMENT_PARENT; ?> ";
 								nextStr += "<span style='font-weight:normal'>"+name+"</span>";
 								nextStr += "</span>";
@@ -5184,10 +4978,6 @@ function childchatusageload(section, nodeid, linktype, nodetype, uniQ, searchid)
 
 					section.loaded = 'true';
 				}
-
-				//if ($('loadingchat'+uniQ)) {
-				//	$('loadingchat'+uniQ).remove();
-				//}
 			}
 		});
 	}
@@ -5953,28 +5743,6 @@ function refreshTextDivCell() {
  */
 function checkHasNarrowGotSelected() {
 
-	// Not used in new version where there is no add area.
-	/*
-	var cellsArray = document.getElementsByName('textDivCell');
-	var count = cellsArray.length;
-	var next = null;
-
-	var found = false;
-
-	for (var i=0; i < count; i++) {
-		next = cellsArray[i];
-		if (next.id.indexOf('narrow') != -1) {
-			if (next.nodeid == CURRENT_ADD_AREA_NODEID) {
-				found = true;
-				break;
-			}
-		}
-	}
-
-	if (!found) {
-		fadeMessage("<?php echo $LNG->DEBATE_MISSING_SELECTED_ITEM_ERROR; ?>");
-	}
-	*/
 }
 
 /**
@@ -6291,7 +6059,7 @@ function reportNodeSpamAlert(obj, nodetype, node) {
  */
 function createSpamMenuOption(node, nodetype) {
 
-	var spaming = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+	var spaming = new Element("span", {'class':'active d-block'} );
 
 	if (node.status == <?php echo $CFG->STATUS_SPAM; ?>) {
 		spaming.insert("<?php echo $LNG->SPAM_REPORTED_TEXT; ?>");
@@ -6331,13 +6099,13 @@ function getNodeIconElement(node) {
 		var iconlink = new Element('a', {
 			'href':originalurl,
 			'title':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'target': '_blank' });
-		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'style':'width:20px;height:20px;padding-right:5px;','align':'left', 'src': URL_ROOT + node.imagethumbnail});
+		var nodeicon = new Element('img',{'alt':"<?php echo $LNG->NODE_TYPE_ICON_HINT; ?>", 'class':'nodeIcon', 'src': URL_ROOT + node.imagethumbnail});
 		iconlink.insert(nodeicon);
 
 		return iconlink;
 	} else if (role.image != null && role.image != "") {
 		var alttext = getNodeTitleAntecedence(role.name, false);
-		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','align':'left','src': URL_ROOT + role.image});
+		var nodeicon = new Element('img',{'alt':alttext, 'class':'nodeIcon','src': URL_ROOT + role.image});
 		return nodeicon;
 	}
 	return null;
@@ -6348,7 +6116,7 @@ function getNodeIconElement(node) {
  * Create a menu spacer line
  */
 function createMenuSpacer() {
-	var spacer = new Element("hr", {'class':'hrline-slim', 'style':'margin-bottom:10px;clear:both;float:left;width:100%'} );
+	var spacer = new Element("hr", {'class':'hrline-slim', 'style':'margin-bottom:10px;width:100%'} );
 	return spacer;
 }
 
@@ -6365,42 +6133,42 @@ function createEditMenuOption(toolbarDiv, node, role, parentrefreshhandler, user
 	// IF OWNER ADD EDIT / DEL ACTIONS
 	if (USER == user.userid) {
 		if (role.name == 'Issue') {
-			var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_ISSUE_ICON_HINT; ?>'} );
+			var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_ISSUE_ICON_HINT; ?>'} );
 			editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 			Event.observe(editButton,'click',function (){loadDialog('editissue',URL_ROOT+"ui/popups/issueedit.php?handler="+parentrefreshhandler+"&nodeid="+node.nodeid, 750,500)});
 			toolbarDiv.appendChild(editButton);
 		} else if (role.name == 'Challenge') {
-			var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_CHALLENGE_ICON_HINT; ?>'} );
+			var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_CHALLENGE_ICON_HINT; ?>'} );
 			editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 			Event.observe(editButton,'click',function (){loadDialog('editchallenge',URL_ROOT+"ui/popups/challengeedit.php?handler="+parentrefreshhandler+"&nodeid="+node.nodeid, 750,500)});
 			toolbarDiv.appendChild(editButton);
 		} else if (role.name == 'Claim') {
-			var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_CLAIM_ICON_HINT; ?>'} );
+			var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_CLAIM_ICON_HINT; ?>'} );
 			editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 			Event.observe(editButton,'click',function (){loadDialog('editclaim',URL_ROOT+"ui/popups/claimedit.php?handler="+parentrefreshhandler+"&nodeid="+node.nodeid, 750,500)});
 			toolbarDiv.appendChild(editButton);
 		} else if (role.name == 'Solution') {
-			var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_SOLUTION_ICON_HINT; ?>'} );
+			var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_SOLUTION_ICON_HINT; ?>'} );
 			editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 			Event.observe(editButton,'click',function (){loadDialog('editsolution',URL_ROOT+"ui/popups/solutionedit.php?handler="+parentrefreshhandler+"&nodeid="+node.nodeid, 750,500)});
 			toolbarDiv.appendChild(editButton);
 		} else if (role.name == 'Organization') {
-			var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_ORG_ICON_HINT; ?>'} );
+			var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_ORG_ICON_HINT; ?>'} );
 			editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 			Event.observe(editButton,'click',function (){loadDialog('editorg',URL_ROOT+"ui/popups/organizationedit.php?handler="+parentrefreshhandler+"&nodeid="+node.nodeid, 750,500)});
 			toolbarDiv.appendChild(editButton);
 		} else if (role.name == 'Project') {
-			var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_PROJECT_ICON_HINT; ?>'} );
+			var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_PROJECT_ICON_HINT; ?>'} );
 			editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 			Event.observe(editButton,'click',function (){loadDialog('editorg',URL_ROOT+"ui/popups/organizationedit.php?handler="+parentrefreshhandler+"&nodeid="+node.nodeid, 750,500)});
 			toolbarDiv.appendChild(editButton);
 		} else if (EVIDENCE_TYPES_STR.indexOf(role.name) != -1) { //EVIDENCE
-			var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_EVIDENCE_ICON_HINT; ?>'} );
+			var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_EVIDENCE_ICON_HINT; ?>'} );
 			editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 			Event.observe(editButton,'click',function (){loadDialog('editevidence',URL_ROOT+"ui/popups/evidenceedit.php?handler="+parentrefreshhandler+"&nodetypename="+role.name+"&nodeid="+node.nodeid, 750,500)});
 			toolbarDiv.appendChild(editButton);
 		} else if (RESOURCE_TYPES_STR.indexOf(role.name) != -1) { //RESOURCES
-			var editButton = new Element("span", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':'<?php echo $LNG->NODE_EDIT_RESOURCE_ICON_HINT; ?>'} );
+			var editButton = new Element("span", {'class':'active d-block', 'title':'<?php echo $LNG->NODE_EDIT_RESOURCE_ICON_HINT; ?>'} );
 			editButton.insert("<?php echo $LNG->NODE_EDIT_ICON_ALT; ?>");
 			Event.observe(editButton,'click',function (){loadDialog('editresource',URL_ROOT+"ui/popups/resourceedit.php?handler="+parentrefreshhandler+"&nodetypename="+role.name+"&nodeid="+node.nodeid, 750,500)});
 			toolbarDiv.appendChild(editButton);
@@ -6418,10 +6186,9 @@ function createEditMenuOption(toolbarDiv, node, role, parentrefreshhandler, user
  */
 function createExploreMenuOption(toolbarDiv, node, role, uniQ) {
 
-	var exploreButton = new Element("div", {'class':'active','style':'font-style:italic;margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+	var exploreButton = new Element("div", {'class':'active','style':'font-style:italic;margin-bottom:5px;'} );
 
 	exploreButton.insert("<?php echo $LNG->NODE_EXPLORE_BUTTON_TEXT; ?>");
-	//exploreButton.title = "<?php echo $LNG->NODE_EXPLORE_BUTTON_HINT; ?>";
 	toolbarDiv.appendChild(exploreButton);
 	var exploresubmenu = createExploreSubMenu(node, role, uniQ)
 	exploreButton.appendChild(exploresubmenu);
@@ -6442,7 +6209,7 @@ function createExploreSubMenu(node, role, uniQ) {
 
 	var exploresubmenu = new Element("div", {'id':'exploresubmenu'+uniQ, 'style':'font-style:normal;clear:both;display:none;padding:5px;padding-top:2px;margin-left:30px;'} );
 
-	var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_DETAIL_BUTTON_HINT; ?>"} );
+	var exploreButton = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_DETAIL_BUTTON_HINT; ?>"} );
 	exploreButton.insert("<?php echo $LNG->NODE_DETAIL_BUTTON_TEXT; ?>");
 	if (node.searchid && node.searchid != "") {
 		exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6452,7 +6219,7 @@ function createExploreSubMenu(node, role, uniQ) {
 	exploresubmenu.appendChild(exploreButton);
 
 	if (role.name != 'Theme' && role.name != 'Organization' && role.name != 'Project') {
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_DEBATE_BUTTON_HINT; ?>"} );
+		var exploreButton = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_DEBATE_BUTTON_HINT; ?>"} );
 		exploreButton.insert("<?php echo $LNG->NODE_DEBATE_BUTTON_TEXT; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>knowledgetrees.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6462,7 +6229,7 @@ function createExploreSubMenu(node, role, uniQ) {
 		exploresubmenu.appendChild(exploreButton);
 	}
 
-	var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>"} );
+	var exploreButton = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_CHAT_BUTTON_HINT; ?>"} );
 	exploreButton.insert("<?php echo $LNG->NODE_CHAT_BUTTON_TEXT; ?>");
 	if (node.searchid && node.searchid != "") {
 		exploreButton.href= "<?php echo $CFG->homeAddress; ?>chats.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6471,7 +6238,7 @@ function createExploreSubMenu(node, role, uniQ) {
 	}
 	exploresubmenu.appendChild(exploreButton);
 
-	exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt', 'title':"<?php echo $LNG->NODE_MAP_BUTTON_HINT; ?>"} );
+	exploreButton = new Element("a", {'class':'d-block','title':"<?php echo $LNG->NODE_MAP_BUTTON_HINT; ?>"} );
 	exploreButton.insert("<?php echo $LNG->NODE_MAP_BUTTON_TEXT; ?>");
 	if (node.searchid && node.searchid != "") {
 		exploreButton.href= "<?php echo $CFG->homeAddress; ?>networkgraph.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6481,7 +6248,7 @@ function createExploreSubMenu(node, role, uniQ) {
 	exploresubmenu.appendChild(exploreButton);
 
 	if (RESOURCE_TYPES_STR.indexOf(role.name) != -1) {
-		var link = new Element("a", {'href':node.name,'title':"<?php echo $LNG->NODE_URL_LINK_HINT; ?>", 'target':'_blank', 'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var link = new Element("a", {'href':node.name,'title':"<?php echo $LNG->NODE_URL_LINK_HINT; ?>", 'target':'_blank', 'style':'margin-bottom:5px;clear:both;float:left;'} );
 		link.insert("<?php echo $LNG->NODE_URL_LINK_TEXT; ?>");
 		exploresubmenu.insert(link);
 	}
@@ -6501,9 +6268,8 @@ function createExploreSubMenu(node, role, uniQ) {
 function createConnectionMenuOption(toolbarDiv, node, role, uniQ) {
 
 	if (USER != "") {
-		var connectButton = new Element("div", {'class':'active','style':'font-style:italic;margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var connectButton = new Element("div", {'class':'active','style':'font-style:italic;margin-bottom:5px;'} );
 		connectButton.insert("<?php echo $LNG->CONNECTION_MENU_OPTION_TEXT; ?>");
-		//connectButton.title = "<?php echo $LNG->CONNECTION_MENU_OPTION_HINT; ?>";
 		toolbarDiv.appendChild(connectButton);
 		var connectionsubmenu = createConnectionSubMenu(node, role, uniQ)
 		connectButton.appendChild(connectionsubmenu);
@@ -6511,7 +6277,7 @@ function createConnectionMenuOption(toolbarDiv, node, role, uniQ) {
 		    connectionsubmenu.style.display = 'block';
 		});
 	} else {
-		var connectButton = new Element("div", {'class':'active','style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var connectButton = new Element("div", {'class':'active d-block'} );
 		connectButton.insert("<?php echo $LNG->CONNECTION_MENU_OPTION_LOGIN_TEXT; ?>");
 		connectButton.title = '<?php echo $LNG->CONNECTION_MENU_OPTION_LOGIN_HINT; ?>';
 		Event.observe(connectButton,'click',function (){ $('loginsubmit').click(); return true; } );
@@ -6532,7 +6298,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 
 	var type = role.name;
 	if (type == "Challenge") {
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->ISSUES_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>knowledgetrees.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6541,18 +6307,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.appendChild(exploreButton);
 
-		/*
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
-		exploreButton.insert("<?php echo $LNG->RESOURCES_NAME; ?>");
-		if (node.searchid && node.searchid != "") {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
-		} else {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid;
-		}
-		connectionsubmenu.insert(exploreButton);
-		*/
-
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->ORGS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6561,7 +6316,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->PROJECTS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6570,19 +6325,9 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		/*
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
-		exploreButton.insert("<?php echo $LNG->CONNECT_SEE_ALSO; ?>");
-		if (node.searchid && node.searchid != "") {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
-		} else {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid;
-		}
-		connectionsubmenu.insert(exploreButton);
-		*/
 	} else if (type == "Issue") {
 		if (hasChallenge) {
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+			var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 			exploreButton.insert("<?php echo $LNG->CHALLENGES_NAME; ?>");
 			if (node.searchid && node.searchid != "") {
 				exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6592,7 +6337,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 			connectionsubmenu.appendChild(exploreButton);
 		}
 		if (hasSolution) {
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+			var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 			exploreButton.insert("<?php echo $LNG->SOLUTIONS_NAME; ?>");
 			if (node.searchid && node.searchid != "") {
 				exploreButton.href= "<?php echo $CFG->homeAddress; ?>knowledgetrees.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6602,7 +6347,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 			connectionsubmenu.appendChild(exploreButton);
 		}
 		if (hasClaim) {
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+			var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 			exploreButton.insert("<?php echo $LNG->CLAIMS_NAME; ?>");
 			if (node.searchid && node.searchid != "") {
 				exploreButton.href= "<?php echo $CFG->homeAddress; ?>knowledgetrees.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6612,7 +6357,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 			connectionsubmenu.appendChild(exploreButton);
 		}
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->ORGS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6621,7 +6366,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->PROJECTS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6630,18 +6375,8 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		/*
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
-		exploreButton.insert("<?php echo $LNG->CONNECT_SEE_ALSO; ?>");
-		if (node.searchid && node.searchid != "") {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
-		} else {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid;
-		}
-		connectionsubmenu.insert(exploreButton);
-		*/
 	} else if (type == "Solution" || type == "Claim") {
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->ISSUES_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6650,7 +6385,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.appendChild(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->EVIDENCES_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>knowledgetrees.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6659,7 +6394,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.appendChild(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->ORGS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6668,7 +6403,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->PROJECTS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6677,19 +6412,9 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		/*
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
-		exploreButton.insert("<?php echo $LNG->CONNECT_SEE_ALSO; ?>");
-		if (node.searchid && node.searchid != "") {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
-		} else {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid;
-		}
-		connectionsubmenu.insert(exploreButton);
-		*/
 	} else if (EVIDENCE_TYPES_STR.indexOf(type) != -1) {
 		if (hasSolution) {
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+			var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 			exploreButton.insert("<?php echo $LNG->SOLUTIONS_NAME; ?>");
 			if (node.searchid && node.searchid != "") {
 				exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6699,7 +6424,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 			connectionsubmenu.appendChild(exploreButton);
 		}
 		if (hasClaim) {
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+			var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 			exploreButton.insert("<?php echo $LNG->CLAIMS_NAME; ?>");
 			if (node.searchid && node.searchid != "") {
 				exploreButton.href= "explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6708,7 +6433,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 			}
 			connectionsubmenu.appendChild(exploreButton);
 		}
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->RESOURCES_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>knowledgetrees.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6717,7 +6442,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.appendChild(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->ORGS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6726,7 +6451,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->PROJECTS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6735,18 +6460,8 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		/*
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
-		exploreButton.insert("<?php echo $LNG->CONNECT_SEE_ALSO; ?>");
-		if (node.searchid && node.searchid != "") {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
-		} else {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid;
-		}
-		connectionsubmenu.insert(exploreButton);
-		*/
 	} else if (RESOURCE_TYPES_STR.indexOf(type) != -1) {
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->EVIDENCES_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6755,7 +6470,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.appendChild(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->ORGS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6764,7 +6479,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->PROJECTS_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6773,18 +6488,8 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		/*
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
-		exploreButton.insert("<?php echo $LNG->CONNECT_SEE_ALSO; ?>");
-		if (node.searchid && node.searchid != "") {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
-		} else {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid;
-		}
-		connectionsubmenu.insert(exploreButton);
-		*/
 	} else if (type == "Organization" || type == "Project") {
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->EXPLORE_PARTNERS; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6793,7 +6498,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		if (type == "Organization") {
 			exploreButton.insert("<?php echo $LNG->EXPLORE_PROJECTS_MANAGED; ?>");
 		} else {
@@ -6807,7 +6512,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		connectionsubmenu.insert(exploreButton);
 
 		if (hasChallenge) {
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+			var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 			exploreButton.insert("<?php echo $LNG->CHALLENGES_NAME; ?>");
 			if (node.searchid && node.searchid != "") {
 				exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6816,7 +6521,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 			}
 			connectionsubmenu.insert(exploreButton);
 		}
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->ISSUES_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6825,7 +6530,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 		if (hasSolution) {
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+			var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 			exploreButton.insert("<?php echo $LNG->SOLUTIONS_NAME; ?>");
 			if (node.searchid && node.searchid != "") {
 				exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6835,7 +6540,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 			connectionsubmenu.insert(exploreButton);
 		}
 		if (hasClaim) {
-			var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+			var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 			exploreButton.insert("<?php echo $LNG->CLAIMS_NAME; ?>");
 			if (node.searchid && node.searchid != "") {
 				exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6845,7 +6550,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 			connectionsubmenu.insert(exploreButton);
 		}
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->EVIDENCES_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6854,7 +6559,7 @@ function createConnectionSubMenu(node, role, uniQ) {
 		}
 		connectionsubmenu.insert(exploreButton);
 
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
+		var exploreButton = new Element("a", {'style':'margin-bottom:5px; display: block;'} );
 		exploreButton.insert("<?php echo $LNG->RESOURCES_NAME; ?>");
 		if (node.searchid && node.searchid != "") {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
@@ -6862,17 +6567,6 @@ function createConnectionSubMenu(node, role, uniQ) {
 			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid;
 		}
 		connectionsubmenu.insert(exploreButton);
-
-		/*
-		var exploreButton = new Element("a", {'style':'margin-bottom:5px;clear:both;float:left;font-size:10pt'} );
-		exploreButton.insert("<?php echo $LNG->CONNECT_SEE_ALSO; ?>");
-		if (node.searchid && node.searchid != "") {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid+"&sid="+node.searchid;
-		} else {
-			exploreButton.href= "<?php echo $CFG->homeAddress; ?>explore.php?id="+node.nodeid;
-		}
-		connectionsubmenu.insert(exploreButton);
-		*/
 
 	}
 
@@ -6940,14 +6634,12 @@ function renderIssueNode(width, height, node, uniQ, role, includeUser, type, inc
 	var widgetHeader = new Element("div", {'id':key+'header', 'class':'widgetheadernode'});
 	widgetDiv.insert(widgetHeader);
 
-	//buildIssueWidgetExploreNodeHeader(widgetHeader, title+name, color, thistype, icon, height, key);
-
 	var widgetHeaderLabel = new Element("label", {'class':'linearnodeheaderlabel', 'id':'widgetheaderlabel'});
 	widgetHeaderLabel.insert("<i>"+title+"</i>"+name);
 
 	let exploreheaderlabel = $('exploreheaderlabel');
 	if (icon) {
-		var iconObj = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; height:24px;', 'alt':type+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'src':icon});
+		var iconObj = new Element('img',{'style':'text-align: middle;margin-right: 5px; width:24px; ', 'alt':type+' <?php echo $LNG->WIDGET_ICON_ALT; ?>', 'src':icon});
 		iconObj.align='left';
 		exploreheaderlabel.appendChild(iconObj);
 	}
@@ -7038,7 +6730,7 @@ function renderIssueNode(width, height, node, uniQ, role, includeUser, type, inc
 	}
 
 	if (thistype != 'web' && thistype != "theme") {
-		var commentdiv = new Element("div", { 'id':'commentdiv', 'name':'commentdiv', 'style':'display:block;clear:both;background:transparent;padding:0px;margin:0px;margin-bottom:5px;'});
+		var commentdiv = new Element("div", { 'id':'commentdiv', 'name':'commentdiv', 'class':'commentdiv d-block'});
 		iuDiv.insert(commentdiv);
 		childcommentload(commentdiv, node.nodeid,"<?php echo $CFG->LINK_COMMENT_BUILT_FROM; ?>", COMMENT_TYPES+",Idea", 'commentchild', '');
 	}
@@ -7288,7 +6980,7 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 
 		if (!node.otheruserconnections || node.otheruserconnections == 0) {
 			var deletename = node.name;
-			var del = new Element('img',{'class':'delete-solution','alt':'<?php echo $LNG->DELETE_BUTTON_ALT;?>', 'title': '<?php echo $LNG->DELETE_BUTTON_HINT;?>', 'src': '<?php echo $HUB_FLM->getImagePath("delete.png"); ?>'});
+			var del = new Element('img',{'class':'delete-solution','alt':'<?php echo $LNG->DELETE_BUTTON_ALT;?>', 'src': '<?php echo $HUB_FLM->getImagePath("delete.png"); ?>'});
 			Event.observe(del,'click',function (){
 				var callback = function () {
 					refreshSolutions();
@@ -7315,7 +7007,7 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		'name':'ideaargumentlink',
 		'id':'ideaargumentlink'+uniQ,
 		'class':'active ideaargumentlink',
-		'style':'clear:both;float:left;display:block;font-size:10pt;margin-top:7px;font-weight:bold;',
+		'style':'clear:both;float:left;display:block;;margin-top:7px;font-weight:bold;',
 		'title':'<?php echo $LNG->IDEA_ARGUMENTS_HINT; ?>',
 	});
 
@@ -7328,7 +7020,7 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 	});
 
 	if (USER == '') {
-		argumentLink.insert('<img src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" style="width:16px;height:16px;vertical-align:bottom;padding-right:3px;" />');
+		argumentLink.insert('<img src="<?php echo $HUB_FLM->getImagePath('add.png'); ?>" border="0" style="width:16px;height:16px;vertical-align:bottom;padding-right:3px;" alt="add" />');
 	}
 
 	argumentLink.insert('<?php echo $LNG->EVIDENCES_NAME; ?> (');
@@ -7351,7 +7043,7 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 				'href':'<?php echo $CFG->homeAddress."ui/pages/login.php?ref="; ?>'+NODE_ARGS["ref"],
 				'title':'<?php echo $LNG->DEBATE_CONTRIBUTE_LINK_HINT; ?>',
 				'class':'lightgreenbutton',
-				'style':'float:left;margin-left:30px;font-size:10pt;margin-top:2px;',
+				'style':'float:left;margin-left:30px;;margin-top:2px;',
 			});
 			signinlink.insert('<?php echo $LNG->DEBATE_CONTRIBUTE_LINK_TEXT; ?>');
 			textDiv.insert(signinlink);
@@ -7389,11 +7081,11 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		editDiv.insert(editnodetypeid);
 
 		var rowDiv1 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		editDiv.insert(rowDiv1);
 		var editideaname = new Element("input", {
-			'class':'forminput hgrwide',
+			'class':'form-control',
 			'placeholder':'<?php echo $LNG->FORM_IDEA_LABEL_TITLE; ?>',
 			'id':'editideaname'+uniQ,
 			'name':'editideaname',
@@ -7402,12 +7094,12 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		rowDiv1.insert(editideaname);
 
 		var rowDiv2 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		editDiv.insert(rowDiv2);
 		var editideadesc = new Element("textarea", {
 			'rows':'3',
-			'class':'forminput hgrwide',
+			'class':'form-control',
 			'placeholder':'<?php echo $LNG->FORM_IDEA_LABEL_DESC; ?>',
 			'id':'editideadesc'+uniQ,
 			'name':'editideadesc',
@@ -7416,7 +7108,7 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		rowDiv2.insert(editideadesc);
 
 		var rowDiv4 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 			'id':'linksdivedit'+uniQ,
 			'style':'margin-bottom:0px;padding-bottom:0px;'
 		});
@@ -7424,7 +7116,7 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		editDiv.insert(rowDiv4);
 
 		var rowDiv3 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		editDiv.insert(rowDiv3);
 		var editideasave = new Element("input", {
@@ -7501,12 +7193,12 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		addProDiv.insert('<h3><?php echo $LNG->DEBATE_ADD_EVIDENCE_PRO_HEADING; ?></h3>');
 
 		var rowDiv0 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addProDiv.insert(rowDiv0);
 
 		var addpronevtype = new Element("select", {
-			'class':'subforminput hgrselect forminputmust',
+			'class':'form-select',
 			'id':'pronodetypename'+uniQ,
 			'name':'pronodetypename'
 		});
@@ -7528,12 +7220,12 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		<?php } ?>
 
 		var rowDiv1 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addProDiv.insert(rowDiv1);
 
 		var addproname = new Element("input", {
-			'class':'hgrinput',
+			'class':'form-control',
 			'placeholder':'<?php echo $LNG->FORM_PRO_LABEL_TITLE; ?>',
 			'id':'addproname'+uniQ,
 			'name':'addproname',
@@ -7542,12 +7234,12 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		rowDiv1.insert(addproname);
 
 		var rowDiv2 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addProDiv.insert(rowDiv2);
 		var addprodesc = new Element("textarea", {
 			'rows':'3',
-			'class':'hgrinput',
+			'class':'form-control',
 			'placeholder':'<?php echo $LNG->FORM_PRO_LABEL_DESC; ?>',
 			'id':'addprodesc'+uniQ,
 			'name':'addprodesc',
@@ -7555,55 +7247,11 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		rowDiv2.insert(addprodesc);
 
 		var rowDiv3 = new Element("div", {
-			'class':'formrowsm',
 			'id':'linksdivpro'+uniQ,
 			'style':'margin-bottom:0px;padding-bottom:0px;'
 		});
 		rowDiv3.linkcount = 0;
 		addProDiv.insert(rowDiv3);
-
-		/*
-		var weblink = new Element("input", {
-			'class':'hgrinput',
-			'placeholder':"<?php echo $LNG->FORM_LINK_LABEL; ?>",
-			'id':'argumentlinkpro'+uniQ+0,
-			'name':'argumentlinkpro'+uniQ+'[]',
-			'value':'',
-			'style':'margin-bottom:2px;'
-		});
-		rowDiv3.insert(weblink);
-
-		var rowDiv4 = new Element("div", {'style':'margin:0px;padding:0px;'});
-		addProDiv.insert(rowDiv4);
-		var addURL = new Element("a", {
-			'class':'hgrinput',
-			'href':'javascript:void(0)',
-			'style':'margin-top:0px;padding-top:0px;font-size:8pt'
-		});
-		addURL.insert("<?php echo $LNG->FORM_MORE_LINKS_BUTTONS; ?>");
-		Event.observe(addURL,'click',function (){
-			insertArgumentLink(uniQ, 'pro');
-		});
-		rowDiv4.insert(addURL);
-
-		var rowDiv5 = new Element("div", {
-			'class':'formrowsm',
-		});
-		addProDiv.insert(rowDiv5);
-		var addprosave = new Element("input", {
-			'type':'button',
-			'class':'submitright',
-			'id':'addprosave',
-			'name':'addprosave',
-			'value':"<?php echo $LNG->FORM_BUTTON_SUBMIT; ?>",
-		});
-		Event.observe(addprosave,'click',function (){
-			// get type from selection in form
-			const evtype = $('pronodetypename'+uniQ).value;
-			addArgumentNode(node, uniQ, 'pro', evtype, type, includeUser, status);
-		});
-		rowDiv5.insert(addprosave);
-		*/
 
 		let rowDiv4 = new Element("div", {'id' : 'row4resourceareapro'+uniQ,  'class': 'formrowsm', 'style':'margin:0px;padding:0px;'});
 		addProDiv.insert(rowDiv4);
@@ -7613,7 +7261,7 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		rowDiv4.insert(resourcelabel);
 
 		let rowDiv5 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addProDiv.insert(rowDiv5);
 
@@ -7625,15 +7273,14 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		resourceform.insert(newitem);
 
 		let rowDiv6 = new Element("div", {
-			'class':'formrowsm',
-			'style':'float:right'
+			'class':'mb-3 row',
 		});
 		addProDiv.insert(rowDiv6);
 
 		let addURL = new Element("a", {
 			'class':'hgrinput',
 			'href':'javascript:void(0)',
-			'style':'margin-top:0px;padding-top:0px;font-size:8pt'
+			'style':'margin-top:0px;padding-top:0px;'
 		});
 		addURL.insert("<?php echo $LNG->FORM_MORE_LINKS_BUTTONS; ?>");
 		Event.observe(addURL,'click',function (){
@@ -7642,12 +7289,12 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		rowDiv6.insert(addURL);
 
 		let rowDiv7 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addProDiv.insert(rowDiv7);
 		var addprosave = new Element("input", {
 			'type':'button',
-			'class':'submitright',
+			'class':'btn btn-primary',
 			'id':'addprosave'+uniQ,
 			'name':'addprosave',
 			'value':"<?php echo $LNG->FORM_BUTTON_SUBMIT; ?>",
@@ -7692,12 +7339,12 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		addConDiv.insert('<h3><?php echo $LNG->DEBATE_ADD_EVIDENCE_CON_HEADING; ?></h3>');
 
 		var rowDiv0 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addConDiv.insert(rowDiv0);
 
 		var addconevtype = new Element("select", {
-			'class':'subforminput hgrselect forminputmust',
+			'class':'form-select',
 			'id':'connodetypename'+uniQ,
 			'name':'connodetypename'
 		});
@@ -7719,12 +7366,12 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		<?php } ?>
 
 		var rowDiv1 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addConDiv.insert(rowDiv1);
 
 		var addconname = new Element("input", {
-			'class':'hgrinput',
+			'class':'form-control',
 			'placeholder':'<?php echo $LNG->FORM_CON_LABEL_TITLE; ?>',
 			'id':'addconname'+uniQ,
 			'name':'addconname',
@@ -7733,71 +7380,17 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		rowDiv1.insert(addconname);
 
 		var rowDiv2 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addConDiv.insert(rowDiv2);
 		var addcondesc = new Element("textarea", {
 			'rows':'3',
-			'class':'hgrinput',
+			'class':'form-control',
 			'placeholder':'<?php echo $LNG->FORM_CON_LABEL_DESC; ?>',
 			'id':'addcondesc'+uniQ,
 			'name':'addcondesc',
 		});
 		rowDiv2.insert(addcondesc);
-
-		/*
-		var rowDiv3 = new Element("div", {
-			'class':'formrowsm',
-			'id':'linksdivcon'+uniQ,
-			'style':'margin-bottom:0px;padding-bottom:0px;'
-		});
-		rowDiv3.linkcount = 0;
-		addConDiv.insert(rowDiv3);
-
-		var weblink = new Element("input", {
-			'class':'hgrinput',
-			'placeholder':"<?php echo $LNG->FORM_LINK_LABEL; ?>",
-			'id':'argumentlinkcon'+uniQ+0,
-			'name':'argumentlinkcon'+uniQ+'[]',
-			'value':'',
-			'style':'margin-bottom:2px;'
-		});
-		rowDiv3.insert(weblink);
-
-		var rowDiv4 = new Element("div", {'style':'margin:0px;padding:0px;'});
-		addConDiv.insert(rowDiv4);
-
-		var addURL = new Element("a", {
-			'class':'hgrinput',
-			'href':'javascript:void(0)',
-			'style':'margin-top:0px;padding-top:0px;font-size:8pt'
-		});
-		addURL.insert("<?php echo $LNG->FORM_MORE_LINKS_BUTTONS; ?>");
-		Event.observe(addURL,'click',function (){
-			insertArgumentLink(uniQ, 'con');
-		});
-		rowDiv4.insert(addURL);
-
-		var rowDiv5 = new Element("div", {
-			'class':'formrowsm',
-		});
-		addConDiv.insert(rowDiv5);
-		var addconsave = new Element("input", {
-			'type':'button',
-			'class':'submitright',
-			'id':'addconsave',
-			'name':'addconsave',
-			'value':"<?php echo $LNG->FORM_BUTTON_SUBMIT; ?>",
-		});
-		Event.observe(addconsave,'click',function (){
-			// get type from selection in form
-			const evtype = $('connodetypename'+uniQ).value;
-			addArgumentNode(node, uniQ, 'con', evtype, type, includeUser, status);
-		});
-		rowDiv5.insert(addconsave);
-
-		conCell.insert(addConDiv);
-		*/
 
 		let rowDiv4 = new Element("div", {'id' : 'row4resourceareacon'+uniQ,  'class': 'formrowsm', 'style':'margin:0px;padding:0px;'});
 		addConDiv.insert(rowDiv4);
@@ -7807,7 +7400,7 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		rowDiv4.insert(resourcelabel);
 
 		let rowDiv5 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addConDiv.insert(rowDiv5);
 
@@ -7819,15 +7412,14 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		resourceform.insert(newitem);
 
 		let rowDiv6 = new Element("div", {
-			'class':'formrowsm',
-			'style':'float:right'
+			'class':'mb-3 row',
 		});
 		addConDiv.insert(rowDiv6);
 
 		let addURL = new Element("a", {
 			'class':'hgrinput',
 			'href':'javascript:void(0)',
-			'style':'margin-top:0px;padding-top:0px;font-size:8pt'
+			'style':'margin-top:0px;padding-top:0px;'
 		});
 		addURL.insert("<?php echo $LNG->FORM_MORE_LINKS_BUTTONS; ?>");
 		Event.observe(addURL,'click',function (){
@@ -7837,12 +7429,12 @@ function renderIdeaList(node, uniQ, role, includeUser, type, status, i){
 		rowDiv6.insert(addURL);
 
 		let rowDiv7 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		addConDiv.insert(rowDiv7);
 		var addconsave = new Element("input", {
 			'type':'button',
-			'class':'submitright',
+			'class':'btn btn-primary',
 			'id':'addconsave'+uniQ,
 			'name':'addconsave',
 			'value':"<?php echo $LNG->FORM_BUTTON_SUBMIT; ?>",
@@ -8153,7 +7745,7 @@ async function renderArgumentNode(node, uniQ, role, includeUser, type, status, n
 		});
 
 		var deletename = node.name;
-		var del = new Element('img',{'style':'cursor: pointer;padding-left:5px;','alt':'<?php echo $LNG->DELETE_BUTTON_ALT;?>', 'title': '<?php echo $LNG->DELETE_BUTTON_HINT;?>', 'src': '<?php echo $HUB_FLM->getImagePath("delete.png"); ?>'});
+		var del = new Element('img',{'style':'cursor: pointer;padding-left:5px;','alt':'<?php echo $LNG->DELETE_BUTTON_ALT;?>', 'src': '<?php echo $HUB_FLM->getImagePath("delete.png"); ?>'});
 		Event.observe(del,'click',function (){
 			var callback = function () {
 				if (nodetype == "Con") {
@@ -8212,7 +7804,7 @@ async function renderArgumentNode(node, uniQ, role, includeUser, type, status, n
 
 			showBox('toolbardiv'+uniQ);
 		});
-		var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;border:1px solid gray;background:white'} );
+		var toolbarDiv = new Element("div", {'id':'toolbardiv'+uniQ, 'class':'toolbarDiv', 'style':'left:-1px;top:-1px;clear:both;position:absolute;display:none;z-index:60;padding:5px;border:1px solid gray;background:white'} );
 		Event.observe(toolbarDiv,'mouseout',function (event){
 			hideBox('toolbardiv'+uniQ);
 		});
@@ -8227,7 +7819,7 @@ async function renderArgumentNode(node, uniQ, role, includeUser, type, status, n
 				const next = node.resourcenodes[i].urls[0];
 				const url = next.url.url;
 
-				let weblink = new Element("a", {'style':'clear:both;float:left;margin-bottom:6px;font-size:10pt','target':'_blank'});
+				let weblink = new Element("a", {'style':'clear:both;float:left;margin-bottom:6px;','target':'_blank'});
 				weblink.href = url;
 				let resourcetype = "<?php echo $CFG->RESOURCE_TYPES_DEFAULT; ?>";
 				if (RESOURCE_TYPES.indexOf(node.resourcenodes[i].role[0].role.name)!= -1) {
@@ -8241,7 +7833,7 @@ async function renderArgumentNode(node, uniQ, role, includeUser, type, status, n
 	}
 
 	if(node.description || node.hasdesc){
-		var dStr = '<div style="clear:both;margin:0px;padding:0px;margin-top:3px;font-size:10pt;" class="idea-desc" id="desc'+uniQ+'div"><span style="margin-top: 5px;">';
+		var dStr = '<div style="clear:both;margin:0px;padding:0px;margin-top:3px;;" class="idea-desc" id="desc'+uniQ+'div"><span style="margin-top: 5px;">';
 		if (node.description && node.description != "") {
 			dStr += node.description;
 		}
@@ -8316,7 +7908,7 @@ async function renderArgumentNode(node, uniQ, role, includeUser, type, status, n
 		editDiv.insert(editargumentroleid);
 
 		var rowDiv1 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 			'style':'padding-top:0px;',
 		});
 		editDiv.insert(rowDiv1);
@@ -8330,7 +7922,7 @@ async function renderArgumentNode(node, uniQ, role, includeUser, type, status, n
 		rowDiv1.insert(editargumentname);
 
 		var rowDiv2 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		editDiv.insert(rowDiv2);
 		var editargumentdesc = new Element("textarea", {
@@ -8344,7 +7936,7 @@ async function renderArgumentNode(node, uniQ, role, includeUser, type, status, n
 		rowDiv2.insert(editargumentdesc);
 
 		var rowDiv = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 			'id':'linksdivedit'+uniQ,
 			'style':'margin-bottom:0px;padding-bottom:0px;'
 		});
@@ -8377,15 +7969,14 @@ async function renderArgumentNode(node, uniQ, role, includeUser, type, status, n
 		}
 
 		var rowDiv5 = new Element("div", {
-			'class':'formrowsm',
-			'style':'float:right;margin-bottom:10px;margin-top:10px;'
+			'class':'mb-3 row',
 		});
 		editDiv.insert(rowDiv5);
 
 		var addURL = new Element("a", {
 			'class':'hgrinput',
 			'href':'javascript:void(0)',
-			'style':'margin-top:0px;padding-top:0px;font-size:8pt;'
+			'style':'margin-top:0px;padding-top:0px;;'
 		});
 
 		addURL.insert("<?php echo $LNG->FORM_MORE_LINKS_BUTTONS; ?>");
@@ -8396,7 +7987,7 @@ async function renderArgumentNode(node, uniQ, role, includeUser, type, status, n
 		rowDiv5.insert(addURL);
 
 		var rowDiv6 = new Element("div", {
-			'class':'formrowsm',
+			'class':'mb-3 row',
 		});
 		editDiv.insert(rowDiv6);
 
@@ -8455,7 +8046,7 @@ function getArgumentResource(section, uniQ, noResources, node) {
 		uniQid = node.nodeid+uniQ;
 	}
 
-	var newitem = '<div id="resourcefield'+uniQ+noResources+'" class="subformrow" style="border:1px solid gray;padding: 5px;margin-top:10px;">';
+	var newitem = '<div id="resourcefield'+uniQ+noResources+'" class="row p-4 border border-secondary mb-2">';
 
 	if (node) {
 	    newitem += '<input type="hidden" id="resourcenodeidsarray-'+uniQid+noResources+'" name="resourcenodeidsarray'+uniQ+'[]" value="'+node.nodeid+'" />';
@@ -8463,8 +8054,8 @@ function getArgumentResource(section, uniQ, noResources, node) {
 	    newitem += '<input type="hidden" id="resourcenodeidsarray-'+uniQid+noResources+'" name="resourcenodeidsarray'+uniQ+'[]" value="" />';
 	}
 
-	newitem += '<div class="formrowsm" id="typediv-'+uniQ+noResources+'">';
-	newitem += '<select onchange="typeChangedArgumentResource(\''+uniQ+'\', \''+noResources+'\')" class="subforminput hgrselect" id="resource'+uniQid+noResources+'menu" name="resourcetypesarray'+uniQ+'[]">';
+	newitem += '<div class="row mb-3" id="typediv-'+uniQ+noResources+'">';
+	newitem += '<select onchange="typeChangedArgumentResource(\''+uniQ+'\', \''+noResources+'\')" class="form-select" id="resource'+uniQid+noResources+'menu" name="resourcetypesarray'+uniQ+'[]">';
 
 	let count = RESOURCE_TYPES.length;
 	for(let i=0; i < count; i++){
@@ -8476,37 +8067,36 @@ function getArgumentResource(section, uniQ, noResources, node) {
 		}
 	}
 	newitem += '</select>';
-	//newitem += '<span class="active" onClick="javascript: openResourceSelector(\''+noResources+'\')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_RESOURCE_SELECT_EXISTING; ?></span>';
 	newitem += '</div>';
 
-	newitem += '<div class="formrowsm" id="resourceurldiv-'+uniQid+noResources+'">';
+	newitem += '<div class="row mb-3" id="resourceurldiv-'+uniQid+noResources+'">';
 	if (node) {
-		newitem += '<input class="hgrinput" id="resourceurl-'+uniQid+noResources+'" name="resourceurlarray'+uniQ+'[]" value="'+node.name+'">';
+		newitem += '<input class="form-control" id="resourceurl-'+uniQid+noResources+'" name="resourceurlarray'+uniQ+'[]" value="'+node.name+'">';
 	} else {
-		newitem += '<input placeholder="https://" title="Resource URL" class="hgrinput" id="resourceurl-'+uniQid+noResources+'" name="resourceurlarray'+uniQ+'[]" value="">';
+		newitem += '<input placeholder="https://" title="Resource URL" class="form-control" id="resourceurl-'+uniQid+noResources+'" name="resourceurlarray'+uniQ+'[]" value="">';
 	}
 	newitem += '</div>';
 
-	newitem += '<div class="formrowsm">';
+	newitem += '<div class="row mb-3">';
 	if (node) {
-		newitem += '<input placeholder="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_TITLE; ?>" title="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_TITLE; ?>" class="hgrinput" id="resourcetitle-'+uniQid+noResources+'" name="resourcetitlearray'+uniQ+'[]" value="'+node.description+'">';
+		newitem += '<input placeholder="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_TITLE; ?>" title="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_TITLE; ?>" class="form-control" id="resourcetitle-'+uniQid+noResources+'" name="resourcetitlearray'+uniQ+'[]" value="'+node.description+'">';
 	} else {
-		newitem += '<input placeholder="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_TITLE; ?>" title="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_TITLE; ?>" class="hgrinput" id="resourcetitle-'+uniQid+noResources+'" name="resourcetitlearray'+uniQ+'[]" value="">';
+		newitem += '<input placeholder="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_TITLE; ?>" title="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_TITLE; ?>" class="form-control" id="resourcetitle-'+uniQid+noResources+'" name="resourcetitlearray'+uniQ+'[]" value="">';
 	}
 	newitem += '</div>';
 
 	if (node && node.role[0].role.name == "Publication") {
-		newitem += '<div class="formrowsm" id="identifierdiv-'+uniQ+noResources+'" style="display: block;">';
-		newitem += '<input placeholder="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_DOI; ?>" title="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_DOI; ?>" class="hgrinput" id="identifier-'+uniQid+noResources+'" name="identifierarray'+uniQ+'[]" value="'+node.urls[0].url.identifier+'">';
+		newitem += '<div class="row mb-3" id="identifierdiv-'+uniQ+noResources+'" style="display: block;">';
+		newitem += '<input placeholder="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_DOI; ?>" title="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_DOI; ?>" class="form-control" id="identifier-'+uniQid+noResources+'" name="identifierarray'+uniQ+'[]" value="'+node.urls[0].url.identifier+'">';
 		newitem += '</div>';
 	} else {
-		newitem += '<div class="formrowsm" id="identifierdiv-'+uniQ+noResources+'" style="display: none;">';
-		newitem += '<input placeholder="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_DOI; ?>" title="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_DOI; ?>" class="hgrinput" id="identifier-'+uniQid+noResources+'" name="identifierarray'+uniQ+'[]" value="">';
+		newitem += '<div class="row mb-3" id="identifierdiv-'+uniQ+noResources+'" style="display: none;">';
+		newitem += '<input placeholder="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_DOI; ?>" title="<?php echo $LNG->FORM_EVIDENCE_RESOURCE_DOI; ?>" class="form-control" id="identifier-'+uniQid+noResources+'" name="identifierarray'+uniQ+'[]" value="">';
 		newitem += '</div>';
 	}
 
-	newitem += '<div class="formrowsm" id="resourcedescdiv-'+uniQid+noResources+'">';
-	newitem += '<a id="resourceremovebutton-'+noResources+'" href="javascript:void(0)" onclick="javascript:removeArgumentResource(\''+section+'\', \''+uniQ+'\', \''+noResources+'\')" class="form" style="clear:both;float:right"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a><br>';
+	newitem += '<div class="d-inline-block text-end" id="resourcedescdiv-'+uniQid+noResources+'">';
+	newitem += '<a id="resourceremovebutton-'+noResources+'" href="javascript:void(0)" onclick="javascript:removeArgumentResource(\''+section+'\', \''+uniQ+'\', \''+noResources+'\')" class="me-2"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a><br>';
 	newitem += '</div>';
 
 	newitem += '</div>';

@@ -151,47 +151,58 @@ window.onload = init;
 
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="evidenceform" name="evidenceform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
-	<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
+			<form id="evidenceform" name="evidenceform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
+				<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
 
-   <div class="hgrformrow">
-		<label  class="formlabelbig" for="nodetypename"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_TYPE; ?></span>
-		<span class="active" onMouseOver="showFormHint('EvidenceType', event, 'hgrhint', '<?php echo $CFG->EVIDENCE_TYPES_DEFAULT;?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-		<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<select class="subforminput hgrselect forminputmust" id="nodetypename" name="nodetypename">
-			<?php
-				$count = 0;
-				if (is_countable($CFG->EVIDENCE_TYPES)) {
-					$count = count($CFG->EVIDENCE_TYPES);
-				}
-				for($i=0; $i<$count; $i++){
-					$item = $CFG->EVIDENCE_TYPES[$i];
-					$name = $LNG->EVIDENCE_TYPES[$i];
-					error_log($name);
-				?>
-					<option value='<?php echo $item; ?>' <?php if ($nodetypename == $item || ($nodetypename == "" && $item == $CFG->EVIDENCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; }  ?> ><?php echo $name; ?></option>
-			<?php } ?>
-		</select>
-   </div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="nodetypename">
+						<?php echo $LNG->FORM_LABEL_TYPE; ?>
+						<a class="active" onMouseOver="showFormHint('EvidenceType', event, 'hgrhint', '<?php echo $CFG->EVIDENCE_TYPES_DEFAULT;?>'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">
+						<select class="form-select" id="nodetypename" name="nodetypename">
+							<?php
+								$count = 0;
+								if (is_countable($CFG->EVIDENCE_TYPES)) {
+									$count = count($CFG->EVIDENCE_TYPES);
+								}
+								for($i=0; $i<$count; $i++){
+									$item = $CFG->EVIDENCE_TYPES[$i];
+									$name = $LNG->EVIDENCE_TYPES[$i];
+									error_log($name);
+								?>
+									<option value='<?php echo $item; ?>' <?php if ($nodetypename == $item || ($nodetypename == "" && $item == $CFG->EVIDENCE_TYPES_DEFAULT)) { echo 'selected=\"true\"'; }  ?> ><?php echo $name; ?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
 
-	<?php insertSummary('EvidenceSummary', $LNG->FORM_EVIDENCE_LABEL_SUMMARY); ?>
+				<?php insertSummary('EvidenceSummary', $LNG->FORM_EVIDENCE_LABEL_SUMMARY); ?>
+				<?php insertDescription('EvidenceDesc'); ?>
+				<?php insertAddTags('EvidenceTag'); ?>
+				<?php insertTagsAdded('EvidenceTagAdded'); ?>
 
-	<?php insertDescription('EvidenceDesc'); ?>
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_SAVE; ?>" id="editevidence" name="editevidence" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
-	<?php insertAddTags('EvidenceTag'); ?>
-
-	<?php insertTagsAdded('EvidenceTagAdded'); ?>
-
-    <br>
-    <div class="hgrformrow">
-        <input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_SAVE; ?>" id="editevidence" name="editevidence">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-</form>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

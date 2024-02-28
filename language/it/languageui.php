@@ -92,17 +92,17 @@ $LNG->TAB_NEWS = $LNG->NEWSS_NAME;
 
 //user
 $LNG->TAB_USER_HOME = 'La mia Home';
-$LNG->TAB_USER_CHALLENGE = 'My '.$LNG->CHALLENGES_NAME_SHORT;
-$LNG->TAB_USER_ISSUE = 'My '.$LNG->ISSUES_NAME_SHORT;
-$LNG->TAB_USER_SOLUTION = 'My '.$LNG->SOLUTIONS_NAME_SHORT;
-$LNG->TAB_USER_CLAIM = 'My '.$LNG->CLAIMS_NAME_SHORT;
-$LNG->TAB_USER_EVIDENCE = 'My '.$LNG->EVIDENCES_NAME_SHORT;
-$LNG->TAB_USER_RESOURCE = 'My '.$LNG->RESOURCES_NAME_SHORT;
-$LNG->TAB_USER_ORG = 'My '.$LNG->ORGS_NAME;
-$LNG->TAB_USER_PROJECT = 'My '.$LNG->PROJECTS_NAME;
-$LNG->TAB_USER_CHAT = 'My '.$LNG->CHATS_NAME;
-$LNG->TAB_USER_COMMENT = 'My '.$LNG->COMMENTS_NAME;
-$LNG->TAB_USER_USED_COMMENT = 'My Used'.$LNG->COMMENTS_NAME;
+$LNG->TAB_USER_CHALLENGE = $LNG->CHALLENGES_NAME_SHORT;
+$LNG->TAB_USER_ISSUE = $LNG->ISSUES_NAME_SHORT;
+$LNG->TAB_USER_SOLUTION = $LNG->SOLUTIONS_NAME_SHORT;
+$LNG->TAB_USER_CLAIM = $LNG->CLAIMS_NAME_SHORT;
+$LNG->TAB_USER_EVIDENCE = $LNG->EVIDENCES_NAME_SHORT;
+$LNG->TAB_USER_RESOURCE = $LNG->RESOURCES_NAME_SHORT;
+$LNG->TAB_USER_ORG = $LNG->ORGS_NAME;
+$LNG->TAB_USER_PROJECT = $LNG->PROJECTS_NAME;
+$LNG->TAB_USER_CHAT = $LNG->CHATS_NAME;
+$LNG->TAB_USER_COMMENT = $LNG->COMMENTS_NAME;
+$LNG->TAB_USER_USED_COMMENT = 'Utilizzate '.$LNG->COMMENTS_NAME;
 
 //inner view
 $LNG->TAB_VIEW_OVERVIEW = 'Dashboard';
@@ -173,7 +173,7 @@ $LNG->LIST_NAV_PREVIOUS_HINT = 'Precedente';
 $LNG->LIST_NAV_NO_PREVIOUS_HINT = 'No precedente';
 $LNG->LIST_NAV_NEXT_HINT = 'Successivo';
 $LNG->LIST_NAV_NO_NEXT_HINT = 'No successivo';
-$LNG->LIST_NAV_NO_ITEMS = "Non ne hai ancora aggiunti.";
+$LNG->LIST_NAV_NO_ITEMS = "Nessun elemento aggiunto.";
 $LNG->LIST_NAV_TO = 'a';
 $LNG->LIST_NAV_USER_NO_CHALLENGE = "Nessuna ".$LNG->CHALLENGES_NAME.' trovata';
 $LNG->LIST_NAV_USER_NO_ORG = "Nessun ".$LNG->ORGS_NAME.' trovato';
@@ -299,80 +299,80 @@ $LNG->DATAMODEL_solutionToChallenge = 'Seleziona una '.$LNG->CHALLENGE_NAME.' af
 /** EXPLORE SECTION TITLES **/
 //Challenge
 $LNG->EXPLORE_challengeToIssue = $LNG->ISSUES_NAME;
-$LNG->EXPLORE_challengeToResource = $LNG->RESOURCES_NAME.' associato a questa '.$LNG->CHALLENGE_NAME;
-$LNG->EXPLORE_challengeToOrg = $LNG->ORGS_NAME.' che affronta questa '.$LNG->CHALLENGE_NAME;
-$LNG->EXPLORE_challengeToProject = $LNG->PROJECTS_NAME.'che affronta questa '.$LNG->CHALLENGE_NAME;
-$LNG->EXPLORE_challengeToTheme = $LNG->THEMES_NAME.' collegato a questa '.$LNG->CHALLENGE_NAME;
+$LNG->EXPLORE_challengeToResource = $LNG->RESOURCES_NAME.' associate a questa '.$LNG->CHALLENGE_NAME;
+$LNG->EXPLORE_challengeToOrg = $LNG->ORGS_NAME.' che affrontano questa '.$LNG->CHALLENGE_NAME;
+$LNG->EXPLORE_challengeToProject = $LNG->PROJECTS_NAME.'che affrontano questa '.$LNG->CHALLENGE_NAME;
+$LNG->EXPLORE_challengeToTheme = $LNG->THEMES_NAME.' collegati a questa '.$LNG->CHALLENGE_NAME;
 $LNG->EXPLORE_challengeToComment = $LNG->COMMENTS_NAME.' su questa '.$LNG->CHALLENGE_NAME;
 $LNG->EXPLORE_challengeToFollower = $LNG->FOLLOWERS_NAME.' di questa '.$LNG->CHALLENGE_NAME;
 //Issue
 $LNG->EXPLORE_issueToSolution = $LNG->SOLUTIONS_NAME;
 $LNG->EXPLORE_issueToClaim = $LNG->CLAIMS_NAME;
 $LNG->EXPLORE_issueToChallenge = $LNG->CHALLENGES_NAME;
-$LNG->EXPLORE_issueToOrg = $LNG->ORGS_NAME.' che affronta questa '.$LNG->ISSUE_NAME;
-$LNG->EXPLORE_issueToProject = $LNG->PROJECTS_NAME.' che affronta questa '.$LNG->ISSUE_NAME;
-$LNG->EXPLORE_issueToResource = $LNG->RESOURCES_NAME.' collegata a questa '.$LNG->ISSUE_NAME;
-$LNG->EXPLORE_issueToTheme = $LNG->THEMES_NAME.' assegnato a questa'.$LNG->ISSUE_NAME;
+$LNG->EXPLORE_issueToOrg = $LNG->ORGS_NAME.' che affrontano questa '.$LNG->ISSUE_NAME;
+$LNG->EXPLORE_issueToProject = $LNG->PROJECTS_NAME.' che affrontano questa '.$LNG->ISSUE_NAME;
+$LNG->EXPLORE_issueToResource = $LNG->RESOURCES_NAME.' collegate a questa '.$LNG->ISSUE_NAME;
+$LNG->EXPLORE_issueToTheme = $LNG->THEMES_NAME.' assegnati a questa'.$LNG->ISSUE_NAME;
 $LNG->EXPLORE_issueToComment = $LNG->COMMENTS_NAME.' su questa '.$LNG->ISSUE_NAME;
 $LNG->EXPLORE_issueToFollower = $LNG->FOLLOWERS_NAME.' di questa '.$LNG->ISSUE_NAME;
 //Claim
 $LNG->EXPLORE_claimToEvidenceSupport = $LNG->EVIDENCE_NAME.' a favore';
 $LNG->EXPLORE_claimToEvidenceCounter = $LNG->EVIDENCE_NAME.' contro';
 $LNG->EXPLORE_claimToIssue = $LNG->ISSUES_NAME;
-$LNG->EXPLORE_claimToOrg = $LNG->ORGS_NAME.' che afferma questa '.$LNG->CLAIM_NAME;
-$LNG->EXPLORE_claimToProject = $LNG->PROJECTS_NAME.' che afferma questa '.$LNG->CLAIM_NAME;
-$LNG->EXPLORE_claimToTheme = $LNG->THEMES_NAME.' assegnato a questa '.$LNG->CLAIM_NAME;
+$LNG->EXPLORE_claimToOrg = $LNG->ORGS_NAME.' che supportano questa '.$LNG->CLAIM_NAME;
+$LNG->EXPLORE_claimToProject = $LNG->PROJECTS_NAME.' che supportano questa '.$LNG->CLAIM_NAME;
+$LNG->EXPLORE_claimToTheme = $LNG->THEMES_NAME.' assegnati a questa '.$LNG->CLAIM_NAME;
 $LNG->EXPLORE_claimToComment = $LNG->COMMENTS_NAME.' su questa '.$LNG->CLAIM_NAME;
 $LNG->EXPLORE_claimToFollower = $LNG->FOLLOWERS_NAME.' di questa '.$LNG->CLAIM_NAME;
 //Solution
 $LNG->EXPLORE_solutionToEvidenceSupport = 'a favore '.$LNG->EVIDENCE_NAME;
 $LNG->EXPLORE_solutionToEvidenceCounter = 'contro '.$LNG->EVIDENCE_NAME;
 $LNG->EXPLORE_solutionToIssue = $LNG->ISSUES_NAME;
-$LNG->EXPLORE_solutionToOrg = $LNG->ORGS_NAME.' che supporta questa '.$LNG->SOLUTION_NAME;
-$LNG->EXPLORE_solutionToProject = $LNG->PROJECTS_NAME.' che supporta questa '.$LNG->SOLUTION_NAME;
-$LNG->EXPLORE_solutionToTheme = $LNG->THEMES_NAME.' assegnato a questa '.$LNG->SOLUTION_NAME;
+$LNG->EXPLORE_solutionToOrg = $LNG->ORGS_NAME.' che supportano questa '.$LNG->SOLUTION_NAME;
+$LNG->EXPLORE_solutionToProject = $LNG->PROJECTS_NAME.' che supportano questa '.$LNG->SOLUTION_NAME;
+$LNG->EXPLORE_solutionToTheme = $LNG->THEMES_NAME.' assegnati a questa '.$LNG->SOLUTION_NAME;
 $LNG->EXPLORE_solutionToComment = $LNG->COMMENTS_NAME.' su questa '.$LNG->SOLUTION_NAME;
 $LNG->EXPLORE_solutionToFollower = $LNG->FOLLOWERS_NAME.' di questa '.$LNG->SOLUTION_NAME;
 //org
 $LNG->EXPLORE_orgToProject = $LNG->PROJECTS_NAME_SHORT.' gestiti da questo '.$LNG->ORG_NAME_SHORT;
 $LNG->EXPLORE_orgToOrg = 'Partner di questo '.$LNG->ORG_NAME_SHORT;
-$LNG->EXPLORE_orgToChallenge = $LNG->CHALLENGES_NAME.' affrontata da questi '.$LNG->ORG_NAME;
+$LNG->EXPLORE_orgToChallenge = $LNG->CHALLENGES_NAME.' affrontate da questi '.$LNG->ORG_NAME;
 $LNG->EXPLORE_orgToIssue = $LNG->ISSUE_NAME.'affrontata da questo '.$LNG->ORG_NAME;
-$LNG->EXPLORE_orgToSolution = $LNG->SOLUTIONS_NAME.' specificata da questo'.$LNG->ORG_NAME;
-$LNG->EXPLORE_orgToClaim = $LNG->CLAIMS_NAME.' affermata da questo '.$LNG->ORG_NAME;
-$LNG->EXPLORE_orgToEvidence = $LNG->EVIDENCES_NAME.' specificata da questo '.$LNG->ORG_NAME;
-$LNG->EXPLORE_orgToResource = $LNG->RESOURCES_NAME.' associato a questo'.$LNG->ORG_NAME;
-$LNG->EXPLORE_orgToTheme = $LNG->THEMES_NAME.' assegnato a questo '.$LNG->ORG_NAME;
-$LNG->EXPLORE_orgToComment = $LNG->COMMENTS_NAME.' fatto da questo '.$LNG->ORG_NAME;
+$LNG->EXPLORE_orgToSolution = $LNG->SOLUTIONS_NAME.' specificate da questo'.$LNG->ORG_NAME;
+$LNG->EXPLORE_orgToClaim = $LNG->CLAIMS_NAME.' affermate da questo '.$LNG->ORG_NAME;
+$LNG->EXPLORE_orgToEvidence = $LNG->EVIDENCES_NAME.' specificate da questo '.$LNG->ORG_NAME;
+$LNG->EXPLORE_orgToResource = $LNG->RESOURCES_NAME.' associate a questo'.$LNG->ORG_NAME;
+$LNG->EXPLORE_orgToTheme = $LNG->THEMES_NAME.' assegnati a questo '.$LNG->ORG_NAME;
+$LNG->EXPLORE_orgToComment = $LNG->COMMENTS_NAME.' fatti da questo '.$LNG->ORG_NAME;
 $LNG->EXPLORE_orgToFollower = $LNG->FOLLOWERS_NAME.' di questo '.$LNG->ORG_NAME;
 //project
 $LNG->EXPLORE_projectToOrg = 'Partner di questo '.$LNG->PROJECT_NAME_SHORT;
 $LNG->EXPLORE_projectToManager = $LNG->ORGS_NAME_SHORT.' che gestiscono questo '.$LNG->PROJECT_NAME_SHORT;
-$LNG->EXPLORE_projectToChallenge = $LNG->CHALLENGES_NAME.' affrontata da questo '.$LNG->PROJECT_NAME;
-$LNG->EXPLORE_projectToIssue = $LNG->ISSUES_NAME.' affrontata da questo '.$LNG->PROJECT_NAME;
-$LNG->EXPLORE_projectToSolution = $LNG->SOLUTIONS_NAME.' specificata da questo '.$LNG->PROJECT_NAME;
+$LNG->EXPLORE_projectToChallenge = $LNG->CHALLENGES_NAME.' affrontate da questo '.$LNG->PROJECT_NAME;
+$LNG->EXPLORE_projectToIssue = $LNG->ISSUES_NAME.' affrontate da questo '.$LNG->PROJECT_NAME;
+$LNG->EXPLORE_projectToSolution = $LNG->SOLUTIONS_NAME.' specificate da questo '.$LNG->PROJECT_NAME;
 $LNG->EXPLORE_projectToClaim = $LNG->CLAIMS_NAME.' fatta da questo '.$LNG->PROJECT_NAME;
-$LNG->EXPLORE_projectToEvidence = $LNG->EVIDENCES_NAME.' specificata da questo '.$LNG->PROJECT_NAME;
-$LNG->EXPLORE_projectToResource = $LNG->RESOURCES_NAME.' associata a questo '.$LNG->PROJECT_NAME;
-$LNG->EXPLORE_projectToTheme = $LNG->THEMES_NAME.' assegnato a questo '.$LNG->PROJECT_NAME;
-$LNG->EXPLORE_projectToComment = $LNG->COMMENTS_NAME.' fatto da questo '.$LNG->PROJECT_NAME;
+$LNG->EXPLORE_projectToEvidence = $LNG->EVIDENCES_NAME.' specificate da questo '.$LNG->PROJECT_NAME;
+$LNG->EXPLORE_projectToResource = $LNG->RESOURCES_NAME.' associate a questo '.$LNG->PROJECT_NAME;
+$LNG->EXPLORE_projectToTheme = $LNG->THEMES_NAME.' assegnati a questo '.$LNG->PROJECT_NAME;
+$LNG->EXPLORE_projectToComment = $LNG->COMMENTS_NAME.' fatti da questo '.$LNG->PROJECT_NAME;
 $LNG->EXPLORE_projectToFollower = $LNG->FOLLOWERS_NAME.' di questo '.$LNG->PROJECT_NAME;
 //Evidence
 $LNG->EXPLORE_evidenceToSolution = $LNG->SOLUTIONS_NAME;
 $LNG->EXPLORE_evidenceToClaim = $LNG->CLAIMS_NAME;
-$LNG->EXPLORE_evidenceToOrg = $LNG->ORGS_NAME.' specificata da questa '.$LNG->EVIDENCE_NAME;
-$LNG->EXPLORE_evidenceToProject = $LNG->PROJECTS_NAME.' che specifica questa '.$LNG->EVIDENCE_NAME;
+$LNG->EXPLORE_evidenceToOrg = $LNG->ORGS_NAME.' specificate da questa '.$LNG->EVIDENCE_NAME;
+$LNG->EXPLORE_evidenceToProject = $LNG->PROJECTS_NAME.' che specificano questa '.$LNG->EVIDENCE_NAME;
 $LNG->EXPLORE_evidenceToResource = $LNG->RESOURCES_NAME;
-$LNG->EXPLORE_evidenceToTheme = $LNG->THEMES_NAME.' assegnato a questa '.$LNG->EVIDENCE_NAME;
+$LNG->EXPLORE_evidenceToTheme = $LNG->THEMES_NAME.' assegnati a questa '.$LNG->EVIDENCE_NAME;
 $LNG->EXPLORE_evidenceToComment = $LNG->COMMENTS_NAME.' su questa '.$LNG->EVIDENCE_NAME;
 $LNG->EXPLORE_evidenceToFollower = $LNG->FOLLOWERS_NAME.' di questa '.$LNG->EVIDENCE_NAME;
 //Resource
-$LNG->EXPLORE_resourceToChallenge = $LNG->CHALLENGES_NAME.' collegata a questa '.$LNG->RESOURCE_NAME;
+$LNG->EXPLORE_resourceToChallenge = $LNG->CHALLENGES_NAME.' collegate a questa '.$LNG->RESOURCE_NAME;
 $LNG->EXPLORE_resourceToIssue = $LNG->ISSUES_NAME;
-$LNG->EXPLORE_resourceToEvidence = $LNG->EVIDENCES_NAME.' che usa questa '.$LNG->RESOURCE_NAME;
-$LNG->EXPLORE_resourceToOrg = $LNG->ORGS_NAME.' collegato a questa '.$LNG->RESOURCE_NAME;
-$LNG->EXPLORE_resourceToProject = $LNG->PROJECTS_NAME.' collegato a questa '.$LNG->RESOURCE_NAME;
-$LNG->EXPLORE_resourceToTheme = $LNG->THEMES_NAME.' assegnato a questa '.$LNG->RESOURCE_NAME;
+$LNG->EXPLORE_resourceToEvidence = $LNG->EVIDENCES_NAME.' che usano questa '.$LNG->RESOURCE_NAME;
+$LNG->EXPLORE_resourceToOrg = $LNG->ORGS_NAME.' collegati a questa '.$LNG->RESOURCE_NAME;
+$LNG->EXPLORE_resourceToProject = $LNG->PROJECTS_NAME.' collegati a questa '.$LNG->RESOURCE_NAME;
+$LNG->EXPLORE_resourceToTheme = $LNG->THEMES_NAME.' assegnati a questa '.$LNG->RESOURCE_NAME;
 $LNG->EXPLORE_resourceToComment = $LNG->COMMENTS_NAME.' su questa '.$LNG->RESOURCE_NAME;
 $LNG->EXPLORE_resourceToFollower = $LNG->FOLLOWERS_NAME.' di questa '.$LNG->RESOURCE_NAME;
 $LNG->EXPLORE_resourceToResourceShort = 'Collegata a '.$LNG->RESOURCES_NAME;
@@ -388,7 +388,6 @@ $LNG->EXPLORE_themeToOrg = $LNG->ORGS_NAME.' con questo '.$LNG->THEME_NAME;
 $LNG->EXPLORE_themeToProject = $LNG->PROJECTS_NAME.' con questo '.$LNG->THEME_NAME;
 $LNG->EXPLORE_themeToComment = $LNG->COMMENTS_NAME.' su questo '.$LNG->THEME_NAME;
 $LNG->EXPLORE_themeToFollower = $LNG->FOLLOWERS_NAME.' di questo '.$LNG->THEME_NAME;
-
 
 /** EXPLORE BUTTONS,LINKS AND HINTS **/
 $LNG->EXPLORE_PRINT_BUTTON_ALT = "Stampa questo elemento";
@@ -452,12 +451,12 @@ $LNG->OVERVIEW_CLAIM_POPULARTHEMES_TITLE = 'più popolari '.$LNG->THEMES_NAME.' 
 $LNG->OVERVIEW_SOLUTION_MOSTRECENT_TITLE = $LNG->SOLUTIONS_NAME.' più recenti';
 $LNG->OVERVIEW_SOLUTION_MOSTCONNECTED_TITLE = $LNG->SOLUTIONS_NAME.' più connesse' ;
 $LNG->OVERVIEW_SOLUTION_MOSTVOTED_TITLE = $LNG->SOLUTIONS_NAME.' più votate';
-$LNG->OVERVIEW_SOLUTION_POPULARTHEMES_TITLE = $LNG->THEMES_NAME.' più votate per'.$LNG->SOLUTIONS_NAME;
+$LNG->OVERVIEW_SOLUTION_POPULARTHEMES_TITLE = $LNG->THEMES_NAME.' più votate per '.$LNG->SOLUTIONS_NAME;
 //Evidence
 $LNG->OVERVIEW_EVIDENCE_MOSTRECENT_TITLE = $LNG->EVIDENCES_NAME.' più recenti';
 $LNG->OVERVIEW_EVIDENCE_MOSTCONNECTED_TITLE = $LNG->EVIDENCES_NAME.' più connesse';
 $LNG->OVERVIEW_EVIDENCE_MOSTVOTED_TITLE = $LNG->EVIDENCES_NAME.' più votate';
-$LNG->OVERVIEW_EVIDENCE_POPULARTHEMES_TITLE = $LNG->THEMES_NAME.' più votati per'.$LNG->EVIDENCES_NAME;
+$LNG->OVERVIEW_EVIDENCE_POPULARTHEMES_TITLE = $LNG->THEMES_NAME.' più votati nella '.$LNG->EVIDENCES_NAME;
 //Resource
 $LNG->OVERVIEW_RESOURCE_MOSTRECENT_TITLE = $LNG->RESOURCES_NAME.' più recenti';
 $LNG->OVERVIEW_RESOURCE_MOSTCONNECTED_TITLE = $LNG->RESOURCES_NAME.' più connesse';
@@ -601,7 +600,7 @@ $LNG->REGISTRATION_REQUEST_SUCCESSFUL_TITLE_ADMIN = 'iscrizione del nuovo utente
 $LNG->REGISTRATION_REQUEST_SUCCESSFUL_MESSAGE_ADMIN = "Una mail è stata inviata al nuovo utente con i dettagli di accesso.";
 
 $LNG->FORM_HEADER_MESSAGE = 'Per favore tieni presente che tutti i dati che inserisci qui saranno visibili pubblicamente su questo sito da altri utenti.';
-$LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART1 = '(i campi con';
+$LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART1 = '(I campi con';
 $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART2 = 'sono obbligatori';
 $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART3 = ', a meno che non siano in una sottosezione facoltativa che non stai completando)';
 $LNG->FORM_REQUIRED_FIELDS_MESSAGE_PART4 = '.)';
@@ -621,7 +620,7 @@ $LNG->FORM_LABEL_DOI = 'DOI:';
 $LNG->FORM_LABEL_NAME = 'Nome:';
 $LNG->FORM_LABEL_THEME = $LNG->THEMES_NAME.':';
 $LNG->FORM_LABEL_TAGS = 'Aggiungi Tags:';
-$LNG->FORM_LABEL_TAGS_HINT = '(separato da virgola)';
+$LNG->FORM_LABEL_TAGS_HINT = '(separati da virgola)';
 $LNG->FORM_LABEL_ADDED_TAGS = 'Aggiungi Tags:';
 $LNG->FORM_LABEL_ADDED_TAGS_HINT = '(Seleziona per rimuovere)';
 $LNG->FORM_LABEL_PROJECT_STARTED_DATE = 'Data di inizio:';
@@ -651,10 +650,17 @@ $LNG->FORM_DESC_HTML_SWITCH_WARNING = 'Sei sicuro di voler passare a testo norma
 $LNG->FORM_AUTOCOMPLETE_TITLE_HINT = 'Prova a recuperare il titolo del sito web dai dati della pagina del sito web';
 $LNG->FORM_SELECT_RESOURCE_HINT = 'Seleziona/aggiungi una '.$LNG->RESOURCE_NAME.' per supportare questo';
 
-$LNG->FORM_BUTTON_REMOVE = 'elimina';
+$LNG->FORM_BUTTON_REMOVE = 'Elimina';
 $LNG->FORM_BUTTON_REMOVE_CAP = 'Elimina';
 $LNG->FORM_BUTTON_SELECT_ANOTHER = 'Seleziona un altro';
+
 $LNG->FORM_BUTTON_ADD_ANOTHER = "Aggiungi un'altra";
+
+$LNG->FORM_BUTTON_ADD_ANOTHER_THEME = "Aggiungi un altro ".$LNG->THEME_NAME;
+$LNG->FORM_BUTTON_ADD_ANOTHER_RESOURCE = "Aggiungi un'altra ".$LNG->RESOURCE_NAME;
+$LNG->FORM_BUTTON_ADD_ANOTHER_PARTNER = "Aggiungi un altro";
+$LNG->FORM_BUTTON_ADD_ANOTHER_SEE_ALSO ="Aggiungi un altro";
+
 $LNG->FORM_BUTTON_CHANGE = 'Modifica';
 $LNG->FORM_BUTTON_ADD = 'Aggiungi';
 $LNG->FORM_BUTTON_ADD_NEW = 'Aggiungi nuovo';
@@ -815,7 +821,6 @@ $LNG->FORM_PRINT_THEME_EVIDENCE_HEADING = $LNG->EVIDENCE_NAME.' con questo'.$LNG
 $LNG->FORM_PRINT_THEME_RESOURCE_HEADING = $LNG->RESOURCES_NAME.' con questo '.$LNG->THEME_NAME;
 $LNG->FORM_PRINT_THEME_ORGP_HEADING = $LNG->ORGS_NAME.'/'.$LNG->PROJECTS_NAME.' con questo '.$LNG->THEME_NAME;
 
-
 //Challenge
 $LNG->FORM_TITLE_CHALLENGE_ADD = 'Aggiungi a '.$LNG->CHALLENGE_NAME;
 $LNG->FORM_TITLE_CHALLENGE_CONNECT = 'Selezione '.$LNG->CHALLENGES_NAME.' e connettile a';
@@ -875,7 +880,7 @@ $LNG->FORM_TITLE_ORG_CONNECT = $LNG->FORM_TITLE_ORG_SECTION.' e connettilo a';
 $LNG->FORM_TITLE_ORGPROJECT_SECTION = 'Aggiungi/Seleziona un '.$LNG->ORG_NAME." o ".$LNG->PROJECT_NAME;
 $LNG->FORM_TITLE_ORGPROJECT_CONNECT = $LNG->FORM_TITLE_ORGPROJECT_SECTION.' e connettilo a';
 $LNG->FORM_ORG_TITLE_EDIT = 'Modifica';
-$LNG->FORM_ORG_TITLE_ADD = 'Parlaci della tua '.$LNG->ORG_NAME.', dei tuoi '.$LNG->PROJECT_NAME;
+$LNG->FORM_ORG_TITLE_ADD = 'Parlaci della tua '.$LNG->ORG_NAME.', dei tuoi '.$LNG->PROJECTS_NAME;
 $LNG->FORM_ORG_ENTER_SUMMARY_ERROR = "Per favore inserisci un nome";
 $LNG->FORM_ORG_CREATE_ERROR_MESSAGE = 'Non è stato possibile aggiungere/recuperare il '.$LNG->ORG_NAME.'/'.$LNG->PROJECT_NAME.'';
 $LNG->FORM_ORG_PUBLISH_MESSAGE = "Quando clicchi <b>".$LNG->FORM_BUTTON_PUBLISH."</b> , sarà creata una nuova ".$LNG->ORG_NAME."/".$LNG->PROJECT_NAME." e sarai rimandato alla pagina corrispondente.  <br> Lì sarai in grado di aggiungere ulteriori dettagli come tutti i partner che ha, ";
@@ -1108,25 +1113,25 @@ $LNG->PROJECT_HOME_NAV_HINT = '<p>'.$LNG->PROJECTS_NAME.' può essere connessa a
 /** HOME BUTTONS FURTHER INFO TEXT **/
 
 // Issue button
-$LNG->ISSUE_HOME_BUTTON_EXTRA = '<p>'.$LNG->ISSUES_NAME.' descrivere i problemi chiave portati alla discussione da Città Metropolitana o dai singoli  utenti.</p>';
+$LNG->ISSUE_HOME_BUTTON_EXTRA = '<p>Le '.$LNG->ISSUES_NAME.' descrivono i problemi chiave portati alla discussione da Città Metropolitana o dai singoli utenti.</p>';
 $LNG->ISSUE_HOME_BUTTON_EXTRA .= '<p>Una '.$LNG->ISSUE_NAME.' dovrebbe essere idealmente formulata come domanda e connessa a uno o più temi che si vogliono affrontare.';
 //$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<br><span id="issuehomemorebutton" class="active" style="font-weight:normal;text-decoration:underline" onClicca="if ($(\'issuehomemorediv\').style.display == \'none\') { $(\'issuehomemorediv\').style.display = \'block\'; $(\'issuehomemorebutton\').innerHTML = \'read less\'; } else { $(\'issuehomemorediv\').style.display = \'none\';  $(\'issuehomemorebutton\').innerHTML = \'keep reading\';}">continua a leggere</span></p>';
 $LNG->ISSUE_HOME_BUTTON_EXTRA .= '<div id="issuehomemorediv" style="float:left;clear:both;width:100%;display:block;margin:0px;padding:0px">';
-$LNG->ISSUE_HOME_BUTTON_EXTRA .= 'Ciascun utente può aggiungere una nuova '.$LNG->ISSUE_NAME.' o contribuire al dibattito su una '.$LNG->ISSUE_NAME.' esistente aggiungendo:</p>';
+$LNG->ISSUE_HOME_BUTTON_EXTRA .= 'Ciascun utente può aggiungere una nuova SFIDA o contribuire al dibattito su una '.$LNG->ISSUE_NAME.' esistente aggiungendo:</p>';
 $LNG->ISSUE_HOME_BUTTON_EXTRA .= '<ul>';
-$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>Una risorsa web;</li>';
-$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->ORGS_NAME.' o '.$LNG->PROJECTS_NAME.' che affrontano quella '.$LNG->ISSUE_NAME.';</li>';
-$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' associati; </li>';
+$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>RISORCSE WEB</li>';
+$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->ORGS_NAME.' o '.$LNG->PROJECTS_NAME.' che affrontano quella '.$LNG->ISSUE_NAME.'</li>';
+$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' associati</li>';
 if ($CFG->HAS_SOLUTION) {
 	$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->SOLUTIONS_NAME.'</li>';
 }
 if ($CFG->HAS_CLAIM) {
-	$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->CLAIMS_NAME.' che la affronta.</li>';
+	$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->CLAIMS_NAME.' che la affronta</li>';
 }
 $LNG->ISSUE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->COMMENTS_NAME.' generali</li>';
 $LNG->ISSUE_HOME_BUTTON_EXTRA .= '</ul>';
-$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<p>La lista di '.$LNG->ISSUES_NAME.' aggiunte finora può essere esplorato cliccando su <a href="'.$CFG->homeAddress.'#issue-list" title="Clicca per andare alla lista delle '.$LNG->ISSUES_NAME.'">'.$LNG->ISSUE_NAME.'</a>.</p>';
-$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<p>Nella lista delle '.$LNG->ISSUES_NAME.', queste possono essere valutate come più o meno rilevanti, così che la comunità degli utenti possa esprimere quanto si considera ciascuna '.$LNG->ISSUE_NAME.' rilevante rispetto alle altre. La freccia verde in su/la freccia rossa in giù possono essere usate per supportare/osteggiare una '.$LNG->ISSUES_NAME.' nella lista.</p>';
+$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<p>La lista delle '.$LNG->ISSUES_NAME.' aggiunte finora può essere esplorata cliccando su <a href="'.$CFG->homeAddress.'#issue-list" title="Clicca per andare alla lista delle '.$LNG->ISSUES_NAME.'">'.$LNG->ISSUES_NAME.'</a>.</p>';
+$LNG->ISSUE_HOME_BUTTON_EXTRA .= '<p>Nella lista delle '.$LNG->ISSUES_NAME.', queste possono essere valutate dalla comunità come più o meno rilevanti, così che la comunità degli utenti possa esprimere quanto si considera ciascuna '.$LNG->ISSUE_NAME.' rilevante rispetto alle altre. La freccia verde in su/la freccia rossa in giù possono essere usate per supportare/osteggiare una '.$LNG->ISSUES_NAME.' nella lista.</p>';
 $LNG->ISSUE_HOME_BUTTON_EXTRA .= '</div>';
 
 // Solution Button
@@ -1152,7 +1157,7 @@ if ($CFG->HAS_CLAIM) {
 }
 
 $LNG->SOLUTION_HOME_BUTTON_EXTRA = '<p>';
-$LNG->SOLUTION_HOME_BUTTON_EXTRA .= 'Le '.$LNG->SOLCLAIMS_TEXT.' sono usate per rispondere a specifiche '.$LNG->ISSUES_NAME.' e possono essere supportate o osteggiate da specifiche '.$LNG->EVIDENCE_NAME.'.</p>';
+$LNG->SOLUTION_HOME_BUTTON_EXTRA .= 'Le '.$LNG->SOLCLAIMS_TEXT.' sono usate per rispondere a specifiche '.$LNG->ISSUES_NAME.' e possono essere supportate o osteggiate da specifiche '.$LNG->EVIDENCES_NAME.'.</p>';
 $LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<p>';
 if ($CFG->HAS_SOLUTION) {
 	$LNG->SOLUTION_HOME_BUTTON_EXTRA .= "Una ".$LNG->SOLUTION_NAME." descrive una soluzione promossa da professionisti, esperti, decisori o altri stakeholder che fanno parte della comunità.<br>";
@@ -1165,76 +1170,76 @@ $LNG->SOLUTION_HOME_BUTTON_EXTRA .= "<p>Le ".$LNG->SOLCLAIMS_TEXT." dovrebbero e
 $LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<div id="solutionhomemorediv" style="float:left;clear:both;width:100%;display:block;margin:0px;padding:0px">';
 $LNG->SOLUTION_HOME_BUTTON_EXTRA .= 'Ciascun utente può aggiungere una nuova '.$LNG->SOLCLAIM_TEXT.' o contribuire a migliorare quelle esistenti aggiungendo:</p>';
 $LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<ul>';
-$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>Una '.$LNG->EVIDENCE_NAME.' a favore.</li>';
-$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>Una '.$LNG->EVIDENCE_NAME.' contraria.</li>';
-$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>'.$LNG->ORGS_NAME.' oppure  '.$LNG->PROJECTS_NAME.' che lavorano su questa PROPOSTA o soluzione.</li>';
-$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' connessi.</li>';
-$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>'.$LNG->COMMENTS_NAME.' generali.</li>';
+$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>una '.$LNG->EVIDENCE_NAME.' a favore</li>';
+$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>una '.$LNG->EVIDENCE_NAME.' contraria</li>';
+$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>'.$LNG->ORGS_NAME.' oppure  '.$LNG->PROJECTS_NAME.' che lavorano su questa PROPOSTA o soluzione</li>';
+$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' connessi</li>';
+$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<li>'.$LNG->COMMENTS_NAME.' generali</li>';
 $LNG->SOLUTION_HOME_BUTTON_EXTRA .= '</ul>';
-$LNG->SOLUTION_HOME_BUTTON_EXTRA .= "<p>La ".$LNG->SOLCLAIMS_TEXT." PROPOSTE hanno un ruolo chiave all'interno dell'Evidence Hub poiché inquadrano i temi del dibattito.<br>L'obiettivo principale dell'Evidence Hub è promuovere un dibattito comunitario intorno ad esse.</p>";
+$LNG->SOLUTION_HOME_BUTTON_EXTRA .= "<p>La ".$LNG->SOLCLAIMS_TEXT." hanno un ruolo chiave all'interno dell'Evidence Hub poiché inquadrano i temi del dibattito.<br>L'obiettivo principale dell'Evidence Hub è promuovere un dibattito comunitario intorno ad esse.</p>";
 if ($CFG->HAS_SOLUTION) {
-	$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<p>Le '.$LNG->SOLUTIONS_NAME.' aggiunte finora possono essere esplorati cliccando su <a href="'.$CFG->homeAddress.'#solution-list" title="Clicca per andare alla lista delle '.$LNG->SOLUTIONS_NAME.'">'.$LNG->SOLUTIONS_NAME.'</a>. </p>';
+	$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<p>Le '.$LNG->SOLUTIONS_NAME.' aggiunte finora possono essere esplorate cliccando su <a href="'.$CFG->homeAddress.'#solution-list" title="Clicca per andare alla lista delle '.$LNG->SOLUTIONS_NAME.'">'.$LNG->SOLUTIONS_NAME.'</a>. </p>';
 }
 if ($CFG->HAS_CLAIM) {
-	$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<p>Le '.$LNG->CLAIMS_NAME.' aggiunte finora possono essere esplorati cliccando su <a href="'.$CFG->homeAddress.'#claim-list" title="Clicca per andare alla lista delle  '.$LNG->CLAIMS_NAME.' ">'.$LNG->CLAIMS_NAME.'</a>. </p>';
+	$LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<p>Le '.$LNG->CLAIMS_NAME.' aggiunte finora possono essere esplorate cliccando su <a href="'.$CFG->homeAddress.'#claim-list" title="Clicca per andare alla lista delle  '.$LNG->CLAIMS_NAME.' ">'.$LNG->CLAIMS_NAME.'</a>. </p>';
 }
 $LNG->SOLUTION_HOME_BUTTON_EXTRA .= '<p>Nella lista delle '.$LNG->SOLCLAIMS_TEXT.', queste possono essere valutate come più o meno rilevanti, così che la comunità degli utenti possa esprimere quanto si considera ciascuna '.$LNG->SOLCLAIM_TEXT.' rilevante rispetto alle altre. La freccia verde in su/la freccia rossa in giù possono essere usate per supportare/osteggiare una '.$LNG->SOLCLAIMS_TEXT.' nella lista.</p>';
 $LNG->SOLUTION_HOME_BUTTON_EXTRA .= '</div>';
 
 // Evidence Button
-$LNG->EVIDENCE_HOME_BUTTON_EXTRA = "<p>Una ".$LNG->EVIDENCE_NAME." rappresenta il sunto dello sforzo comunitario per mappare ciò che funziona e ciò che non funziona all'interno della comunità come suggerito dalla pratica o dalla ricerca. Come tale le ".$LNG->EVIDENCES_NAME." sono il cuore dell'Evidence Hub.</p>";
-$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<p>Idealmente una '.$LNG->EVIDENCE_NAME.' sosterrà o sfiderà almeno una '.$LNG->SOLCLAIM_TEXT;
+$LNG->EVIDENCE_HOME_BUTTON_EXTRA = "<p>Una ".$LNG->EVIDENCE_NAME." rappresenta il sunto dello sforzo comunitario per mappare ciò che funziona e ciò che non funziona all'interno della comunità come suggerito dalla pratica o dalla ricerca. Come tali le ".$LNG->EVIDENCES_NAME." sono il cuore dell'Evidence Hub.</p>";
+$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<p>Idealmente una '.$LNG->EVIDENCE_NAME.' sosterrà o sfiderà almeno una '.$LNG->SOLCLAIM_TEXT.'.';
 
 $LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<div id="evidencehomemorediv" style="float:left;clear:both;width:100%;display:block;margin:0px;padding:0px">';
 $LNG->EVIDENCE_HOME_BUTTON_EXTRA .= 'Ciascun utente può aggiungere una nuova  '.$LNG->EVIDENCE_NAME.' o contribuire al dibattito su una '.$LNG->EVIDENCE_NAME.' esistente aggiungendo:</p>';
 $LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<ul>';
 if ($CFG->HAS_SOLUTION) {
-	$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->SOLUTIONS_NAME.' che supportano o sfidano una '.$LNG->EVIDENCE_NAME.'.</li>';
+	$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->SOLUTIONS_NAME.' che supportano o sfidano una '.$LNG->EVIDENCE_NAME.'</li>';
 }
 if ($CFG->HAS_CLAIM) {
-	$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->CLAIMS_NAME.'che supportano o sfidano una '.$LNG->EVIDENCE_NAME.'.</li>';
+	$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->CLAIMS_NAME.'che supportano o sfidano una '.$LNG->EVIDENCE_NAME.'</li>';
 }
-$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->ORGS_NAME.' o '.$LNG->PROJECTS_NAME.' che contribuiscono alla '.$LNG->EVIDENCE_NAME.'.</li>';
-$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' connessi ;</li>';
-$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->COMMENTS_NAME.' generali.</li>';
+$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->ORGS_NAME.' o '.$LNG->PROJECTS_NAME.' che contribuiscono alla '.$LNG->EVIDENCE_NAME.'</li>';
+$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' connessi</li>';
+$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->COMMENTS_NAME.' generali</li>';
 $LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '</ul>';
-$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<p>La lista delle '.$LNG->EVIDENCE_NAME.' aggiunte può essere esplorato cliccando '.$LNG->EVIDENCE_NAME.'.</p>';
-$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<p>Nella lista delle '.$LNG->EVIDENCE_NAME.', queste possono essere valutate come più o meno rilevanti, così che la comunità degli utenti possa esprimere quanto si considera ciascuna '.$LNG->EVIDENCE_NAME.' rispetto alle altre. La freccia verde in su/la freccia rossa in giù possono essere usate per supportare/osteggiare una '.$LNG->EVIDENCE_NAME.' nella lista. </p>';
+$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<p>La lista delle '.$LNG->EVIDENCES_NAME.' aggiunte può essere esplorata cliccando su '.$LNG->EVIDENCES_NAME.'.</p>';
+$LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '<p>Nella lista delle '.$LNG->EVIDENCES_NAME.', queste possono essere valutate come più o meno rilevanti, così che la comunità degli utenti possa esprimere quanto si considera ciascuna '.$LNG->EVIDENCE_NAME.' rispetto alle altre. La freccia verde in su/la freccia rossa in giù possono essere usate per supportare/osteggiare una '.$LNG->EVIDENCES_NAME.' nella lista. </p>';
 $LNG->EVIDENCE_HOME_BUTTON_EXTRA .= '</div>';
 
 // Resource Button
-$LNG->RESOURCE_HOME_BUTTON_EXTRA = "<p>Le ".$LNG->RESOURCES_NAME." sono le Pubblicazioni (URL per Research Papers) o Risorse Web (URL per qualsiasi altro Sito Web rilevante) che sono state aggiunte all'Evidence Hub.</p>";
-$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<p>Le '.$LNG->RESOURCES_NAME.' possono essere usate in due maniere principali:</p>';
+$LNG->RESOURCE_HOME_BUTTON_EXTRA = "<p>Le ".$LNG->RESOURCES_NAME." sono le Pubblicazioni (URL per articoli scientifici) o Risorse Web (URL per qualsiasi altro sito web rilevante) che sono state aggiunte all'Evidence Hub.</p>";
+$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<p>Le '.$LNG->RESOURCES_NAME.' possono essere usate:</p>';
 $LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<ul>';
-$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li> per supportare le '.$LNG->EVIDENCE_NAME.' aggiunte al sito.</li>';
-$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>per descrivere '.$LNG->ORG_NAME_SHORT.' o '.$LNG->PROJECT_NAME.'.</li>';
+$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li> per supportare le '.$LNG->EVIDENCES_NAME.' aggiunte al sito</li>';
+$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>per descrivere un '.$LNG->ORG_NAME_SHORT.' o '.$LNG->PROJECT_NAME.'</li>';
 $LNG->RESOURCE_HOME_BUTTON_EXTRA .= '</ul>';
 //$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<span id="resourcehomemorebutton" class="active" style="font-weight:normal;text-decoration:underline" onClicca="if ($(\'resourcehomemorediv\').style.display == \'none\') { $(\'resourcehomemorediv\').style.display = \'block\'; $(\'resourcehomemorebutton\').innerHTML = \'read less\'; } else { $(\'resourcehomemorediv\').style.display = \'none\';  $(\'resourcehomemorebutton\').innerHTML = \'keep reading\';}">continua a leggere</span>';
 $LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<div id="resourcehomemorediv" style="float:left;clear:both;width:100%;display:block;margin:0px;padding:0px">';
 $LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<br>Ciascun utente può aggiungere una nuova '.$LNG->RESOURCE_NAME.' o contribuire a migliorare quelle esistenti aggiungendo:</p>';
 $LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<ul>';
-$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->EVIDENCE_NAME.' che derivano da o che supportano quella '.$LNG->RESOURCE_NAME.'.</li>';
-$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->ORGS_NAME_SHORT.' oppure '.$LNG->PROJECTS_NAME.' connessi a quella '.$LNG->RESOURCE_NAME.'.</li>';
-$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' associati.</li>';
-$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->COMMENTS_NAME.' generali.</li>';
+$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->EVIDENCES_NAME.' che derivano da o che supportano quella '.$LNG->RESOURCE_NAME.'</li>';
+$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->ORGS_NAME_SHORT.' oppure '.$LNG->PROJECTS_NAME.' connessi a quella '.$LNG->RESOURCE_NAME.'</li>';
+$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' associati</li>';
+$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<li>'.$LNG->COMMENTS_NAME.' generali</li>';
 $LNG->RESOURCE_HOME_BUTTON_EXTRA .= '</ul>';
-$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<p>La liste delle '.$LNG->RESOURCES_NAME.' può essere esplorata cliccando su <a href="'.$CFG->homeAddress.'#web-list" title="Clicca per andare alla lista delle'.$LNG->RESOURCES_NAME.'">'.$LNG->RESOURCES_NAME.'</a>.</p>';
+$LNG->RESOURCE_HOME_BUTTON_EXTRA .= '<p>La lista delle '.$LNG->RESOURCES_NAME.' può essere esplorata cliccando su <a href="'.$CFG->homeAddress.'#web-list" title="Clicca per andare alla lista delle'.$LNG->RESOURCES_NAME.'">'.$LNG->RESOURCES_NAME.'</a>.</p>';
 $LNG->RESOURCE_HOME_BUTTON_EXTRA .= '</div>';
 
 // Org Button
 $LNG->ORG_HOME_BUTTON_EXTRA = "<p><b>".$LNG->ORGS_NAME_SHORT."</b> e <b>".$LNG->PROJECTS_NAME."</b> possono essere aggiunti all'Evidence Hub per mappare l'ecosistema organizzativo della comunità.";
-$LNG->ORG_HOME_BUTTON_EXTRA .= '<br>la lista delle '.$LNG->ORGS_NAME_SHORT.', '.$LNG->PROJECTS_NAME.' può essere esplorata cliccando su <a href="'.$CFG->homeAddress.'#org-list" title="Clicca per andare alla lista di'.$LNG->ORG_NAME.'/'.$LNG->PROJECT_NAME.'">'.$LNG->ORG_NAME_SHORT.'/'.$LNG->PROJECT_NAME.'</a>.';
-$LNG->ORG_HOME_BUTTON_EXTRA .= '<br>'.$LNG->ORGS_NAME_SHORT.' e '.$LNG->PROJECTS_NAME.' può essere esplorato anche da <a href="'.$CFG->homeAddress.'#org-list" title="Clicca qui per andare a"> geo-location</a>.<br>';
+$LNG->ORG_HOME_BUTTON_EXTRA .= '<br>La lista dei '.$LNG->ORGS_NAME_SHORT.', '.$LNG->PROJECTS_NAME.' può essere esplorata cliccando su <a href="'.$CFG->homeAddress.'#org-list" title="Clicca per andare alla lista di'.$LNG->ORG_NAME.'/'.$LNG->PROJECT_NAME.'">'.$LNG->ORG_NAME_SHORT.'/'.$LNG->PROJECT_NAME.'</a>.';
+$LNG->ORG_HOME_BUTTON_EXTRA .= '<br>'.$LNG->ORGS_NAME_SHORT.' e '.$LNG->PROJECTS_NAME.' possono essere esplorati anche da <a href="'.$CFG->homeAddress.'#org-list" title="Clicca qui per andare a"> geo-location</a>.<br>';
 //$LNG->ORG_HOME_BUTTON_EXTRA .= '<span id="orghomemorebutton" class="active" style="font-weight:normal;text-decoration:underline" onClick="if ($(\'orghomemorediv\').style.display == \'none\') { $(\'orghomemorediv\').style.display = \'block\'; $(\'orghomemorebutton\').innerHTML = \'read less\'; } else { $(\'orghomemorediv\').style.display = \'none\';  $(\'orghomemorebutton\').innerHTML = \'keep reading\';}">continua a leggere</span></p>';
 $LNG->ORG_HOME_BUTTON_EXTRA .= '<div id="orghomemorediv" style="float:left;clear:both;width:100%;display:block;margin:0px;padding:0px">';
 $LNG->ORG_HOME_BUTTON_EXTRA .= 'Ciasun utente può inserire un nuovo '.$LNG->ORG_NAME_SHORT.'/'.$LNG->PROJECT_NAME.' aggiungendo:<br>';
 $LNG->ORG_HOME_BUTTON_EXTRA .= '<ul>';
-$LNG->ORG_HOME_BUTTON_EXTRA .= '<li>Organizzazioni e partner che promuovono progetti, servizi o iniziative rilevanti per i temi dello sviluppo sostenibile.</li>';
+$LNG->ORG_HOME_BUTTON_EXTRA .= '<li>organizzazioni e partner che promuovono progetti, servizi o iniziative rilevanti per i temi dello sviluppo sostenibile</li>';
 $LNG->ORG_HOME_BUTTON_EXTRA .= '<li>'.$LNG->ISSUES_NAME;
-$LNG->ORG_HOME_BUTTON_EXTRA .= ' affrontate da singoli '.$LNG->PROJECT_NAME.'.</li>';
-$LNG->ORG_HOME_BUTTON_EXTRA .= '<li>'.$LNG->SOLUTIONS_NAME.' o '.$LNG->EVIDENCES_NAME.' supportate da singoli '.$LNG->PROJECT_NAME.'.</li>';
-$LNG->ORG_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' associati.</li>';
-$LNG->ORG_HOME_BUTTON_EXTRA .= '<li>'.$LNG->COMMENTS_NAME.' generali.</li>';
+$LNG->ORG_HOME_BUTTON_EXTRA .= ' affrontate da singoli '.$LNG->PROJECT_NAME.'</li>';
+$LNG->ORG_HOME_BUTTON_EXTRA .= '<li>'.$LNG->SOLUTIONS_NAME.' o '.$LNG->EVIDENCES_NAME.' supportate da un '.$LNG->PROJECT_NAME.'</li>';
+$LNG->ORG_HOME_BUTTON_EXTRA .= '<li>'.$LNG->THEMES_NAME.' associati</li>';
+$LNG->ORG_HOME_BUTTON_EXTRA .= '<li>'.$LNG->COMMENTS_NAME.' generali</li>';
 $LNG->ORG_HOME_BUTTON_EXTRA .= '</ul>';
 $LNG->ORG_HOME_BUTTON_EXTRA .= '</div>';
 
@@ -1706,24 +1711,24 @@ $LNG->USER_HOME_ANALYTICS_LINK_HINT =  "Si apre una nuova finestra e il caricame
 
 /** MAIN TAB SCREENS - TABBERLIB **/
 $LNG->TAB_ADD_CHALLENGE_LINK = 'Aggiungi un '.$LNG->CHALLENGE_NAME;
-$LNG->TAB_ADD_ISSUE_LINK = 'Aggiungi un '.$LNG->ISSUE_NAME;
-$LNG->TAB_ADD_SOLUTION_LINK = 'Aggiungi un '.$LNG->SOLUTION_NAME;
-$LNG->TAB_ADD_CLAIM_LINK = 'Aggiungi un '.$LNG->CLAIM_NAME;
-$LNG->TAB_ADD_EVIDENCE_LINK = 'Aggiungi un '.$LNG->EVIDENCE_NAME;
+$LNG->TAB_ADD_ISSUE_LINK = 'Aggiungi una '.$LNG->ISSUE_NAME;
+$LNG->TAB_ADD_SOLUTION_LINK = 'Aggiungi una '.$LNG->SOLUTION_NAME;
+$LNG->TAB_ADD_CLAIM_LINK = 'Aggiungi un\''.$LNG->CLAIM_NAME; //affermazione - masculine
+$LNG->TAB_ADD_EVIDENCE_LINK = 'Aggiungi una '.$LNG->EVIDENCE_NAME;
 $LNG->TAB_ADD_RESOURCE_LINK = 'Aggiungi una '.$LNG->RESOURCE_NAME;
 $LNG->TAB_ADD_ORG_LINK = 'Aggiungi un '.$LNG->ORG_NAME;
 $LNG->TAB_ADD_PROJECT_LINK = 'Aggiungi un '.$LNG->PROJECT_NAME;
-$LNG->TAB_ADD_COMMENT_LINK = 'Aggiungi Una '.$LNG->COMMENT_NAME;
+$LNG->TAB_ADD_COMMENT_LINK = 'Aggiungi una '.$LNG->COMMENT_NAME;
 
 $LNG->TAB_ADD_CHALLENGE_HINT = 'Aggiungi un '.$LNG->CHALLENGE_NAME;
-$LNG->TAB_ADD_ISSUE_HINT = 'Aggiungi un '.$LNG->ISSUE_NAME;
-$LNG->TAB_ADD_SOLUTION_HINT = 'Aggiungi un '.$LNG->SOLUTION_NAME;
-$LNG->TAB_ADD_CLAIM_HINT = 'Aggiungi un '.$LNG->CLAIM_NAME;
-$LNG->TAB_ADD_EVIDENCE_HINT = 'Aggiungi un '.$LNG->EVIDENCE_NAME;
-$LNG->TAB_ADD_RESOURCE_HINT = 'Aggiungi un '.$LNG->RESOURCE_NAME;
+$LNG->TAB_ADD_ISSUE_HINT = 'Aggiungi una '.$LNG->ISSUE_NAME;
+$LNG->TAB_ADD_SOLUTION_HINT = 'Aggiungi una '.$LNG->SOLUTION_NAME;
+$LNG->TAB_ADD_CLAIM_HINT = 'Aggiungi un\''.$LNG->CLAIM_NAME; //affermazione - masculine
+$LNG->TAB_ADD_EVIDENCE_HINT = 'Aggiungi una '.$LNG->EVIDENCE_NAME;
+$LNG->TAB_ADD_RESOURCE_HINT = 'Aggiungi una '.$LNG->RESOURCE_NAME;
 $LNG->TAB_ADD_ORG_HINT = 'Aggiungi un '.$LNG->ORG_NAME;
 $LNG->TAB_ADD_PROJECT_HINT = 'Aggiungi un '.$LNG->PROJECT_NAME;
-$LNG->TAB_ADD_COMMENT_HINT = 'Aggiungi un '.$LNG->COMMENT_NAME;
+$LNG->TAB_ADD_COMMENT_HINT = 'Aggiungi una '.$LNG->COMMENT_NAME;
 
 $LNG->TAB_RSS_CHALLENGE_HINT = 'Ottieni un feed RSS per'.$LNG->CHALLENGES_NAME;
 $LNG->TAB_RSS_ISSUE_HINT = 'Ottieni un feed RSS per'.$LNG->ISSUES_NAME;
@@ -1801,6 +1806,7 @@ $LNG->TAB_CLAIM_MESSAGE_LOGGEDOUT_OPEN = "Esplora le  ".$LNG->CLAIMS_NAME." che 
 $LNG->TAB_CLAIM_MESSAGE_LOGGEDOUT_REQUEST = "Esplora le ".$LNG->CLAIMS_NAME." che gli utenti stanno formulando - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registrarequest.php'>Sign Up</a> per aggiungere le tue.";
 $LNG->TAB_CLAIM_MESSAGE_LOGGEDOUT_CLOSED = "Esplora le  ".$LNG->CLAIMS_NAME." che gli utenti stanno formulando - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> per aggiungere le tue.";
 
+/*
 $temp = "";
 if ($CFG->HAS_SOLUTION) {
 	$temp .= $LNG->SOLUTIONS_NAME;
@@ -1811,15 +1817,21 @@ if ($CFG->HAS_SOLUTION && $CFG->HAS_CLAIM) {
 if ($CFG->HAS_CLAIM) {
 	$temp .= $LNG->CLAIMS_NAME;
 }
-$LNG->TAB_EVIDENCE_MESSAGE_LOGGEDIN = "Esplora le ".$LNG->EVIDENCES_NAME." a favore/contro per ".$temp." - e aggiungi le tue";
-$LNG->TAB_EVIDENCE_MESSAGE_LOGGEDOUT_OPEN = "Esplora le ".$LNG->EVIDENCES_NAME." a favore/contro per".$temp." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registraopen.php'>Sign Up</a> per aggiungere le tue.";
-$LNG->TAB_EVIDENCE_MESSAGE_LOGGEDOUT_REQUEST = "Esplora le".$LNG->EVIDENCES_NAME." a favore/contro per  ".$temp." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registrarequest.php'>Sign Up</a> per aggiungere le tue.";
-$LNG->TAB_EVIDENCE_MESSAG_LOGGEDOUT_CLOSED = "Esplora le ".$LNG->EVIDENCES_NAME." a favore/contro per".$temp." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> per aggiungere le tue.";
+*/
+//$LNG->TAB_EVIDENCE_MESSAGE_LOGGEDIN = "Esplora le ".$LNG->EVIDENCES_NAME." a favore/contro per ".$temp." - e aggiungi le tue";
+//$LNG->TAB_EVIDENCE_MESSAGE_LOGGEDOUT_OPEN = "Esplora le ".$LNG->EVIDENCES_NAME." a favore/contro per ".$temp." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registraopen.php'>Sign Up</a> per aggiungere le tue.";
+//$LNG->TAB_EVIDENCE_MESSAGE_LOGGEDOUT_REQUEST = "Esplora le ".$LNG->EVIDENCES_NAME." a favore/contro per ".$temp." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registrarequest.php'>Sign Up</a> per aggiungere le tue.";
+//$LNG->TAB_EVIDENCE_MESSAG_LOGGEDOUT_CLOSED = "Esplora le ".$LNG->EVIDENCES_NAME." a favore/contro per ".$temp." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> per aggiungere le tue.";
 
-$LNG->TAB_RESOURCE_MESSAGE_LOGGEDIN = "Esplora le".$LNG->RESOURCES_NAME." - e aggiungi le tue.";
-$LNG->TAB_RESOURCE_MESSAGE_LOGGEDOUT_OPEN = "Esplora le".$LNG->RESOURCES_NAME." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registraopen.php'>Sign Up</a> per aggiungere le tue.";
+$LNG->TAB_EVIDENCE_MESSAGE_LOGGEDIN = "Esplora le ".$LNG->EVIDENCES_NAME." inoltrate fino ad ora – a aggiungi le tue";
+$LNG->TAB_EVIDENCE_MESSAGE_LOGGEDOUT_OPEN = "Esplora le ".$LNG->EVIDENCES_NAME." inoltrate fino ad ora - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registraopen.php'>Sign Up</a> per aggiungere le tue.";
+$LNG->TAB_EVIDENCE_MESSAGE_LOGGEDOUT_REQUEST = "Esplora le ".$LNG->EVIDENCES_NAME." inoltrate fino ad ora - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registrarequest.php'>Sign Up</a> per aggiungere le tue.";
+$LNG->TAB_EVIDENCE_MESSAG_LOGGEDOUT_CLOSED = "Esplora le ".$LNG->EVIDENCES_NAME." inoltrate fino ad ora - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> per aggiungere le tue.";
+
+$LNG->TAB_RESOURCE_MESSAGE_LOGGEDIN = "Esplora le ".$LNG->RESOURCES_NAME." - e aggiungi le tue.";
+$LNG->TAB_RESOURCE_MESSAGE_LOGGEDOUT_OPEN = "Esplora le ".$LNG->RESOURCES_NAME." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registraopen.php'>Sign Up</a> per aggiungere le tue.";
 $LNG->TAB_RESOURCE_MESSAGE_LOGGEDOUT_REQUEST = "Esplora le ".$LNG->RESOURCES_NAME." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registrarequest.php'>Sign Up</a> per aggiungere le tue.";
-$LNG->TAB_RESOURCE_MESSAGE_LOGGEDOUT_CLOSED = "Esplora le".$LNG->RESOURCES_NAME." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> per aggiungere le tue.";
+$LNG->TAB_RESOURCE_MESSAGE_LOGGEDOUT_CLOSED = "Esplora le ".$LNG->RESOURCES_NAME." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> per aggiungere le tue.";
 
 $LNG->TAB_ORG_MESSAGE_LOGGEDIN = "Esplora i ".$LNG->ORGS_NAME." - e aggiungi il tuo.";
 $LNG->TAB_ORG_MESSAGE_LOGGEDOUT_OPEN = "Esplora i ".$LNG->ORGS_NAME." - e <a title='Sign In' href='".$CFG->homeAddress."ui/pages/login.php'>Sign In</a> | <a title='Sign Up' href='".$CFG->homeAddress."ui/pages/Registraopen.php'>Sign Up</a> per aggiungere il tuo.";
@@ -1888,9 +1900,6 @@ $LNG->WIDGET_EVIDENCE_ADD_HINT = 'Seleziona/aggiungi un contributo da aggiungere
 $LNG->WIDGET_ADD_LINK = 'Aggiungi';
 $LNG->WIDGET_SIGNIN_HINT = 'Accedi per contribuire all\'Evidence Hub';
 $LNG->WIDGET_FOLLOW_SIGNIN_HINT = 'Accedi per seguire questo elemento';
-$LNG->WIDGET_NONE_FOUND_PART1 = 'No';
-$LNG->WIDGET_NONE_FOUND_PART2 = 'ancora non aggiunto';
-$LNG->WIDGET_NONE_FOUND_PART2b = 'nella lista';
 $LNG->WIDGET_THEME_SELECT_OPTION = 'Seleziona '.$LNG->THEME_NAME.'...';
 $LNG->WIDGET_ADD_BUTTON = 'Aggiungi';
 $LNG->WIDGET_NO_RELATED_THEMES_FOUND = 'Nessun collegamento al '.$LNG->THEMES_NAME.'trovato';
@@ -1903,6 +1912,8 @@ $LNG->WIDGET_NO_RESULTS_FOUND = 'Nessun risultato trovato';
 $LNG->WIDGET_NO_FOLLOWERS_FOUND = 'Nessum '.$LNG->FOLLOWERS_NAME.' trovato';
 $LNG->WIDGET_HOW_EVIDENCE_RELATES_MESSAGE = 'Per favore indica come questa '.$LNG->EVIDENCE_NAME.' si relaziona?';
 $LNG->WIDGET_ADD_COMMENT_HINT = 'Aggiungi un nuovo commento contro l\'attuale elemento focale';
+$LNG->WIDGET_NONE_FOUND = 'Nessun elemento'; // for explore widget empty lists message
+$LNG->WIDGET_NONE_FOUND2 = 'Nessun elemento'; // for chat lists and a couple of other places in debates
 
 /** ADMIN AREA **/
 $LNG->ADMIN_TITLE = "Area Amministrazione";

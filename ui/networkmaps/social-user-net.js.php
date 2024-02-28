@@ -81,7 +81,7 @@ function loadSocialData(forcedirectedGraph, toolbar, messagearea) {
 	var nodetypes = "";
 
 	var count = BASE_TYPES.length;
-	for(var i=0; i<count; i++){
+	for(var i=0; i < count; i++){
 		if (BASE_TYPES[i] != "Theme") {
 			if (i == 0) {
 				nodetypes += BASE_TYPES[i];
@@ -95,7 +95,7 @@ function loadSocialData(forcedirectedGraph, toolbar, messagearea) {
 		nodetypes += ","+EVIDENCE_TYPES[i];
 	}
 	count = RESOURCE_TYPES.length;
-	for (var i=0; i<count; i++) {
+	for (var i=0; i < count; i++) {
 		nodetypes += ","+RESOURCE_TYPES[i];
 	}
 
@@ -130,11 +130,11 @@ function loadSocialData(forcedirectedGraph, toolbar, messagearea) {
 
       			var conns = json.connectionset[0].connections;
 				$('graphConnectionCount').innerHTML = "";
-				$('graphConnectionCount').insert('<span style="font-size:10pt;color:black;float:left;margin-left:20px"><?php echo $LNG->GRAPH_CONNECTION_COUNT_LABEL; ?> '+conns.length+'</span>');
+				$('graphConnectionCount').insert('<span class="connections-count"><?php echo $LNG->GRAPH_CONNECTION_COUNT_LABEL; ?> '+conns.length+'</span>');
 
       			//alert("connection count = "+conns.length);
       			if (conns.length > 0) {
-	      			for(var i=0; i< conns.length; i++){
+	      			for(var i=0; i <  conns.length; i++){
 	      				var c = conns[i].connection;
 	      				var fN = c.from[0].cnode;
 	      				var tN = c.to[0].cnode;

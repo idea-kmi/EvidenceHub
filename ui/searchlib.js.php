@@ -32,7 +32,7 @@
  *	Add the filter and sort controls for the page.
  */
 function addControls(container) {
-	var tb3 = new Element("div", {'class':'toolbarrowsearch'});
+	var tb3 = new Element("div", {'class':'toolbarrowsearch row d-inline-block'});
 	var sortOpts = {date: '<?php echo $LNG->SORT_CREATIONDATE; ?>', name: '<?php echo $LNG->SORT_TITLE; ?>', moddate: '<?php echo $LNG->SORT_MODDATE; ?>',connectedness:'<?php echo $LNG->SORT_CONNECTIONS; ?>', vote:'<?php echo $LNG->SORT_VOTES; ?>'};
 	tb3.insert(displaySortForm(sortOpts));
 	tb3.insert(createThemeFilter());
@@ -43,28 +43,16 @@ function buildSearchToolbar(container, query, tagsonly) {
 
 	addControls(container);
 
-	/*var print = new Element("img",
-		{'src': '<?php echo $HUB_FLM->getImagePath("printer.png"); ?>',
-		'alt': '<?php echo $LNG->EXPLORE_PRINT_BUTTON_ALT;?>',
-		'title': '<?php echo $LNG->EXPLORE_PRINT_BUTTON_HINT;?>',
-		'class': 'active',
-		'style': 'float:left;padding-top:0px;padding-right:10px;margin-top:10px;'});
-	container.insert(print);
-	Event.observe(print,'click',function(){
-		 printNodeExplore(NODE_ARGS, name, nodeid);
-	});
-	*/
-
-	var tree = new Element('a',{'style':'float:left;margin-right:15px;margin-bottom:5px;'});
+	var tree = new Element('a',{'class':'d-inline-block me-3'});
 	tree.href="<?php echo $CFG->homeAddress; ?>knowledgetreessearch.php?q="+query+"&tagsonly="+tagsonly;
-	var image = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("knowledge-tree.png"); ?>', 'style':'margin-right: 5px;width:26px; height:26px;padding:3px;'});
+	var image = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("knowledge-tree.png"); ?>', 'alt':'knowledge tree search'});
 	tree.insert(image);
 	tree.title = '<?php echo $LNG->VIEWS_LINEAR_TITLE;?>';
 	container.appendChild(tree);
 
-	var net = new Element('a',{'style':'float:left;margin-right:0px;margin-bottom:5px;'});
+	var net = new Element('a',{'class':'d-inline-block'});
 	net.href="<?php echo $CFG->homeAddress; ?>networkgraphsearch.php?q="+query+"&tagsonly="+tagsonly;
-	var image = new Element('img',{'class':'active','border':'0','src': '<?php echo $HUB_FLM->getImagePath("network-graph.png"); ?>', 'style':'margin-right: 5px;width:26px; height:26px;padding:3px;'});
+	var image = new Element('img',{'class':'active','src': '<?php echo $HUB_FLM->getImagePath("network-graph.png"); ?>', 'alt':'network graph search'});
 	net.insert(image);
 	net.title = '<?php echo $LNG->VIEWS_EVIDENCE_MAP_TITLE;?>';
 	container.appendChild(net);
@@ -1018,12 +1006,12 @@ function reorderUsers(){
  */
 function displayUserSortForm(sortOpts,args,tab,handler){
 
-	var sbTool = new Element("span", {'class':'sortback toolbar2'});
+	var sbTool = new Element("span", {'class':'sortback toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->SORT_BY; ?>: ");
 
     var selOrd = new Element("select");
     selOrd.id = "select-orderby-"+tab;
-    selOrd.className = "toolbar";
+    selOrd.className = "toolbar form-select";
     selOrd.name = "orderby";
  	Event.observe(selOrd,'change',handler);
     sbTool.insert(selOrd);
@@ -1039,7 +1027,7 @@ function displayUserSortForm(sortOpts,args,tab,handler){
     var sortBys = {ASC: '<?php echo $LNG->SORT_ASC; ?>', DESC: '<?php echo $LNG->SORT_DESC; ?>'};
     var sortBy = new Element("select");
     sortBy.id = "select-sort-"+tab;
-    sortBy.className = "toolbar";
+    sortBy.className = "toolbar form-select";
     sortBy.name = "sort";
  	Event.observe(sortBy,'change',handler);
     sbTool.insert(sortBy);
@@ -1126,12 +1114,12 @@ function handleSort() {
  */
 function displaySortForm(sortOpts){
 
-	var sbTool = new Element("span", {'class':'sortback toolbar2'});
-    sbTool.insert("<?php echo $LNG->SORT_BY; ?>: ");
+	var sbTool = new Element("span", {'class':'sortback toolbar2 col-auto'});
+    sbTool.insert("<?php echo $LNG->SORT_BY; ?> ");
 
     var selOrd = new Element("select");
     selOrd.id = "select-orderby-node";
-    selOrd.className = "toolbar";
+    selOrd.className = "toolbar form-select";
     selOrd.name = "orderby";
     sbTool.insert(selOrd);
  	Event.observe(selOrd,'change',handleSort);
@@ -1147,7 +1135,7 @@ function displaySortForm(sortOpts){
     var sortBys = {ASC: '<?php echo $LNG->SORT_ASC; ?>', DESC: '<?php echo $LNG->SORT_DESC; ?>'};
     var sortBy = new Element("select");
     sortBy.id = "select-sort-node";
-    sortBy.className = "toolbar";
+    sortBy.className = "toolbar form-select";
     sortBy.name = "sort";
     sbTool.insert(sortBy);
  	Event.observe(sortBy,'change',handleSort);
@@ -1166,10 +1154,10 @@ function displaySortForm(sortOpts){
 
 function createThemeFilter() {
 
-	var sbTool = new Element("span", {'class':'themebackpale toolbar2'});
+	var sbTool = new Element("span", {'class':'toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->FILTER_BY; ?>: ");
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar form-select'});
 
 	var option = new Element("option", {'value':''});
 	option.insert('<?php echo $LNG->FILTER_THEMES_ALL; ?>');

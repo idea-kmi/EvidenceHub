@@ -313,16 +313,13 @@ function addResource(noResources) {
 	    $('resourceform').insert('<hr id="resourcehr'+noResources+'" class="urldivider"/>');
 	}
 
-	var newitem = '<div id="resourcefield'+noResources+'" class="subformrow">';
-
+	var newitem = '<div id="resourcefield'+noResources+'" class="row">';
     newitem += '<input type="hidden" id="resourcenodeidsarray-'+noResources+'" name="resourcenodeidsarray[]" value="" />';
-
 	newitem += '<div class="subformrow" id="typehiddendiv-'+noResources+'" style="display:none">';
-	newitem += '<label  class="hgrsubformlabel" for="connection-'+noResources+'"><?php echo $LNG->FORM_LABEL_TYPE; ?>';
-	newitem += '</label>';
-	newitem += '<select disabled onchange="typeChangedResource(\''+noResources+'\')" class="subforminput hgrselect" style="width: 172px" id="resource'+noResources+'label" name="resourcetypeslabelarray[]">';
+	newitem += '<label class="col-sm-3 col-form-label" for="connection-'+noResources+'"><?php echo $LNG->FORM_LABEL_TYPE; ?></label>';
+	newitem += '<select disabled onchange="typeChangedResource(\''+noResources+'\')" class="form-control hgrselect" id="resource'+noResources+'label" name="resourcetypeslabelarray[]">';
 	const count = RESOURCE_TYPES.length;
-	for(let i=0; i<count; i++){
+	for(let i=0; i < count; i++){
 		let item = RESOURCE_TYPES[i];
 		if (item == '<?php echo $CFG->RESOURCE_TYPES_DEFAULT; ?>') {
 			newitem += '<option selected="true" value="'+item+'">'+RESOURCE_TYPE_NAMES[i]+'</option>';
@@ -331,18 +328,17 @@ function addResource(noResources) {
 		}
 	}
 	newitem += '</select>';
-	newitem += '<span class="active" onClick="javascript: removeSelectedResource(\''+noResources+'\')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
-	newitem += '<span class="active" onClick="javascript: openResourceSelector(\''+noResources+'\')" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_CHANGE; ?></span>';
+	newitem += '<span class="active" onClick="javascript: removeSelectedResource(\''+noResources+'\')" class="form"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
+	newitem += '<span class="active" onClick="javascript: openResourceSelector(\''+noResources+'\')" class="form"><?php echo $LNG->FORM_BUTTON_CHANGE; ?></span>';
 	newitem += '</div>';
 
-	newitem += '<div class="subformrow" id="typediv-'+noResources+'">';
-	newitem += '<label  class="hgrsubformlabel"><?php echo $LNG->FORM_LABEL_TYPE; ?>';
-	newitem += '<a href="javascript:void(0)" onMouseOver="showFormHint(\'ResourceType\', event, \'hgrhint\'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>';
-	newitem += '<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>';
+	newitem += '<div class="mb-3 row" id="typediv-'+noResources+'">';
+	newitem += '<label class="col-sm-3 col-form-label"><?php echo $LNG->FORM_LABEL_TYPE; ?>';
+	newitem += '<a class="active" onMouseOver="showFormHint(\'ResourceType\', event, \'hgrhint\'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"> <i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i><span class="sr-only">More info</span></a><span class="required">*</span>';
 	newitem += '</label>';
-	newitem += '<select onchange="typeChangedResource(\''+noResources+'\')" class="subforminput hgrselect forminputmust" style="width: 172px" id="resource'+noResources+'menu" name="resourcetypesarray[]">';
+	newitem += '<div class="col-sm-9"><select onchange="typeChangedResource(\''+noResources+'\')" class="form-select" id="resource'+noResources+'menu" name="resourcetypesarray[]">';
 
-	for(let i=0; i<count; i++){
+	for(let i=0; i < count; i++){
 		let item = RESOURCE_TYPES[i];
 		if (item == '<?php echo $CFG->RESOURCE_TYPES_DEFAULT; ?>') {
 			newitem += '<option selected="true" value="'+item+'">'+RESOURCE_TYPE_NAMES[i]+'</option>';
@@ -351,37 +347,35 @@ function addResource(noResources) {
 		}
 	}
 
-	newitem += '</select>';
-	newitem += '<span class="active" onClick="javascript: openResourceSelector(\''+noResources+'\')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_RESOURCE_SELECT_EXISTING; ?></span>';
+	newitem += '</select></div>';
+	newitem += '<div class="col-12 text-end my-1"><span class="active" onClick="javascript: openResourceSelector(\''+noResources+'\')" class="form"><?php echo $LNG->FORM_RESOURCE_SELECT_EXISTING; ?></span></div>';
 	newitem += '</div>';
 
-	newitem += '<div class="hgrsubformrow" id="resourceurldiv-'+noResources+'">';
-	newitem += '<label  class="hgrsubformlabel" for="resourceurl-'+noResources+'"><?php echo $LNG->FORM_LABEL_URL; ?>';
-	newitem += '<a href="javascript:void(0)" onMouseOver="showFormHint(\'ResourceURL\', event, \'hgrhint\'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>';
-	newitem += '<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>';
+	newitem += '<div class="mb-3 row" id="resourceurldiv-'+noResources+'">';
+	newitem += '<label class="col-sm-3 col-form-label" for="resourceurl-'+noResources+'"><?php echo $LNG->FORM_LABEL_URL; ?>';
+	newitem += '<a class="active" onMouseOver="showFormHint(\'ResourceURL\', event, \'hgrhint\'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"> <i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i><span class="sr-only">More info</span></a><span class="required">*</span>';
 	newitem += '</label>';
-	newitem += '<input class="subforminput forminputmust" style="width: 320px;" id="resourceurl-'+noResources+'" name="resourceurlarray[]" value="http://">';
-	newitem += '<img class="active" style="vertical-align: middle; padding-bottom: 2px; margin-left:4px;" title="<?php echo $LNG->FORM_AUTOCOMPLETE_TITLE_HINT; ?>" src="<?php echo $HUB_FLM->getImagePath('autofill.png'); ?>" onClick="autoCompleteWebsiteDetailsMulti(\''+noResources+'\')" onkeypress="enterKeyPressed(event)" />';
+	newitem += '<div class="col-sm-8"><input class="form-control" id="resourceurl-'+noResources+'" name="resourceurlarray[]" value="http://" /></div>';
+	newitem += '<div class="col-sm-1 pt-2"><img class="active" title="<?php echo $LNG->FORM_AUTOCOMPLETE_TITLE_HINT; ?>" src="<?php echo $HUB_FLM->getImagePath('autofill.png'); ?>" onClick="autoCompleteWebsiteDetailsMulti(\''+noResources+'\')" onkeypress="enterKeyPressed(event)" /></div>';
 	newitem += '</div>';
 
-	newitem += '<div class="hgrsubformrow">';
-	newitem += '<label  class="hgrsubformlabel" for="resourcetitle-'+noResources+'"><?php echo $LNG->FORM_LABEL_TITLE; ?>';
-	newitem += '<a href="javascript:void(0)" onMouseOver="showFormHint(\'ResourceTitle\', event, \'hgrhint\'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>';
-	newitem += '<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>';
+	newitem += '<div class="mb-3 row">';
+	newitem += '<label class="col-sm-3 col-form-label" for="resourcetitle-'+noResources+'"><?php echo $LNG->FORM_LABEL_TITLE; ?>';
+	newitem += '<a class="active" onMouseOver="showFormHint(\'ResourceTitle\', event, \'hgrhint\'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"> <i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i><span class="sr-only">More info</span></a><span class="required">*</span>';
 	newitem += '</label>';
-	newitem += '<input class="subforminput forminputmust" style="width: 350px;" id="resourcetitle-'+noResources+'" name="resourcetitlearray[]" value="">';
+	newitem += '<div class="col-sm-9"><input class="form-control" id="resourcetitle-'+noResources+'" name="resourcetitlearray[]" value="" /></div>';
 	newitem += '</div>';
 
-	newitem += '<div id="identifierdiv-'+noResources+'" class="hgrsubformrow" style="display: none;">';
-	newitem += '<label  class="hgrsubformlabel" for="identifier-'+noResources+'"><?php echo $LNG->FORM_LABEL_DOI; ?>';
-	newitem += '<a href="javascript:void(0)" onMouseOver="showFormHint(\'DOI\', event, \'hgrhint\'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></a>';
+	newitem += '<div id="identifierdiv-'+noResources+'" class="mb-3 row" style="display: none;">';
+	newitem += '<label class="col-sm-3 col-form-label" for="identifier-'+noResources+'"><?php echo $LNG->FORM_LABEL_DOI; ?>';
+	newitem += '<a class="active" onMouseOver="showFormHint(\'DOI\', event, \'hgrhint\'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"> <i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i><span class="sr-only">More info</span></a><span class="required">*</span>';
 	newitem += '</label>';
-	newitem += '<input class="subforminput" style="width: 350px;" id="identifier-'+noResources+'" name="identifierarray[]" value="">';
+	newitem += '<div class="col-sm-9"><input class="form-control" id="identifier-'+noResources+'" name="identifierarray[]" value="" /></div>';
 	newitem += '</div>';
 
-	newitem += '<div class="hgrsubformrow" id="resourcedescdiv-'+noResources+'">';
+	newitem += '<div class="mb-3 row" id="resourcedescdiv-'+noResources+'">';
 	newitem += '<input type="hidden" id="resourcecliparray-'+noResources+'" name="resourcecliparray[]" value="" />';
-	newitem += '<a id="resourceremovebutton-'+noResources+'" href="javascript:void(0)" onclick="javascript:removeMultiple(\'resource\', \''+noResources+'\')" class="form" style="clear:both;float:right"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a><br>';
+	newitem += '<a id="resourceremovebutton-'+noResources+'" href="javascript:void(0)" onclick="javascript:removeMultiple(\'resource\', \''+noResources+'\')" class="text-end"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a><br>';
 	newitem += '</div>';
 
 	newitem += '</div>';
@@ -394,7 +388,7 @@ function addResource(noResources) {
 }
 
 function addResourceEvents(targetname) {
-	for (var i=0; i<noResources; i++) {
+	for (var i=0; i < noResources; i++) {
 		if ($('resourceremovebutton-'+i)) {
 			Event.observe($('resourceremovebutton-'+i),"click", function(){
 				validateResourceNext(targetname);
@@ -439,7 +433,7 @@ function addResourceEvents(targetname) {
 
 function validateResourceNext(targetname) {
 	var allBlank = true;
-	for (var i=0; i<noResources; i++) {
+	for (var i=0; i < noResources; i++) {
 		if ($('resourceurl-'+i)) {
 			if ( $('resourceurl-'+i).value.trim() != ''
 				&& $('resourceurl-'+i).value.trim() != 'http://'
@@ -484,14 +478,14 @@ function addSeeAlso(noRelated) {
 		newitem += '<input type="hidden" id="relatednodeidsarray-'+noRelated+'" name="relatednodeidsarray[]" value="" />';
 
 		newitem += '<div class="subformrow" id="relatedhiddendiv-'+noRelated+'" style="display:none">';
-		newitem += '<input class="subforminput forminputmust" style="width: 320px;" id="relatedtitle-'+noRelated+'" name="relatedtitlearray[]" value="">';
-		newitem += '<span class="active" onClick="javascript: removeSelectedRelatedItem(\''+noRelated+'\')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
-		newitem += '<span class="active" onClick="javascript: openRelatedItemSelector(\''+noRelated+'\')" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_CHANGE; ?></span>';
+		newitem += '<input class="form-control" id="relatedtitle-'+noRelated+'" name="relatedtitlearray[]" value="">';
+		newitem += '<span class="active" onClick="javascript: removeSelectedRelatedItem(\''+noRelated+'\')" class="form"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
+		newitem += '<span class="active" onClick="javascript: openRelatedItemSelector(\''+noRelated+'\')" class="form"><?php echo $LNG->FORM_BUTTON_CHANGE; ?></span>';
 		newitem += '</div>';
 
 		newitem += '<div class="subformrow" id="typediv-'+noRelated+'">';
-		newitem += '<input class="subforminput forminputmust" style="width: 320px;" id="relatedtitle-'+noRelated+'" name="relatedtitlearray[]" value="">';
-		newitem += '<span class="active" onClick="javascript: openRelatedItemSelector(\''+noRelated+'\')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_RESOURCE_SELECT_EXISTING; ?></span>';
+		newitem += '<input class="form-control" id="relatedtitle-'+noRelated+'" name="relatedtitlearray[]" value="">';
+		newitem += '<span class="active" onClick="javascript: openRelatedItemSelector(\''+noRelated+'\')" class="form"><?php echo $LNG->FORM_RESOURCE_SELECT_EXISTING; ?></span>';
 		newitem += '</div>';
 
 		newitem += '</div>';
@@ -514,16 +508,16 @@ function addTheme(noThemes) {
         $('themeform').insert('<hr id="themehr'+noThemes+'" class="urldivider"/>');
     }
 
-	var newitem =  '<div id="themefield'+noThemes+'" class="subformrow">';
+	var newitem =  '<div id="themefield'+noThemes+'" class="row">';
 
-	newitem += '<select class="subforminput hgrselect" onchange="checkThemeChange('+noThemes+')" id="theme'+noThemes+'menu" name="themesarray[]">';
+	newitem += '<div class="col"><select class="form-select" onchange="checkThemeChange('+noThemes+')" id="theme'+noThemes+'menu" name="themesarray[]">';
 	newitem += "<option value='' ><?php echo $LNG->THEME_NAME; ?>...</option>";
 	<?php
         foreach($CFG->THEMES as $item){?>
             newitem += '<option value="<?php echo addslashes($item); ?>"><?php echo addslashes($item) ?></option>';
     <?php } ?>
-	newitem += '</select>';
-	newitem += '<a href="javascript:removeMultiple(\'theme\', '+noThemes+')" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a>';
+	newitem += '</select></div>';
+	newitem += '<div class="col-auto text-end pt-2"><a href="javascript:removeMultiple(\'theme\', '+noThemes+')" class="form"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></a></div>';
 
 	newitem += '</div>';
 
@@ -544,7 +538,7 @@ function addURL(noURLs){
 	newitem += '<input type="hidden" id="resourceids-'+noURLs+'" name="resourceids[]" value="" />';
 	newitem += '<input type="hidden" id="resourcedescs-'+noURLs+'" name="resourcedescs[]" value="" />';
  	newitem += '<input type="button" id="resourceadd-'+noURLs+'" title="<?php echo $LNG->FORM_SELECT_RESOURCE_HINT; ?>" onclick="javascript: openPicker(\''+noURLs+'\');" value="<?php echo $LNG->FORM_BUTTON_ADD; ?>" />';
-	newitem += '<input readonly class="subforminput hgrinput" style="background: white;border:none;width:332px;" id="resourcenames-'+noURLs+'" name="$resourcenames[]" value="" />';
+	newitem += '<input readonly class="form-control hgrinput" style="background: white;border:none;width:332px;" id="resourcenames-'+noURLs+'" name="$resourcenames[]" value="" />';
 	newitem += '<input type="button" id="resourceremove-'+noURLs+'" style="visibility:hidden;margin-left:3px;" onclick="javascript:removeMultiple(\'url\', '+noURLs+')" class="form" value="<?php echo $LNG->FORM_BUTTON_REMOVE; ?>" />';
 	newitem += '</div>';
 
@@ -564,8 +558,8 @@ function addProject(noProjects, nodename, nodeid){
 	}
 
 	let	newitem = '<input type="hidden" id="projectnodeidsarray-'+noProjects+'" name="projectnodeidsarray[]" value="'+nodeid+'" />';
-	newitem += '<input readonly class="subforminput forminputmust" style="width: 360px;" id="projectnamesarray-'+noProjects+'" name="projectnamesarray[]" value="'+nodename+'" />';
-	newitem += '<span class="active" onClick="javascript: removeSelectedNode(\'Project\','+noProjects+')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
+	newitem += '<input readonly class="form-control" style="width: 360px;" id="projectnamesarray-'+noProjects+'" name="projectnamesarray[]" value="'+nodename+'" />';
+	newitem += '<span class="active" onClick="javascript: removeSelectedNode(\'Project\','+noProjects+')" class="form"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
 
 	$('projectfield'+noProjects).insert(newitem);
 
@@ -597,7 +591,6 @@ function removeProject(removeProjectNo){
     return removed;
 }
 
-
 // add an Organization
 function addOrganization(noOrganisations, nodename, nodeid){
 
@@ -607,8 +600,8 @@ function addOrganization(noOrganisations, nodename, nodeid){
 	}
 
 	let	newitem = '<input type="hidden" id="orgnodeidsarray-'+noOrganisations+'" name="orgnodeidsarray[]" value="'+nodeid+'" />';
-	newitem += '<input readonly class="subforminput forminputmust" style="width: 360px;" id="orgnamesarray-'+noOrganisations+'" name="orgnamesarray[]" value="'+nodename+'" />';
-	newitem += '<span class="active" onClick="javascript: removeSelectedNode(\'Organization\','+noOrganisations+')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
+	newitem += '<input readonly class="form-control" style="width: 360px;" id="orgnamesarray-'+noOrganisations+'" name="orgnamesarray[]" value="'+nodename+'" />';
+	newitem += '<span class="active" onClick="javascript: removeSelectedNode(\'Organization\','+noOrganisations+')" class="form"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
 
 	$('orgfield'+noOrganisations).insert(newitem);
 
@@ -640,7 +633,6 @@ function removeOrganization(removeOrgNo){
     return removed;
 }
 
-
 // add an Evidence item
 function addEvidence(noEvidence, nodename, nodeid){
 
@@ -650,8 +642,8 @@ function addEvidence(noEvidence, nodename, nodeid){
 	}
 
 	let	newitem = '<input type="hidden" id="evidencenodeidsarray-'+noEvidence+'" name="evidencenodeidsarray[]" value="'+nodeid+'" />';
-	newitem += '<input readonly class="subforminput forminputmust" style="width: 360px;" id="evidencenamesarray-'+noEvidence+'" name="evidencenamesarray[]" value="'+nodename+'" />';
-	newitem += '<span class="active" onClick="javascript: removeSelectedNode(\'Evidence\','+noEvidence+')" class="form" style="margin-left: 15px;"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
+	newitem += '<input readonly class="form-control" style="width: 360px;" id="evidencenamesarray-'+noEvidence+'" name="evidencenamesarray[]" value="'+nodename+'" />';
+	newitem += '<span class="active" onClick="javascript: removeSelectedNode(\'Evidence\','+noEvidence+')" class="form"><?php echo $LNG->FORM_BUTTON_REMOVE; ?></span>';
 
 	$('evidencefield'+noEvidence).insert(newitem);
 
@@ -683,26 +675,6 @@ function removeEvidence(removeEvidenceNo){
     return removed;
 }
 
-/*function addProject(noProjects){
-	if($('projectform').childElements().length != 0){
-        $('projectform').insert('<hr id="projecthr'+noProjects+'" class="projectdivider"/>');
-    }
-
-	var newitem = '<div id="projectfield'+noProjects+'" class="subformrow">';
-	newitem += '<input type="hidden" id="projectids-'+noProjects+'" name="projectids[]" value="" />';
-	newitem += '<input type="hidden" id="projectdescs-'+noProjects+'" name="projectdescs[]" value="" />';
- 	newitem += '<input type="button" id="projectadd-'+noProjects+'" onclick="javascript: openProjectPicker(\''+noProjects+'\');" value="<?php echo $LNG->FORM_BUTTON_ADD; ?>" />';
-	newitem += '<input readonly class="subforminput hgrinput" style="background: white;border:none;width:332px;" id="projectnames-'+noProjects+'" name="$projectnames[]" value="" />';
-	newitem += '<input type="button" id="projectremove-'+noProjects+'" style="visibility:hidden;margin-left:3px;" onclick="javascript:removeMultiple(\'project\', '+noProjects+')" class="form" value="<?php echo $LNG->FORM_BUTTON_REMOVE; ?>" />';
-	newitem += '</div>';
-
-    $('projectform').insert(newitem);
-
-    noProjects++;
-
-    return noProjects;
-}*/
-
 //add a partner organization
 function addPartner(noPartners) {
 	if($('partnerform').childElements().length != 0){
@@ -711,7 +683,7 @@ function addPartner(noPartners) {
 
 	var newitem =  '<div id="partnerfield'+noPartners+'" class="subformrow">';
 
-	newitem += '<select onchange="this.style.width=\'172px\'; partnerNameIssue(\'partner'+noPartners+'\')" class="subforminput hgrselect" style="width: 172px;z-index:+1" id="partner'+noPartners+'menu" name="partnersarray[]" onactivate="this.style.width=\'auto\';">';
+	newitem += '<select onchange="this.style.width=\'172px\'; partnerNameIssue(\'partner'+noPartners+'\')" class="form-control hgrselect" style="width: 172px;z-index:+1" id="partner'+noPartners+'menu" name="partnersarray[]" onactivate="this.style.width=\'auto\';">';
 	newitem += '<option value="" ><?php echo $LNG->ORG_NAME; ?>/<?php echo $LNG->PROJECT_NAME; ?>...</option>';
 	<?php
 		global $orgs;
@@ -732,19 +704,19 @@ function addPartner(noPartners) {
 }
 
 function toggleChallenges() {
-	if ( $("groupsdiv").style.display == "block") {
+	if ( $("groupsdiv").style.display == "flex") {
 		$("groupsdiv").style.display = "none";
-		$("groupsimg").src="<?php echo $HUB_FLM->getImagePath("arrow-down-blue.png"); ?>";
+		$("groupsimg").innerHTML = 'Show <i class="fas fa-chevron-circle-down" aria-hidden="true"></i>';
 	} else {
-		$("groupsdiv").style.display = "block";
-		$("groupsimg").src="<?php echo $HUB_FLM->getImagePath("arrow-up-blue.png"); ?>";
+		$("groupsdiv").style.display = "flex";
+		$("groupsimg").innerHTML = 'Hide <i class="fas fa-chevron-circle-up" aria-hidden="true"></i>';
 	}
 }
 
 function typeChangedResource(num) {
 	var type = $('resource'+num+'menu').value;
 	if (type == "Publication") {
-		$('identifierdiv-'+num).style.display = "block";
+		$('identifierdiv-'+num).style.display = "";
 	} else {
 		$('identifierdiv-'+num).style.display = "none";
 	}
@@ -752,7 +724,7 @@ function typeChangedResource(num) {
 
 function typeChangedProject() {
 	if ($('datediv')) {
-		$('datediv').style.display = "block";
+		$('datediv').style.display = "";
 	}
 	if ($('projectdiv')) {
 		$('projectdiv').style.display = "none";
@@ -774,7 +746,6 @@ function typeChangedOrg() {
 		$('projectdiv').style.display = "block";
 	}
 }
-
 
 /**
  * Fetch the website title and description from the website page for the url passed.

@@ -169,7 +169,7 @@ function init() {
 
 function addSelectedNode(node) {
 	$('solutiondiv').style.display="none";
-	$('solutionlabeldiv').style.display="block";
+	$('solutionlabeldiv').style.display="flex";
 	$('solutionlabel').value = node.name;
 	$('nodeid').value = node.nodeid;
 	$('themediv').style.display="none";
@@ -178,13 +178,13 @@ function addSelectedNode(node) {
 }
 
 function removeSelectedNode() {
-	$('solutiondiv').style.display="block";
+	$('solutiondiv').style.display="flex";
 	$('solutionlabeldiv').style.display="none";
 	$('solutionlabel').value="";
 	$('nodeid').value = "";
-	$('themediv').style.display="block";
-	$('descdiv').style.display="block";
-	$('tagsdiv').style.display="block";
+	$('themediv').style.display="flex";
+	$('descdiv').style.display="flex";
+	$('tagsdiv').style.display="flex";
 }
 
 function openSelector() {
@@ -217,61 +217,71 @@ window.onload = init;
 
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="solutionform" name="solutionform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
-	<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
-	<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
-	<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
-	<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
-	<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
-	<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
+			<form id="solutionform" name="solutionform" action="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="focalnodeid" name="focalnodeid" value="<?php echo $focalnodeid; ?>" />
+				<input type="hidden" id="focalnodeend" name="focalnodeend" value="<?php echo $focalnodeend; ?>" />
+				<input type="hidden" id="filternodetypes" name="filternodetypes" value="<?php echo $filternodetypes; ?>" />
+				<input type="hidden" id="linktypename" name="linktypename" value="<?php echo $linktypename; ?>" />
+				<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
+				<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
+				<input type="hidden" id="theme" name="theme" value="<?php echo $theme; ?>" />
 
-<h2 style="margin-left:5px;"><?php echo $LNG->FORM_SOLUTION_TITLE_SECTION; ?></h2>
-<div class="subformconnect">
-    <div class="hgrformrow" id="solutionlabeldiv" style="display: none;">
-		<label  class="formlabelbig" for="solutionlabel"><span style="vertical-align:top"><?php echo $LNG->FORM_SOLUTION_LABEL_SUMMARY; ?></span>
-			<span class="active" onMouseOver="showFormHint('SolutionSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" style="width:340px;" readonly id="solutionlabel" name="solutionlabel" value="" />
-	    <span class="active" onClick="javascript: removeSelectedNode()" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
-	    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 10px;"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>
+				<div class="mb-3 row" id="solutionlabeldiv" style="display: none;">
+					<label class="col-sm-3 col-form-label" for="solutionlabel">
+						<?php echo $LNG->FORM_SOLUTION_LABEL_SUMMARY; ?>
+						<a class="active" onMouseOver="showFormHint('SolutionSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" readonly id="solutionlabel" name="solutionlabel" value="" />
+					</div>
+					<div class="col-sm-3 pt-2">
+						<span class="active me-3 d-inline-block" onClick="javascript: removeSelectedNode()"><?php echo $LNG->FORM_BUTTON_REMOVE_CAP; ?></span>
+						<span class="active ms-3 d-inline-block" onClick="javascript: openSelector()"><?php echo $LNG->FORM_BUTTON_SELECT_ANOTHER; ?></span>
+					</div>
+				</div>
+
+				<div class="mb-3 row" id="solutiondiv">
+					<label class="col-sm-3 col-form-label" for="solution">
+						<?php echo $LNG->FORM_SOLUTION_LABEL_SUMMARY; ?>
+						<a class="active" onMouseOver="showFormHint('SolutionSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-6">
+						<input class="form-control" id="solution" name="solution" value="<?php echo( $solution ); ?>" />
+					</div>
+					<?php if ($focalnodeid != "") { ?>
+						<div class="col-sm-3 pt-2">
+							<span class="active d-inline-block" onClick="javascript: openSelector()"><?php echo $LNG->FORM_SOLUTION_SELECT_EXISTING; ?></span>
+						</div>
+					<?php }; ?>
+				</div>
+
+				<?php insertDescription('SolutionDesc'); ?>
+				<?php insertThemes('SolutionTheme', $theme); ?>
+				<?php insertAddTags('SolutionTag'); ?>
+
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addsolution" name="addsolution" />
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
-    <div class="hgrformrow" id="solutiondiv">
-		<label  class="formlabelbig" for="solution"><span style="vertical-align:top"><?php echo $LNG->FORM_SOLUTION_LABEL_SUMMARY; ?>:</span>
-			<span class="active" onMouseOver="showFormHint('SolutionSummary', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<input class="forminputmust hgrinput hgrwide" style="width:340px;" id="solution" name="solution" value="<?php echo( $solution ); ?>" />
-		<?php if ($focalnodeid != "") { ?>
-		    <span class="active" onClick="javascript: openSelector()" class="form" style="margin-left: 5px;"><?php echo $LNG->FORM_SOLUTION_SELECT_EXISTING; ?></span>
-		<?php }; ?>
-	</div>
-
-	<?php insertDescription('SolutionDesc'); ?>
-
-	<?php insertThemes('SolutionTheme', $theme); ?>
-
-	<?php insertAddTags('SolutionTag'); ?>
 </div>
-<div style="clear:both;"></div>
-
-<?php if ($theme == "") { ?>
-<!-- h2 style="margin-left:5px;"><?php echo $LNG->FORM_CONNECT_RELEVANCE_SECTION; ?></h2>
-<div class="subformconnect">
-	<?php insertReason('SolutionReason'); ?>
-</div -->
-<?php } ?>
-
-<div class="hgrformrow">
-	<input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="addsolution" name="addsolution">
-	<input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-</div>
-
-</form>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

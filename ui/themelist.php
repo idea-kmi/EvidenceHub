@@ -24,17 +24,15 @@
  ********************************************************************************/
  ?>
 
-<div id="tagcloud" style="clear:both; float:left; width: 100%;">
-	<ul>
+
+<div id="tagcloud" class="row">
 	<?php
 		$tags = array();
 		//$tags = getAllThemesForCloud();
 		$ns = getNodesByGlobal(0,-1,'name','ASC', 'Theme', '', 'long',"",'all',false);
 		$tags = $ns->nodes;
 
-
 		if (count($tags) > 0) {
-
 			// if any items have an image use different classes.
 			$i = 0;
 			$hasImages = false;
@@ -46,13 +44,6 @@
 			}
 
 			foreach($tags as $tag) {
-				/*$count = $tag['UseCount'];
-				if ($count == 1) {
-					$count = $count ." item";
-				} else {
-					$count = $count ." items";
-				}*/
-
 				$colour = "";
 				$colourBorder="";
 				$backcolor = "";
@@ -91,25 +82,16 @@
 
 				echo '<div class="'.$classes.'" onclick="document.location.href=\''.$CFG->homeAddress.'explore.php?id='.$tag->nodeid.'\'" onmouseover="this.className=\''.$classesOver.'\';" onmouseout="this.className=\''.$classes.'\';" title="'.$LNG->THEMELIST_ITEM_HINT.' '.$LNG->THEME_NAME.'">';
 				echo '<div class="'.$classes2.'" onclick="document.location.href=\''.$CFG->homeAddress.'explore.php?id='.$tag->nodeid.'\'" onmouseover="this.className=\''.$classes2Over.'\';" onmouseout="this.className=\''.$classes2.'\';">';
-				echo '<table style="text-align:center;font-weight:bold;width:100%;height:100%" class="themebutton">';
+				echo '<div class="themebutton">';
 				if (isset($tag->imageurlid) && $tag->imageurlid != "") {
-					echo '<tr height="100px;"><td valign="top">';
-					echo '<img class="themeimage" src="'.$tag->imageurlid.'" /></td></tr>';
-					echo '<tr>';
-					echo '<td valign="top">'.$tag->name.'</td>';
-					echo '</tr>';
+					echo '<img class="themeimage img-fluid" src="'.$tag->imageurlid.'" alt="'.$tag->name.' logo" /><span>'.$tag->name.'</span>';
 				} else {
-					echo '<tr>';
-					echo '<td valign="middle">'.$tag->name.'</td>';
-					echo '</tr>';
+					echo '<span>'.$tag->name.'</span>';
 				}
-
-				echo '</table>';
 				echo '</div>';
-
+				echo '</div>';
 				echo '</div>';
 			}
 		}
 	?>
-	</ul>
 </div>

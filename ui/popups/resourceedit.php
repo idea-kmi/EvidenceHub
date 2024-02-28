@@ -212,7 +212,7 @@ function init() {
 function typeChanged() {
 	var type = $('nodetypename').value;
 	if (type == "Publication") {
-		$('identifierdiv').style.display = "block";
+		$('identifierdiv').style.display = "flex";
 	} else {
 		$('identifierdiv').style.display = "none";
 	}
@@ -242,81 +242,94 @@ function checkForm() {
 window.onload = init;
 </script>
 
-<?php insertFormHeaderMessage(); ?>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<?php insertFormHeaderMessage(); ?>
 
-<form id="addurl" name="addurl" action="" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
-	<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
+			<form id="addurl" name="addurl" action="" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
+				<input type="hidden" id="handler" name="handler" value="<?php echo $handler; ?>" />
 
-   <div class="formrow">
-		<label  class="formlabelbig" for="nodetypename"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_TYPE; ?></span>
-			<span class="active" onMouseOver="showFormHint('ResourceType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			<span style="font-size:14pt;margin-top:3px;vertical-align:middle;color:red;">*</span>
-		</label>
-		<select class="forminput hgrselect forminputmust" onchange="typeChanged()" id="nodetypename" name="nodetypename">
-			<?php
-				$count = 0;
-				if (is_countable($CFG->RESOURCE_TYPES)) {
-					$count = count($CFG->RESOURCE_TYPES);
-				}
-				for($i=0; $i<$count; $i++){
-					$item = $CFG->RESOURCE_TYPES[$i];
-					$name = $LNG->RESOURCE_TYPES[$i];
-				?>
-	    	        <option value='<?php echo $item; ?>' <?php if ( $nodetypename == $item || ($nodetypename == "" && $item == $CFG->RESOURCE_TYPES_DEFAULT) ) { echo 'selected=\"true\"'; } ?> ><?php echo $name ?></option>
-			<?php } ?>
-		</select>
-   </div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="nodetypename">
+						<?php echo $LNG->FORM_LABEL_TYPE; ?>
+						<a class="active" onMouseOver="showFormHint('ResourceType', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+							<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+							<span class="sr-only">More info</span>
+						</a>
+						<span class="required">*</span>
+					</label>
+					<div class="col-sm-9">
+						<select class="form-select" onchange="typeChanged()" id="nodetypename" name="nodetypename">
+							<?php
+								$count = 0;
+								if (is_countable($CFG->RESOURCE_TYPES)) {
+									$count = count($CFG->RESOURCE_TYPES);
+								}
+								for($i=0; $i<$count; $i++){
+									$item = $CFG->RESOURCE_TYPES[$i];
+									$name = $LNG->RESOURCE_TYPES[$i];
+								?>
+									<option value='<?php echo $item; ?>' <?php if ( $nodetypename == $item || ($nodetypename == "" && $item == $CFG->RESOURCE_TYPES_DEFAULT) ) { echo 'selected=\"true\"'; } ?> ><?php echo $name ?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
 
-    <?php insertURL('ResourceURL'); ?>
+				<?php insertURL('ResourceURL'); ?>
+				<?php insertTitle('ResourceTitle'); ?>
+				<?php insertDOI('ResourceDOI'); ?>
 
-    <?php insertTitle('ResourceTitle'); ?>
+				<?php
+				if (is_countable($clips) && count($clips) > 0) { ?>
+					<div class="hgrformrow" id="clipaddeddiv">
+						<label class="col-sm-3 col-form-label"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_CLIPS; ?></span>
+							<a class="active" onMouseOver="showFormHint('ResourceClips', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)">
+								<i class="far fa-question-circle fa-lg me-2" aria-hidden="true" ></i> 
+								<span class="sr-only">More info</span>
+							</a>
+						</label>
+						<div class="subform" id="tagform">
+						<?php
+								$i = 0;
+								foreach($clips as $clip) {
+								$class = "subforminput";
+								echo '<div id="clipfield'.$i.'" class="subformrow" style="float:left;clear:both;">';
+								echo '<div style="float:left;margin-bottom:5px"><input type="checkbox" class="'.$class.'" id="removeclipsarray" name="removeclipsarray[]" value="'.$clip->urlid.'"';
+								if(is_countable($removeclipsarray) && count($removeclipsarray) > 0){
+									for($j=0; $j<count($removeclipsarray); $j++){
+										if (isset($removeclipsarray[$j]) && $removeclipsarray[$j] != ""
+											&& $removeclipsarray[$j] == $clip->urlid) {
+											echo ' checked="true"';
+											break;
+										}
+									}
+								}
+								echo '></div>';
+								echo '<div style="float:left; margin-left:5px;margin-bottom:5px;width:365px;">'.$clip->clip.'</div><br/>';
+								echo '</div>';
+								$i++;
+							}
+						?>
+							<div class="subformrow" style="float:left;margin-top:5px;"><label><?php echo $LNG->FORM_RESOURCE_CLIPS_SELECT_TO_REMOVE; ?></label></div>
+						</div>
+					</div>
+				<?php } ?>
 
-    <?php insertDOI('ResourceDOI'); ?>
+				<?php insertAddTags('ResourceTag'); ?>
+				<?php insertTagsAdded('ResourceTagAdded'); ?>
 
-	<?php
-	if (is_countable($clips) && count($clips) > 0) { ?>
-		<div class="hgrformrow" id="clipaddeddiv">
-			<label class="formlabelbig"><span style="vertical-align:top"><?php echo $LNG->FORM_LABEL_CLIPS; ?></span>
-				<span class="active" onMouseOver="showFormHint('ResourceClips', event, 'hgrhint'); return false;" onMouseOut="hideHints(); return false;" onClick="hideHints(); return false;" onkeypress="enterKeyPressed(event)"><img src="<?php echo $HUB_FLM->getImagePath('info.png'); ?>" border="0" style="margin-top: 2px; margin-left: 5px; margin-right: 2px;" /></span>
-			</label>
-			<div class="subform" id="tagform">
-			<?php
-					$i = 0;
-					foreach($clips as $clip) {
-					  $class = "subforminput";
-					  echo '<div id="clipfield'.$i.'" class="subformrow" style="float:left;clear:both;">';
-					  echo '<div style="float:left;margin-bottom:5px"><input type="checkbox" class="'.$class.'" id="removeclipsarray" name="removeclipsarray[]" value="'.$clip->urlid.'"';
-					  if(is_countable($removeclipsarray) && count($removeclipsarray) > 0){
-						  for($j=0; $j<count($removeclipsarray); $j++){
-							  if (isset($removeclipsarray[$j]) && $removeclipsarray[$j] != ""
-								  && $removeclipsarray[$j] == $clip->urlid) {
-								  echo ' checked="true"';
-								  break;
-							  }
-						  }
-					  }
-					  echo '></div>';
-					  echo '<div style="float:left; margin-left:5px;margin-bottom:5px;width:365px;">'.$clip->clip.'</div><br/>';
-					  echo '</div>';
-					  $i++;
-				  }
-			  ?>
-				<div class="subformrow" style="float:left;margin-top:5px;"><label><?php echo $LNG->FORM_RESOURCE_CLIPS_SELECT_TO_REMOVE; ?></label></div>
-			</div>
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_SAVE; ?>" id="editurl" name="editurl" />
+					</div>
+				</div>
+			</form>
 		</div>
-	<?php } ?>
-
-	<?php insertAddTags('ResourceTag'); ?>
-
-	<?php insertTagsAdded('ResourceTagAdded'); ?>
-
-   <br>
-   <div class="formrow">
-        <input class="formsubmit" type="submit" value="<?php echo $LNG->FORM_BUTTON_SAVE; ?>" id="editurl" name="editurl">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-</form>
+	</div>
+</div>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

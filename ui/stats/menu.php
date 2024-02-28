@@ -25,26 +25,32 @@
 
 $page = optional_param("page","overview",PARAM_TEXT);
 ?>
-<div id="tabber" style="margin-left:10px;clear:both;float:left; width: 100%;">
-	<ul id="tabs" class="tab">
-		<li class="tab">
-			<a class="tab <?php if ($page == "overview") { echo 'current'; } else { echo 'unselected'; } ?>" href="index.php?page=overview"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_OVERVIEW; ?></span></a>
-		</li>
-		<li class="tab">
-			<a class="tab <?php if ($page == "register") { echo 'current'; } else { echo 'unselected'; } ?>" href="userRegistration.php?page=register"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_REGISTER; ?></span></a>
-		</li>
-		<li class="tab">
-			<a class="tab <?php if ($page == "ideas") { echo 'current'; } else { echo 'unselected'; } ?>" href="newIdeas.php?page=ideas"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_IDEAS; ?></span></a>
-		</li>
-		<li class="tab">
-			<a class="tab <?php if ($page == "conns") { echo 'current'; } else { echo 'unselected'; } ?>" href="connections.php?page=conns"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_CONNS; ?></span></a>
-		</li>
-		<li class="tab">
-			<a class="tab <?php if ($page == "votes") { echo 'current'; } else { echo 'unselected'; } ?>" href="votes.php?page=votes"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_VOTES; ?></span></a>
-		</li>
-		<li class="tab">
-			<a class="tab <?php if ($page == "tabs") { echo 'current'; } else { echo 'unselected'; } ?>" href="tags.php?page=tabs"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_TAGS; ?></span></a>
-		</li>
-	</ul>
+<div class="container-fluid">
+	<div class="row px-4 py-0">
+		<div class="col-12">
+			<div id="tabber" class="tabber-stats">
+				<ul id="tabs" class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link <?php if ($page == "overview") { echo 'active'; } ?>" href="index.php?page=overview"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_OVERVIEW; ?></span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link <?php if ($page == "register") { echo 'active'; } ?>" href="userRegistration.php?page=register"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_REGISTER; ?></span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link <?php if ($page == "ideas") { echo 'active'; } ?>" href="newIdeas.php?page=ideas"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_IDEAS; ?></span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link <?php if ($page == "conns") { echo 'active'; } ?>" href="connections.php?page=conns"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_CONNS; ?></span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link <?php if ($page == "votes") { echo 'active'; } ?>" href="votes.php?page=votes"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_VOTES; ?></span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link <?php if ($page == "tabs") { echo 'active'; } ?>" href="tags.php?page=tabs"><span class="tab"><?php echo $LNG->STATS_GLOBAL_TAB_TAGS; ?></span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
 

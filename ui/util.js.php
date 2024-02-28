@@ -1095,14 +1095,14 @@ function fadeoutloop(){
 
 function getLoading(infoText){
     var loadDiv = new Element("div",{'class':'loading'});
-    loadDiv.insert("<img src='<?php echo $HUB_FLM->getImagePath('ajax-loader.gif'); ?>'/>");
+    loadDiv.insert("<img src='<?php echo $HUB_FLM->getImagePath('ajax-loader.gif'); ?>' alt='loading' />");
     loadDiv.insert("<br/>"+infoText);
     return loadDiv;
 }
 
 function getLoadingLine(infoText){
     var loadDiv = new Element("div",{'class':'loading'});
-    loadDiv.insert("<img src='<?php echo $HUB_FLM->getImagePath('ajax-loader.gif'); ?>' />");
+    loadDiv.insert("<img src='<?php echo $HUB_FLM->getImagePath('ajax-loader.gif'); ?>' alt='loading' />");
     loadDiv.insert("&nbsp;"+infoText);
     return loadDiv;
 }
@@ -1427,10 +1427,11 @@ function getNodeTitleAntecedence(nodetype, withColon) {
 
 function createCommentFilter(context, args) {
 
-	var sbTool = new Element("span", {'class':'orgbackpale toolbar2'});
-    sbTool.insert("<?php echo $LNG->FILTER_BY; ?> ");
+	var sbTool = new Element("div", {'class':'mb-3 row'});
+    sbTool.insert('<label class="col-auto col-form-label"><strong><?php echo $LNG->FILTER_BY; ?></strong></label>');
 
-	var filterMenu= new Element("select", {'class':'subforminput hgrselecthgrselect toolbar'});
+	var selectWrap = new Element("div", {'class':'col-sm-5'});
+	var filterMenu= new Element("select", {'class':'form-select'});
 
 	var links = args['filterlist'];
 	var includeunconnected = args['includeunconnected'];
@@ -1474,7 +1475,8 @@ function createCommentFilter(context, args) {
 		}
 	});
 
-	sbTool.insert(filterMenu);
+	selectWrap.insert(filterMenu);
+	sbTool.insert(selectWrap);
 
 	return sbTool;
 }

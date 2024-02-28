@@ -1,27 +1,27 @@
 <?php
-/********************************************************************************
- *                                                                              *
- *  (c) Copyright 2010 The Open University UK                                   *
- *                                                                              *
- *  This software is freely distributed in accordance with                      *
- *  the GNU Lesser General Public (LGPL) license, version 3 or later            *
- *  as published by the Free Software Foundation.                               *
- *  For details see LGPL: http://www.fsf.org/licensing/licenses/lgpl.html       *
- *               and GPL: http://www.fsf.org/licensing/licenses/gpl-3.0.html    *
- *                                                                              *
- *  This software is provided by the copyright holders and contributors "as is" *
- *  and any express or implied warranties, including, but not limited to, the   *
- *  implied warranties of merchantability and fitness for a particular purpose  *
- *  are disclaimed. In no event shall the copyright owner or contributors be    *
- *  liable for any direct, indirect, incidental, special, exemplary, or         *
- *  consequential damages (including, but not limited to, procurement of        *
- *  substitute goods or services; loss of use, data, or profits; or business    *
- *  interruption) however caused and on any theory of liability, whether in     *
- *  contract, strict liability, or tort (including negligence or otherwise)     *
- *  arising in any way out of the use of this software, even if advised of the  *
- *  possibility of such damage.                                                 *
- *                                                                              *
- ********************************************************************************/
+	/********************************************************************************
+	 *                                                                              *
+	 *  (c) Copyright 2010 The Open University UK                                   *
+	 *                                                                              *
+	 *  This software is freely distributed in accordance with                      *
+	 *  the GNU Lesser General Public (LGPL) license, version 3 or later            *
+	 *  as published by the Free Software Foundation.                               *
+	 *  For details see LGPL: http://www.fsf.org/licensing/licenses/lgpl.html       *
+	 *               and GPL: http://www.fsf.org/licensing/licenses/gpl-3.0.html    *
+	 *                                                                              *
+	 *  This software is provided by the copyright holders and contributors "as is" *
+	 *  and any express or implied warranties, including, but not limited to, the   *
+	 *  implied warranties of merchantability and fitness for a particular purpose  *
+	 *  are disclaimed. In no event shall the copyright owner or contributors be    *
+	 *  liable for any direct, indirect, incidental, special, exemplary, or         *
+	 *  consequential damages (including, but not limited to, procurement of        *
+	 *  substitute goods or services; loss of use, data, or profits; or business    *
+	 *  interruption) however caused and on any theory of liability, whether in     *
+	 *  contract, strict liability, or tort (including negligence or otherwise)     *
+	 *  arising in any way out of the use of this software, even if advised of the  *
+	 *  possibility of such damage.                                                 *
+	 *                                                                              *
+	 ********************************************************************************/
     include_once("../config.php");
 
     $me = substr($_SERVER["PHP_SELF"], 1); // remove initial '/'
@@ -33,11 +33,11 @@
 
     checkLogin();
 
-    include_once($HUB_FLM->getCodeDirPath("ui/dialogheader.php"));
+    include_once($HUB_FLM->getCodeDirPath("ui/headeradmin.php"));
 
 	if($USER->getIsAdmin() != "Y"){
         echo "<div class='errors'>".$LNG->FORM_ERROR_NOT_ADMIN."</div>";
-        include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
+        include_once($HUB_FLM->getCodeDirPath("ui/footeradmin.php"));
         die;
 	}
 
@@ -101,11 +101,11 @@
 					if(empty($errors)){
 						echo "<h1>".$LNG->REGISTRATION_REQUEST_SUCCESSFUL_TITLE_ADMIN."</h1>";
 						echo "<p>".$LNG->REGISTRATION_REQUEST_SUCCESSFUL_MESSAGE_ADMIN."<p><br><br>";
-						echo '<div class="formrow">';
+						echo '<div class="mb-3 row">';
 						echo '<input type="button" value="'.$LNG->FORM_BUTTON_CLOSE.'" onclick="window.close();"/>';
 						echo '</div>';
 
-						include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
+						include_once($HUB_FLM->getCodeDirPath("ui/footeradmin.php"));
 						die;
 					}
 				}
@@ -117,80 +117,80 @@
     $countries = getCountryList();
 ?>
 
-<script type="text/javascript">
+<div class="container-fluid">
+	<div class="row p-4 pt-0">
+		<div class="col">
+			<h1 class="mb-3"><?php echo $LNG->FORM_REGISTER_ADMIN_TITLE; ?></h1>
 
-	function init() {
-		$('dialogheader').insert('<?php echo $LNG->FORM_REGISTER_ADMIN_TITLE; ?>');
-	}
+			<?php
+				if(!empty($errors)){
+					echo "<div class='alert alert-danger'>".$LNG->FORM_ERROR_MESSAGE."<ul>";
+					foreach ($errors as $error){
+						echo "<li>".$error."</li>";
+					}
+					echo "</ul></div>";
+				}
+			?>
 
-	window.onload = init;
+			<p class="text-end"><span class="required">*</span> <?php echo $LNG->FORM_REQUIRED_FIELDS; ?></p>
 
-</script>
+			<form name="register" action="adminregister.php" method="post" enctype="multipart/form-data">
 
-<?php
-    if(!empty($errors)){
-        echo "<div class='errors'>".$LNG->FORM_ERROR_MESSAGE."<ul>";
-        foreach ($errors as $error){
-            echo "<li>".$error."</li>";
-        }
-        echo "</ul></div>";
-    }
-?>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="email"><?php echo $LNG->FORM_REGISTER_EMAIL; ?><span class="required">*</span></label>
+					<div class="col-sm-9"><input class="form-control" id="email" name="email" value="<?php print $email; ?>" /></div>
+				</div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="password"><?php echo $LNG->FORM_REGISTER_PASSWORD; ?><span class="required">*</span></label>
+					<div class="col-sm-9"><input class="form-control" id="password" name="password" type="password" value="<?php print $password; ?>" /></div>
+				</div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="confirmpassword"><?php echo $LNG->FORM_REGISTER_PASSWORD_CONFIRM; ?><span class="required">*</span></label>
+					<div class="col-sm-9"><input class="form-control" id="confirmpassword" name="confirmpassword" type="password" value="<?php print $confirmpassword; ?>" /></div>
+				</div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="fullname"><?php echo $LNG->FORM_REGISTER_NAME; ?><span class="required">*</span></label>
+					<div class="col-sm-9"><input class="form-control" type="text" id="fullname" name="fullname" value="<?php print $fullname; ?>" /></div>
+				</div>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="description"><?php echo $LNG->FORM_REGISTER_DESC; ?></label>
+					<div class="col-sm-9"><textarea class="form-control" id="description" name="description" rows="5"><?php print $description; ?></textarea></div>
+				</div>
 
-<p><span class="required">*</span> <?php echo $LNG->FORM_REQUIRED_FIELDS; ?></p>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="location"><?php echo $LNG->FORM_REGISTER_LOCATION; ?></label>
+					<div class="col-sm-5"><input class="form-control" id="location" name="location" value="<?php echo $location; ?>" /></div>
+					<div class="col-sm-4">
+						<select id="loccountry" name="loccountry" class="form-select" aria-label="country">
+							<option value="" ><?php echo $LNG->FORM_REGISTER_COUNTRY; ?></option>
+							<?php
+								foreach($countries as $code=>$c){
+									echo "<option value='".$code."'";
+									if($code == $loccountry){
+										echo " selected='true'";
+									}
+									echo ">".$c."</option>";
+								}
+							?>
+						</select>
+					</div>
+				</div>
 
-<form name="register" action="adminregister.php" method="post" enctype="multipart/form-data">
-
-    <div class="formrow">
-        <label class="formlabel" for="email"><?php echo $LNG->FORM_REGISTER_EMAIL; ?><span class="required">*</span></label>
-        <input class="forminput" id="email" name="email" size="40" value="<?php print $email; ?>">
-    </div>
-    <div class="formrow">
-        <label class="formlabel" for="password"><?php echo $LNG->FORM_REGISTER_PASSWORD; ?><span class="required">*</span></label>
-        <input class="forminput" id="password" name="password" type="password"  size="30" value="<?php print $password; ?>">
-    </div>
-    <div class="formrow">
-        <label class="formlabel" for="confirmpassword"><?php echo $LNG->FORM_REGISTER_PASSWORD_CONFIRM; ?><span class="required">*</span></label>
-        <input class="forminput" id="confirmpassword" name="confirmpassword" type="password" size="30" value="<?php print $confirmpassword; ?>">
-    </div>
-    <div class="formrow">
-        <label class="formlabel" for="fullname"><?php echo $LNG->FORM_REGISTER_NAME; ?><span class="required">*</span></label>
-        <input class="forminput" type="text" id="fullname" name="fullname" size="40" value="<?php print $fullname; ?>">
-    </div>
-    <div class="formrow">
-        <label class="formlabel" for="description"><?php echo $LNG->FORM_REGISTER_DESC; ?></label>
-        <textarea class="forminput" id="description" name="description" cols="40" rows="5"><?php print $description; ?></textarea>
-    </div>
-
-    <div class="formrow">
-		<label class="formlabel" for="location"><?php echo $LNG->FORM_REGISTER_LOCATION; ?></label>
-		<input class="forminput" id="location" name="location" style="width:160px;" value="<?php echo $location; ?>">
-		<select id="loccountry" name="loccountry" style="margin-left: 5px;width:160px;">
-	        <option value="" ><?php echo $LNG->FORM_REGISTER_COUNTRY; ?></option>
-	        <?php
-	            foreach($countries as $code=>$c){
-	                echo "<option value='".$code."'";
-	                if($code == $loccountry){
-	                    echo " selected='true'";
-	                }
-	                echo ">".$c."</option>";
-	            }
-	        ?>
-	    </select>
+				<div class="mb-3 row">
+					<label class="col-sm-3 col-form-label" for="homepage"><?php echo $LNG->FORM_REGISTER_HOMEPAGE; ?></label>
+					<div class="col-sm-9"><input class="form-control" type="text" id="homepage" name="homepage" value="<?php print $homepage; ?>" /></div>
+				</div>
+				
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_REGISTER_SUBMIT_BUTTON; ?>" id="register" name="register" />
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-
-	<div class="formrow">
-        <label class="formlabel" for="homepage"><?php echo $LNG->FORM_REGISTER_HOMEPAGE; ?></label>
-        <input class="forminput" type="text" id="homepage" name="homepage" size="40" value="<?php print $homepage; ?>">
-    </div>
-
-    <div class="formrow">
-        <input class="formsubmit" type="submit" value="<?php echo $LNG->FORM_REGISTER_SUBMIT_BUTTON; ?>" id="register" name="register">
-	    <input style="margin-left:30px;" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-
-</form>
+</div>
 
 <?php
-    include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
+    include_once($HUB_FLM->getCodeDirPath("ui/footeradmin.php"));
 ?>

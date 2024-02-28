@@ -86,7 +86,7 @@ function loadSearchData(forcedirectedGraph, toolbar, messagearea) {
     args['max'] = "-1";
 
     var baseStr = '';
-    for (var i=0; i<BASE_TYPES.length; i++) {
+    for (var i=0; i < BASE_TYPES.length; i++) {
     	if (BASE_TYPES[i] != "Theme"
     			&& BASE_TYPES[i] != "Idea"
     			&& BASE_TYPES[i] != "Project"
@@ -127,7 +127,7 @@ function loadSearchData(forcedirectedGraph, toolbar, messagearea) {
 			var conns = json.connectionset[0].connections;
 
 			$('graphConnectionCount').innerHTML = "";
-			$('graphConnectionCount').insert('<span style="font-size:10pt;color:black;float:left;margin-left:20px"><?php echo $LNG->GRAPH_CONNECTION_COUNT_LABEL; ?> '+conns.length+'</span>');
+			$('graphConnectionCount').insert('<span class="connections-count"><?php echo $LNG->GRAPH_CONNECTION_COUNT_LABEL; ?> '+conns.length+'</span>');
 
 			if (conns.length > 0) {
 				var mostConnected = "";

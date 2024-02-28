@@ -121,7 +121,7 @@ function insertArgumentLink(uniQ, type) {
 	argumentLinkDiv.linkcount = count;
 
 	var weblink = new Element("input", {
-		'class':'hgrinput',
+		'class':'form-control',
 		'placeholder':'<?php echo $LNG->FORM_LINK_LABEL; ?>',
 		'id':'argumentlink'+type+uniQ+count,
 		'name':'argumentlink'+type+uniQ+'[]',
@@ -141,7 +141,7 @@ function insertIdeaLink(uniQ, type) {
 	argumentLinkDiv.linkcount = count;
 
 	var weblink = new Element("input", {
-		'class':'forminput hgrwide',
+		'class':'form-control',
 		'placeholder':'<?php echo $LNG->FORM_LINK_LABEL; ?>',
 		'id':'argumentlink'+type+uniQ+count,
 		'name':'argumentlink'+type+uniQ+'[]',
@@ -287,7 +287,7 @@ function loadsolutions(context,args){
 			//alert("conns="+conns.length);
 
 			if (conns.length == 0) {
-				container.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+				container.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 			} else {
 				var nodes = new Array();
 				var nodeids = "";
@@ -374,7 +374,7 @@ function loadsolutions(context,args){
 					}
 
 				} else {
-					container.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+					container.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 				}
 			}
 		}
@@ -408,7 +408,7 @@ function loadremovedsolutions(context,args){
 			//alert("conns="+conns.length);
 
 			if (conns.length == 0) {
-				container.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+				container.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 			} else {
 				var nodes = new Array();
 				var nodeids = "";
@@ -476,7 +476,7 @@ function loadremovedsolutions(context,args){
 					container.update("");
 					displayRemovedIdeaList(container,nodes,parseInt(0), true, 'explore-removed');
 				} else {
-					container.update("<?php echo $LNG->WIDGET_NONE_FOUND_PART1; ?> "+title+" <?php echo $LNG->WIDGET_NONE_FOUND_PART2; ?>");
+					container.update("<?php echo $LNG->WIDGET_NONE_FOUND; ?>");
 				}
 			}
 		}
@@ -1276,14 +1276,15 @@ function reorderSolutions(){
  */
 function displaySortForm(sortOpts,args,tab,handler){
 
-	var sbTool = new Element("span", {'class':'sortback toolbar2'});
+	var sbTool = new Element("span", {'class':'sortback toolbar2 col-auto'});
     sbTool.insert("<?php echo $LNG->SORT_BY; ?> ");
 
     var selOrd = new Element("select");
  	Event.observe(selOrd,'change',handler);
     selOrd.id = "select-orderby-"+tab;
-    selOrd.className = "toolbar";
+    selOrd.className = "toolbar form-select";
     selOrd.name = "orderby";
+    selOrd.setAttribute("aria-label","Sort by");
     sbTool.insert(selOrd);
     for(var key in sortOpts){
         var opt = new Element("option");
@@ -1298,8 +1299,9 @@ function displaySortForm(sortOpts,args,tab,handler){
     var sortBy = new Element("select");
  	Event.observe(sortBy,'change',handler);
     sortBy.id = "select-sort-"+tab;
-    sortBy.className = "toolbar";
+    sortBy.className = "toolbar form-select";
     sortBy.name = "sort";
+    sortBy.setAttribute("aria-label","Order by");
     sbTool.insert(sortBy);
     for(var key in sortBys){
         var opt = new Element("option");

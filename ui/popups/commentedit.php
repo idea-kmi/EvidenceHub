@@ -92,20 +92,6 @@
 			//always refresh the whole screen (for explore header etc)
 			echo "window.opener.location.reload(true);";
 
-			/*echo "try { ";
-				echo "var parent=window.opener.document; ";
-				echo "if (window.opener && window.opener.loadSelecteditemNew) {";
-				echo '	  window.opener.loadSelecteditemNew("'.$commentnode->nodeid.'","'.$commentnode->name.'"); }';
-				echo " else {";
-				echo '	  window.opener.location.href = "'.$CFG->homeAddress.'#comment-list"; }';
-			echo "}";
-			echo "catch(err) {";
-				//CALLED FROM BOOKMARKET FROM A DIFFERNT DOMAIN
-				//message about successfully saving?
-				//echo "window.close();";
-			echo "}";
-			*/
-
 			echo "window.close();";
 			echo "</script>";
 			include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));
@@ -168,24 +154,29 @@ window.onload = init;
 
 </script>
 
-<p style="clear:both;margin-left: 10px;"><?php echo $LNG->FORM_QUICK_HEADER_MESSAGE; ?>
-<br><br><?php echo $LNG->FORM_COMMENT_MESSAGE; ?>
-</p>
+<div class="container-fluid popups">
+	<div class="row p-4 justify-content-center">	
+		<div class="col">
+			<p><?php echo $LNG->FORM_QUICK_HEADER_MESSAGE; ?></p>
+			<div class="alert alert-info"><?php echo $LNG->FORM_COMMENT_MESSAGE; ?></div>			
 
-<form id="commentform" name="commentform" commentform="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
-	<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
+			<form id="commentform" name="commentform" commentform="" enctype="multipart/form-data" method="post" onsubmit="return checkForm();">
+				<input type="hidden" id="nodeid" name="nodeid" value="<?php echo $nodeid; ?>" />
 
-	<?php insertComment('CommentDesc'); ?>
+				<?php insertComment('CommentDesc'); ?>
+				<?php insertAddTags('CommentTag'); ?>
+				<?php insertTagsAdded('CommentTagAdded'); ?>
 
-	<?php insertAddTags('CommentTag'); ?>
-	<?php insertTagsAdded('CommentTagAdded'); ?>
-
-    <br>
-    <div class="hgrformrow">
-        <input class="submit" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="editcomment" name="editcomment">
-        <input type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
-    </div>
-</form>
+				<div class="mb-3 row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+						<input class="btn btn-secondary" type="button" value="<?php echo $LNG->FORM_BUTTON_CANCEL; ?>" onclick="window.close();"/>
+						<input class="btn btn-primary" type="submit" value="<?php echo $LNG->FORM_BUTTON_PUBLISH; ?>" id="editcomment" name="editcomment" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 <?php
     include_once($HUB_FLM->getCodeDirPath("ui/dialogfooter.php"));

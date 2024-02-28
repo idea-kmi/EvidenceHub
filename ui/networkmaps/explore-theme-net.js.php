@@ -137,7 +137,7 @@ function loadThemeData(forcedirectedGraph, toolbar, messagearea) {
 			//alert(conns.length);
 
 			$('graphConnectionCount').innerHTML = "";
-			$('graphConnectionCount').insert('<span style="font-size:10pt;color:black;float:left;margin-left:20px"><?php echo $LNG->GRAPH_CONNECTION_COUNT_LABEL; ?> '+conns.length+'</span>');
+			$('graphConnectionCount').insert('<span class="connections-count"><?php echo $LNG->GRAPH_CONNECTION_COUNT_LABEL; ?> '+conns.length+'</span>');
 
 			if (conns.length > 0) {
 				for(var i=0; i< conns.length; i++){

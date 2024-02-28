@@ -103,166 +103,162 @@
 	echo "</script>";
 ?>
 
-<script type='text/javascript'>
+<div class="container-fluid">
+	<div class="row p-3">		
+		<div class="col">
+			<script type='text/javascript'>
+				var chatstatusnodeid='<?php echo $nodeid; ?>';
+				Event.observe(window, 'load', function() {
+					<?php if (isset($USER->userid)) { ?>
+						logChatUserArrive(chatstatusnodeid);
+					<?php } ?>
 
-var chatstatusnodeid='<?php echo $nodeid; ?>';
+					buildNodeTitle('chat');
 
-Event.observe(window, 'load', function() {
-	<?php if (isset($USER->userid)) { ?>
-		logChatUserArrive(chatstatusnodeid);
-	<?php } ?>
+					if (NODE_ARGS['nodetype'] == 'Challenge') {
+						addScriptDynamically(URL_ROOT+"ui/explore/chat/challengechatstree.js.php", 'explore-chatchallengetree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Issue') {
+						addScriptDynamically(URL_ROOT+"ui/explore/chat/issuechatstree.js.php", 'explore-issuechatstree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Claim') {
+						addScriptDynamically(URL_ROOT+"ui/explore/chat/claimchatstree.js.php", 'explore-claimchatstree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Solution') {
+						addScriptDynamically(URL_ROOT+"ui/explore/chat/solutionchatstree.js.php", 'explore-solutionchatstree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Organization') {
+						addScriptDynamically(URL_ROOT+"ui/explore/chat/organizationchatstree.js.php", 'explore-organizationchatstree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Project') {
+						addScriptDynamically(URL_ROOT+"ui/explore/chat/projectchatstree.js.php", 'explore-projectchatstree-script');
+					} else if (EVIDENCE_TYPES_STR.indexOf(EVIDENCE_ARGS['nodetype']) != -1) {
+						addScriptDynamically(URL_ROOT+"ui/explore/chat/evidencechatstree.js.php", 'explore-evidencechatstree-script');
+					} else if (RESOURCE_TYPES_STR.indexOf(URL_ARGS['nodetype']) != -1) {
+						addScriptDynamically(URL_ROOT+"ui/explore/chat/resourcechatstree.js.php", 'explore-resourcechatstree-script');
+					} else if (NODE_ARGS['nodetype'] == 'Theme') {
+						addScriptDynamically(URL_ROOT+"ui/explore/chat/themechatstree.js.php", 'explore-themechatstree-script');
+					}
 
-	buildNodeTitle('chat');
+				});
 
-	if (NODE_ARGS['nodetype'] == 'Challenge') {
-		addScriptDynamically(URL_ROOT+"ui/explore/chat/challengechatstree.js.php", 'explore-chatchallengetree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Issue') {
-		addScriptDynamically(URL_ROOT+"ui/explore/chat/issuechatstree.js.php", 'explore-issuechatstree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Claim') {
-		addScriptDynamically(URL_ROOT+"ui/explore/chat/claimchatstree.js.php", 'explore-claimchatstree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Solution') {
-		addScriptDynamically(URL_ROOT+"ui/explore/chat/solutionchatstree.js.php", 'explore-solutionchatstree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Organization') {
-		addScriptDynamically(URL_ROOT+"ui/explore/chat/organizationchatstree.js.php", 'explore-organizationchatstree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Project') {
-		addScriptDynamically(URL_ROOT+"ui/explore/chat/projectchatstree.js.php", 'explore-projectchatstree-script');
-	} else if (EVIDENCE_TYPES_STR.indexOf(EVIDENCE_ARGS['nodetype']) != -1) {
-		addScriptDynamically(URL_ROOT+"ui/explore/chat/evidencechatstree.js.php", 'explore-evidencechatstree-script');
-	} else if (RESOURCE_TYPES_STR.indexOf(URL_ARGS['nodetype']) != -1) {
-		addScriptDynamically(URL_ROOT+"ui/explore/chat/resourcechatstree.js.php", 'explore-resourcechatstree-script');
-	} else if (NODE_ARGS['nodetype'] == 'Theme') {
-		addScriptDynamically(URL_ROOT+"ui/explore/chat/themechatstree.js.php", 'explore-themechatstree-script');
-	}
+				/**
+				 * Refresh Chats sections after update.
+				 */
+				function refreshExploreChats() {
+					getAllChatConnections();
+				}
+				function chatLeave() {
+					<?php if (isset($USER->userid)) { ?>
+					logChatUserLeave(chatstatusnodeid);
+					<?php } ?>
+					return;
+				}
+				window.onunload = window.onbeforeunload = (function(){chatLeave();});
+			</script>
 
-});
+			<?php if ($nodetype == 'Challenge') { ?>
+				<div id="nodearealineartitle" class="challengeback challengeborder nodearealineartitle">
+					<div class="challengeback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Issue') { ?>
+				<div id="nodearealineartitle" class="issueback issueborder nodearealineartitle">
+					<div class="issueback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Claim') { ?>
+				<div id="nodearealineartitle" class="claimback claimborder nodearealineartitle">
+					<div class="claimback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Solution') { ?>
+				<div id="nodearealineartitle" class="solutionback solutionborder nodearealineartitle">
+					<div class="solutionback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Organization') { ?>
+				<div id="nodearealineartitle" class="orgback orgborder nodearealineartitle">
+					<div class="orgback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Project') { ?>
+				<div id="nodearealineartitle" class="projectback projectborder nodearealineartitle">
+					<div class="projectback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if (in_array($nodetype, $CFG->EVIDENCE_TYPES)) { //EVIDENCE ?>
+				<div id="nodearealineartitle" class="evidenceback evidenceborder nodearealineartitle">
+					<div class="evidenceback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if (in_array($nodetype, $CFG->RESOURCE_TYPES)) { //RESOURCES ?>
+				<div id="nodearealineartitle" class="resourceback resourceborder nodearealineartitle">
+					<div class="resourceback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } else if ($nodetype == 'Theme') { ?>
+				<div id="nodearealineartitle" class="themeback themeborder nodearealineartitle">
+					<div class="themeback tabtitlebar">
+						<label class="linearnodeheaderlabel", id="exploreheaderlabel">
+						</label>
+					</div>
+				</div>
+			<?php } ?>
 
-/**
- * Refresh Chats sections after update.
- */
-function refreshExploreChats() {
-	getAllChatConnections();
-}
+			<div class="p-1 border-bottom d-block">
+				<div id="headertoolbar" class="d-block"></div>
+			</div>
 
+			<div id="tabber">
+				<?php if ($nodetype == 'Challenge') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Issue') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Claim') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Solution') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Organization') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Project') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if (in_array($nodetype, $CFG->EVIDENCE_TYPES)) { //EVIDENCE ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if (in_array($nodetype, $CFG->RESOURCE_TYPES)) { //RESOURCES ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } else if ($nodetype == 'Theme') { ?>
+					<div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
+				<?php } ?>
 
-function chatLeave() {
-	<?php if (isset($USER->userid)) { ?>
-	logChatUserLeave(chatstatusnodeid);
-	<?php } ?>
-	return;
-}
-
-window.onunload = window.onbeforeunload = (function(){chatLeave();});
-
-</script>
-
-<?php if ($nodetype == 'Challenge') { ?>
-	<div id="nodearealineartitle" class="challengeback challengeborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="challengeback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
+				<!-- CHAT PAGE -->
+				<div class="row">
+					<div class="col-8">
+						<div id='tab-content-explore-chat' class='explorepagesection'>						
+							<h2 class="mt-3"><img src="<?php echo $HUB_FLM->getImagePath("chat.png"); ?>" alt="" /> <?php echo $LNG->VIEWS_CHAT_TITLE; ?></h2>
+							<span id="chattoolbar" class="d-block"></span>
+							<div id="chatloading" class="d-block"></div>
+							<div id="chatarea" class="d-block"></div>
+						</div>
+					</div>
+					<div class="col-4">
+						<h2 class="mt-3"><?php echo $LNG->CHAT_USER_TITLE; ?></h2>
+						<div id="current-chat-users"></div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-<?php } else if ($nodetype == 'Issue') { ?>
-	<div id="nodearealineartitle" class="issueback issueborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="issueback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Claim') { ?>
-	<div id="nodearealineartitle" class="claimback claimborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="claimback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Solution') { ?>
-	<div id="nodearealineartitle" class="solutionback solutionborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="solutionback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Organization') { ?>
-	<div id="nodearealineartitle" class="orgback orgborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="orgback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Project') { ?>
-	<div id="nodearealineartitle" class="projectback projectborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="projectback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if (in_array($nodetype, $CFG->EVIDENCE_TYPES)) { //EVIDENCE ?>
-	<div id="nodearealineartitle" class="evidenceback evidenceborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="evidenceback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if (in_array($nodetype, $CFG->RESOURCE_TYPES)) { //RESOURCES ?>
-	<div id="nodearealineartitle" class="resourceback resourceborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="resourceback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } else if ($nodetype == 'Theme') { ?>
-	<div id="nodearealineartitle" class="themeback themeborder" style="color:white;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-		<div class="themeback tabtitlebar" style="padding:10px;margin:0px;font-size:9pt">
-			<label class="linearnodeheaderlabel", id="exploreheaderlabel">
-			</label>
-		</div>
-	</div>
-<?php } ?>
-
-<div style="border-bottom:1px solid #E8E8E8; width:100%;clear:both; float:left;width:100%;margin:0px;padding:0px;">
-	<div id="headertoolbar" style="clear:both;float:left;margin-top:10px;margin-left:5px;"></div>
-</div>
-
-<div id="tabber" style="clear:both;float:left;width:100%;">
-	<?php if ($nodetype == 'Challenge') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Issue') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Claim') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Solution') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Organization') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Project') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if (in_array($nodetype, $CFG->EVIDENCE_TYPES)) { //EVIDENCE ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if (in_array($nodetype, $CFG->RESOURCE_TYPES)) { //RESOURCES ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } else if ($nodetype == 'Theme') { ?>
-	    <div id="tabs-content" class="tabcontentexplore" style="min-height:400px;">
-	<?php } ?>
-
-	<!-- CHAT PAGE -->
-		<table width="100%">
-		<tr>
-		<td width="75%" valign="top">
-		<div id='tab-content-explore-chat' class='explorepagesection' style="display:block">
-			<img class="active" border="0" src="<?php echo $HUB_FLM->getImagePath("chat.png"); ?>"  />
-			<h2 style="margin:5px;font-size:14pt;font-style: italic;float:left; "><?php echo $LNG->VIEWS_CHAT_TITLE; ?></h2>
-			<span id="chattoolbar" style="clear:both; float:left; width:100%"></span><br/>
-			<div id="chatloading" style="width:100%;clear:both;float:left;display: block;padding-left:10px;"></div>
-			<div id="chatarea" style="width:100%;min-height:400px;clear:both;float:left;display: block;margin-top:5px;padding-left:10px;"></div>
-		</div>
-		</td>
-		<td width="25%" valign="top">
-			<h2 style="margin:5px;font-size:14pt;font-style: italic;float:left;"><?php echo $LNG->CHAT_USER_TITLE; ?></h2>
-			<div style="clear:both; float:left;" id="current-chat-users"></div>
-		</td>
-		</tr>
-		</table>
 	</div>
 </div>
 
