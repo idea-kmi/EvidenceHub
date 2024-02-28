@@ -1,0 +1,630 @@
+/**
+ * These are the style that, in our experience, most commonly requiring per-site customization.
+ * We have separated these out to try and make updating the code with new versions easier.
+ *
+ * Eventually, we hope to have a more sophisicated style system in place to allow 
+ * easier customization of any styles.
+ */
+
+a {
+ 	color: #C9036A; 
+ 	font-weight: bold;
+ 	text-decoration: none;
+}
+
+.itemtext:hover {
+	color: #C9036A;
+}
+
+.itemtext:hover {
+	color: #C9036A;
+}
+
+h1 {
+	margin-top:5px;
+	margin-bottom: 10px;
+	font-size: 150%;
+	color: #308D88; 
+}
+
+h2 {
+	margin: 0px;
+	font-size: 130%;	
+	margin-bottom:10px;
+	color: #308D88; 
+}
+
+.active {
+	color:#C9036A;
+	cursor:pointer;		
+	font-weight: bold;
+}
+
+.inactive{
+	cursor:	default;
+	color: #A4A4A4;
+}
+
+#dialoglogo {
+	font-size: 10pt; 
+	float:left;
+	margin-bottom:3px;
+	margin-top:3px;
+	margin-left:3px;
+}
+
+#logo {
+	float: left;
+	padding-top:0px;
+	margin:15px;	
+	margin-bottom:0px;
+}
+
+.subform {
+	margin-left: 3px;
+	padding: 5px;
+	float:left; 
+	width: 405px;
+	border: 1px solid #40B5B2;
+}
+
+.subform2 {
+	padding: 5px;
+	float:left; 
+	width: 300px;
+	border: 1px solid #40B5B2;
+}
+
+.hgrsubform {
+	margin-left: 3px;
+	padding: 5px;
+	float:left; 
+	width: 495px;
+	border: 1px solid #40B5B2;
+}
+
+hr.urldivider {
+	background: #40B5B2;
+	border:0px;
+	padding:0px;
+	height: 1px;
+	width: 100%;
+} 
+
+#tagcloud li a {
+	text-decoration:none;
+	color:#C9036A;
+	padding: 2px;	
+}
+#tagcloud li a:hover{	
+	color:#C9036A;
+}		
+
+
+/**** HOME PAGE ****/
+
+.hometitles {
+	font-weight:bold;
+	color: #4e247b; 
+	font-size: 12pt;
+	padding-left:0px;	
+}
+
+.homesubtitle {
+	color: #008fb6; 
+}
+
+.themecloudtext {
+	color:#C9036A; 
+}
+
+/**** CATEGORIES TAB PAGES ****/
+
+/** Challenge tab area **/
+.challengeback {
+	background: #308D88;
+}
+.challengebackpale {
+	background: #d5e9e9;
+}
+.challengebackpale2 {
+	background: #d5e9e9;
+}
+.challengeborder {
+	border: 2px solid #308D88;
+}
+.challengeborder-bottom {
+	border-bottom: 2px solid #308D88;
+}
+.challengebackgradient {
+	background: #308D88;
+    background: -o-linear-gradient(top, #308D88, #ffffff);
+    background: -moz-linear-gradient(top, #308D88, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#308D88), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#308D88  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #308D88, #ffffff);
+}
+.challengebackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #308D88);
+    background: -moz-linear-gradient(top, #ffffff, #308D88);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#308D88));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#308D88', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #308D88);
+}
+
+/** Issue Tab Area **/
+.issueback,.themelist1back {
+	background: #308D88;
+}
+.issuebackpale {
+	background: #E6F7FF;
+}
+.issueborder, .themelist1border {
+	border: 2px solid #308D88;
+}
+.issueborder-bottom {
+	border-bottom: 2px solid #308D88;
+}
+.issuebackgradient, .themelist1colour {
+	background: #308D88;
+    background: -o-linear-gradient(top, #308D88, #ffffff);
+    background: -moz-linear-gradient(top, #308D88, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#308D88), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#308D88  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #308D88, #ffffff);
+}
+.issuebackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #308D88);
+    background: -moz-linear-gradient(top, #ffffff, #308D88);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#308D88));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#308D88', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #308D88);
+}
+
+/** Solution tab area **/
+.solutionback, .themelist4back {
+	background: #96B73D;
+}
+.solutionbackpale {
+	background: #EEF7E2;
+}
+.solutionborder, .themelist4border {
+	border: 2px solid #96B73D;
+}
+.solutionborder-bottom {
+	border-bottom: 2px solid #96B73D;
+}
+.solutionbackgradient, .themelist4colour {
+	background: #96B73D;
+    background: -o-linear-gradient(top, #96B73D, #ffffff);
+    background: -moz-linear-gradient(top, #96B73D, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#96B73D), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#96B73D  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #96B73D, #ffffff);
+}
+.solutionbackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #96B73D);
+    background: -moz-linear-gradient(top, #ffffff, #96B73D);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#96B73D));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#96B73D', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #96B73D);
+}
+
+/** Claim tab area **/
+.claimback {
+	background: #96B73D;
+}
+.claimbackpale {
+	background: #EEF7E2;
+}
+.claimborder {
+	border: 2px solid #96B73D;
+}
+.claimborder-bottom {
+	border-bottom: 2px solid #96B73D;
+}
+.claimbackgradient {
+	background: #96B73D;
+    background: -o-linear-gradient(top, #96B73D, #ffffff);
+    background: -moz-linear-gradient(top, #96B73D, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#96B73D), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#96B73D  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #96B73D, #ffffff);
+}
+.claimbackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #96B73D);
+    background: -moz-linear-gradient(top, #ffffff, #96B73D);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#96B73D));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#96B73D', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #96B73D);
+}
+
+/** Organisation tab area **/
+.orgback {
+	background: #27318B;
+}
+.orgbackpale {
+	background: #EAECF5;
+}
+.orgborder {
+	border: 2px solid #27318B;
+}
+.orgborder-bottom {
+	border-bottom: 2px solid #27318B;
+}
+.orgbackgradient {
+	background: #27318B;
+    background: -o-linear-gradient(top, #27318B, #ffffff);
+    background: -moz-linear-gradient(top, #27318B, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#27318B), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#27318B  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #27318B, #ffffff);
+}
+.orgbackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #27318B);
+    background: -moz-linear-gradient(top, #ffffff, #27318B);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#27318B));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#27318B', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #27318B);
+}
+
+/** Project tab area: CURRENTLY IN SAME TAB AS ORG **/
+.projectback {
+	background: #27318B;
+}
+.projectbackpale {
+	background: #EAECF5;
+}
+.projectborder {
+	border: 2px solid #27318B;
+}
+.projectborder-bottom {
+	border-bottom: 2px solid #27318B;
+}
+.projectbackgradient {
+	background: #27318B;
+    background: -o-linear-gradient(top, #27318B, #ffffff);
+    background: -moz-linear-gradient(top, #27318B, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#27318B), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#27318B  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #27318B, #ffffff);
+}
+.projectbackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #27318B);
+    background: -moz-linear-gradient(top, #ffffff, #27318B);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#27318B));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#27318B', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #27318B);
+}
+
+/** People tab area **/
+.peopleback {
+	background: #27318B;
+}
+.peoplebackpale {
+	background: #EAECF5;
+}
+.peopleborder {
+	border: 2px solid #27318B;
+}
+.peopleborder-bottom {
+	border-bottom: 2px solid #27318B;
+}
+.peoplebackgradient {
+	background: #27318B;
+    background: -o-linear-gradient(top, #27318B, #ffffff);
+    background: -moz-linear-gradient(top, #27318B, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#27318B), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#27318B  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #27318B, #ffffff);
+}
+.peoplebackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #27318B);
+    background: -moz-linear-gradient(top, #ffffff, #27318B);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#27318B));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#27318B', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #27318B);
+}
+
+/** Evidence tab area **/
+.evidenceback, .themelist3back {
+	background: #7D83BF;
+}
+.evidencebackpale {
+	background: #EADDF1;
+}
+.evidenceborder, .themelist3border {
+	border: 2px solid #7D83BF;
+}
+.evidenceborder-bottom {
+	border-bottom: 2px solid #7D83BF;
+}
+.evidencebackgradient, .themelist3colour {
+	background: #7D83BF;
+    background: -o-linear-gradient(top, #7D83BF, #ffffff);
+    background: -moz-linear-gradient(top, #7D83BF, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#7D83BF), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#7D83BF  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #7D83BF, #ffffff);
+}
+.evidencebackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #7D83BF);
+    background: -moz-linear-gradient(top, #ffffff, #7D83BF);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#7D83BF));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#7D83BF', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #7D83BF);
+}
+
+/** Resource tab area **/
+.resourceback {
+	background: #A9AB11;
+}
+.resourcebackpale {
+	background: #F8F8D2;
+}
+.resourceborder {
+	border: 2px solid #A9AB11;
+}
+.resourceborder-bottom {
+	border-bottom: 2px solid #A9AB11;
+}
+.resourcebackgradient {
+	background: #A9AB11;
+    background: -o-linear-gradient(top, #A9AB11, #ffffff);
+    background: -moz-linear-gradient(top, #A9AB11, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#A9AB11), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#A9AB11  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #A9AB11, #ffffff);
+}
+.resourcebackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #A9AB11);
+    background: -moz-linear-gradient(top, #ffffff, #A9AB11);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#A9AB11));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#A9AB11', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #A9AB11);
+}
+
+/** Themes **/
+.themeback, .themelist2back {
+	background: #DA569A;
+}
+
+.themebackpale {
+	background: #FCDDEC;
+}
+
+.themeborder, .themelist2border {
+	border: 2px solid #DA569A;
+}
+
+.themeborder-bottom {
+	border-bottom: 2px solid #DA569A;
+}
+
+.themebackgradient, .themelist2colour {
+    background: #DA569A;
+    background: -o-linear-gradient(top, #DA569A, #ffffff);
+    background: -moz-linear-gradient(top, #DA569A, #ffffff);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#DA569A), to(#ffffff));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#DA569A  ', EndColorStr='#ffffff', GradientType=0);
+    background: linear-gradient(to bottom, #DA569A, #ffffff);
+}
+
+.themebackgradient2 {
+	background: #ffffff;
+    background: -o-linear-gradient(top, #ffffff, #DA569A);
+    background: -moz-linear-gradient(top, #ffffff, #DA569A);
+    background: -webkit-gradient(linear,
+                left top, left bottom, from(#ffffff), to(#DA569A));
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#ffffff  ', EndColorStr='#DA569A', GradientType=0);
+    background: linear-gradient(to bottom, #ffffff, #DA569A);
+}
+
+.themelist {
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+	cursor: pointer; 
+	height: 75px; 
+	width:110px;
+	float:left;
+	margin-left: 5px;
+	margin-bottom:5px;
+}
+
+.widgettextcolor {
+	color:#4e247b; 
+}
+
+.overviewfieldset {
+	border: 1px #4e247b solid;
+	padding-top: 3px;
+}
+
+
+/** TABBER Customizations **/
+
+#tabber a.tab:hover {
+	color: #C9036A;	
+}
+
+#tabber a.tab:hover span.tab {
+	color:#C9036A;
+	background: #D8D8D8;
+}
+
+#tabber a.tab:hover span.tab2 {
+	color:white;	
+	background: dimgray;
+}
+
+#tabber a.current {
+	color: #C9036A;	
+}
+
+#tabber a.current span.tab {
+	color:#C9036A;
+	background: #D8D8D8;
+}
+
+#tabber a.current span.tab2 {
+	color:white;	
+	background: dimgray;
+}
+
+#tabber .currentpage {
+   color: #27318B; 
+   padding: 3px; 
+   border: 1px solid #84B839; 
+   font-weight: bold;
+}
+
+#tabber a.tab:hover span.tabevidence {
+	color:white;
+	background: #7D83BF;
+}
+
+#tabber a.current span.tabevidence {
+	color:white;
+	background: #7D83BF ;
+}
+
+#tabber a.tab:hover span.tabchallenge {
+	color:white;
+	background: #308D88;
+}
+#tabber a.current span.tabchallenge {
+	color:white;
+	background: #308D88 ;
+}
+
+#tabber a.tab:hover span.tabissue {
+	color:white;
+	background: #308D88;
+}
+#tabber a.current span.tabissue {
+	color:white;
+	background: #308D88 ;
+}
+
+#tabber a.tab:hover span.tabsolution {
+	color:white;
+	background: #96B73D;
+}
+#tabber a.current span.tabsolution {
+	color:white;
+	background: #96B73D ;
+}
+
+#tabber a.tab:hover span.tabclaim {
+	color:white;
+	background: #96B73D;
+}
+#tabber a.current span.tabclaim {
+	color:white;
+	background: #96B73D ;
+}
+
+#tabber a.tab:hover span.tabresource {
+	color:white;
+	background: #A9AB11;
+}
+#tabber a.current span.tabresource {
+	color:white;
+	background: #A9AB11 ;
+}
+
+#tabber a.tab:hover span.taborg {
+	color:white;
+	background: #27318B;
+}
+#tabber a.current span.taborg {
+	color:white;
+	background: #27318B ;
+}
+
+#tabber a.tab:hover span.tabproject {
+	color:white;
+	background: #27318B;
+}
+#tabber a.current span.tabproject {
+	color:white;
+	background: #27318B ;
+}
+
+#tabber a.tab:hover span.tabuser {
+	color:white;
+	background: #27318B;
+}
+#tabber a.current span.tabuser {
+	color:white;
+	background: #27318B ;
+}
+
+#tabber a.tab:hover span.tabtheme {
+	color:white;
+	background: #DA569A;
+}
+#tabber a.current span.tabtheme {
+	color:white;
+	background: #DA569A ;
+}
+
+.homebutton1 {
+	color: #4e247b; 
+	font-size: 10pt;
+}
+
+.homebutton2 {
+	color: white;
+	font-size: 10pt;
+}

@@ -1,0 +1,4 @@
+<p>Gentile %s,</p>
+<p>Grazie per aver convalidato il tuo indirizzo e-mail su %s</p>
+<p><b>Per favore <a href="%sui/pages/validatecomplete.php?id=%s&key=%s">clicca qui</a></b> per completare la convalida dell'e-mail.</p>
+<br>

@@ -1,0 +1,9 @@
+<p>Gentile %s,</p>
+<h3>Benvenuto a %s</h3>
+<p>La registrazione sul nostro Hub à avvenuta con successo.</p>
+<p><b>Per favore <a href="%sui/pages/registercomplete.php?id=%s&key=%s">clicca qui</a></b> per verificare il tuo indirizzo email e completare la registrazione.</p>
+<p>Accedi con questo indirizzo email e password: <b>%s</b><br>
+<br>Una volta effettuato l'accesso, ti consigliamo di andare al tuo profilo e cambiare questa password.
+<br>Potresti anche considerare di aggiungere un'immagine del profilo al tuo account.
+</p>
+<br>

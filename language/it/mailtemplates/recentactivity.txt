@@ -1,0 +1,5 @@
+<p>Gentile %s,</p>
+<p>%s</p>
+<p>%s</p>
+<p style="font-size:8pt">Per interrompere la ricezione di questo riepilogo email, deseleziona 'Email Digest' nella pagina <a href="%s"> del tuo profilo utente</a>.
+<br>

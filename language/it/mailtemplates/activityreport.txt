@@ -1,0 +1,5 @@
+<p>Gentile %s,</p>
+<h3>Ecco il tuo rapporto sulle attività di Evidence Hub</h3>
+
+<p>%s</p>
+<br>

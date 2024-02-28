@@ -1,0 +1,103 @@
+/** Debate View **/
+
+.selectedbackbox { background-color: #E8E8E8; border: 1px solid #E8E8E8; border-top-left-radius: 8px; border-top-right-radius: 8px; display: inline-block; }
+
+.boxborder { border:1px solid #E1E1E1; }
+
+.boxbackground { background-color: #ffffff; }
+
+.boxshadow { -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #EDEDED #E1E1E1 #EDEDED #D4D4D4; border-image: none; border-style: solid; border-width: 1px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: #FAFAFA; color: #414141; border-radius: 8px; display: inline-block; vertical-align: top; margin-bottom: 0.5em; padding: 0.5em 9px; }
+
+.boxshadowsquare { -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #EDEDED #E1E1E1 #EDEDED #D4D4D4; border-image: none; border-style: solid; border-width: 1px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background-color: #FAFAFA; color: #414141; display: inline-block; vertical-align: top; margin-bottom: 0.5em; padding: 0.5em 9px; }
+
+.boxshadowsquaredarker { -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #E8E6E6 #DCDCDC #DBD9D9 #CCCACA; border-image: none; border-style: solid; border-width: 1px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background: #FAFAFA; color: #414141; display: inline-block; vertical-align: top; margin-bottom: 0.5em; padding: 0.5em 9px; }
+
+.boxshadowsquaregreen { -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-color: #EDEDED #E1E1E1 #EDEDED #D4D4D4; border-image: none; border-style: solid; border-width: 1px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); background: #f7f0d5; color: #414141; display: inline-block; vertical-align: top; margin-bottom: 0.5em; padding: 0.5em 9px; }
+
+.issuecountdownrightdiv { float:right; padding-right:5px; font-size:10pt; height:16px; font-style:italic; }
+
+.tab-content-idea-list .idea-list-ol { display: block; width: 100%; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li { display: block; margin-bottom: 15px; width: 100%; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list { display: block; margin: 0; padding: 0; width: 100%; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title { float: none; display: block; margin: 0; padding: 0; width: 100%; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title table { border: none; width: 100%; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title table tbody { border: none; width: 100%; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title table tbody tr { border: none; width: 100%; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title table tbody tr td { border: none; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title table tbody tr td .textdividea .idearowtitle { cursor: pointer; display: inline-block; font-size: 1.4em; font-weight: bold; margin-right: 10px; padding: 4px; width: auto; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title table tbody tr td .textdividea img  { cursor: pointer; display: inline-block; margin: 0 5px; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title table tbody tr td .textdividea .idea-desc  { display: block; float: none; padding: 4px; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title table tbody tr td .ideaargumentlink { cursor: pointer; display: block; padding: 4px; position: relative; width: 100%; }
+.tab-content-idea-list .idea-list-ol li.idea-list-li .idea-blob-list .idea-title table tbody tr td .ideaargumentlink::after { content: "view"; position: absolute; right: 15px; }
+
+.ideaforagainsttable { display: block; width: 100%; }
+.ideaforagainsttable tbody { display: block; width: 100%; }
+.ideaforagainsttable tbody tr { display: table; width: 100%; }
+.ideaforagainsttable tbody tr td { width: 50%; }
+.ideaforagainsttable tbody tr td h3 { padding: 10px; }
+.ideaforagainsttable tbody tr td .supportkidsdiv .idea-list-ol { display: block; }
+
+.supportkidsdiv { padding: 10px; }
+.supportkidsdiv .idea-list-ol .idea-list-li { background-color: #fff; border: 1px solid #ddd; margin-bottom: 10px; }
+.supportkidsdiv .idea-list-ol .idea-list-li:last-child { margin-bottom: 0; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv { display: block; padding: 10px !important; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table { display: block; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr { display: block; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr:empty { display: none; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td { display: inline-block; width: 75%; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td:nth-child(2) { text-align: right; width: 20%; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td:empty { display: none; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td a.itemtext { cursor: pointer; display: inline-block; font-size: 1.1em; font-weight: bold; margin-right: 10px; padding: 4px 4px 4px 0px; width: auto; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td img  { cursor: pointer; display: inline-block; margin: 0 5px; padding: 0 !important; }
+.supportkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr:nth-child(2) td { display: block; width: 91%; }
+
+.addformdivpro { background-color:#fff; border: 1px solid #ddd; display: block; margin: 0 10px 10px 10px; padding: 30px; }
+.addformdivpro h3 { color: green; font-weight: normal; margin: 0; padding: 0 0 10px 0 !important; }
+.addformdivpro .formrowsm { display: block; margin-bottom: 10px; }
+.addformdivpro .formrowsm select { background-color: #fff; border: 1px solid #8f8f9d; cursor: pointer; display: block; padding: 3px; width: 100%; }
+.addformdivpro .formrowsm input { box-sizing: border-box; display: block; float: none; padding: 3px; width: 100%; }
+.addformdivpro .formrowsm textarea { box-sizing: border-box; display: block; float: none; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; min-height: 100px; padding: 3px; width: 100%; }
+.addformdivpro a.hgrinput { background-color: #fff; border: 1px solid #ccc; display: block; float: right; margin: 5px 0 5px 5px !important; padding: 10px !important; text-align: center; }
+.addformdivpro a.hgrinput:hover { opacity: 0.7; }
+.addformdivpro input[type="button"] { cursor: pointer; }
+
+.counterkidsdiv { padding: 10px; }
+.counterkidsdiv .idea-list-ol .idea-list-li { background-color: #fff; border: 1px solid #ddd; margin-bottom: 10px; }
+.counterkidsdiv .idea-list-ol .idea-list-li:last-child { margin-bottom: 0; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv { display: block; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table { display: block; margin: 10px !important; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr { display: block; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr:empty { display: none; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td { display: inline-block; width: 75%; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td:nth-child(2) { text-align: right; width: 20%; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td:empty { display: none; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td a.itemtext { cursor: pointer; display: inline-block; font-size: 1.1em; font-weight: bold; margin-right: 10px; padding: 4px 4px 4px 0px; width: auto; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr td img  { cursor: pointer; display: inline-block; margin: 0 5px; padding: 0 !important; }
+.counterkidsdiv .idea-list-ol .idea-list-li .argumentblobdiv table tr:nth-child(2) td { display: block; width: 91%; }
+
+.addformdivcon { background-color:#fff; border: 1px solid #ddd; display: block; margin: 0 10px 10px 10px; padding: 30px; }
+.addformdivcon h3 { color: red; font-weight: normal; margin: 0; padding: 0 0 10px 0 !important; }
+.addformdivcon .formrowsm { display: block; margin-bottom: 10px; }
+.addformdivcon .formrowsm select { background-color: #fff; border: 1px solid #8f8f9d; cursor: pointer; display: block; padding: 3px; width: 100%; }
+.addformdivcon .formrowsm input { box-sizing: border-box; display: block; float: none; padding: 3px; width: 100%; }
+.addformdivcon .formrowsm textarea { box-sizing: border-box; display: block; float: none; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; min-height: 100px; padding: 3px; width: 100%; }
+.addformdivcon a.hgrinput { background-color: #fff; border: 1px solid #ccc; display: block; float: right; margin: 5px 0 5px 5px !important; padding: 10px !important; text-align: center; }
+.addformdivcon a.hgrinput:hover { opacity: 0.7; }
+.addformdivcon input[type="button"] { cursor: pointer; }
+
+.addformdivedit { background-color:white; border: none; display: block; margin: 10px; padding: 10px; width: 100% !important; }
+.addformdivedit .formrowsm { display: block; margin-bottom: 10px; }
+.addformdivedit .formrowsm select { background-color: #fff; border: 1px solid #8f8f9d; cursor: pointer; display: block; padding: 3px; width: 100%; }
+.addformdivedit .formrowsm input { box-sizing: border-box; display: block; float: none; padding: 3px; width: 100%; }
+.addformdivedit .formrowsm textarea { box-sizing: border-box; display: block; float: none; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; min-height: 100px; padding: 3px; width: 100%; }
+.addformdivedit a.hgrinput { background-color: #fff; border: 1px solid #ccc; display: block; float: left; margin: 5px 0 5px 5px !important; padding: 10px !important; text-align: center; }
+.addformdivedit a.hgrinput:hover { opacity: 0.7; }
+.addformdivedit input[type="button"] { cursor: pointer; }
+
+.editformdividea { border: none !important; box-sizing: border-box; display: block; margin-left: 0; padding-left: 0; width: 95%; } 
+.editformdividea legend { margin: 10px 0; } 
+.editformdividea .formrowsm { display: block; margin-bottom: 10px; }
+.editformdividea .formrowsm input { box-sizing: border-box; display: block; float: none; margin-left: 0; padding: 3px; width: 100%; }
+.editformdividea .formrowsm textarea { box-sizing: border-box; display: block; float: none; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; margin-left: 0; min-height: 100px; padding: 3px; width: 100%; }
+.editformdividea input[type="button"] { box-sizing: border-box; cursor: pointer; display: block; margin: 5px 0 !important; text-align: center; width: 100%; }
+.editformdividea input[type="button"]:hover { opacity: 0.7; }

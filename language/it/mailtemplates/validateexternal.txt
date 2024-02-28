@@ -1,0 +1,4 @@
+<p>Gentile %s,</p>
+<p>Grazie per aver utilizzato il %s</p>
+<p><b>Per favore <a href="%sui/pages/logincomplete.php?id=%s&key=%s&referrer=%s">clicca qui</a></b> per completare la convalida dell'e-mail.</p>
+<br>
