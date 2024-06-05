@@ -33,10 +33,10 @@
  * where 'edfutures' should be replaced with your subdomain name. The service URL will always require a 'method' parameter.</p>
  *
  * <p>In all service calls, an optional parameter 'format' can be provided
- * to set how the output is displayed, the default is 'xml', but other options currently are 'gmap','json','list','rdf','rss', 'shortxml' and 'simile'.
+ * to set how the output is displayed, the default is 'xml', but other options currently are 'gmap','json','list','rss', 'shortxml' and 'simile'.
  * Not all formats are available with all methods, as explained below:</p>
  * <ul>
- * <li>'xml', 'json' and 'rdf' formats are available to all methods</li>
+ * <li>'xml' and 'json' formats are available to all methods</li>
  * <li>'rss' and 'shortxml' formats are only available to methods which return a NodeSet or ConnectionSet
  * <li>'gmap' and 'simile' formats are only available to methods which return a NodeSet.</li>
  * <li>'list' format is available to methods which return a NodeSet or a TagSet.</li>
@@ -60,7 +60,6 @@
  *     <a href="http://edfutures.evidence-hub.net/api/service.php?method=getnode&amp;nodeid=131211811270778613001206700042870488149">http://edfutures.evidence-hub.net/api/service.php?method=getnode&amp;nodeid=131211811270778613001206700042870488149</a>
  *     <a href="http://edfutures.evidence-hub.net/api/service.php?method=getnodesbyuser&amp;userid=1371081452501184165093">http://edfutures.evidence-hub.net/api/service.php?method=getnodesbyuser&amp;userid=1371081452501184165093</a>
  *     <a href="http://edfutures.evidence-hub.net/api/service.php?method=getnodesbyuser&amp;userid=1371081452501184165093&amp;format=json">http://edfutures.evidence-hub.net/api/service.php?method=getnodesbyuser&amp;userid=1371081452501184165093&amp;format=json</a>
- *     <a href="http://edfutures.evidence-hub.net/api/service.php?method=getnodesbyuser&amp;userid=1371081452501184165093&amp;format=rdf">http://edfutures.evidence-hub.net/api/service.php?method=getnodesbyuser&amp;userid=1371081452501184165093&amp;format=rdf</a>
  *     <a href="http://edfutures.evidence-hub.net/api/service.php?method=getnodesbyuser&amp;userid=1371081452501184165093&amp;format=xml">http://edfutures.evidence-hub.net/api/service.php?method=getnodesbyuser&amp;userid=1371081452501184165093&amp;format=xml</a>
  * </pre>
  * </p>
