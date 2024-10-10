@@ -7,6 +7,17 @@ config.php
 config-live.php
 !core/lib/htmlpurifier/library/HTMLPurifier/Config.php
 setup.php
+/sites/default/uploads/
+!/sites/default/uploads/groupprofile.png
+!/sites/default/uploads/profile.png
+!/sites/default/uploads/profile_thumb.png
+!/sites/default/uploads/systemadmin.png
+/sites/default/theme/
+!/sites/default/theme/README.txt
+/sites/default/custom/
+!/sites/default/custom/README.txt
+/sites/default/language/
+!/sites/default/language/README.txt
 *.DS_Store
 ._*
 .vs
