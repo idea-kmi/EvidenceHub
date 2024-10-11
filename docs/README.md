@@ -1,7 +1,7 @@
 # Evidence Hub Documentation
 
 > [!IMPORTANT]  
-> This code base is no longer in active production
+> This code base is no longer in active production.
 
 > [!WARNING]  
 > This documentation is old and has only been lightly updated in recent years.
