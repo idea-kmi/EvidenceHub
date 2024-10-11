@@ -1,10 +1,10 @@
 # Evidence Hub Documentation
 
 > [!IMPORTANT]  
-> This code base is no longer in active production. The majority of the code was originally developed between 2010 and 2012 with some updates and tweaks over the following years. So, a lot of the code is old in style and development practises.
+> This code base is no longer in active development. The majority of the code was originally developed between 2010 and 2012 with some updates and tweaks over the following years. So, a lot of the code is old in style and development practises.
 
 > [!WARNING]  
-> Some of this documentation may be out-of-date and has only been lightly updated in recent years.
+> Some of this documentation may be out-of-date.
 
 ## Contents
 
