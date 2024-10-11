@@ -20,7 +20,6 @@
 
 ## Overview
 
-![image](images/evidence-hub-testing-1-768x394.png)
 <figure>
   <img
   src="images/evidence-hub-testing-1-768x394.png"
@@ -28,7 +27,7 @@
   <figcaption>An example Evidence Hub homepage</figcaption>
 </figure>
 
-
+<br/>
 The Evidence Hub concept reflects our need for better ways to pool, map and harness what a community knows. The Evidence Hub is a collaborative knowledge-building (specifically evidence-building) web platform. It was designed in KMi by the team developing the concept of “Contested Collective Intelligence” [1,2], where it is important to understand different perspectives and support quality debates. The first Evidence Hub was developed for the Open Learning Network project [3], and further refined in the Communities of Practice for Health Visiting project [4]. 
 
 An Evidence Hub provides novel visual analytics designed to give insight into, and provoke reflection on, users’ knowlege-building activity. It is designed for use by practitioner communities/networks engaged in informal learning, and by students in more formal educational contexts. 
