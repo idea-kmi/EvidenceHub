@@ -21,6 +21,13 @@
 ## Overview
 
 ![image](images/evidence-hub-testing-1-768x394.png)
+<figure>
+  <img
+  src="images/evidence-hub-testing-1-768x394.png"
+  alt="Example Evidence Hub homepage">
+  <figcaption>An example Evidence Hub homepage</figcaption>
+</figure>
+
 
 The Evidence Hub concept reflects our need for better ways to pool, map and harness what a community knows. The Evidence Hub is a collaborative knowledge-building (specifically evidence-building) web platform. It was designed in KMi by the team developing the concept of “Contested Collective Intelligence” [1,2], where it is important to understand different perspectives and support quality debates. The first Evidence Hub was developed for the Open Learning Network project [3], and further refined in the Communities of Practice for Health Visiting project [4]. 
 
@@ -188,16 +195,17 @@ This level also has the files for the other main context pages of the site: inde
 
   
 
-## Setting up an Evidence Hub website
+## Setting up an Evidence Hub
 
-1.  **Creating the Database:**
-    1.  Create an empty database for the Evidence Hub to use in your MySQL installation, making sure that the database character set and collation are UTF-8, e.g.  
-        `CREATE DATABASE dbname CHARACTER SET utf8 COLLATE utf8_general_ci;`  
+### Creating the Database
+
+Create an empty database for the Evidence Hub to use in your MySQL installation, making sure that the database character set and collation are UTF-8, e.g.  
+`CREATE DATABASE dbname CHARACTER SET utf8 COLLATE utf8_general_ci;`  
           
-        If you do not want to use utf8, you will need to edit the db.sql file before you run it in c. below, as the table creation statements are using utf8.
-    2.  Create a MySQL user for the Evidence Hub to use.
-    3.  Load the database schema from /install/db.sql into your new Evidence Hub Database to create all the required tables.
-2.  **Adding the Default Data:**
+If you do not want to use utf8, you will need to edit the db.sql file before you run it in c. below, as the table creation statements are using utf8.
+Next create a MySQL user for the Evidence Hub to use. Lastly, load the database schema from /install/db.sql into your new Evidence Hub Database to create all the required tables.
+
+#### Adding the Default Data:
     1.  Edit /install/adddefaultdata.php. You must fill in the following data in the file:
         *   $dirAddressUploads = the file path to the uploads folder, which must end in '/', (further notes in adddefaultdata.php)
         *   $databaseaddress = the address of your mysql database - usually localhost;
@@ -208,6 +216,7 @@ This level also has the files for the other main context pages of the site: inde
         *   $password = fill in an default user password for the Evidence Hub;
         *   $email2 = fill in a theme admin user email address for the Evidence Hub - this can be made up. This user account manages the Evidence Hub Themes list and is called the System Admin user.
         *   $password2 = fill in an theme admin user password for the Evidence Hub;
+
     2.  Edit /install/adddefaultdata.php some more. You must decide now if you want to change the Evidence Node types supplied in this file.  
         If you do, edit the appropriate section of this file which has the heading 'Evidence Types'.  
         We supply four Evidence Types by default - Anecdote, Case Study, Policy, Research Finding and Report.  
@@ -219,29 +228,50 @@ This level also has the files for the other main context pages of the site: inde
           
         If you add more please make sure you also add a new line for each new Evidence Type in the 'Evidence Types into the Evidence Group' section of this file.  
           
-        NOTE: If you ever need to add a new Evidence Type after this file has been run, make sure you add it to that database against the default user account and then any other Users accounts that exist at that time. And also add it to the Evidence NodeTypeGrouping table for the Evidence Group
-    3.  Now run the adddefaultdata.php file on your server. You can do this in two ways:
+        NOTE: If you ever need to add a new Evidence Type after this file has been run, make sure you add it to that database against the default user account and then any other Users accounts that exist at that time. And also add it to the Evidence NodeTypeGrouping table for the Evidence Group.
+
+    3.  Now run the adddefaultdata.php file on your server. You can do this in two ways:    
         1.  Run it from the command line. Note that the file will output data that you will need, specifically two UserIDs (as well as possible error messages). You can get the user ids you will need from the database Users table if required.
         2.  Surf to the file through your browser. In this case the two user id's will be displayed on screen as will any error messages.When it completes (hopefully without error) make a note of the ids it displays. You will need these in a moment to put in the Config file.
-3.  Copy /config-sample.php to /config.php
-4.  Copy /config-sample.php to /config.php. You will need to edit the config.php file here to just add two things:
-    1.  $CFG->basedomain - this is the domain that is the default one for the installation. If you are running this as a single site this will be your actual domain. For multi-sites you still need a base domain entered here. The details config.php file for this base domain can be found in 'sites/default/'.
-    2.  $CFG->dirAddress - this is the file path on your server to the website code, ending in a '/'
-5.  Copy sites/default/config-sample.php to sites/default/config.php.  
-    Edit settings in sites/default/config.php to point to your set up and database and to configure other important aspects of Debate Hub.  
-    For the setting $CFG->ADMIN\_USERID, $CFG->defaultUserID and $CFG->defaultRoleGroupID you need to copy in the ids given from step 2c. above  
-    All config file settings are explained below in [Config Settings](config).  
-    The ones in red represent the minimum settings that you must look at and edit as required.
-6.  At this point you should be able to surf to the website and check it comes up OK. It will, of course, have the default supplied look and feel (using any header icon you have specififed in the config), but you can at least test that all is working thus far.
-7.  If all is well, remove the **install** folder from your website.
-8.  **Setting up the Themes:**  
-    To complete the default data your Evidence Hub will need, you now need to add the Themes specific to your domain.
-    1.  Login as the System Admin user (using the details you used in 2a above).
-    2.  You should now see an 'Admin' link at the top-right of the website. Click on this link.
-    3.  On the admin page click on the 'Manage Themes' link.
-    4.  This opens a new window with the Theme Manager in. You can now add the Themes you want to use for your Evidence HubWhile you can always add themes later on, think carefully about editing and deleting them, once they are in use.
 
-  
+### Setting up the Configuration files.
+
+There are three configuration files you will need to setup. Each has an '_template' version for you to config and edit:
+
+1. Copy `/config_template_.php` to `/config.php`
+
+You will need to edit the config.php file here to just add two things:
+    a.  `$CFG->basedomain` - this is the domain that is the default one for the installation. If you are running this as a single site this will be your actual domain. For multi-sites you still need a base domain entered here. The details config.php file for this base domain can be found in 'sites/default/'.
+    b.  `$CFG->dirAddress` - this is the file path on your server to the website code, ending in a '/'
+
+2. Copy /`setup_template.php` to `/setup.php` 
+
+Mostly there is nothing you need to change here. If you want to see maps within the platform you will need to set a url to an Open Street map tile cache services. We used to use Google maps before they started charning. there may still be code for this that could be reinstated if desired.
+
+3. Copy `/sites/deafult/config_template.php` to `/sites/deafult/config.php`
+
+Edit settings in sites/default/config.php to point to your set up and database and to configure other important aspects of the Evidence Hub site. For the setting `$CFG->ADMIN_USERID`, `$CFG->defaultUserID` and `$CFG->defaultRoleGroupID` you will need to copy in the ids generated when setting up the default data in the database.  All config file settings are explained below in [Config Settings](config-settings).  
+
+
+At this point you should be able to surf to the website and check it comes up OK. It will, of course, have the default supplied look and feel (using any header icon you have specififed in the config), but you can at least test that all is working thus far.
+
+If all is well, remove the **install** folder from your website.
+
+### Setting up the Themes
+
+To complete the default data your Evidence Hub will need, you now need to add the Themes specific to your domain.
+
+1.  Login as the System Admin user (using the details you used in setting up the database default data above).
+2.  You should now see an 'Admin' link at the top-right of the website. Click on this link.
+3.  On the admin page click on the 'Manage Themes' link.
+4.  This opens a new window with the Theme Manager in. You can now add the Themes you want to use for your Evidence Hub. While you can always add themes later on, think carefully about editing and deleting them, once they are in use.
+
+<figure>
+  <img
+  src="images/themes.png"
+  alt="Example theme list admin page">
+  <figcaption>Example set of themes for an Evidence Hub</figcaption>
+</figure>
 
 ## Config Settings
 
