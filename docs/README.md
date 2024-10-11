@@ -1,9 +1,7 @@
- Evidence Hub Documentation <!-- body { font-family:"Arial"; font-size:12.0pt; font-family:"Arial"; } li { margin-bottom: 15px; } p { margin:0cm; margin-bottom:10px; } -->
-
 # Evidence Hub Documentation
 
 > [!IMPORTANT]  
-> This code base is no longer in active production
+> This code base is no longer in active production.
 
 > [!WARNING]  
 > This documentation is old and has only been lightly updated in recent years.
