@@ -48,7 +48,7 @@ $CFG->SIGNUP_CLOSED = "closed";
 $CFG->basedomain = "<**your root/default domain**>";
 
 // could get this automatically somehow dirname/realpath/getcwd ?;
-$CFG->dirAddress = "/data/web/evidencehub-root/www/";
+$CFG->dirAddress = "<**path to your instance of evidence hub code**>";
 
 $currentdomain = "";
 
