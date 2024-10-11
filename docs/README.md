@@ -1,5 +1,3 @@
- Evidence Hub Documentation <!-- body { font-family:"Arial"; font-size:12.0pt; font-family:"Arial"; } li { margin-bottom: 15px; } p { margin:0cm; margin-bottom:10px; } -->
-
 # Evidence Hub Documentation
 
 > [!IMPORTANT]  
