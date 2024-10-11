@@ -2,14 +2,18 @@
 
 # Evidence Hub Documentation
 
-> **_IMPORTANT:_**  This documentation is old and has only been lightly updated in recent years.
+> [!IMPORTANT]  
+> This code base is no longer in active production
+
+> [!WARNING]  
+> This documentation is old and has only been lightly updated in recent years.
 
 ## Contents
 
 *   [Overview](#overview)
 *   [License](#license)
 *   [System Requirements](#system-requirements)
-*   [Folder](#folders)
+*   [Folders](#folders)
 *   [Setting up an Evidence Hub](#setting-up-an-evidence-hub)
 *   [Config Settings](#config-settings)
 *   [Language](#language)
@@ -17,6 +21,8 @@
 *   [Additional Developer Notes](#additional-developer-notes)
 
 ## Overview
+
+![image](images/evidence-hub-testing-1-768x394.png)
 
 The Evidence Hub concept reflects our need for better ways to pool, map and harness what a community knows. The Evidence Hub is a collaborative knowledge-building (specifically evidence-building) web platform. It was designed in KMi by the team developing the concept of “Contested Collective Intelligence” [1,2], where it is important to understand different perspectives and support quality debates. The first Evidence Hub was developed for the Open Learning Network project [3], and further refined in the Communities of Practice for Health Visiting project [4]. 
 
