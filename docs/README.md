@@ -13,7 +13,7 @@
 *   [System Requirements](#system-requirements)
 *   [Folders](#folders)
 *   [Setting up an Evidence Hub](#setting-up-an-evidence-hub)
-*   [Config Settings](#config-settings)
+*   [Sites Config Settings](#sites-config-settings)
 *   [Language](#language)
 *   [Tailoring your Evidence Hub](#tailoring-your-evidence-hub)
 *   [Additional Developer Notes](#additional-developer-notes)
@@ -25,9 +25,8 @@
   src="images/evidence-hub-testing-1-768x394.png"
   alt="Example Evidence Hub homepage">
   <figcaption>An example Evidence Hub homepage</figcaption>
-</figure>
+</figure><br/><br/>
 
-<br/>
 The Evidence Hub concept reflects our need for better ways to pool, map and harness what a community knows. The Evidence Hub is a collaborative knowledge-building (specifically evidence-building) web platform. It was designed in KMi by the team developing the concept of “Contested Collective Intelligence” [1,2], where it is important to understand different perspectives and support quality debates. The first Evidence Hub was developed for the Open Learning Network project [3], and further refined in the Communities of Practice for Health Visiting project [4]. 
 
 An Evidence Hub provides novel visual analytics designed to give insight into, and provoke reflection on, users’ knowlege-building activity. It is designed for use by practitioner communities/networks engaged in informal learning, and by students in more formal educational contexts. 
@@ -122,12 +121,12 @@ NOTE: In your php.ini make sure set allow-url-fopen = on.
 
 The Evidence Hub uses MySQL/MariaDB as the database at present.So you will need to install MySQL on your server. 
 We have developed and tested on mysql Ver 15.1 Distrib 10.3.39-MariaDB. 
-The database layer of the code has been abstracted out somewhat to make it eaiser for a developer to extend the Debate Hub code base to use a different database.  
+The database layer of the code has been abstracted out somewhat to make it eaiser for a developer to extend the Evidence Hub code base to use a different database.  
 
 ### Email
 
 The Evidence Hub uses emails to tell users their registration is successful etc. and send out email digests of items or people they are following. 
-So your server should be able to do emailing if you want these to be sent. You can switch off emailing with a setting in the config file if required (see [Config Settings](#config), below), but then all user accounts would need to be setup and validated by hand.  
+So your server should be able to do emailing if you want these to be sent. You can switch off emailing with a setting in the config file if required (see [Sites Config Settings](#sites-config-settings), below), but then all user accounts would need to be setup and validated by hand.  
 
 ### Crons
 
@@ -148,7 +147,7 @@ To send out the digest emails you will need to setup three cron jobs. An example
 
 ## Folders
 
-The top level of the file structure has the config.php file, (see [Config Settings](#config), below) and the setup.php file.
+The top level of the file structure has the config.php file, (see [Sites Config Settings](#sites-config-settings), below) and the setup.php file.
 
 This level also has the files for the other main context pages of the site: index (for the global context) explore (for the item context), user, search and the fav icon etc..
 
@@ -156,7 +155,7 @@ This level also has the files for the other main context pages of the site: inde
 
 *   **admin** \- This folder has various files that run the activity digest email cron jobs, hold the administer themes page, the register new user form, the user statistics page etc.. If you are a user who has the 'IsAdministrator' field in the Users table set to 'Y', you will see an extra menu item when logged in at the top of the screen called 'admin'. This page currently only has the 'Register New User' link. In future releases it will have more.  
       
-    If you are logged in as the Site admin user (see $CFG->ADMIN\_USERID in the [Config Settings](#config) section below), you will see a 'Manage Themes' option to allow you to add, edit and delete system Themes. This should really only be done before a hub is up an running. Be very careful deleting or editing Themes once people have started using them. Think about the consequesnces carefully.
+    If you are logged in as the Site admin user (see `$CFG->ADMIN_USERID` in the [Sites Config Settings](#sites-config-settings) section below), you will see a 'Manage Themes' option to allow you to add, edit and delete system Themes. This should really only be done before a hub is up an running. Be very careful deleting or editing Themes once people have started using them. Think about the consequesnces carefully.
 *   **api** \- This folder holds the Evidence Hub services file that processes incoming service request, (see core/apilib.php for the actual guts).
 *   **core** \- This is where the server side code resides.
     *   **database** \- This holds the database manager and the sql statements. There is a README.txt file in there with more details.
@@ -205,33 +204,38 @@ If you do not want to use utf8, you will need to edit the db.sql file before you
 Next create a MySQL user for the Evidence Hub to use. Lastly, load the database schema from /install/db.sql into your new Evidence Hub Database to create all the required tables.
 
 #### Adding the Default Data:
-    1.  Edit /install/adddefaultdata.php. You must fill in the following data in the file:
-        *   $dirAddressUploads = the file path to the uploads folder, which must end in '/', (further notes in adddefaultdata.php)
-        *   $databaseaddress = the address of your mysql database - usually localhost;
-        *   $databaseuser = the username of your mysql user for the Evidence Hub, as created in step 1b above;
-        *   $databasepass = the password of your mysql user for the Evidence Hub, as created in step 1b above;
-        *   $databasename = the name of your mysql database for the Evidence Hub, as created in step 1a above;
-        *   $email = fill in a default user email address for the Evidence Hub - this can be made up. This user account owns the default node and links types and acts as a template for all subsequent user accounts;
-        *   $password = fill in an default user password for the Evidence Hub;
-        *   $email2 = fill in a theme admin user email address for the Evidence Hub - this can be made up. This user account manages the Evidence Hub Themes list and is called the System Admin user.
-        *   $password2 = fill in an theme admin user password for the Evidence Hub;
 
-    2.  Edit /install/adddefaultdata.php some more. You must decide now if you want to change the Evidence Node types supplied in this file.  
-        If you do, edit the appropriate section of this file which has the heading 'Evidence Types'.  
-        We supply four Evidence Types by default - Anecdote, Case Study, Policy, Research Finding and Report.  
-        You can edit any of these or add more.  
-          
-        To add another Evidence node type you will need to decide/create an icon and place it in 'images/nodetypes/Default' add the follow lines of code:  
-          
-        You will find example lines of code in the adddefaultdata file with instructions.  
-          
-        If you add more please make sure you also add a new line for each new Evidence Type in the 'Evidence Types into the Evidence Group' section of this file.  
-          
-        NOTE: If you ever need to add a new Evidence Type after this file has been run, make sure you add it to that database against the default user account and then any other Users accounts that exist at that time. And also add it to the Evidence NodeTypeGrouping table for the Evidence Group.
+1. Edit /install/adddefaultdata.php. You must fill in the following data in the file:
+    *   $dirAddressUploads = the file path to the uploads folder, which must end in '/', (further notes in adddefaultdata.php)
+    *   $databaseaddress = the address of your mysql database - usually localhost;
+    *   $databaseuser = the username of your mysql user for the Evidence Hub, as created in step 1b above;
+    *   $databasepass = the password of your mysql user for the Evidence Hub, as created in step 1b above;
+    *   $databasename = the name of your mysql database for the Evidence Hub, as created in step 1a above;
+    *   $email = fill in a default user email address for the Evidence Hub - this can be made up. This user account owns the default node and links types and acts as a template for all subsequent user accounts;
+    *   $password = fill in an default user password for the Evidence Hub;
+    *   $email2 = fill in a theme admin user email address for the Evidence Hub - this can be made up. This user account manages the Evidence Hub Themes list and is called the System Admin user.
+    *   $password2 = fill in an theme admin user password for the Evidence Hub;
+<br/>
+2.  Edit /install/adddefaultdata.php some more. You must decide now if you want to change the Evidence Node types supplied in this file.  
+    If you do, edit the appropriate section of this file which has the heading 'Evidence Types'.  
+    We supply four Evidence Types by default - Anecdote, Case Study, Policy, Research Finding and Report.  
+    You can edit any of these or add more.  
+        
+    To add another Evidence node type you will need to decide/create an icon and place it in 'images/nodetypes/Default' add the follow lines of code:  
+        
+    You will find example lines of code in the adddefaultdata file with instructions.  
+        
+    If you add more please make sure you also add a new line for each new Evidence Type in the 'Evidence Types into the Evidence Group' section of this file.  
+        
+    NOTE: If you ever need to add a new Evidence Type after this file has been run, make sure you add it to that database against the default user account and then any other Users accounts that exist at that time. And also add it to the Evidence NodeTypeGrouping table for the Evidence Group.
+<br/>
+3.  Now run the adddefaultdata.php file on your server. You can do this in two ways:    
+    1.  Run it from the command line. Note that the file will output data that you will need, specifically two UserIDs (as well as possible error messages). You can get the user ids you will need from the database Users table if required.
+    2.  Surf to the file through your browser. In this case the two user id's will be displayed on screen as will any error messages.When it completes (hopefully without error) make a note of the ids it displays. You will need these in a moment to put in the Config file.
 
-    3.  Now run the adddefaultdata.php file on your server. You can do this in two ways:    
-        1.  Run it from the command line. Note that the file will output data that you will need, specifically two UserIDs (as well as possible error messages). You can get the user ids you will need from the database Users table if required.
-        2.  Surf to the file through your browser. In this case the two user id's will be displayed on screen as will any error messages.When it completes (hopefully without error) make a note of the ids it displays. You will need these in a moment to put in the Config file.
+> [!IMPORTANT]  
+> Remove the **install** folder from your running website, once you have completed the database setup.
+
 
 ### Setting up the Configuration files.
 
@@ -247,14 +251,12 @@ You will need to edit the config.php file here to just add two things:
 
 Mostly there is nothing you need to change here. If you want to see maps within the platform you will need to set a url to an Open Street map tile cache services. We used to use Google maps before they started charning. there may still be code for this that could be reinstated if desired.
 
-3. Copy `/sites/deafult/config_template.php` to `/sites/deafult/config.php`
+3. Copy `/sites/default/config_template.php` to `/sites/default/config.php`
 
-Edit settings in sites/default/config.php to point to your set up and database and to configure other important aspects of the Evidence Hub site. For the setting `$CFG->ADMIN_USERID`, `$CFG->defaultUserID` and `$CFG->defaultRoleGroupID` you will need to copy in the ids generated when setting up the default data in the database.  All config file settings are explained below in [Config Settings](config-settings).  
+Edit settings in sites/default/config.php to point to your set up and database and to configure other important aspects of the Evidence Hub site. For the setting `$CFG->ADMIN_USERID`, `$CFG->defaultUserID` and `$CFG->defaultRoleGroupID` you will need to copy in the ids generated when setting up the default data in the database.  All config file settings are explained below in [Sites Config Settings](sites-config-settings).  
 
 
 At this point you should be able to surf to the website and check it comes up OK. It will, of course, have the default supplied look and feel (using any header icon you have specififed in the config), but you can at least test that all is working thus far.
-
-If all is well, remove the **install** folder from your website.
 
 ### Setting up the Themes
 
@@ -272,8 +274,9 @@ To complete the default data your Evidence Hub will need, you now need to add th
   <figcaption>Example set of themes for an Evidence Hub</figcaption>
 </figure>
 
-## Config Settings
+## Sites Config Settings
 
+Below are more details about the site specific configuration file propertes (`/sites/default/config.php` or `/sites/multi/<domain>/config`)
 
 All setting have comments explaining their use.  
   
@@ -835,7 +838,7 @@ NOTE: If what you want to change any of the core terms, the names of the categor
 
 ## Tailoring your Evidence Hub
 
-At present, if you want to change the look and feel or text of your Debate Hub site,these are the main places you should look at making changes:
+At present, if you want to change the look and feel or text of your Evidence Hub site,these are the main places you should look at making changes:
 
 *   **Themes:** The style sheets for the ui can be found in 'themes/default/styles/'. Please don't edit those ones. If you want to create your own theme you should copy the 'default' folder, rename it and edit the styles there. In the images folder you will see some image files like the header logo etc, that you will also probably want to replace. Just make sure the files names and sizes stay the same. In addition you can override themes for a given domain or the default domain in the 'sites' folder. For more information see the README.txt file in the 'themes' folder.
 *   **Language:** All text displayed in the Evidence Hub has been placed in various files in the 'language' folder system. So you can override all the default texts your specific site needs. You may especially like to add to or redo the **about** page (language/en/about.php). REMEMBER: never edit the original language files. Always use the Custom file override system. You can also provide sets of language files for other languages. (See the [Language](#language) section of these notes for more details and there is also a README.txt file in the 'language' folder).
