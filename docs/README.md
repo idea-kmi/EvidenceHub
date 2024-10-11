@@ -1,10 +1,10 @@
 # Evidence Hub Documentation
 
 > [!IMPORTANT]  
-> This code base is no longer in active production.
+> This code base is no longer in active production. The majority of the code was originally developed between 2010 and 2012 with some updates and tweaks over the following years. So, a lot of the code is old in style and development practises.
 
 > [!WARNING]  
-> This documentation is old and has only been lightly updated in recent years.
+> Some of this documentation may be out-of-date and has only been lightly updated in recent years.
 
 ## Contents
 
@@ -216,19 +216,18 @@ Next create a MySQL user for the Evidence Hub to use. Lastly, load the database 
     *   $email2 = fill in a theme admin user email address for the Evidence Hub - this can be made up. This user account manages the Evidence Hub Themes list and is called the System Admin user.
     *   $password2 = fill in an theme admin user password for the Evidence Hub;
 <br/>
+
 2.  Edit /install/adddefaultdata.php some more. You must decide now if you want to change the Evidence Node types supplied in this file.  
     If you do, edit the appropriate section of this file which has the heading 'Evidence Types'.  
     We supply four Evidence Types by default - Anecdote, Case Study, Policy, Research Finding and Report.  
     You can edit any of these or add more.  
-        
-    To add another Evidence node type you will need to decide/create an icon and place it in 'images/nodetypes/Default' add the follow lines of code:  
-        
-    You will find example lines of code in the adddefaultdata file with instructions.  
-        
-    If you add more please make sure you also add a new line for each new Evidence Type in the 'Evidence Types into the Evidence Group' section of this file.  
-        
-    NOTE: If you ever need to add a new Evidence Type after this file has been run, make sure you add it to that database against the default user account and then any other Users accounts that exist at that time. And also add it to the Evidence NodeTypeGrouping table for the Evidence Group.
+    <br />    
+    To add another Evidence node type you will need to decide/create an icon and place it in 'images/nodetypes/Default' add additional lines of code in adddefaultdata.php. Examples of the code and further instructions can be found in the adddefaultdata.php file. If you add more Evidence Types, please make sure you also add a new line for each new Evidence Type in the 'Evidence Types into the Evidence Group' section of adddefaultdata.php file.  
+    <br/>
+> [!NOTE]  
+> If you ever need to add a new Evidence Type after this file has been run, make sure you add it to the database against the default user account and then any other Users accounts that exist at that time. And also add it to the Evidence NodeTypeGrouping table for the approprate Evidence Group.
 <br/>
+
 3.  Now run the adddefaultdata.php file on your server. You can do this in two ways:    
     1.  Run it from the command line. Note that the file will output data that you will need, specifically two UserIDs (as well as possible error messages). You can get the user ids you will need from the database Users table if required.
     2.  Surf to the file through your browser. In this case the two user id's will be displayed on screen as will any error messages.When it completes (hopefully without error) make a note of the ids it displays. You will need these in a moment to put in the Config file.
@@ -249,7 +248,7 @@ You will need to edit the config.php file here to just add two things:
 
 2. Copy /`setup_template.php` to `/setup.php` 
 
-Mostly there is nothing you need to change here. If you want to see maps within the platform you will need to set a url to an Open Street map tile cache services. We used to use Google maps before they started charning. there may still be code for this that could be reinstated if desired.
+Mostly there is nothing you need to change here. If you want to see maps within the platform you will need to set a url to an Open Street map tile cache services against the property `$CFG->maptilesurl`. We used to use Google maps before they started charning. The legacy property still exists in the file `$CFG->GOOLGE_SERVER_SIDE_API_KEY` but it is no longer used.
 
 3. Copy `/sites/default/config_template.php` to `/sites/default/config.php`
 
@@ -481,6 +480,9 @@ $CFG->plainback = '#D0D0D0';
 ```  
 
 ### Browser Bookmarklet Tool
+
+> [!WARNING]  
+> The Bookmarklet Tool no longer functions on many sites.
 
 **`$CFG->buildername = "-Your Site- EH";`**  
 (The name of the Tool for this site. A shortening of the main site name or something like that.)  
@@ -838,13 +840,13 @@ NOTE: If what you want to change any of the core terms, the names of the categor
 
 ## Tailoring your Evidence Hub
 
-At present, if you want to change the look and feel or text of your Evidence Hub site,these are the main places you should look at making changes:
+At present, if you want to change the look and feel or text of your Evidence Hub site, these are the main places you should look at making changes:
 
-*   **Themes:** The style sheets for the ui can be found in 'themes/default/styles/'. Please don't edit those ones. If you want to create your own theme you should copy the 'default' folder, rename it and edit the styles there. In the images folder you will see some image files like the header logo etc, that you will also probably want to replace. Just make sure the files names and sizes stay the same. In addition you can override themes for a given domain or the default domain in the 'sites' folder. For more information see the README.txt file in the 'themes' folder.
+*   **Themes:** The style sheets for the user interface can be found in 'themes/default/styles/'. Please don't edit those ones. If you want to create your own theme you should copy the 'default' folder, rename it and edit the styles there. In the images folder you will see some image files like the header logo etc, that you will also probably want to replace. Just make sure the files names and sizes stay the same. In addition you can override themes for a given domain or the default domain in the 'sites' folder. For more information see the README.txt file in the 'themes' folder.
 *   **Language:** All text displayed in the Evidence Hub has been placed in various files in the 'language' folder system. So you can override all the default texts your specific site needs. You may especially like to add to or redo the **about** page (language/en/about.php). REMEMBER: never edit the original language files. Always use the Custom file override system. You can also provide sets of language files for other languages. (See the [Language](#language) section of these notes for more details and there is also a README.txt file in the 'language' folder).
 *   **Homepage:** The file that draws the homepage (ui/homepage.php) is in the 'ui' folder. While all the text can be changed through the language files, you may want to completely redo this page for your specific Evidence Hub.
 *   **Images:** The theme specific images can be found in the themes as mentioned above. All other icons and images can be found in the 'images' folder. If you want to replace an image make sure the size and file name stay the same and you will not need to edit any code. We suggest you backup the images folder before you make changes.
-*   **Headers and Footers:** The header and footer files can be found in the 'ui' folder. The main 'header.php' and 'footer.php' do the base site pages, but you will see there are also specific header and footer pages for other parts of the site, like popup dialogs and the statspages etc., so you may want to look at all of them when making any changes.
+*   **Headers and Footers:** The header and footer files can be found in the 'ui' folder. The main 'header.php' and 'footer.php' do the base site pages, but you will see there are also specific header and footer pages for other parts of the site, like popup dialogs and the stats pages etc., so you may want to look at all of them when making any changes.
 
   
 
