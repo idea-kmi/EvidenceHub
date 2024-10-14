@@ -96,14 +96,36 @@ It’s common that users want to copy and paste formatted material from a websit
 
 The Hub is a Collective Intelligence platform: its purpose is to make it easier to join up the dots into the bigger picture. Ultimately, it should help spot where there are apparently complete chains of evidence-based issues, and where the gaps are, so they can be plugged.
 
-_So making meaningful connections is at the core of the Hub._ Here’s one of the most important ways, which is via the Knowledge Builder view.
+_So making meaningful connections is at the core of the Hub._ Here’s one of the most important ways, which is via the Widget view. For exmaple, below is the Widget view for an issue called 'Widening Participation'. If you want to add a Solution connected to this, you can click the 'Add' link in the 'Potential Solution' Widget box:
 
-As shown below, clicking on an idea in the outline listing (e.g. the _Claim_ about DCLA) highlights it as the focal node on the left, and you can then _Add_ an idea to it (e.g. an _Issue_ or a piece of _Supporting_ or _Challenging Evidence_):
+![Issue Explore screen](/docs/images/evhub-use-s.png)
 
-[![FirefoxScreenSnapz846](https://evidence-hub.net/evhub-data/uploads/2013/02/FirefoxScreenSnapz846.png)](http://solar.evidence-hub.net/explore.php?id=137108254760577525001361476385#linear)
+<br />
+This will popup the Add Solution form where you can either add a new Solution, or select an existing solution to connect in. 
+
+![Add Solution screen](/docs/images/evhub-use-v.png)
+
+<br />
+If you select to add an Existing Solution, this will popup a further form, where you can find the solution to add either from a list of your own solutions or through a search for solutions:
+<br />
+
+![Select Existing item screen](/docs/images/evhub-use-u.png)
+
+<br />
+Once you find the item to connect, you click on it to select it, and the popup will close and take you back to the Add form with the item injected.
+
+![Select Existing item screen](/docs/images/evhub-use-x.png)
+
+<br />
+Then you press 'publish' and, in this example, the Solution will be connected in to the original Issue:
+
+![Select Existing item screen](/docs/images/evhub-use-w.png)
 
 
+<br />
+Further insites into using an Evidence Hub can be found by watching the follow movie.
 
-While the look of the interface in this video is now out-of-date, the content still has relevance:
+> [!NOTE]  
+>While the look of the interface in this video is now out-of-date, the content still has relevance:
 
 <video src="https://www.youtube.com/watch?v=0fB2Kd2La8g" width="640" height="480" controls></video>
