@@ -73,7 +73,6 @@ function stopScrollRight() {
 function resizeHistoryBar() {
 	if ($('historyBarDiv')) {
 		var width = getWindowWidth();
-		console.log(width)
 		$('historyBarDiv').style.width = "70%";
 		$('historyBarDiv').scrollLeft = 0;
 

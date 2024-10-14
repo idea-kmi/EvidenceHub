@@ -3606,7 +3606,7 @@ function renderWidgetListNode(node, uniQ, role, includeUser, type){
  		textCell.insert(iconlink);
  		textCell.insert(alttext+": ");
 	} else if (role.image != null && role.image != "") {
- 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','src': URL_ROOT + role.image});
+ 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-left:10px;margin-right:5px;','src': URL_ROOT + role.image});
 		textCell.insert(nodeicon);
 	} else {
  		textCell.insert(alttext+": ");
@@ -4256,7 +4256,7 @@ function renderWidgetListNodeMini(node, uniQ, role, includeUser, type){
 
 	var alttext = getNodeTitleAntecedence(role.name, false);
 	if (role.image != null && role.image != "") {
- 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-top:3px;padding-right:5px;','src': URL_ROOT + role.image});
+ 		var nodeicon = new Element('img',{'alt':alttext, 'title':alttext, 'style':'width:20px;height:20px;margin-left:10px;margin-right:5px;','src': URL_ROOT + role.image});
 		textCell.insert(nodeicon);
 	} else {
  		textCell.insert(alttext+": ");

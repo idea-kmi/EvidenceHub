@@ -303,7 +303,7 @@ div.conn-li-wrapper{ width: 100%; clear: both; }
  .chatarea .btn { border: 1px solid #ddd; }
  .chatarea .btn .homebutton1 {  font-weight: bold; }
  .voteDiv { min-width: 40px; }
- .voteDiv img,
+ .voteDiv img { display: inline-block;  },
  .voteDiv b { display: inline-block; width: 50%; }
  .voteDiv img { padding-right: 5px; }
  .voteDiv b { }

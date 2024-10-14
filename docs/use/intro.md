@@ -86,15 +86,15 @@ It’s common that users want to copy and paste formatted material from a websit
 
 …and you can drag and drop formatted text and images from the web:
 
-![FirefoxScreenSnapz837](https://evidence-hub.net/evhub-data/uploads/2013/02/FirefoxScreenSnapz837.png)
+![Example of dragging text into the Editor](/docs/images/evhub-use-q.png)
 
 …or paste from Word using the special toolbar button, which does a reasonable job converting Word formatting into HTML:
 
-![FirefoxScreenSnapz839](https://evidence-hub.net/evhub-data/uploads/2013/02/FirefoxScreenSnapz839.png)
+![Editor Word Paste button](/docs/images/evhub-use-r.png)
 
 ## Connecting a new contribution to an existing idea
 
-The Hub is a Collective Intelligence platform: its purpose is to make it easier to join up the dots into the bigger picture. Ultimately, it should help spot where there are apparently complete chains of evidence-based claims, and where the gaps are, so they can be plugged.
+The Hub is a Collective Intelligence platform: its purpose is to make it easier to join up the dots into the bigger picture. Ultimately, it should help spot where there are apparently complete chains of evidence-based issues, and where the gaps are, so they can be plugged.
 
 _So making meaningful connections is at the core of the Hub._ Here’s one of the most important ways, which is via the Knowledge Builder view.
 
