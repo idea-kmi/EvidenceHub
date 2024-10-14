@@ -367,18 +367,25 @@ $CFG->CAPTCHA_PUBLIC = "";
 $CFG->CAPTCHA_PRIVATE = "";
 
 
-/** GOOGLE **/
-// Do you want to use Google analytics. ('true' or 'false')
+/*** Google Universal setup ***/
+// Do you want to use Google Universal analytics. ('true' or 'false')
 // If this is set to 'true' you must also complete the GOOGLE_ANALYTICS_KEY below.
 $CFG->GOOGLE_ANALYTICS_ON = false;
 
-// Google analytics key
+// Google Universal analytics key
 // You must get this from the Google Analytics website.
 // If you set the GOOGLE_ANALYTICS_ON to 'true' you must add a key for it to work.#
 $CFG->GOOGLE_ANALYTICS_KEY = "";
 
-// Google Analytics 4
-$CFG->GOOGLE_SITE_TAG = "";
+/*** Google Analytics 4 setup ***/
+// Do you want to use Google Analytics 4. ('true' or 'false')
+// If this is set to 'true' you must also complete the GOOGLE_ANALYTICS4_KEY below.
+$CFG->GOOGLE_ANALYTICS4_ON = false;
+
+// Google analytics 4 key
+// You must get this from the Google Analytics website.
+// If you set the GOOGLE_ANALYTICS4_ON to 'true' you must add a key for it to work.#
+$CFG->GOOGLE_ANALYTICS4_KEY = "";
 
 //For geo code look up
 //https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-query

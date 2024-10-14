@@ -47,23 +47,20 @@
 <html lang="en">
 	<head>
 
-		<?php if ($CFG->GOOGLE_ANALYTICS_ON && isset(CFG->GOOGLE_SITE_TAG) && CFG->GOOGLE_SITE_TAG !="") { ?>
-
+		<?php if ($CFG->GOOGLE_ANALYTICS4_ON) { ?>
 			<!-- Google tag (gtag.js) -->
-			<script async src="https://www.googletagmanager.com/gtag/js?id=<?php print($CFG->GOOGLE_SITE_TAG);?>"></script>
+			<script async src="https://www.googletagmanager.com/gtag/js?id=<?php print($CFG->GOOGLE_ANALYTICS4_KEY);?>"></script>
 			<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 
-			gtag('config', '<?php print($CFG->GOOGLE_SITE_TAG);?>');
+			gtag('config', '<?php print($CFG->GOOGLE_ANALYTICS4_KEY);?>');
 			</script>
-
 		<?php } ?>
 
 
-		<?php if ($CFG->GOOGLE_ANALYTICS_ON && isset(CFG->GOOGLE_ANALYTICS_KEY) && CFG->GOOGLE_ANALYTICS_KEY !="") { ?>
-
+		<?php if ($CFG->GOOGLE_ANALYTICS_ON) { ?>
 			<!-- Google analytics -->
 			<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -75,7 +72,6 @@
 			ga('require', 'linkid', 'linkid.js');
 			ga('send', 'pageview');
 			</script>
-
 		<?php } ?>
 
 		<meta http-equiv="Content-Type" content="text/html" />
