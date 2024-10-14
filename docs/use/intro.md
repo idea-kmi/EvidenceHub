@@ -122,10 +122,12 @@ Then you press 'publish' and, in this example, the Solution will be connected in
 ![Select Existing item screen](/docs/images/evhub-use-w.png)
 
 
-<br />
-Further insites into using an Evidence Hub can be found by watching the follow movie.
+
+## Introduction Movie
+
+Further insites into using an Evidence Hub can be found by watching the following introduction movie.
+
+[![Watch the video](https://i.ytimg.com/vi/0fB2Kd2La8g/maxresdefault.jpg)](https://www.youtube.com/watch?v=0fB2Kd2La8g)
 
 > [!NOTE]  
->While the look of the interface in this video is now out-of-date, the content still has relevance:
-
-<video src="https://www.youtube.com/watch?v=0fB2Kd2La8g" width="640" height="480" controls></video>
+>While the look of the interface in this video is now out-of-date, the overall concepts and much of the content still has relevance.
