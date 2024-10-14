@@ -17,6 +17,7 @@
 *   [Language](#language)
 *   [Tailoring your Evidence Hub](#tailoring-your-evidence-hub)
 *   [Additional Developer Notes](#additional-developer-notes)
+*   [Introduction to using an Evidence Hub](#introduction-to-using-an-Evidence-Hub)
 
 ## Overview
 
@@ -877,3 +878,8 @@ In addition to this document many folders in 'src' have a README.txt file with s
 ### Translating the Interface
 
 The file [docs/Language-File-Translation-Help.docx](Language-File-Translation-Help.docx) has more specific help for people translating the language files.
+
+
+## Introduction to using an Evidence Hub
+
+For details on how to use an Evidence Hub instance see: [Introduction to the Evidence Hub](use/intro.md)
