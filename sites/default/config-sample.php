@@ -377,6 +377,8 @@ $CFG->GOOGLE_ANALYTICS_ON = false;
 // If you set the GOOGLE_ANALYTICS_ON to 'true' you must add a key for it to work.#
 $CFG->GOOGLE_ANALYTICS_KEY = "";
 
+// Google Analytics 4
+$CFG->GOOGLE_SITE_TAG = "";
 
 //For geo code look up
 //https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-query

@@ -1626,7 +1626,7 @@ function removeHTMLTags(htmlString) {
  * Used to switch a textarea between plain text and full HTML editor box.
  */
 function switchCKEditorMode(link, divname, editorname) {
-	if ($(divname).style.clear == 'none') {
+	if (link.title == '<?php echo $LNG->FORM_DESC_HTML_TEXT_LINK; ?>') {
 		CKEDITOR.replace(editorname, {
 			on : { instanceReady : function( ev ) { this.focus(); } }
 		} );
