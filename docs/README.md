@@ -18,6 +18,7 @@
 *   [Tailoring your Evidence Hub](#tailoring-your-evidence-hub)
 *   [Additional Developer Notes](#additional-developer-notes)
 *   [Introduction to using an Evidence Hub](#introduction-to-using-an-Evidence-Hub)
+*   [Case Studies](#case-studies)
 
 ## Overview
 
@@ -883,3 +884,7 @@ The file [docs/Language-File-Translation-Help.docx](Language-File-Translation-He
 ## Introduction to using an Evidence Hub
 
 For details on how to use an Evidence Hub instance see: [Introduction to the Evidence Hub](use/intro.md)
+
+## Case Studies
+
+For details on use cases of Evidence Hubs see: [Evidence Hub Case Studies](use/case-studies.md)
