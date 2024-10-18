@@ -1,7 +1,7 @@
 # Evidence Hub Documentation
 
 > [!IMPORTANT]  
-> This code base is no longer in active development. The majority of the code was originally developed between 2010 and 2012 with various updates and tweaks over the following years. So, a lot of the code is old in style and development practises.
+> This code base was developed as part of research conducted at the Knwoledge Media Institute at the Open University. This code base is no longer in active development. The majority of the code was originally developed between 2010 and 2012 with various updates and tweaks over the following years. So, a lot of the code is old in style and development practises.
 
 > [!WARNING]  
 > Some of this documentation may be out-of-date.
