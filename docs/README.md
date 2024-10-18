@@ -338,7 +338,7 @@ All setting have comments explaining their use.
 ### Language
 
 **`$CFG->language = 'en';`**  
-(This string indicates what language the interface text should use. The name must correspnd to a folder in the 'language' folder where the translated texts should exist.)  
+(This string indicates what language the interface text should use. The name must correspond to a folder in the 'language' folder where the translated texts should exist.)  
 For more information about the language system please see [Language](#lang) below.  
   
 **`$CFG->defaultcountry = "United Kingdom";`**  
