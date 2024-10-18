@@ -1,7 +1,7 @@
 # Evidence Hub Documentation
 
 > [!IMPORTANT]  
-> This code base is no longer in active development. The majority of the code was originally developed between 2010 and 2012 with some updates and tweaks over the following years. So, a lot of the code is old in style and development practises.
+> This code base was developed as part of research conducted at the Knowledge Media Institute at the Open University. This code base is no longer in active development. The majority of the code was originally developed between 2010 and 2012 with various updates and tweaks over the following years. So, a lot of the code is old in style and development practises.
 
 > [!WARNING]  
 > Some of this documentation may be out-of-date.
@@ -65,7 +65,7 @@ It includes third party code which should all have licenses which are compatible
 
 ## System Requirements
 
-The Evidence Hub code has been developed and tested on a Red Hat Enterprise Linux Server release 8.10 (Ootpa) using:  
+The Evidence Hub code was most recently on a Red Hat Enterprise Linux Server release 8.10 (Ootpa) using:  
 
 ### Apache 2.4.37.
 
@@ -106,7 +106,7 @@ ErrorDocument 403 /403-error-page.php
 ```
 
 So we use it to compress files to speed up the website and for having site specific 404 and 403 pages.  
-We also uncomment the first three lines if we want to put the hub into maintenace mode and display a holding page to the user (index-maintenace.php)  
+We also uncomment the commented out three lines if we want to put the hub into maintenace mode and display a holding page to the user (index-maintenace.php)  
   
 
 ### PHP version 7.4.33
@@ -114,7 +114,7 @@ We also uncomment the first three lines if we want to put the hub into maintenac
 Modules installed:  
 `bcmath,bz2,calendar,Core,ctype,curl,date,dba,dom,enchant,ereg,exif,fileinfo,filter,ftp, gd,gettext,gmp,hash,iconv,imap,intl,json,ldap,libxml,mbstring,mcrypt,memcache,mysql,mysqli,odbc,openssl,pcntl,pcre,PDO,pdo_mysql,PDO_ODBC,pdo_pgsql,pdo_sqlite,pgsql,Phar,phpcups,posix, pspell,readline,recode,Reflection,rrdtool,session,shmop,SimpleXML,snmp,soap,sockets,SPL,sqlite3,standard, sysvmsg,sysvsem,sysvshm,tidy,tokenizer,uuid,wddx,xml,xmlreader,xmlrpc,xmlwriter,xsl,zip,zlib`  
   
-The Evidence Hub is not necessarily dependent on all these modules. These are just the modules installed on the server The Evidence Hub was developed on. 
+The Evidence Hub is not necessarily dependent on all these modules. These are just the modules installed on the server The Evidence Hub was most recently on. 
 I am unsure at this stage if any of them are non standard, or if the Evidence Hub code in anyway replies on them. So, just in case, I am listing them.  
   
 NOTE: In your php.ini make sure set allow-url-fopen = on.  
@@ -122,7 +122,7 @@ NOTE: In your php.ini make sure set allow-url-fopen = on.
 ### MySQL
 
 The Evidence Hub uses MySQL/MariaDB as the database at present.So you will need to install MySQL on your server. 
-We have developed and tested on mysql Ver 15.1 Distrib 10.3.39-MariaDB. 
+We have most recently tested on mysql Ver 15.1 Distrib 10.3.39-MariaDB. 
 The database layer of the code has been abstracted out somewhat to make it eaiser for a developer to extend the Evidence Hub code base to use a different database.  
 
 ### Email
@@ -194,7 +194,6 @@ This level also has the files for the other main context pages of the site: inde
     *   **stats** \- This holds the code that draws some of the dahsboard graphs.
 
   
-
 ## Setting up an Evidence Hub
 
 ### Creating the Database
@@ -339,7 +338,7 @@ All setting have comments explaining their use.
 ### Language
 
 **`$CFG->language = 'en';`**  
-(This string indicates what language the interface text should use. The name must correspnd to a folder in the 'language' folder where the translated texts should exist.)  
+(This string indicates what language the interface text should use. The name must correspond to a folder in the 'language' folder where the translated texts should exist.)  
 For more information about the language system please see [Language](#lang) below.  
   
 **`$CFG->defaultcountry = "United Kingdom";`**  
@@ -853,6 +852,11 @@ At present, if you want to change the look and feel or text of your Evidence Hub
   
 
 ## Additional Developer Notes
+
+### GeoCoding
+
+In `core/utillib.php` there is a function called `geoCode` that currently has a hardcoded url to a Bing service for geo coding and it will probably no longer work and will need replacing with another service.
+
 
 ### RESTful API
 
