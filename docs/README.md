@@ -853,6 +853,11 @@ At present, if you want to change the look and feel or text of your Evidence Hub
 
 ## Additional Developer Notes
 
+### GeoCoding
+
+In `core/utillib.php` there is a function called `geoCode` that currently has a hardcoded url to a Bing service for geo coding and it will probably no longer work and will need replacing with another service.
+
+
 ### RESTful API
 
 In theory the Evidence Hub has a RESTful API. The API documentation can be found in the 'docs' folder in the ['code-doc' subfolder](code-doc/index.html).
