@@ -166,12 +166,12 @@ This level also has the files for the other main context pages of the site: inde
     *   **lib** \- This holds all the external libraries that the evidence Hub is using in the server side code.
 *   **docs** \- This is where there are some additinal developer docs.  
     **Once you have finished the install process you may want to remove this folder from your website.**
-*   **help** \- This is where the help pages are. But the actual text can be found io the language folder.
+*   **help** \- This is where the help pages are. But the actual text can be found io the  folder.
 *   **images** \- This is where all the graphics for the site are.
 *   **install** - This folder has setup notes, the sql file needed to create a Evidence Hub database and the script to install the default data. See [Setting up an Evidence Hub](#setup) below.  
     **Once you have finished the install process remove this folder from your website.**
 *   **io** \- This folder holds the code to handle the import options in the Evidence Hub: currently just from [Compendium](http://compendium.open.ac.uk/institute).
-*   **language** \- This folder holds the language files for all the interface text. By changing the $CFG->language property (see below) you can override the default language of 'en' and add a different folder and then convert all the language files to another language if you want to. For more details on how this works see [Language](#lang) below.
+*   **** \- This folder holds the  files for all the interface text. By changing the $CFG->language property (see below) you can override the default language of 'en' and add a different folder and then convert all the language files to another language if you want to. For more details on how this works see [Language](#language) below.
     *   **en** \- This holds the default English language version of all interface text shown to the user. Please never remove this folder.
         *   **custom** \- This folder will intially be empty, and is where you will place any site specific text overrides, (see [Site specific text](#sitetext) below).
 *   **sites** - There is a README.txt file with more details
